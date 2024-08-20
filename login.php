@@ -107,7 +107,7 @@ if (isset($_POST['form1'])) {
             <div class="form-group has-feedback">
                 <input class="form-control" placeholder="Password" name="password" type="password" autocomplete="off" value="">
             </div>
-            <div class="row">
+            <div class="row1">
                 <div class="col-xs-8"></div>
                 <div class="col-xs-4">
                     <input type="submit" class="btn btn-success btn-block btn-flat login-button" name="form1" value="Log In">

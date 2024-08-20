@@ -13,7 +13,7 @@
 <body>
     <div class="wrapper">
     <h1 style="text-align: center;">Mud Log</h1>
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <!-- <h2></h2> -->
                 <form action="#" method="post">

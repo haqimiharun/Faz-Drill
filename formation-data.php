@@ -12,7 +12,7 @@
 <body>
     <div class="wrapper">
     <h1 style="text-align: center;">Formation Data</h1>
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <!-- <h2></h2> -->
                 <form action="process-drill-fluids.php" method="post">

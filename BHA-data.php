@@ -11,14 +11,14 @@
 <body>
     <div class="wrapper">
         <h1 style="text-align: center;">Bottom Hole Assembly (BHA)</h1>
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <form action="process.php" method="POST">
                     <div class="table-wrapper">
                         <table class="table-custom">
                             <thead>
                                 <tr>
-                                    <th></th> <!-- Empty top-left corner cell -->
+                                    <th></th>
                                     <th>Outside Diameter (OD)</th>
                                     <th>Inside Diameter (ID)</th>
                                     <th>Weight</th>

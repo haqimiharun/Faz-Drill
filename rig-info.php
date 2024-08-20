@@ -11,7 +11,7 @@
 <body>
     <div class="wrapper">
         <h1 style="text-align: center;">Rig Information</h1>
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <form action="#" method="post">
            <div class="form-group">

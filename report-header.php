@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <h2>Supervision</h2>
                 <form action="process-report-header.php" method="post">
@@ -68,7 +68,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <h2>Well Location & Profile</h2>
                 <form>

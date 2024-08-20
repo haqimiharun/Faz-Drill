@@ -1,4 +1,4 @@
-<?php require_once('header.php'); ?>
+<?php require_once('header-db.php'); ?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -99,8 +99,8 @@
 		<h1>All Design</h1>
 	</div>
 	<div class="content-header-right">
-	<a href="#" class="import-design">Import Design</a>	
-	<button id="createDesignBtn" class="btn btn-primary btn-sm">Create Design</button>
+	<a href="#" class="import-design">Import Report</a>	
+	<button id="createDesignBtn" class="btn btn-primary btn-sm">Create New Report</button>
 		
 	</div>
 
@@ -109,67 +109,55 @@
 <div class="col-md-12">
     <div class="box box-info">
         <div class="box-body table-responsive">
-            <div id="browse-content" class="dashboard-section" > <!-- BROWSE CONTENT -->
+            <div id="browse-content" class="dashboard-section"> <!-- BROWSE CONTENT -->
                 <table id="example1" class="table table-bordered table-hover table-striped">
                     <thead>
-                    <tr>
-                        <th>Country
-                        <a href="#" title="Add New Country">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-                        
-                        <th>Field
-                        <a href="#" title="Add New Field">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-
-                        <th>Site
-                        <a href="#" title="Add New Site">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-                        
-                        <th>Well
-                        <a href="#" title="Add New Well">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-                        
-                        <th>Wellbore
-                        <a href="#" title="Add New Wellbore">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-
-                        <th>Report
-                        <a href="#" title="Add New Report">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
                         <tr>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-                            
-                            </td>
-                            <td>
-                                
-                            </td>
-                            <td>
-                                
-                            </td>
+                            <th>Country
+                                <a title="Add New Country">
+                                    <i id="addCountry" class="fas fa-plus-circle"></i>
+                                </a>
+                            </th>
+                            <th>Field
+                                <a href="#" title="Add New Field">
+                                    <i id="addField" class="fas fa-plus-circle"></i>
+                                </a>
+                            </th>
+                            <th>Site
+                                <a href="#" title="Add New Site">
+                                    <i class="fas fa-plus-circle"></i>
+                                </a>
+                            </th>
+                            <th>Well
+                                <a href="#" title="Add New Well">
+                                    <i class="fas fa-plus-circle"></i>
+                                </a>
+                            </th>
+                            <th>Wellbore
+                                <a href="#" title="Add New Wellbore">
+                                    <i class="fas fa-plus-circle"></i>
+                                </a>
+                            </th>
+                            <th>Report
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>USA</td>
+                            <td>Texas</td>
+                            <td>Site A</td>
+                            <td>Well 1</td>
+                            <td>Wellbore 1</td>
+                            <td>Report 1</td>
+                        </tr>
+                        <tr>
+                            <td>Canada</td>
+                            <td>Alberta</td>
+                            <td>Site B</td>
+                            <td>Well 2</td>
+                            <td>Wellbore 2</td>
+                            <td>Report 2</td>
                         </tr>
                     </tbody>
                 </table>
@@ -178,279 +166,176 @@
                 <table id="example3" class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
-                            <th>Design
-                                <a href="#">
-                            
-                                </a>
-                            </th>
+                            <th>Design</th>
+                            <th>Country</th>
+                            <th>Field</th>
+                            <th>Site</th>
+                            <th>Well</th>
+                            <th>Wellbore</th>
+                            <th>User</th>
+                            <th>Modified By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Design A</td>
+                            <td>USA</td>
+                            <td>Texas</td>
+                            <td>Site A</td>
+                            <td>Well 1</td>
+                            <td>Wellbore 1</td>
+                            <td>John Doe</td>
+                            <td>Jane Smith</td>
+                        </tr>
+                        <tr>
+                            <td>Design B</td>
+                            <td>Canada</td>
+                            <td>Alberta</td>
+                            <td>Site B</td>
+                            <td>Well 2</td>
+                            <td>Wellbore 2</td>
+                            <td>Mary Johnson</td>
+                            <td>James Brown</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="my-design-content" class="dashboard-section" style="display:none;">
+                <h3>My Design</h3>
+                <table id="example4" class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Well</th>
+                            <th>Field</th>
+                            <th>Site</th>
+                            <th>Last Edited</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Well 1</td>
+                            <td>Texas</td>
+                            <td>Site A</td>
+                            <td>2024-08-20</td>
+                        </tr>
+                        <tr>
+                            <td>Well 2</td>
+                            <td>Alberta</td>
+                            <td>Site B</td>
+                            <td>2024-08-19</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Design Trial</h3>
+                <table id="example6" class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Section</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Section 1</td>
+                            <td>Description A</td>
+                            <td>Complete</td>
+                            <td><a href="#" class="btn btn-link">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>Section 2</td>
+                            <td>Description B</td>
+                            <td>Pending</td>
+                            <td><a href="#" class="btn btn-link">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Change Log</h3>
+                <table id="example7" class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Change</th>
+                            <th>Modified By</th>
+                            <th>Using</th>
+                            <th>Operation</th>
+                            <th>Time</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Added new report</td>
+                            <td>Jane Smith</td>
+                            <td>Report 1</td>
+                            <td>Create</td>
+                            <td>2024-08-20 10:00 AM</td>
+                            <td><a href="#" class="btn btn-link">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td>Updated site details</td>
+                            <td>John Doe</td>
+                            <td>Site A</td>
+                            <td>Update</td>
+                            <td>2024-08-19 02:30 PM</td>
+                            <td><a href="#" class="btn btn-link">Details</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="orphaned-design-content" class="dashboard-section" style="display:none;">
+                <table id="example5" class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
                             <th>Country
-                                <a href="#">
-                           
+                                <a href="#" title="Add New Country">
+                                    <i class="fas fa-plus-circle"></i>
                                 </a>
                             </th>
                             <th>Field
-                                <a href="#">
-                           
+                                <a href="#" title="Add New Field">
+                                    <i class="fas fa-plus-circle"></i>
                                 </a>
                             </th>
                             <th>Site
-                                <a href="#">
-                           
+                                <a href="#" title="Add New Site">
+                                    <i class="fas fa-plus-circle"></i>
                                 </a>
                             </th>
                             <th>Well
-                                <a href="#">
-                            
+                                <a href="#" title="Add New Well">
+                                    <i class="fas fa-plus-circle"></i>
                                 </a>
                             </th>
                             <th>Wellbore
-                                <a href="#">
-                            
-                            </a>
-                            </th>
-
-                            <th>User
-                                <a href="#">
-                            
+                                <a href="#" title="Add New Wellbore">
+                                    <i class="fas fa-plus-circle"></i>
                                 </a>
                             </th>
-                            <th>Modified By
-                                <a href="#">
-                            
+                            <th>Report
+                                <a href="#" title="Add New Report">
+                                    <i class="fas fa-plus-circle"></i>
                                 </a>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-                            
-                            </td>
-                            <td>
-                                
-                            </td>
-                            <td>
-                                
-                            </td>
+                            <td>Australia</td>
+                            <td>Queensland</td>
+                            <td>Site C</td>
+                            <td>Well 3</td>
+                            <td>Wellbore 3</td>
+                            <td>Report 3</td>
                         </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div id="my-design-content" class="dashboard-section" style="display:none;">
-
-            <h3>My Design</h3>
-            <table id="example4" class="table table-bordered table-hover table-striped">
-                    <thead>
-                    <tr>
-                        <th>Well
-                        <a href="#" title="Add New Country">
-                        </a>
-                        </th>
-                        
-                        <th>Field
-                        <a href="#" title="Add New Field">
-                        </a>
-                        </th>
-
-                        <th>Site
-                        <a href="#" title="Add New Site">
-                        </a>
-                        </th>
-                        
-                        <th>Well
-                        <a href="#" title="Add New Well">
-                        </a>
-                        </th>
-                        
-                        <th>Last Edited 
-                        <a href="#" title="Add New Wellbore">
-                        </a>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
                         <tr>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-                            
-                            </td>
-                            <td>
-                                
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h3>Design Trial</h3>
-            <table id="example6" class="table table-bordered table-hover table-striped">
-                    <thead>
-                    <tr>
-                        <th colspan="2">Section</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><a href="#" class="btn btn-link">View</a></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><a href="#" class="btn btn-link">View</a></td>
-                    </tr>
-                </tbody>
-                </table>
-
-                <h3>Change Log</h3>
-            <table id="example7" class="table table-bordered table-hover table-striped">
-                    <thead>
-                    <tr>
-                        <th>Change
-                        <a href="#" >
-                        </a>
-                        </th>
-                        
-                        <th>Modified By
-                        <a href="#" >
-                        </a>
-                        </th>
-
-                        <th>Using
-                        <a href="#" >
-                        </a>
-                        </th>
-                        
-                        <th>Operation
-                        <a href="#" >
-                        </a>
-                        </th>
-                        
-                        <th>Time 
-                        <a href="#" >
-                        </a>
-                        </th>
-
-                        <th> 
-                        <a href="#" >
-                        </a>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                        <tr>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-                            
-                            </td>
-                            <td>
-                                
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div>
-
-            <div id="orphaned-design-content" class="dashboard-section" style="display:none;">
-                <table id="example5" class="table table-bordered table-hover table-striped">
-                    <thead>
-                    <tr>
-                        <th>Country
-                        <a href="#" title="Add New Country">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-                        
-                        <th>Field
-                        <a href="#" title="Add New Field">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-
-                        <th>Site
-                        <a href="#" title="Add New Site">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-                        
-                        <th>Well
-                        <a href="#" title="Add New Well">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-                        
-                        <th>Wellbore
-                        <a href="#" title="Add New Wellbore">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-
-                        <th>Report
-                        <a href="#" title="Add New Report">
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                        <tr>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-                            
-                            </td>
-                            <td>
-                                
-                            </td>
-                            <td>
-                                
-                            </td>
+                            <td>Brazil</td>
+                            <td>Sao Paulo</td>
+                            <td>Site D</td>
+                            <td>Well 4</td>
+                            <td>Wellbore 4</td>
+                            <td>Report 4</td>
                         </tr>
                     </tbody>
                 </table>
@@ -458,8 +343,6 @@
         </div>
     </div>
 </div>
-
-
 
 </section>
 
@@ -475,11 +358,29 @@
 </div>
 
 <script>
+    var addCountryBtn = document.getElementById("addCountry");
     var modal = document.getElementById("myModal");
     var btn = document.getElementById("createDesignBtn");
     var span = document.getElementsByClassName("close")[0];
     var dynamicContent = document.getElementById("dynamic-content");
     var loader = document.getElementById("loader");
+
+    addCountryBtn.onclick = function() {
+        modal.style.display = "block";
+        loader.style.display = "block";
+        dynamicContent.innerHTML = ""; // Clear previous content
+
+        // Load content from PHP page using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "add_country.php", true); // Update to your PHP file path
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                loader.style.display = "none";
+                dynamicContent.innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    }
 
     btn.onclick = function() {
         modal.style.display = "block";

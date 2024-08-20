@@ -150,7 +150,7 @@ foreach ($result as $row) {
 
 <section class="content">
 
-	<div class="row">
+	<div class="row1">
 		<div class="col-md-12">
 				
 				<div class="nav-tabs-custom">

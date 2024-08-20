@@ -1,9 +1,33 @@
+<?php
+// Database connection settings
+$dbhost = 'localhost';
+$dbname = 'fazdrill';
+$dbuser = 'root';
+$dbpass = '';
 
+try {
+    // Establish the database connection
+    $pdo = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Query to fetch country data
+    $stmt = $pdo->prepare("SELECT country_id, country_name FROM tbl_country");
+    $stmt->execute();
+
+    // Fetch all the countries
+    $countries = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $exception) {
+    echo "Connection error: " . $exception->getMessage();
+}
+?>
                 <form action="submit-design.php" method="POST">
                     <div class="form-group">
                         <label for="country">Country</label>
                         <select id="country" name="country">
-                            <option value="">Add new country</option>
+                            <option value="">Select a country</option>
+                            <?php foreach ($countries as $country): ?>
+                                <option value="<?php echo $country['country_id']; ?>"><?php echo $country['country_name']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
@@ -36,37 +60,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="unit-template">Unit Template</label>
-                        <select id="unit-template" name="unit_template">
-                            <option value="new">New Unit System</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <p>Default unit template is set to "New Unit System"</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="design-name">Design</label>
-                        <input type="text" id="design-name" name="design_name" placeholder="Enter new design name">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Design Type</label>
-                        <div class="radio-group">
-                            <div>
-                                <input type="radio" id="prototype" name="design_type" value="prototype" checked>
-                                <label for="prototype">Prototype</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="actual" name="design_type" value="actual">
-                                <label for="actual">Actual</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="planned" name="design_type" value="planned">
-                                <label for="planned">Planned</label>
-                            </div>
-                        </div>
+                        <label for="report-name">Report Name</label>
+                        <input type="text" id="report-name" name="report" placeholder="Enter new report name">
                     </div>
 
                     <div class="modal-footer">
@@ -81,7 +76,7 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 1030;
             left: 0;
             top: 0;
             width: 100%;

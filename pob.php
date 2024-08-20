@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <h2>Personnel On Board</h2>
                 <form action="process.php" method="POST">

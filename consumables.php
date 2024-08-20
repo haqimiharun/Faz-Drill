@@ -11,7 +11,7 @@
 <body>
     <div class="wrapper">
     <h1 style="text-align: center;">Consumables</h1>
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <h2>Land Rig Consumables Input</h2>
                 <form action="process-report-header.php" method="post">
@@ -77,7 +77,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <h3>Fluids Unit Of Measurement</h3>
                 <div class="form-group radio-group">

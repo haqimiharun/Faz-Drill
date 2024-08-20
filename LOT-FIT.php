@@ -10,7 +10,7 @@
 <body>
     <div class="wrapper">
         <h1 style="text-align: center;">LOT / FIT</h1>
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <h2>Leaks Of Test</h2>
                 <form action="#" method="post">

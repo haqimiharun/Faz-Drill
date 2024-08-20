@@ -11,7 +11,7 @@
 <body>
     <div class="wrapper">
         <h1 style="text-align: center;">Solid Control Equipment</h1>
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <h2>Pump Data</h2>
                 <form action="process.php" method="POST">
@@ -122,7 +122,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <h2>Shakers</h2>
                 <form action="process.php" method="POST">

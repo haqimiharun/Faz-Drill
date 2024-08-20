@@ -13,7 +13,7 @@
 <body>
     <div class="wrapper">
     <h1 style="text-align: center;">Bulk and Liquid Material</h1>
-        <div class="row">
+        <div class="row1">
             <div class="container">
                 <h2>Bulk</h2>
                 <form action="#" method="post">
