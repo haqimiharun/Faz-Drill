@@ -58,7 +58,7 @@ select.form-control {
 }
 .garment-label-heading {
 	text-align: left;
-	font-weight: bold;
+	font-weight: 700;
 	background: #eee;
 	padding: 10px 15px;
 	border-radius: 4px;
@@ -67,7 +67,7 @@ select.form-control {
 	color: #d43f3a;
 	display: block;
 	margin-top: 10px;
-	font-weight: bold;
+	font-weight: 700;
 }
 .dropdown-menu {
 	min-width: auto;
@@ -101,7 +101,7 @@ select.form-control {
 }
 h4.modal-title {
 	color: #3c8dbc;
-	font-weight: bold;
+	font-weight: 700;
 }
 .rTable {
 	display: table;
@@ -127,11 +127,11 @@ h4.modal-title {
 .rTableHeading {
 	display: table-header-group;
 	background-color: #ddd;
-	font-weight: bold;
+	font-weight: 700;
 }
 .rTableFoot {
 	display: table-footer-group;
-	font-weight: bold;
+	font-weight: 700;
 	background-color: #ddd;
 }
 .rTableBody {
@@ -308,7 +308,7 @@ select {
 	margin-bottom: 15px;
 }
 .form-group label {
-	font-weight: bold;
+	font-weight: 700;
 	margin-bottom: 5px;
 }
 .form-group input[type="text"],
@@ -416,7 +416,7 @@ input[type="datetime-local"]::placeholder {
 .table-custom th {
 	background-color: #f4f6f8;
 	color: #333;
-	font-weight: bold;
+	font-weight: 700;
 }
 
 .table-custom td {
@@ -440,7 +440,7 @@ input[type="datetime-local"]::placeholder {
 }
 
 .form-group label {
-	font-weight: bold;
+	font-weight: 700;
 	display: block;
 	margin-bottom: 5px;
 }
@@ -520,7 +520,7 @@ input[type="datetime-local"]::placeholder {
 }
 
 .popup {
-	display: none; /* Hidden by default */
+	display: none;
 	position: fixed;
 	z-index: 1;
 	left: 0;
@@ -528,7 +528,7 @@ input[type="datetime-local"]::placeholder {
 	width: 100%;
 	height: 100%;
 	overflow: auto;
-	background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .popup-content {
@@ -536,14 +536,14 @@ input[type="datetime-local"]::placeholder {
 	margin: 15% auto;
 	padding: 20px;
 	border: 1px solid #888;
-	width: 50%; /* Set a width for the popup */
+	width: 50%;
 }
 
 .close-btn {
 	color: #aaa;
 	float: right;
 	font-size: 28px;
-	font-weight: bold;
+	font-weight: 700;
 }
 
 .close-btn:hover,
