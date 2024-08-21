@@ -241,59 +241,6 @@
 
         });
 
-
-
-        var items = [];
-        for( i=1; i<=24; i++ ) {
-        	items[i] = document.getElementById("tabField"+i);
-        }
-
-		items[1].style.display = 'block';
-		items[2].style.display = 'block';
-		items[3].style.display = 'block';
-		items[4].style.display = 'none';
-
-		items[5].style.display = 'block';
-		items[6].style.display = 'block';
-		items[7].style.display = 'block';
-		items[8].style.display = 'none';
-
-		items[9].style.display = 'block';
-		items[10].style.display = 'block';
-		items[11].style.display = 'block';
-		items[12].style.display = 'none';
-
-		items[13].style.display = 'block';
-		items[14].style.display = 'block';
-		items[15].style.display = 'block';
-		items[16].style.display = 'none';
-
-		items[17].style.display = 'block';
-		items[18].style.display = 'block';
-		items[19].style.display = 'block';
-		items[20].style.display = 'none';
-
-		items[21].style.display = 'block';
-		items[22].style.display = 'block';
-		items[23].style.display = 'block';
-		items[24].style.display = 'none';
-
-		function funcTab1(elem) {
-			var txt = elem.value;
-			if(txt == 'Image Advertisement') {
-				items[1].style.display = 'block';
-		       	items[2].style.display = 'block';
-		       	items[3].style.display = 'block';
-		       	items[4].style.display = 'none';
-			} 
-			if(txt == 'Adsense Code') {
-				items[1].style.display = 'none';
-		       	items[2].style.display = 'none';
-		       	items[3].style.display = 'none';
-		       	items[4].style.display = 'block';
-			}
-		};
-
 		function funcTab2(elem) {
 			var txt = elem.value;
 			if(txt == 'Image Advertisement') {

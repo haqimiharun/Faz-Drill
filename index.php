@@ -49,7 +49,7 @@
         margin: 5% auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 80%;
+        width: 60%;
         border-radius: 10px;
     }
 
@@ -119,13 +119,13 @@
                                 </a>
                             </th>
                             <th>Field
-                                <a href="#" title="Add New Field">
+                                <a title="Add New Field">
                                     <i id="addField" class="fas fa-plus-circle"></i>
                                 </a>
                             </th>
                             <th>Site
-                                <a href="#" title="Add New Site">
-                                    <i class="fas fa-plus-circle"></i>
+                                <a title="Add New Site">
+                                    <i id="addSite" class="fas fa-plus-circle"></i>
                                 </a>
                             </th>
                             <th>Well
@@ -144,20 +144,20 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>USA</td>
-                            <td>Texas</td>
-                            <td>Site A</td>
-                            <td>Well 1</td>
-                            <td>Wellbore 1</td>
-                            <td>Report 1</td>
+                            <td></td>
+                            <td></td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
                         </tr>
                         <tr>
-                            <td>Canada</td>
-                            <td>Alberta</td>
-                            <td>Site B</td>
-                            <td>Well 2</td>
-                            <td>Wellbore 2</td>
-                            <td>Report 2</td>
+                            <td></td>
+                            <td></td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
                         </tr>
                     </tbody>
                 </table>
@@ -358,73 +358,214 @@
 </div>
 
 <script>
-    var addCountryBtn = document.getElementById("addCountry");
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("createDesignBtn");
-    var span = document.getElementsByClassName("close")[0];
-    var dynamicContent = document.getElementById("dynamic-content");
-    var loader = document.getElementById("loader");
+// Get elements
+var addSiteBtn = document.getElementById("addSite");
+var addFieldBtn = document.getElementById("addField");
+var addCountryBtn = document.getElementById("addCountry");
+var btn = document.getElementById("createDesignBtn");
+// The similarity start here
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+var dynamicContent = document.getElementById("dynamic-content");
+var loader = document.getElementById("loader");
 
-    addCountryBtn.onclick = function() {
-        modal.style.display = "block";
-        loader.style.display = "block";
-        dynamicContent.innerHTML = ""; // Clear previous content
 
-        // Load content from PHP page using AJAX
+addSiteBtn.onclick = function() {
+    modal.style.display = "block";
+    loader.style.display = "block";
+    dynamicContent.innerHTML = "";
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "add_site.php", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            loader.style.display = "none";
+            dynamicContent.innerHTML = xhr.responseText;
+            setupSiteFormSubmission(); // Setup form submission for site
+        }
+    };
+    xhr.send();
+}
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Function to open the modal
+addCountryBtn.onclick = function() {
+    modal.style.display = "block";
+    loader.style.display = "block";
+    dynamicContent.innerHTML = ""; // Clear previous content
+
+    // Load the content from the add_country.php file
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "add_country.php", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            loader.style.display = "none";
+            dynamicContent.innerHTML = xhr.responseText;
+            setupFormSubmission(); // Call this to setup the AJAX form submission
+        }
+    };
+    xhr.send();
+};
+
+// Inside the function to open the modal
+addFieldBtn.onclick = function() {
+    modal.style.display = "block";
+    loader.style.display = "block";
+    dynamicContent.innerHTML = ""; // Clear previous content
+
+    // Load the content from the add_field.php file
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "add_field.php", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            loader.style.display = "none";
+            dynamicContent.innerHTML = xhr.responseText;
+            setupFieldForm(); // Call this to setup the AJAX form submission
+        }
+    };
+    xhr.send();
+};
+
+btn.onclick = function() {
+    modal.style.display = "block";
+    loader.style.display = "block";
+    dynamicContent.innerHTML = ""; // Clear previous content
+
+    // Load content from PHP page using AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "create-design.php", true); // Update to your PHP file path
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            loader.style.display = "none";
+            dynamicContent.innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send();
+};
+
+function setupFieldForm() {
+    var fieldForm = document.getElementById("fieldForm");
+    var countrySelect = document.getElementById("countrySelect");
+
+    // Load country options for the dropdown
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "get_countries.php", true); // PHP script to fetch countries
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var countries = JSON.parse(xhr.responseText);
+            countries.forEach(function(country) {
+                var option = document.createElement("option");
+                option.value = country.country_id;
+                option.text = country.country_name;
+                countrySelect.add(option);
+            });
+        }
+    };
+    xhr.send();
+    fieldForm.onsubmit = function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        var formData = new FormData(fieldForm);
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "add_country.php", true); // Update to your PHP file path
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                loader.style.display = "none";
-                dynamicContent.innerHTML = xhr.responseText;
+        xhr.open("POST", "process_add_field.php", true); // PHP script to process field addition
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                alert("Field added successfully!");
+            } else {
+                alert("Error: " + xhr.responseText);
             }
+            modal.style.display = "none"; // Close the modal
         };
-        xhr.send();
+
+        xhr.onerror = function() {
+            alert("Error: Failed to send the request. Please try again.");
+            modal.style.display = "none"; // Close the modal
+        };
+        xhr.send(formData);
+    };
+}
+
+window.onclick = function(event) {
+    if (event.target == siteModal) {
+        siteModal.style.display = "none";
     }
+}
 
-    btn.onclick = function() {
-        modal.style.display = "block";
-        loader.style.display = "block";
-        dynamicContent.innerHTML = ""; // Clear previous content
-
-        // Load content from PHP page using AJAX
+function setupSiteFormSubmission() {
+    var siteForm = document.getElementById("siteForm");
+    siteForm.onsubmit = function(event) {
+        event.preventDefault(); // Prevent default form submission
+        var formData = new FormData(siteForm);
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "create-design.php", true); // Update to your PHP file path
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                loader.style.display = "none";
-                dynamicContent.innerHTML = xhr.responseText;
+        xhr.open("POST", "process_add_site.php", true); // Update to your processing PHP file
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                alert(xhr.responseText);
+            } else {
+                alert("Error: " + xhr.responseText); // Include server response in the alert
             }
+            modal.style.display = "none"; // Close the modal
         };
-        xhr.send();
-    }
+        xhr.onerror = function() {
+            alert("Error: Failed to send the request. Please try again.");
+            modal.style.display = "none"; // Close the modal
+        };
+        xhr.send(formData);
+    };
+}
+// Setup AJAX form submission
+function setupFormSubmission() {
+    var countryForm = document.getElementById("countryForm");
+    countryForm.onsubmit = function(event) {
+        event.preventDefault(); // Prevent default form submission
+        var formData = new FormData(countryForm);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "process_add_country.php", true); // Update to your processing PHP file
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                alert("Country added successfully!");
+            } else {
+                alert("" + xhr.responseText); // Include server response in the alert
+            }
+            modal.style.display = "none"; // Close the modal
+        };
+        xhr.onerror = function() {
+            alert("Error: Failed to send the request. Please try again.");
+            modal.style.display = "none"; // Close the modal
+        };
+        xhr.send(formData);
+    };
+}
 
-    span.onclick = function() {
+// Function to close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+};
+
+// Close modal if user clicks outside of it
+window.onclick = function(event) {
+    if (event.target == modal) {
         modal.style.display = "none";
     }
+};
 
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    $(document).ready(function() {
-    $('.breadcrumb a').click(function(e) {
+$(document).ready(function() {
+    $(".breadcrumb a").click(function(e) {
         e.preventDefault(); // Prevent the default link behavior
 
         // Hide all sections
-        $('.dashboard-section').hide();
+        $(".dashboard-section").hide();
 
         // Get the target section from the data-target attribute
-        var target = $(this).data('target');
+        var target = $(this).data("target");
 
         // Show the selected section
-        $('#' + target).show();
+        $("#" + target).show();
     });
 });
 
 </script>
-
 
 <?php require_once('footer.php'); ?>
