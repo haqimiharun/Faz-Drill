@@ -369,7 +369,6 @@ var span = document.getElementsByClassName("close")[0];
 var dynamicContent = document.getElementById("dynamic-content");
 var loader = document.getElementById("loader");
 
-
 addSiteBtn.onclick = function() {
     modal.style.display = "block";
     loader.style.display = "block";
@@ -378,14 +377,19 @@ addSiteBtn.onclick = function() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "add_site.php", true);
     xhr.onreadystatechange = function() {
+        console.log("Request state: " + xhr.readyState + ", Status: " + xhr.status);
         if (xhr.readyState === 4 && xhr.status === 200) {
             loader.style.display = "none";
             dynamicContent.innerHTML = xhr.responseText;
             setupSiteFormSubmission(); // Setup form submission for site
+        } else if (xhr.readyState === 4) {
+            console.error("Error at onreadystatechange: " + xhr.status);
         }
     };
     xhr.send();
-}
+};
+
+
 span.onclick = function() {
     modal.style.display = "none";
 }
@@ -494,7 +498,77 @@ window.onclick = function(event) {
 }
 
 function setupSiteFormSubmission() {
+    console.log("setupSiteFormSubmission called");
     var siteForm = document.getElementById("siteForm");
+    if (!siteForm) {
+        console.error("siteForm not found");
+        return;
+    }
+    console.log("siteForm found");
+
+    // Load country options for the dropdown
+    var countrySelect = document.getElementById("countrySelect");
+    var xhrCountries = new XMLHttpRequest();
+    xhrCountries.open("GET", "get_countries.php", true);
+    xhrCountries.onload = function() {
+        if (xhrCountries.status === 200) {
+            try {
+                var countries = JSON.parse(xhrCountries.responseText);
+                countries.forEach(function(country) {
+                    var option = document.createElement("option");
+                    option.value = country.country_id;
+                    option.text = country.country_name;
+                    countrySelect.add(option);
+                });
+            } catch (e) {
+                console.error("Error parsing countries JSON: ", e);
+            }
+        } else {
+            console.error("Error loading countries: " + xhrCountries.status);
+        }
+    };
+    xhrCountries.send();
+
+    // Handle country selection to load corresponding fields
+    countrySelect.onchange = function() {
+        var selectedCountryId = countrySelect.value;
+        if (!selectedCountryId) {
+            console.log("No country selected");
+            return;
+        }
+
+        var fieldSelect = document.getElementById("fieldSelect");
+        fieldSelect.innerHTML = '<option value="">Select a Field</option>'; // Reset field options
+
+        var xhrFields = new XMLHttpRequest();
+        xhrFields.open("GET", "get_fields.php?countryId=" + selectedCountryId, true);
+        xhrFields.onload = function() {
+        if (xhrFields.status === 200) {
+            try {
+                var response = JSON.parse(xhrFields.responseText);
+                console.log("Fields response: ", response); // Log the entire response
+                if (response.status === "success" && Array.isArray(response.data)) {
+                    var fields = response.data;
+                    fields.forEach(function(field) {
+                        var option = document.createElement("option");
+                        option.value = field.field_id;
+                        option.text = field.field_name;
+                        fieldSelect.add(option);
+                    });
+                } else {
+                    console.error("Fields response is not an array or status is not success");
+                }
+            } catch (e) {
+                console.error("Error parsing fields JSON: ", e);
+            }
+        } else {
+            console.error("Error loading fields: " + xhrFields.status);
+        }
+    };
+
+        xhrFields.send();
+    };
+
     siteForm.onsubmit = function(event) {
         event.preventDefault(); // Prevent default form submission
         var formData = new FormData(siteForm);
@@ -515,6 +589,36 @@ function setupSiteFormSubmission() {
         xhr.send(formData);
     };
 }
+
+document.getElementById('countrySelect').addEventListener('change', function() {
+    var countryId = this.value;
+    if (countryId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "get_fields.php?countryId=" + countryId, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.status === "success") {
+                    // Populate the fieldSelect dropdown with the data
+                    var fieldSelect = document.getElementById('fieldSelect');
+                    fieldSelect.innerHTML = ''; // Clear previous options
+                    response.data.forEach(function(field) {
+                        var option = document.createElement('option');
+                        option.value = field.field_id;
+                        option.text = field.field_name;
+                        fieldSelect.add(option);
+                    });
+                } else {
+                    console.error(response.message);
+                }
+            }
+        };
+        xhr.send();
+    }
+});
+
+
+
 // Setup AJAX form submission
 function setupFormSubmission() {
     var countryForm = document.getElementById("countryForm");
