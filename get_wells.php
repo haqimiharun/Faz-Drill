@@ -11,16 +11,16 @@ try {
     $pdo = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if (isset($_GET['fieldId'])) {
-        $fieldId = intval($_GET['fieldId']);
-        $stmt = $pdo->prepare("SELECT site_id, site_name FROM tbl_site WHERE field_id = :fieldId");
-        $stmt->bindParam(':fieldId', $fieldId, PDO::PARAM_INT);
+    if (isset($_GET['siteId'])) {
+        $siteId = intval($_GET['siteId']);
+        $stmt = $pdo->prepare("SELECT well_id, well_name FROM tbl_well WHERE site_id = :siteId");
+        $stmt->bindParam(':siteId', $siteId, PDO::PARAM_INT);
         $stmt->execute();
-        $sites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $wells = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        echo json_encode(["status" => "success", "data" => $sites]);
+        echo json_encode(["status" => "success", "data" => $wells]);
     } else {
-        echo json_encode(["status" => "error", "message" => "Missing fieldId parameter."]);
+        echo json_encode(["status" => "error", "message" => "Missing siteId parameter."]);
     }
 } catch (PDOException $exception) {
     http_response_code(500);

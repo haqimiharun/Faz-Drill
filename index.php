@@ -134,8 +134,8 @@
                                 </a>
                             </th>
                             <th>Wellbore
-                                <a href="#" title="Add New Wellbore">
-                                    <i class="fas fa-plus-circle"></i>
+                                <a title="Add New Wellbore">
+                                    <i id="addWellbore" class="fas fa-plus-circle"></i>
                                 </a>
                             </th>
                             <th>Report
@@ -359,6 +359,7 @@
 
 <script>
 // Get elements
+var addWellboreBtn = document.getElementById("addWellbore");
 var addWellBtn = document.getElementById("addWell");
 var addSiteBtn = document.getElementById("addSite");
 var addFieldBtn = document.getElementById("addField");
@@ -369,6 +370,26 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 var dynamicContent = document.getElementById("dynamic-content");
 var loader = document.getElementById("loader");
+
+addWellboreBtn.onclick = function() {
+    modal.style.display = "block";
+    loader.style.display = "block";
+    dynamicContent.innerHTML = "";
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "add_wellbore.php", true);
+    xhr.onreadystatechange = function() {
+        console.log("Request state: " + xhr.readyState + ", Status: " + xhr.status);
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            loader.style.display = "none";
+            dynamicContent.innerHTML = xhr.responseText;
+            setupWellboreFormSubmission(); // Setup form submission for wellbore
+        } else if (xhr.readyState === 4) {
+            console.error("Error at onreadystatechange: " + xhr.status);
+        }
+    };
+    xhr.send();
+};
 
 addWellBtn.onclick = function() {
     modal.style.display = "block";
@@ -382,7 +403,7 @@ addWellBtn.onclick = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             loader.style.display = "none";
             dynamicContent.innerHTML = xhr.responseText;
-            setupWellFormSubmission(); // Setup form submission for site
+            setupWellFormSubmission(); // Setup form submission for well
         } else if (xhr.readyState === 4) {
             console.error("Error at onreadystatechange: " + xhr.status);
         }
@@ -517,6 +538,8 @@ window.onclick = function(event) {
         siteModal.style.display = "none";
     }
 }
+
+//STARTING HERE BROOOOOOOOOO, REMAKEEEEEEEE
 
 function setupWellFormSubmission() {
     console.log("setupWellFormSubmission called");
