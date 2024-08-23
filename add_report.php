@@ -1,71 +1,46 @@
-<?php
-// Database connection settings
-$dbhost = 'localhost';
-$dbname = 'fazdrill';
-$dbuser = 'root';
-$dbpass = '';
-
-try {
-    // Establish the database connection
-    $pdo = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Query to fetch country data
-    $stmt = $pdo->prepare("SELECT country_id, country_name FROM tbl_country");
-    $stmt->execute();
-
-    // Fetch all the countries
-    $countries = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $exception) {
-    echo "Connection error: " . $exception->getMessage();
-}
-?>
-                <form action="submit-design.php" method="POST">
-                    <div class="form-group">
-                        <label for="country">Country</label>
-                        <select id="country" name="country">
-                            <option value="">Select a country</option>
-                            <?php foreach ($countries as $country): ?>
-                                <option value="<?php echo $country['country_id']; ?>"><?php echo $country['country_name']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="field">Field</label>
-                        <select id="field" name="field" disabled>
-                            <option value="">Select country first</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="site">Site</label>
-                        <select id="site" name="site" disabled>
-                            <option value="">Select field first</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="well">Well</label>
-                        <select id="well" name="well" disabled>
-                            <option value="">Select site first</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="wellbore">Wellbore</label>
-                        <select id="wellbore" name="wellbore" disabled>
-                            <option value="">Select well first</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="report-name">Report Name</label>
-                        <input type="text" id="report-name" name="report" placeholder="Enter new report name">
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Done</button>
-                    </div>
-                </form>
-
+<!-- HTML form for adding a new site -->
+<form id="reportForm" action="" method="POST">
+    <div class="form-group">
+        <label for="countrySelect">Select Country</label>
+        <select id="countrySelect" name="countryId" required>
+            <option value="">Select a Country</option>
+            <!-- Country options will be populated by AJAX -->
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="fieldSelect">Select Field</label>
+        <select id="fieldSelect" name="fieldId" required>
+            <option value="">Select a Field</option>
+            <!-- Field options will be populated based on selected country -->
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="siteSelect">Select Site</label>
+        <select id="siteSelect" name="siteId" required>
+            <option value="">Select a Site</option>
+            <!-- Site options will be populated based on selected country -->
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="wellSelect">Select Well</label>
+        <select id="wellSelect" name="wellId" required>
+            <option value="">Select a Well</option>
+            <!-- Well options will be populated based on selected country -->
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="wellboreSelect">Select Wellbore</label>
+        <select id="wellboreSelect" name="wellboreId" required>
+            <option value="">Select a Wellbore</option>
+            <!-- Wellbore options will be populated based on selected country -->
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="reportName">Report Name</label>
+        <input type="text" id="reportName" name="reportName" required>
+    </div>
+    <div class="form-footer">
+        <button type="submit" class="btn btn-primary">Add Report</button>
+    </div>
+    <div id="responseMessage"></div>
+</form>

@@ -5,22 +5,20 @@ $dbname = 'fazdrill';
 $dbuser = 'root';
 $dbpass = '';
 
-header('Content-Type: application/json');
-
 try {
     $pdo = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if (isset($_GET['siteId'])) {
-        $siteId = intval($_GET['siteId']);
-        $stmt = $pdo->prepare("SELECT well_id, well_name FROM tbl_well WHERE site_id = :siteId");
-        $stmt->bindParam(':siteId', $siteId, PDO::PARAM_INT);
+    if (isset($_GET['wellId'])) {
+        $wellId = intval($_GET['wellId']);
+        $stmt = $pdo->prepare("SELECT wellbore_id, wellbore_name FROM tbl_wellbore WHERE well_Id = :wellId");
+        $stmt->bindParam(':wellId', $wellId, PDO::PARAM_INT);
         $stmt->execute();
-        $wells = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $wellbores = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        echo json_encode(["status" => "success", "data" => $wells]);
+        echo json_encode(["status" => "success", "data" => $wellbores]);
     } else {
-        echo json_encode(["status" => "error", "message" => "Missing siteId parameter."]);
+        echo json_encode(["status" => "error", "message" => "Missing wellId parameter."]);
     }
 } catch (PDOException $exception) {
     http_response_code(500);

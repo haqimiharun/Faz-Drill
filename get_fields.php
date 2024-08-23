@@ -5,8 +5,6 @@ $dbname = 'fazdrill';
 $dbuser = 'root';
 $dbpass = '';
 
-header('Content-Type: application/json');
-
 try {
     $pdo = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
