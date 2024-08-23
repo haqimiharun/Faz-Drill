@@ -100,7 +100,7 @@
 	</div>
 	<div class="content-header-right">
 	<a href="#" class="import-design">Import Report</a>	
-	<button id="createDesignBtn" class="btn btn-primary btn-sm">Create New Report</button>
+	<button id="addNewReport" class="btn btn-primary btn-sm">Create New Report</button>
 		
 	</div>
 
@@ -364,7 +364,7 @@ var addWellBtn = document.getElementById("addWell");
 var addSiteBtn = document.getElementById("addSite");
 var addFieldBtn = document.getElementById("addField");
 var addCountryBtn = document.getElementById("addCountry");
-var btn = document.getElementById("createDesignBtn");
+var btn = document.getElementById("addNewReport");
 // The similarity start here
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
@@ -481,7 +481,7 @@ btn.onclick = function() {
 
     // Load content from PHP page using AJAX
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "create-design.php", true); // Update to your PHP file path
+    xhr.open("GET", "add_report.php", true); // Update to your PHP file path
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             loader.style.display = "none";
@@ -540,6 +540,193 @@ window.onclick = function(event) {
 }
 
 //STARTING HERE BROOOOOOOOOO, REMAKEEEEEEEE
+function setupWellboreFormSubmission() {
+    console.log("setupWellboreFormSubmission called");
+    var wellboreForm = document.getElementById("wellboreForm");
+    if (!wellboreForm) {
+        console.error("wellboreForm not found");
+        return;
+    }
+    console.log("wellboreForm found");
+
+    // Load country options for the dropdown
+    var countrySelect = document.getElementById("countrySelect");
+    var xhrCountries = new XMLHttpRequest();
+    xhrCountries.open("GET", "get_countries.php", true);
+    xhrCountries.onload = function() {
+        if (xhrCountries.status === 200) {
+            try {
+                var countries = JSON.parse(xhrCountries.responseText);
+                countries.forEach(function(country) {
+                    var option = document.createElement("option");
+                    option.value = country.country_id;
+                    option.text = country.country_name;
+                    countrySelect.add(option);
+                });
+            } catch (e) {
+                console.error("Error parsing countries JSON: ", e);
+            }
+        } else {
+            console.error("Error loading countries: " + xhrCountries.status);
+        }
+    };
+    xhrCountries.send();
+
+    // Handle country selection to load corresponding fields
+    countrySelect.onchange = function() {
+        var selectedCountryId = countrySelect.value;
+        if (!selectedCountryId) {
+            console.log("No country selected");
+            return;
+        }
+
+        var fieldSelect = document.getElementById("fieldSelect");
+        fieldSelect.innerHTML = '<option value="">Select a Field</option>'; // Reset field options
+
+        var xhrFields = new XMLHttpRequest();
+        xhrFields.open("GET", "get_fields.php?countryId=" + selectedCountryId, true);
+        xhrFields.onload = function() {
+        if (xhrFields.status === 200) {
+            try {
+                var response = JSON.parse(xhrFields.responseText);
+                console.log("Fields response: ", response); // Log the entire response
+                if (response.status === "success" && Array.isArray(response.data)) {
+                    var fields = response.data;
+                    fields.forEach(function(field) {
+                        var option = document.createElement("option");
+                        option.value = field.field_id;
+                        option.text = field.field_name;
+                        fieldSelect.add(option);
+                    });
+                } else {
+                    console.error("Fields response is not an array or status is not success");
+                }
+            } catch (e) {
+                console.error("Error parsing fields JSON: ", e);
+            }
+        } else {
+            console.error("Error loading fields: " + xhrFields.status);
+        }
+    };
+
+        xhrFields.send();
+    };
+
+    // Handle Field selection to load corresponding sites
+    fieldSelect.onchange = function() {
+        var selectedFieldId = fieldSelect.value;
+        if (!selectedFieldId) {
+            console.log("No Field selected");
+            return;
+        }
+
+        var siteSelect = document.getElementById("siteSelect");
+        siteSelect.innerHTML = '<option value="">Select a site</option>'; // Reset site options
+
+        var xhrsites = new XMLHttpRequest();
+        xhrsites.open("GET", "get_sites.php?fieldId=" + selectedFieldId, true);
+            xhrsites.onload = function() {
+        if (xhrsites.status === 200) {
+            try {
+                var responseText = xhrsites.responseText;
+                // Optional: Check if response starts with '<' to identify HTML
+                if (responseText.trim().startsWith('<')) {
+                    console.error("Unexpected HTML response: ", responseText);
+                    return;
+                }
+
+                var response = JSON.parse(responseText);
+                console.log("Sites response: ", response); // Log the entire response
+                if (response.status === "success" && Array.isArray(response.data)) {
+                    var sites = response.data;
+                    siteSelect.innerHTML = ''; // Clear existing options if needed
+                    sites.forEach(function(site) {
+                        var option = document.createElement("option");
+                        option.value = site.site_id;
+                        option.text = site.site_name;
+                        siteSelect.add(option);
+                    });
+                } else {
+                    console.error("Response status is not 'success' or data is not an array.");
+                }
+            } catch (e) {
+                console.error("Error parsing JSON response: ", e);
+            }
+        } else {
+            console.error("Error loading sites: Status " + xhrsites.status);
+        }
+    };
+        xhrsites.send();
+    };
+
+        // Handle Site selection to load corresponding wells
+        siteSelect.onchange = function() {
+        var selectedSiteId = siteSelect.value;
+        if (!selectedSiteId) {
+            console.log("No Site selected");
+            return;
+        }
+
+        var wellSelect = document.getElementById("wellSelect");
+        wellSelect.innerHTML = '<option value="">Select a site</option>'; // Reset site options
+
+        var xhrWells = new XMLHttpRequest();
+        xhrWells.open("GET", "get_wells.php?siteId=" + selectedSiteId, true);
+            xhrWells.onload = function() {
+        if (xhrWells.status === 200) {
+            try {
+                var responseText = xhrWells.responseText;
+                // Optional: Check if response starts with '<' to identify HTML
+                if (responseText.trim().startsWith('<')) {
+                    console.error("Unexpected HTML response: ", responseText);
+                    return;
+                }
+
+                var response = JSON.parse(responseText);
+                console.log("Wells response: ", response); // Log the entire response
+                if (response.status === "success" && Array.isArray(response.data)) {
+                    var wells = response.data;
+                    wellSelect.innerHTML = ''; // Clear existing options if needed
+                    wells.forEach(function(well) {
+                        var option = document.createElement("option");
+                        option.value = well.well_id;
+                        option.text = well.well_name;
+                        wellSelect.add(option);
+                    });
+                } else {
+                    console.error("Response status is not 'success' or data is not an array.");
+                }
+            } catch (e) {
+                console.error("Error parsing JSON response: ", e);
+            }
+        } else {
+            console.error("Error loading sites: Status " + xhrWells.status);
+        }
+    };
+        xhrWells.send();
+    };
+
+    wellboreForm.onsubmit = function(event) {
+        event.preventDefault(); // Prevent default form submission
+        var formData1 = new FormData(wellboreForm);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "process_add_wellbore.php", true); // Update to your processing PHP file
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                alert(xhr.responseText);
+            } else {
+                alert("Error: " + xhr.responseText); // Include server response in the alert
+            }
+            modal.style.display = "none"; // Close the modal
+        };
+        xhr.onerror = function() {
+            alert("Error: Failed to send the request. Please try again.");
+            modal.style.display = "none"; // Close the modal
+        };
+        xhr.send(formData1);
+    };
+}
+
 
 function setupWellFormSubmission() {
     console.log("setupWellFormSubmission called");
@@ -826,6 +1013,8 @@ $(document).ready(function() {
         $("#" + target).show();
     });
 });
+
+// CREATE NEW REPORT
 
 </script>
 
