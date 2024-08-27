@@ -146,6 +146,104 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 
+	document
+		.querySelector("#reportTableBody")
+		.addEventListener("click", function (event) {
+			// Ensure the clicked element is inside a report-data div
+			const reportElement = event.target.closest(".report-data");
+			console.log("Report Element:", reportElement);
+
+			if (reportElement) {
+				const reportId = reportElement.dataset.reportId; // Ensure this matches the attribute name
+				console.log("Report ID:", reportId);
+
+				if (reportId) {
+					fetch("get_report_data.php?reportId=" + encodeURIComponent(reportId))
+						.then((response) => response.json())
+						.then((data) => {
+							console.log("Report response data:", data);
+							if (data.status === "success") {
+								const reportDetails = data.data;
+								console.log("Report Details:", reportDetails);
+								if (Array.isArray(reportDetails)) {
+									updateReportData(reportDetails);
+								} else {
+									console.error("Error: Data is not an array");
+								}
+							} else {
+								console.error("Error:", data.message);
+							}
+						})
+						.catch((error) =>
+							console.error("Error fetching report data:", error)
+						);
+				} else {
+					console.error("Error: Report ID is not defined");
+				}
+			} else {
+				console.error("Error: Clicked element is not inside a report-data div");
+			}
+		});
+
+	function updateReportData(reports) {
+		const tbody = document.querySelector("#reportTableBody");
+		const rows = tbody.querySelectorAll("tr");
+
+		const reportMap = new Map(reports.map((report, index) => [index, report]));
+
+		if (reports.length === 0) {
+			rows.forEach((row) => {
+				const reportCell = row.querySelector(".report-data");
+				if (reportCell) {
+					reportCell.innerHTML = "<div>No report data found!</div>";
+				}
+			});
+			return;
+		}
+
+		rows.forEach((row, index) => {
+			const reportCell = row.querySelector(".report-data");
+
+			if (reportCell) {
+				reportCell.innerHTML = "";
+
+				if (reportMap.has(index)) {
+					const report = reportMap.get(index);
+					const reportElement = document.createElement("div");
+					reportElement.textContent = report.report_name;
+					reportElement.dataset.reportId = report.report_id;
+
+					reportCell.appendChild(reportElement);
+				} else {
+					reportCell.innerHTML = "";
+				}
+			} else {
+				console.error("Error: Report cell not found in row", row);
+			}
+		});
+
+		if (reports.length > rows.length) {
+			for (let i = rows.length; i < reports.length; i++) {
+				const newRow = document.createElement("tr");
+				newRow.innerHTML = `
+                <td class="country-row"></td>
+                <td class="field-data"></td>
+                <td class="site-data"></td>
+                <td class="well-data"></td>
+                <td class="wellbore-data"></td>
+                <td class="report-data">
+                    <div data-report-id="${reports[i].report_id}">${reports[i].report_name}</div>
+                </td>
+            `;
+				tbody.appendChild(newRow);
+			}
+		} else if (reports.length < rows.length) {
+			for (let i = rows.length - 1; i >= reports.length; i--) {
+				tbody.removeChild(rows[i]);
+			}
+		}
+	}
+
 	function updateWellboreData(wellbores) {
 		const tbody = document.querySelector("#reportTableBody");
 		const rows = tbody.querySelectorAll("tr");
