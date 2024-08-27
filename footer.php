@@ -119,12 +119,19 @@
 
 
 
-	    $("#example1").DataTable();
+	    $("#example1").DataTable({
+		"paging": true,           // Enable pagination
+		"searching": true,        // Enable search box
+		"ordering": false,         // Enable column sorting
+		"info": true,             // Show table information (e.g., "Showing 1 to 10 of 50 entries")
+		"autoWidth": true,       // Disable automatic column width adjustment
+		"lengthChange": true     // Disable the page length changing option
+		});
 	    $('#example2').DataTable({
 	      "paging": true,
 	      "lengthChange": false,
 	      "searching": false,
-	      "ordering": true,
+	      "ordering": false,
 	      "info": true,
 	      "autoWidth": false
 	    });
@@ -138,7 +145,15 @@
 		"pageLength": 10,         // Set number of rows per page
 		"lengthChange": false     // Disable the page length changing option
 		});
-	    $("#example5").DataTable();
+	    $("#example5").DataTable({
+		"paging": false,           // Enable pagination
+		"searching": false,        // Enable search box
+		"ordering": false,         // Enable column sorting
+		"info": false,             // Show table information (e.g., "Showing 1 to 10 of 50 entries")
+		"autoWidth": false,       // Disable automatic column width adjustment
+		"pageLength": 10,         // Set number of rows per page
+		"lengthChange": false     // Disable the page length changing option
+		});
 		$("#example6").DataTable({
 		"paging": false,           // Enable pagination
 		"searching": false,        // Enable search box

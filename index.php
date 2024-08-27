@@ -1,6 +1,35 @@
 <?php require_once('header-db.php'); ?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/respones.js"></script>
+
+<?php
+// Database connection settings
+$dbhost = 'localhost';
+$dbname = 'fazdrill';
+$dbuser = 'root';
+$dbpass = '';
+
+$countries = []; // Initialize the countries array
+
+try {
+    // Establish the database connection
+    $pdo = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Fetch distinct countries available in tbl_report
+    $stmt = $pdo->query("
+        SELECT DISTINCT c.country_id, c.country_name 
+        FROM tbl_country c 
+        JOIN tbl_field r ON c.country_id = r.country_id
+    ");
+    $countries = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $exception) {
+    echo "Error: " . htmlspecialchars($exception->getMessage());
+}
+
+?>
 
     <style>
 	.import-design {
@@ -142,8 +171,25 @@
                             </th>
                         </tr>
                     </thead>
-                        <tbody id="reportTableBody">
-                                <!-- Data will be populated here -->
+                     <tbody id="reportTableBody">
+                            <?php if (!empty($countries)): ?>
+                                <?php foreach ($countries as $country): ?>
+                                    <tr>
+                                        <td class="country-row" data-country-id="<?= htmlspecialchars($country['country_id']); ?>">
+                                            <?= htmlspecialchars($country['country_name']); ?>
+                                        </td>
+                                        <td class="field-data"></td>
+                                        <td class="site-data"></td>
+                                        <td class="well-data"></td>
+                                        <td class="wellbore-data"></td>
+                                        <td class="report-data"></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="6">No countries available.</td>
+                                </tr>
+                            <?php endif; ?>
                         </tbody>
                 </table>
             </div>
@@ -315,12 +361,28 @@
                             <td>Report 3</td>
                         </tr>
                         <tr>
-                            <td>Brazil</td>
-                            <td>Sao Paulo</td>
-                            <td>Site D</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Report 4</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>Well 4</td>
                             <td>Wellbore 4</td>
                             <td>Report 4</td>
+                        </tr>
+                        <tr>
+                            <td>Malaysia</td>
+                            <td>Katakuri</td>
+                            <td>Site D4</td>
+                            <td>Well D1</td>
+                            <td>Wellbore D1</td>
+                            <td>Report D1</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1240,103 +1302,6 @@ $(document).ready(function() {
         // Show the selected section
         $("#" + target).show();
     });
-});
-
-//RETREIVE DATABASE HRE BORRR
-document.addEventListener("DOMContentLoaded", function() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "fetch_report_data.php", true); // Replace with your actual PHP file
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            try {
-                var data = JSON.parse(xhr.responseText);
-                console.log("Data received:", data);
-
-                // Ensure the data contains all required arrays
-                var countries = data.countries || [];
-
-                if (Array.isArray(countries)) {
-                    var tableBody = document.getElementById("reportTableBody");
-                    tableBody.innerHTML = ""; // Clear existing rows
-
-                    countries.forEach(function(country) {
-                        var row = document.createElement("tr");
-                        var countryCell = document.createElement("td");
-                        countryCell.textContent = country.country_name;
-                        countryCell.colSpan = 6; // Span all columns
-                        row.appendChild(countryCell);
-                        tableBody.appendChild(row);
-                        console.log("countries received");
-
-                        if (Array.isArray(country.fields)) {
-                            country.fields.forEach(function(field) {
-                                var fieldRow = document.createElement("tr");
-                                var fieldCell = document.createElement("td");
-                                fieldCell.textContent = "  " + field.field_name; // Indent field
-                                fieldCell.colSpan = 6; // Span all columns
-                                fieldRow.appendChild(fieldCell);
-                                tableBody.appendChild(fieldRow);
-                                console.log("field received");
-
-                                if (Array.isArray(field.sites)) {
-                                    field.sites.forEach(function(site) {
-                                        var siteRow = document.createElement("tr");
-                                        var siteCell = document.createElement("td");
-                                        siteCell.textContent = "    " + site.site_name; // Indent site
-                                        siteCell.colSpan = 6; // Span all columns
-                                        siteRow.appendChild(siteCell);
-                                        tableBody.appendChild(siteRow);
-                                        console.log("sites received");
-
-                                        if (Array.isArray(site.wells)) {
-                                            site.wells.forEach(function(well) {
-                                                var wellRow = document.createElement("tr");
-                                                var wellCell = document.createElement("td");
-                                                wellCell.textContent = "      " + well.well_name; // Indent well
-                                                wellCell.colSpan = 6; // Span all columns
-                                                wellRow.appendChild(wellCell);
-                                                tableBody.appendChild(wellRow);
-                                                console.log("wells received");
-
-                                                if (Array.isArray(well.wellbores)) {
-                                                    well.wellbores.forEach(function(wellbore) {
-                                                        var wellboreRow = document.createElement("tr");
-                                                        var wellboreCell = document.createElement("td");
-                                                        wellboreCell.textContent = "        " + wellbore.wellbore_name; // Indent wellbore
-                                                        wellboreCell.colSpan = 6; // Span all columns
-                                                        wellboreRow.appendChild(wellboreCell);
-                                                        tableBody.appendChild(wellboreRow);
-
-                                                        if (Array.isArray(wellbore.reports)) {
-                                                            wellbore.reports.forEach(function(report) {
-                                                                var reportRow = document.createElement("tr");
-                                                                var reportCell = document.createElement("td");
-                                                                reportCell.textContent = "          " + report.report_name; // Indent report
-                                                                reportCell.colSpan = 6; // Span all columns
-                                                                reportRow.appendChild(reportCell);
-                                                                tableBody.appendChild(reportRow);
-                                                            });
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                        }
-                                    });
-                                }
-                            });
-                        }
-                    });
-                } else {
-                    console.error("Unexpected data format:", data);
-                }
-            } catch (e) {
-                console.error("Failed to parse JSON:", e);
-            }
-        } else {
-            console.error("Request failed. Status:", xhr.status);
-        }
-    };
-    xhr.send();
 });
 
 </script>

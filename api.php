@@ -17,9 +17,7 @@ try {
 
     // Fetch countries and their related fields
     $sql = "SELECT c.country_id, c.country_name 
-            FROM tbl_country c
-            JOIN tbl_field f ON c.country_id = f.country_id
-            GROUP BY c.country_id";
+            FROM tbl_country c";
     $stmt = $pdo->query($sql);
     $countries = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -107,7 +105,4 @@ try {
     http_response_code(500);
     echo json_encode(["status" => "error", "message" => "Error: " . htmlspecialchars($exception->getMessage())]);
 }
-// Initialize data array
-$data = [];
-
 ?>
