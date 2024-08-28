@@ -1,6 +1,64 @@
+function highlightSelected(level, id) {
+	const rows = document.querySelectorAll("#reportTableBody tr");
+	console.log("Highlighting level:", level, "with ID:", id);
+
+	rows.forEach((row) => {
+		// Remove previous selection
+		row.classList.remove("selected");
+
+		// if (level === "country") {
+		// 	// Handle country rows
+		// 	const countryCell = row.querySelector(".country-row");
+		// 	if (countryCell && countryCell.dataset.countryId === id) {
+		// 		countryCell.classList.add("selected-cell");
+		// 		console.log("Selected country cell:", countryCell);
+		// 	}
+		// }
+
+		// Handle other levels
+		row.querySelectorAll(`.${level}-data div`).forEach((cell) => {
+			cell.classList.remove("selected-cell");
+			if (cell.dataset[`${level}Id`] === id) {
+				cell.classList.add("selected-cell");
+				console.log("Selected", level, "cell:", cell);
+			}
+		});
+	});
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-	// Add click event listeners to country rows
-	document.querySelectorAll(".country-row").forEach(function (row) {
+	document.querySelectorAll(".country-row").forEach((countryRow) => {
+		countryRow.addEventListener("click", function () {
+			const countryId = this.dataset.countryId;
+			fetchCountryData(countryId);
+			highlightSelected("country", countryId); // Highlight the country cell
+		});
+	});
+});
+
+function fetchCountryData(countryId) {
+	if (!countryId) {
+		console.error("No country ID provided.");
+		return;
+	}
+
+	fetch(`get_SelectedCountry.php?countryId=${countryId}`)
+		.then((response) => response.json())
+		.then((data) => {
+			if (data.error) {
+				console.error("Error fetching country data:", data.error);
+			} else {
+				console.log("Country data fetched:", data);
+				// Handle the fetched data, update the UI, etc.
+			}
+		})
+		.catch((error) => {
+			console.error("Error fetching country data:", error);
+		});
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+	document.querySelectorAll(".country-row").forEach((row) => {
 		row.addEventListener("click", function () {
 			const countryId = this.getAttribute("data-country-id");
 
@@ -8,7 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
 				.then((response) => response.json())
 				.then((data) => {
 					if (data.status === "success") {
-						updateFieldData(data.data);
+						updateFieldData(data.data, countryId);
+						highlightSelected("country", countryId);
 					} else {
 						console.error("Error:", data.message);
 					}
@@ -17,13 +76,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	});
 
-	// Delegate click events for field, site, well, wellbore, and report data
 	document
 		.querySelector("#reportTableBody")
 		.addEventListener("click", function (event) {
 			const target = event.target;
 
-			// Click on field-data
 			if (target.closest(".field-data div")) {
 				const fieldElement = target.closest(".field-data div");
 				const fieldId = fieldElement.dataset.fieldId;
@@ -33,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						.then((data) => {
 							if (data.status === "success") {
 								updateSiteData(data.data);
+								highlightSelected("field", fieldId);
 							} else {
 								console.error("Error:", data.message);
 							}
@@ -41,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
 				}
 			}
 
-			// Click on site-data
 			if (target.closest(".site-data div")) {
 				const siteElement = target.closest(".site-data div");
 				const siteId = siteElement.dataset.siteId;
@@ -51,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						.then((data) => {
 							if (data.status === "success") {
 								updateWellData(data.data);
+								highlightSelected("site", siteId);
 							} else {
 								console.error("Error:", data.message);
 							}
@@ -59,7 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
 				}
 			}
 
-			// Click on well-data
 			if (target.closest(".well-data div")) {
 				const wellElement = target.closest(".well-data div");
 				const wellId = wellElement.dataset.wellId;
@@ -69,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						.then((data) => {
 							if (data.status === "success") {
 								updateWellboreData(data.data);
+								highlightSelected("well", wellId);
 							} else {
 								console.error("Error:", data.message);
 							}
@@ -79,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
 				}
 			}
 
-			// Click on wellbore-data
 			if (target.closest(".wellbore-data div")) {
 				const wellboreElement = target.closest(".wellbore-data div");
 				const wellboreId = wellboreElement.dataset.wellboreId;
@@ -91,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						.then((data) => {
 							if (data.status === "success") {
 								updateReportData(data.data);
+								highlightSelected("wellbore", wellboreId);
 							} else {
 								console.error("Error:", data.message);
 							}

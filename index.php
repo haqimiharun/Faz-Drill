@@ -112,6 +112,12 @@ try {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
+.selected {
+    background-color: #d0eaff; /* Light blue background for selected rows */
+}
+.selected-cell {
+    background-color: #a0c1ff; /* Slightly darker blue for selected cells */
+}
 </style>
 
 <section class="content">
