@@ -200,14 +200,12 @@ if(!isset($_SESSION['user'])) {
 					<span class="sr-only">Toggle navigation</span>
 				</a>
 
-				<!-- <span style="float:left;line-height:50px;color:#000;padding-left:15px;font-size:18px;">Admin Panel</span> -->
-    <!-- Top Bar ... User Information .. Login/Log out Area -->
+				<span>Dashboard</span>
+<!-- Top Bar ... User Information .. Login/Log out Area-->
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
 						<li class="dropdown user user-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<!-- <img src="../assets/uploads/<?php echo $_SESSION['user']['photo']; ?>" class="user-image" alt="User Image">
-								<span class="hidden-xs"><?php echo $_SESSION['user']['full_name']; ?></span> -->
 							</a>
 							<ul class="dropdown-menu">
 								<li class="user-footer">
@@ -224,7 +222,44 @@ if(!isset($_SESSION['user'])) {
 				</div>
 
 			</nav>
-		</header>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the page title element
+    var titleElement = document.getElementById('page-title');
+    
+    // Function to update the title
+    function updateTitle(title) {
+      if (titleElement) {
+        titleElement.textContent = title;
+      }
+    }
+    
+    // Check the URL to determine the title
+    var url = window.location.href;
+    
+    if (url.includes('index.php')) {
+      updateTitle('Dashboard');
+    } else if (url.includes('report-header.php')) {
+      // Extract reportId from the URL
+      var params = new URLSearchParams(window.location.search);
+      var reportId = params.get('reportId');
+      
+      if (reportId) {
+        // Fetch report name via an API call or predefined list
+        // For example purposes, we use a placeholder text
+        var reportName = 'Report ' + reportId; // Replace with actual report name retrieval logic
+        updateTitle(reportName);
+      } else {
+        updateTitle('Report'); // Default title if no reportId is found
+      }
+    } else {
+      updateTitle('Page Title'); // Default title for other pages
+    }
+  });
+</script>
+
 
   		<?php $cur_page = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1); ?>
 <!-- Side Bar to Manage Shop Activities -->
@@ -233,13 +268,6 @@ if(!isset($_SESSION['user'])) {
       
       			<ul class="sidebar-menu">
 
-			        <li class="treeview <?php if($cur_page == 'index.php') {echo 'active';} ?>">
-			          <a href="index.php">
-			            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-			          </a>
-			        </li>
-
-					
 			        <li class="treeview <?php if( ($cur_page == 'report-header.php') ) {echo 'active';} ?>">
 			          <a href="report-header.php">
 			            <i class="fa fa-file-text-o"></i> <span>Report Header</span>

@@ -2,59 +2,41 @@ function highlightSelected(level, id) {
 	const rows = document.querySelectorAll("#reportTableBody tr");
 	console.log("Highlighting level:", level, "with ID:", id);
 
+	// First, remove the selection from the specific level
 	rows.forEach((row) => {
-		// Remove previous selection
-		row.classList.remove("selected");
+		const targetCell = row.querySelector(`.${level}-data`);
+		const countryCell = row.querySelector(".country-row");
 
-		// if (level === "country") {
-		// 	// Handle country rows
-		// 	const countryCell = row.querySelector(".country-row");
-		// 	if (countryCell && countryCell.dataset.countryId === id) {
-		// 		countryCell.classList.add("selected-cell");
-		// 		console.log("Selected country cell:", countryCell);
-		// 	}
-		// }
-
-		// Handle other levels
-		row.querySelectorAll(`.${level}-data div`).forEach((cell) => {
-			cell.classList.remove("selected-cell");
-			if (cell.dataset[`${level}Id`] === id) {
-				cell.classList.add("selected-cell");
-				console.log("Selected", level, "cell:", cell);
+		if (level === "country") {
+			// Remove selection from all country cells
+			if (countryCell) {
+				countryCell.classList.remove("selected-cell");
 			}
-		});
+		} else if (targetCell) {
+			// Remove selection from all other level cells
+			targetCell.classList.remove("selected-cell");
+		}
 	});
-}
 
-document.addEventListener("DOMContentLoaded", function () {
-	document.querySelectorAll(".country-row").forEach((countryRow) => {
-		countryRow.addEventListener("click", function () {
-			const countryId = this.dataset.countryId;
-			fetchCountryData(countryId);
-			highlightSelected("country", countryId); // Highlight the country cell
-		});
-	});
-});
-
-function fetchCountryData(countryId) {
-	if (!countryId) {
-		console.error("No country ID provided.");
-		return;
-	}
-
-	fetch(`get_SelectedCountry.php?countryId=${countryId}`)
-		.then((response) => response.json())
-		.then((data) => {
-			if (data.error) {
-				console.error("Error fetching country data:", data.error);
-			} else {
-				console.log("Country data fetched:", data);
-				// Handle the fetched data, update the UI, etc.
+	// Now, apply the selection to the correct cell
+	rows.forEach((row) => {
+		if (level === "country") {
+			const countryCell = row.querySelector(".country-row");
+			if (countryCell && countryCell.dataset.countryId === id) {
+				countryCell.classList.add("selected-cell");
+				console.log("Selected country cell:", countryCell);
 			}
-		})
-		.catch((error) => {
-			console.error("Error fetching country data:", error);
-		});
+		} else {
+			const targetCell = row.querySelector(`.${level}-data`);
+			if (targetCell) {
+				const targetDiv = targetCell.querySelector("div");
+				if (targetDiv && targetDiv.dataset[`${level}Id`] === id) {
+					targetCell.classList.add("selected-cell");
+					console.log(`Selected ${level} cell:`, targetCell);
+				}
+			}
+		}
+	});
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -66,7 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
 				.then((response) => response.json())
 				.then((data) => {
 					if (data.status === "success") {
-						updateFieldData(data.data, countryId);
+						updateFieldData(data.data);
+						clearSubsequentData("country"); // Clear site, well, wellbore, and report data
 						highlightSelected("country", countryId);
 					} else {
 						console.error("Error:", data.message);
@@ -90,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						.then((data) => {
 							if (data.status === "success") {
 								updateSiteData(data.data);
+								clearSubsequentData("field"); // Clear well, wellbore, and report data
 								highlightSelected("field", fieldId);
 							} else {
 								console.error("Error:", data.message);
@@ -108,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						.then((data) => {
 							if (data.status === "success") {
 								updateWellData(data.data);
+								clearSubsequentData("site"); // Clear wellbore and report data
 								highlightSelected("site", siteId);
 							} else {
 								console.error("Error:", data.message);
@@ -126,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						.then((data) => {
 							if (data.status === "success") {
 								updateWellboreData(data.data);
+								clearSubsequentData("well"); // Clear report data
 								highlightSelected("well", wellId);
 							} else {
 								console.error("Error:", data.message);
@@ -160,6 +146,48 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 
+	function clearSubsequentData(level) {
+		const tbody = document.querySelector("#reportTableBody");
+		const rows = tbody.querySelectorAll("tr");
+
+		rows.forEach((row) => {
+			switch (level) {
+				case "country":
+					row.querySelector(".site-data").innerHTML = "";
+					row.querySelector(".well-data").innerHTML = "";
+					row.querySelector(".wellbore-data").innerHTML = "";
+					row.querySelector(".report-data").innerHTML = "";
+					row.querySelector(".field-data").classList.remove("selected-cell");
+					row.querySelector(".site-data").classList.remove("selected-cell");
+					row.querySelector(".well-data").classList.remove("selected-cell");
+					row.querySelector(".wellbore-data").classList.remove("selected-cell");
+					row.querySelector(".report-data").classList.remove("selected-cell");
+					break;
+				case "field":
+					row.querySelector(".well-data").innerHTML = "";
+					row.querySelector(".wellbore-data").innerHTML = "";
+					row.querySelector(".report-data").innerHTML = "";
+					row.querySelector(".site-data").classList.remove("selected-cell");
+					row.querySelector(".well-data").classList.remove("selected-cell");
+					row.querySelector(".wellbore-data").classList.remove("selected-cell");
+					row.querySelector(".report-data").classList.remove("selected-cell");
+					break;
+				case "site":
+					row.querySelector(".wellbore-data").innerHTML = "";
+					row.querySelector(".report-data").innerHTML = "";
+					row.querySelector(".well-data").classList.remove("selected-cell");
+					row.querySelector(".wellbore-data").classList.remove("selected-cell");
+					row.querySelector(".report-data").classList.remove("selected-cell");
+					break;
+				case "well":
+					row.querySelector(".report-data").innerHTML = "";
+					row.querySelector(".wellbore-data").classList.remove("selected-cell");
+					row.querySelector(".report-data").classList.remove("selected-cell");
+					break;
+			}
+		});
+	}
+
 	// Update functions
 	function updateReportData(reports) {
 		const tbody = document.querySelector("#reportTableBody");
@@ -178,31 +206,20 @@ document.addEventListener("DOMContentLoaded", function () {
 					const reportElement = document.createElement("div");
 					reportElement.textContent = report.report_name;
 					reportElement.dataset.reportId = report.report_id;
+
+					// Add a click event listener to open the report in a new window
+					reportElement.addEventListener("click", function () {
+						const reportId = this.dataset.reportId;
+						const url = `http://localhost/Faz-Drill/report-header.php?reportId=${encodeURIComponent(
+							reportId
+						)}`;
+						window.open(url, "_blank"); // Open in a new tab or window
+					});
+
 					reportCell.appendChild(reportElement);
 				}
 			}
 		});
-
-		if (reports.length > rows.length) {
-			for (let i = rows.length; i < reports.length; i++) {
-				const newRow = document.createElement("tr");
-				newRow.innerHTML = `
-                    <td class="country-row"></td>
-                    <td class="field-data"></td>
-                    <td class="site-data"></td>
-                    <td class="well-data"></td>
-                    <td class="wellbore-data"></td>
-                    <td class="report-data">
-                        <div data-report-id="${reports[i].report_id}">${reports[i].report_name}</div>
-                    </td>
-                `;
-				tbody.appendChild(newRow);
-			}
-		} else if (reports.length < rows.length) {
-			for (let i = rows.length - 1; i >= reports.length; i--) {
-				// tbody.removeChild(rows[i]);
-			}
-		}
 	}
 
 	function updateWellboreData(wellbores) {
