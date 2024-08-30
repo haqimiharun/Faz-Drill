@@ -1,4 +1,5 @@
 <!-- HTML form for adding a new field -->
+
 <form id="fieldForm" action="" method="POST">
     <div class="form-group">
         <label for="countrySelect">Select Country</label>
@@ -15,3 +16,5 @@
     </div>
     <div id="responseMessage"></div>
 </form>
+
+<script src="js/create-process.js"></script>

@@ -51,6 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
 						updateFieldData(data.data);
 						clearSubsequentData("country"); // Clear site, well, wellbore, and report data
 						highlightSelected("country", countryId);
+						selectedCountryId = countryId;
+						setupFieldForm(selectedCountryId);
 					} else {
 						console.error("Error:", data.message);
 					}

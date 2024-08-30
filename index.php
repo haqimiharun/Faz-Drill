@@ -1,8 +1,6 @@
 <?php require_once('header-db.php'); ?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="js/respones.js"></script>
-
 
 <?php
 // Database connection settings
@@ -408,6 +406,6 @@ try {
     </div>
 </div>
 
+<script src="js/respones.js"></script>
 <script src="js/create-process.js"></script>
-
 <?php require_once('footer.php'); ?>
