@@ -27,8 +27,7 @@ try {
                 echo "Error: Site already exists for this field.";
             } else {
                 // Prepare the insert statement
-                $stmt = $pdo->prepare("INSERT INTO tbl_site (country_id, field_id, site_name) VALUES (:countryId, :fieldId, :siteName)");
-                $stmt->bindParam(':countryId', $countryId);
+                $stmt = $pdo->prepare("INSERT INTO tbl_site (field_id, site_name) VALUES (:fieldId, :siteName)");
                 $stmt->bindParam(':fieldId', $fieldId);
                 $stmt->bindParam(':siteName', $siteName);
                 $stmt->execute();

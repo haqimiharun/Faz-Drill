@@ -6,22 +6,36 @@ $dbuser = 'root';
 $dbpass = '';
 
 try {
+    // Establish the database connection
     $pdo = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if (isset($_GET['countryId'])) {
-        $countryId = intval($_GET['countryId']);
-        $stmt = $pdo->prepare("SELECT field_id, field_name FROM tbl_field WHERE country_id = :countryId");
-        $stmt->bindParam(':countryId', $countryId, PDO::PARAM_INT);
-        $stmt->execute();
-        $fields = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Check if fieldId is provided in the query string
+    if (isset($_GET['id'])) {
+        $fieldId = intval($_GET['id']);
 
-        echo json_encode(["status" => "success", "data" => $fields]);
+        // Prepare and execute the query to fetch the field name
+        $stmt = $pdo->prepare("SELECT field_name FROM tbl_field WHERE field_id = :fieldId");
+        $stmt->bindParam(':fieldId', $fieldId, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        // Fetch the result
+        $field = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Check if field data is found
+        if ($field) {
+            header('Content-Type: application/json');
+            echo json_encode($field);
+        } else {
+            header('Content-Type: application/json');
+            echo json_encode(["error" => "Field not found"]);
+        }
     } else {
-        echo json_encode(["status" => "error", "message" => "Missing countryId parameter."]);
+        header('Content-Type: application/json');
+        echo json_encode(["error" => "No fieldId provided"]);
     }
 } catch (PDOException $exception) {
-    http_response_code(500);
-    echo json_encode(["status" => "error", "message" => "Error: " . htmlspecialchars($exception->getMessage())]);
+    header('Content-Type: application/json');
+    echo json_encode(["error" => "Error: " . htmlspecialchars($exception->getMessage())]);
 }
 ?>

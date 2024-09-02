@@ -383,6 +383,17 @@ function setupWellFormSubmission() {
 
 // Function to setup Site Form Submission
 function setupSiteFormSubmission() {
+	console.log("Setting up Site Form Submission");
+
+	// Retrieve data from sessionStorage
+	const savedData = sessionStorage.getItem("selectedData");
+	const selectedData = savedData ? JSON.parse(savedData) : null;
+	const countryId = selectedData ? selectedData.country : null;
+	const fieldId = selectedData ? selectedData.field : null;
+
+	console.log("Country ID:", countryId);
+	console.log("Field ID:", fieldId);
+
 	var siteForm = document.getElementById("siteForm");
 	if (!siteForm) {
 		console.error("siteForm not found");
@@ -390,38 +401,53 @@ function setupSiteFormSubmission() {
 	}
 
 	var countrySelect = document.getElementById("countrySelect");
-	loadDropdownOptions(
-		"get_countries.php",
-		countrySelect,
-		"country_id",
-		"country_name"
-	);
+	var fieldSelect = document.getElementById("fieldSelect");
 
-	countrySelect.onchange = function () {
-		var selectedCountryId = countrySelect.value;
-		if (!selectedCountryId) return;
-		var fieldSelect = document.getElementById("fieldSelect");
-		fieldSelect.innerHTML = '<option value="">Select a Field</option>';
-		loadDropdownOptions(
-			"get_fields.php?countryId=" + selectedCountryId,
-			fieldSelect,
-			"field_id",
-			"field_name"
-		);
-	};
+	if (!countrySelect) {
+		console.error("countrySelect not found");
+		return;
+	}
 
-	document.getElementById("fieldSelect").onchange = function () {
-		var selectedFieldId = this.value;
-		if (!selectedFieldId) return;
-		var siteSelect = document.getElementById("siteSelect");
-		siteSelect.innerHTML = '<option value="">Select a Site</option>';
-		loadDropdownOptions(
-			"get_sites.php?fieldId=" + selectedFieldId,
-			siteSelect,
-			"site_id",
-			"site_name"
-		);
-	};
+	if (!fieldSelect) {
+		console.error("fieldSelect not found");
+		return;
+	}
+
+	// Fetch countries and set up the country select element
+	if (countryId) {
+		fetch(`get_countries.php?id=${countryId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.name) {
+					var option = document.createElement("option");
+					option.value = countryId;
+					option.text = data.name; // Set the country name here
+					option.selected = true;
+					countrySelect.appendChild(option);
+				} else {
+					console.error("Country name not found for ID:", countryId);
+				}
+			})
+			.catch((error) => console.error("Error fetching country name:", error));
+	}
+
+	// Fetch field name based on fieldId
+	if (fieldId) {
+		fetch(`get_fields.php?id=${fieldId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.field_name) {
+					var option = document.createElement("option");
+					option.value = fieldId;
+					option.text = data.field_name; // Set the field name here
+					option.selected = true;
+					fieldSelect.appendChild(option);
+				} else {
+					console.error("Field name not found for ID:", fieldId);
+				}
+			})
+			.catch((error) => console.error("Error fetching field name:", error));
+	}
 
 	siteForm.onsubmit = function (event) {
 		event.preventDefault();
@@ -514,62 +540,6 @@ function submitForm(form, url) {
 		}
 	};
 	xhr.send(formData);
-}
-
-/**
- * Loads dropdown options from a specified URL and populates the dropdown.
- * Optionally stores the selected value in sessionStorage.
- *
- * @param {string} url - The URL to fetch data from.
- * @param {HTMLElement} dropdown - The dropdown element to populate.
- * @param {string} valueKey - The key for option values in the fetched data.
- * @param {string} textKey - The key for option display text in the fetched data.
- * @param {string} [storageKey] - Optional. The key to store the selected value in sessionStorage.
- */
-function loadDropdownOptions(url, dropdown, valueKey, textKey, storageKey) {
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", url, true);
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === 4 && xhr.status === 200) {
-			try {
-				var response = JSON.parse(xhr.responseText);
-				var options = response.options || [];
-
-				// Clear existing options
-				dropdown.innerHTML = '<option value="">Select an option</option>';
-
-				// Retrieve the previously selected value from sessionStorage if storageKey is provided
-				var selectedValue = storageKey
-					? sessionStorage.getItem(storageKey)
-					: null;
-
-				options.forEach(function (option) {
-					if (option[valueKey] !== undefined && option[textKey] !== undefined) {
-						var opt = document.createElement("option");
-						opt.value = option[valueKey];
-						opt.textContent = option[textKey];
-
-						// If the option value matches the previously selected value, mark it as selected
-						if (selectedValue && selectedValue === option[valueKey]) {
-							opt.selected = true;
-						}
-
-						dropdown.appendChild(opt);
-					}
-				});
-
-				// If storageKey is provided, add an event listener to store the selected value
-				if (storageKey) {
-					dropdown.addEventListener("change", function () {
-						sessionStorage.setItem(storageKey, this.value);
-					});
-				}
-			} catch (e) {
-				console.error("Failed to parse JSON:", e);
-			}
-		}
-	};
-	xhr.send();
 }
 
 // Close modal when clicking the close button

@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		row.addEventListener("click", function () {
 			const countryId = this.getAttribute("data-country-id");
 
-			fetch("get_fields.php?countryId=" + encodeURIComponent(countryId))
+			fetch("get_AllFields.php?countryId=" + encodeURIComponent(countryId))
 				.then((response) => response.json())
 				.then((data) => {
 					if (data.status === "success") {
