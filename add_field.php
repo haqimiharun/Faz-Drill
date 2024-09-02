@@ -4,7 +4,8 @@
     <div class="form-group">
         <label for="countrySelect">Select Country</label>
         <select id="countrySelect" name="countryId" required>
-            <!-- Options will be populated by AJAX -->
+            <option value="">Select a Country</option>
+            <!-- Country options will be populated by AJAX -->
         </select>
     </div>
     <div class="form-group">

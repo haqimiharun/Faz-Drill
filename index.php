@@ -170,6 +170,9 @@ try {
                                 </a>
                             </th>
                             <th>Report
+                                <a title="Add New Report">
+                                    <i id="addReport" class="fas fa-plus-circle"></i>
+                                </a>
                             </th>
                         </tr>
                     </thead>

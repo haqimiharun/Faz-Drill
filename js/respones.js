@@ -8,12 +8,10 @@ function highlightSelected(level, id) {
 		const countryCell = row.querySelector(".country-row");
 
 		if (level === "country") {
-			// Remove selection from all country cells
 			if (countryCell) {
 				countryCell.classList.remove("selected-cell");
 			}
 		} else if (targetCell) {
-			// Remove selection from all other level cells
 			targetCell.classList.remove("selected-cell");
 		}
 	});
@@ -37,6 +35,43 @@ function highlightSelected(level, id) {
 			}
 		}
 	});
+
+	// Prepare data object
+	const selectedData = {
+		country: null,
+		field: null,
+		site: null,
+		well: null,
+		wellbore: null,
+		report: null,
+	};
+
+	rows.forEach((row) => {
+		const countryCell = row.querySelector(".country-row.selected-cell");
+		const fieldCell = row.querySelector(".field-data.selected-cell");
+		const siteCell = row.querySelector(".site-data.selected-cell");
+		const wellCell = row.querySelector(".well-data.selected-cell");
+		const wellboreCell = row.querySelector(".wellbore-data.selected-cell");
+		const reportCell = row.querySelector(".report-data.selected-cell");
+
+		if (countryCell) selectedData.country = countryCell.dataset.countryId;
+		if (fieldCell)
+			selectedData.field = fieldCell.querySelector("div").dataset.fieldId;
+		if (siteCell)
+			selectedData.site = siteCell.querySelector("div").dataset.siteId;
+		if (wellCell)
+			selectedData.well = wellCell.querySelector("div").dataset.wellId;
+		if (wellboreCell)
+			selectedData.wellbore =
+				wellboreCell.querySelector("div").dataset.wellboreId;
+		if (reportCell)
+			selectedData.report = reportCell.querySelector("div").dataset.reportId;
+	});
+
+	console.log("Selected data:", selectedData);
+
+	// Save data to sessionStorage
+	sessionStorage.setItem("selectedData", JSON.stringify(selectedData));
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -52,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
 						clearSubsequentData("country"); // Clear site, well, wellbore, and report data
 						highlightSelected("country", countryId);
 						selectedCountryId = countryId;
-						setupFieldForm(selectedCountryId);
 					} else {
 						console.error("Error:", data.message);
 					}
@@ -146,6 +180,13 @@ document.addEventListener("DOMContentLoaded", function () {
 						);
 				}
 			}
+			if (target.closest(".report-data div")) {
+				const reportElement = target.closest(".report-data div");
+				const reportId = reportElement.dataset.reportId;
+				if (reportId) {
+					highlightSelected("report", reportId);
+				}
+			}
 		});
 
 	function clearSubsequentData(level) {
@@ -209,14 +250,14 @@ document.addEventListener("DOMContentLoaded", function () {
 					reportElement.textContent = report.report_name;
 					reportElement.dataset.reportId = report.report_id;
 
-					// Add a click event listener to open the report in a new window
-					reportElement.addEventListener("click", function () {
-						const reportId = this.dataset.reportId;
-						const url = `http://localhost/Faz-Drill/report-header.php?reportId=${encodeURIComponent(
-							reportId
-						)}`;
-						window.open(url, "_blank"); // Open in a new tab or window
-					});
+					// // Add a click event listener to open the report in a new window
+					// reportElement.addEventListener("click", function () {
+					// 	const reportId = this.dataset.reportId;
+					// 	const url = `http://localhost/Faz-Drill/report-header.php?reportId=${encodeURIComponent(
+					// 		reportId
+					// 	)}`;
+					// 	window.open(url, "_blank"); // Open in a new tab or window
+					// });
 
 					reportCell.appendChild(reportElement);
 				}
