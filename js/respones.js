@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				const fieldElement = target.closest(".field-data div");
 				const fieldId = fieldElement.dataset.fieldId;
 				if (fieldId) {
-					fetch("get_sites.php?fieldId=" + encodeURIComponent(fieldId))
+					fetch("get_AllSites.php?fieldId=" + encodeURIComponent(fieldId))
 						.then((response) => response.json())
 						.then((data) => {
 							if (data.status === "success") {
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				const siteElement = target.closest(".site-data div");
 				const siteId = siteElement.dataset.siteId;
 				if (siteId) {
-					fetch("get_wells.php?siteId=" + encodeURIComponent(siteId))
+					fetch("get_AllWells.php?siteId=" + encodeURIComponent(siteId))
 						.then((response) => response.json())
 						.then((data) => {
 							if (data.status === "success") {
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				const wellElement = target.closest(".well-data div");
 				const wellId = wellElement.dataset.wellId;
 				if (wellId) {
-					fetch("get_wellbores.php?wellId=" + encodeURIComponent(wellId))
+					fetch("get_AllWellbores.php?wellId=" + encodeURIComponent(wellId))
 						.then((response) => response.json())
 						.then((data) => {
 							if (data.status === "success") {

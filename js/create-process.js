@@ -59,55 +59,6 @@ function fetchWellbores(wellId, callback) {
 	fetchData(`get_wellbores.php?wellId=${wellId}`, callback);
 }
 
-// Setup form with selected data
-function setupFormWithSelectedData() {
-	const selectedData = JSON.parse(sessionStorage.getItem("selectedData"));
-
-	if (selectedData) {
-		console.log("Selected data:", selectedData); // Debugging statement
-		const countrySelect = document.getElementById("countrySelect");
-		const fieldSelect = document.getElementById("fieldSelect");
-		const siteSelect = document.getElementById("siteSelect");
-		const wellSelect = document.getElementById("wellSelect");
-		const wellboreSelect = document.getElementById("wellboreSelect");
-		const reportSelect = document.getElementById("reportSelect");
-
-		if (countrySelect) {
-			countrySelect.value = selectedData.country || "";
-			fetchFields(selectedData.country || "", (fields) => {
-				populateDropdown(fieldSelect, fields);
-				if (selectedData.field) {
-					fieldSelect.value = selectedData.field;
-					fetchSites(selectedData.field, (sites) => {
-						populateDropdown(siteSelect, sites);
-						if (selectedData.site) {
-							siteSelect.value = selectedData.site;
-							fetchWells(selectedData.site, (wells) => {
-								populateDropdown(wellSelect, wells);
-								if (selectedData.well) {
-									wellSelect.value = selectedData.well;
-									fetchWellbores(selectedData.well, (wellbores) => {
-										populateDropdown(wellboreSelect, wellbores);
-										if (selectedData.wellbore) {
-											wellboreSelect.value = selectedData.wellbore;
-										}
-									});
-								}
-							});
-						}
-					});
-				}
-			});
-		}
-
-		if (reportSelect) {
-			reportSelect.value = selectedData.report || "";
-		}
-	} else {
-		console.error("No selected data found in sessionStorage");
-	}
-}
-
 // Function to open modal and load form into it
 function openModal(url, setupFunction) {
 	modal.style.display = "block";
@@ -139,7 +90,7 @@ function openModal(url, setupFunction) {
 
 // Function to open modal and load Report form
 btn.onclick = function () {
-	openModal("add_report.php", setupReportFormSubmission);
+	openModal("add_NewReport.php", setupNewReportFormSubmission);
 };
 
 // Function to open modal and load Report form
@@ -173,247 +124,184 @@ addCountryBtn.onclick = function () {
 };
 
 // Function to setup Report Form Submission
-function setupReportFormSubmission() {
+function setupNewReportFormSubmission() {
+	console.log("Setting up New Report Form Submission");
+
 	var reportForm = document.getElementById("reportForm");
-	if (!reportForm) {
-		console.error("reportForm not found");
-		return;
-	}
 
 	var countrySelect = document.getElementById("countrySelect");
-	loadDropdownOptions(
-		"get_countries.php",
-		countrySelect,
-		"country_id",
-		"country_name"
-	);
+	var fieldSelect = document.getElementById("fieldSelect");
+	var siteSelect = document.getElementById("siteSelect");
+	var wellSelect = document.getElementById("wellSelect");
+	var wellboreSelect = document.getElementById("wellboreSelect");
 
-	countrySelect.onchange = function () {
-		var selectedCountryId = countrySelect.value;
-		if (!selectedCountryId) return;
-		var fieldSelect = document.getElementById("fieldSelect");
-		fieldSelect.innerHTML = '<option value="">Select a Field</option>';
-		loadDropdownOptions(
-			"get_fields.php?countryId=" + selectedCountryId,
-			fieldSelect,
-			"field_id",
-			"field_name"
-		);
-	};
+	// Add placeholder options
+	function addPlaceholder(selectElement, placeholderText) {
+		selectElement.innerHTML = ""; // Clear previous options
+		var placeholderOption = document.createElement("option");
+		placeholderOption.value = "";
+		placeholderOption.text = placeholderText;
+		placeholderOption.disabled = true;
+		placeholderOption.selected = true;
+		selectElement.appendChild(placeholderOption);
+	}
 
-	document.getElementById("fieldSelect").onchange = function () {
-		var selectedFieldId = this.value;
-		if (!selectedFieldId) return;
-		var siteSelect = document.getElementById("siteSelect");
-		siteSelect.innerHTML = '<option value="">Select a Site</option>';
-		loadDropdownOptions(
-			"get_sites.php?fieldId=" + selectedFieldId,
-			siteSelect,
-			"site_id",
-			"site_name"
-		);
-	};
+	// Initialize placeholders
+	addPlaceholder(fieldSelect, "Select a Field");
+	addPlaceholder(siteSelect, "Select a Site");
+	addPlaceholder(wellSelect, "Select a Well");
+	addPlaceholder(wellboreSelect, "Select a Wellbore");
 
-	document.getElementById("siteSelect").onchange = function () {
-		var selectedSiteId = this.value;
-		if (!selectedSiteId) return;
-		var wellSelect = document.getElementById("wellSelect");
-		wellSelect.innerHTML = '<option value="">Select a Well</option>';
-		loadDropdownOptions(
-			"get_wells.php?siteId=" + selectedSiteId,
-			wellSelect,
-			"well_id",
-			"well_name"
-		);
-	};
+	// Fetch all countries and populate the country select element
+	fetch("get_AllCountries.php")
+		.then((response) => response.json())
+		.then((data) => {
+			if (data.error) {
+				console.error(data.error);
+			} else {
+				data.forEach((country) => {
+					var option = document.createElement("option");
+					option.value = country.country_id;
+					option.text = country.country_name;
+					countrySelect.appendChild(option);
+				});
+			}
+		})
+		.catch((error) => console.error("Error fetching countries:", error));
 
-	document.getElementById("wellSelect").onchange = function () {
-		var selectedWellId = this.value;
-		if (!selectedWellId) return;
-		var wellboreSelect = document.getElementById("wellboreSelect");
-		wellboreSelect.innerHTML = '<option value="">Select a Wellbore</option>';
-		loadDropdownOptions(
-			"get_wellbores.php?wellId=" + selectedWellId,
-			wellboreSelect,
-			"wellbore_id",
-			"wellbore_name"
-		);
-	};
+	// Fetch fields when a country is selected
+	countrySelect.addEventListener("change", function () {
+		fieldSelect.innerHTML = ""; // Clear previous options
+		siteSelect.innerHTML = ""; // Clear site options
+		wellSelect.innerHTML = ""; // Clear well options
+		wellboreSelect.innerHTML = ""; // Clear wellbore options
+		addPlaceholder(fieldSelect, "Select a Field");
+		addPlaceholder(siteSelect, "Select a Site");
+		addPlaceholder(wellSelect, "Select a Well");
+		addPlaceholder(wellboreSelect, "Select a Wellbore");
 
+		// Fetch fields based on selected country
+		fetch(`get_AllFields.php?countryId=${countrySelect.value}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.status === "success" && data.data.length > 0) {
+					data.data.forEach((field) => {
+						var option = document.createElement("option");
+						option.value = field.field_id; // Ensure to use the correct key for field ID
+						option.text = field.field_name; // Ensure to use the correct key for field name
+						fieldSelect.appendChild(option);
+					});
+				} else {
+					addPlaceholder(fieldSelect, "No fields available");
+				}
+			})
+			.catch((error) => console.error("Error fetching fields:", error));
+	});
+
+	// Fetch sites when a field is selected
+	fieldSelect.addEventListener("change", function () {
+		siteSelect.innerHTML = ""; // Clear previous options
+		wellSelect.innerHTML = ""; // Clear well options
+		wellboreSelect.innerHTML = ""; // Clear wellbore options
+		addPlaceholder(siteSelect, "Select a Site");
+		addPlaceholder(wellSelect, "Select a Well");
+		addPlaceholder(wellboreSelect, "Select a Wellbore");
+
+		// Fetch sites based on selected field
+		fetch(`get_AllSites.php?fieldId=${fieldSelect.value}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.status === "success" && data.data.length > 0) {
+					data.data.forEach((site) => {
+						var option = document.createElement("option");
+						option.value = site.site_id; // Ensure to use the correct key for site ID
+						option.text = site.site_name; // Ensure to use the correct key for site name
+						siteSelect.appendChild(option);
+					});
+				} else {
+					addPlaceholder(siteSelect, "No sites available");
+				}
+			})
+			.catch((error) => console.error("Error fetching sites:", error));
+	});
+
+	// Fetch wells when a site is selected
+	siteSelect.addEventListener("change", function () {
+		wellSelect.innerHTML = ""; // Clear previous options
+		wellboreSelect.innerHTML = ""; // Clear wellbore options
+		addPlaceholder(wellSelect, "Select a Well");
+		addPlaceholder(wellboreSelect, "Select a Wellbore");
+
+		// Fetch wells based on selected site
+		fetch(`get_AllWells.php?siteId=${siteSelect.value}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.status === "success" && data.data.length > 0) {
+					data.data.forEach((well) => {
+						var option = document.createElement("option");
+						option.value = well.well_id; // Ensure to use the correct key for well ID
+						option.text = well.well_name; // Ensure to use the correct key for well name
+						wellSelect.appendChild(option);
+					});
+				} else {
+					addPlaceholder(wellSelect, "No wells available");
+				}
+			})
+			.catch((error) => console.error("Error fetching wells:", error));
+	});
+
+	// Fetch wellbores when a well is selected
+	wellSelect.addEventListener("change", function () {
+		wellboreSelect.innerHTML = ""; // Clear previous options
+		addPlaceholder(wellboreSelect, "Select a Wellbore");
+
+		// Fetch wellbores based on selected well
+		fetch(`get_AllWellbores.php?wellId=${wellSelect.value}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.status === "success" && data.data.length > 0) {
+					data.data.forEach((wellbore) => {
+						var option = document.createElement("option");
+						option.value = wellbore.wellbore_id; // Ensure to use the correct key for wellbore ID
+						option.text = wellbore.wellbore_name; // Ensure to use the correct key for wellbore name
+						wellboreSelect.appendChild(option);
+					});
+				} else {
+					addPlaceholder(wellboreSelect, "No wellbores available");
+				}
+			})
+			.catch((error) => console.error("Error fetching wellbores:", error));
+	});
+
+	// Handle form submission
 	reportForm.onsubmit = function (event) {
 		event.preventDefault();
 		submitForm(reportForm, "process_add_report.php");
 	};
 }
 
-// Function to setup Wellbore Form Submission
-function setupWellboreFormSubmission() {
-	var wellboreForm = document.getElementById("wellboreForm");
-	if (!wellboreForm) {
-		console.error("wellboreForm not found");
-		return;
-	}
-
-	var countrySelect = document.getElementById("countrySelect");
-	loadDropdownOptions(
-		"get_countries.php",
-		countrySelect,
-		"country_id",
-		"country_name"
-	);
-
-	countrySelect.onchange = function () {
-		var selectedCountryId = countrySelect.value;
-		if (!selectedCountryId) return;
-		var fieldSelect = document.getElementById("fieldSelect");
-		fieldSelect.innerHTML = '<option value="">Select a Field</option>';
-		loadDropdownOptions(
-			"get_fields.php?countryId=" + selectedCountryId,
-			fieldSelect,
-			"field_id",
-			"field_name"
-		);
-	};
-
-	document.getElementById("fieldSelect").onchange = function () {
-		var selectedFieldId = this.value;
-		if (!selectedFieldId) return;
-		var siteSelect = document.getElementById("siteSelect");
-		siteSelect.innerHTML = '<option value="">Select a Site</option>';
-		loadDropdownOptions(
-			"get_sites.php?fieldId=" + selectedFieldId,
-			siteSelect,
-			"site_id",
-			"site_name"
-		);
-	};
-
-	document.getElementById("siteSelect").onchange = function () {
-		var selectedSiteId = this.value;
-		if (!selectedSiteId) return;
-		var wellSelect = document.getElementById("wellSelect");
-		wellSelect.innerHTML = '<option value="">Select a Well</option>';
-		loadDropdownOptions(
-			"get_wells.php?siteId=" + selectedSiteId,
-			wellSelect,
-			"well_id",
-			"well_name"
-		);
-	};
-
-	document.getElementById("wellSelect").onchange = function () {
-		var selectedWellId = this.value;
-		if (!selectedWellId) return;
-		var wellboreSelect = document.getElementById("wellboreSelect");
-		wellboreSelect.innerHTML = '<option value="">Select a Wellbore</option>';
-		loadDropdownOptions(
-			"get_wellbores.php?wellId=" + selectedWellId,
-			wellboreSelect,
-			"wellbore_id",
-			"wellbore_name"
-		);
-	};
-
-	wellboreForm.onsubmit = function (event) {
-		event.preventDefault();
-		submitForm(wellboreForm, "process_add_wellbore.php");
-	};
-}
-
-// Function to setup Well Form Submission
-function setupWellFormSubmission() {
-	var wellForm = document.getElementById("wellForm");
-	if (!wellForm) {
-		console.error("wellForm not found");
-		return;
-	}
-
-	var countrySelect = document.getElementById("countrySelect");
-	loadDropdownOptions(
-		"get_countries.php",
-		countrySelect,
-		"country_id",
-		"country_name"
-	);
-
-	countrySelect.onchange = function () {
-		var selectedCountryId = countrySelect.value;
-		if (!selectedCountryId) return;
-		var fieldSelect = document.getElementById("fieldSelect");
-		fieldSelect.innerHTML = '<option value="">Select a Field</option>';
-		loadDropdownOptions(
-			"get_fields.php?countryId=" + selectedCountryId,
-			fieldSelect,
-			"field_id",
-			"field_name"
-		);
-	};
-
-	document.getElementById("fieldSelect").onchange = function () {
-		var selectedFieldId = this.value;
-		if (!selectedFieldId) return;
-		var siteSelect = document.getElementById("siteSelect");
-		siteSelect.innerHTML = '<option value="">Select a Site</option>';
-		loadDropdownOptions(
-			"get_sites.php?fieldId=" + selectedFieldId,
-			siteSelect,
-			"site_id",
-			"site_name"
-		);
-	};
-
-	document.getElementById("siteSelect").onchange = function () {
-		var selectedSiteId = this.value;
-		if (!selectedSiteId) return;
-		var wellSelect = document.getElementById("wellSelect");
-		wellSelect.innerHTML = '<option value="">Select a Well</option>';
-		loadDropdownOptions(
-			"get_wells.php?siteId=" + selectedSiteId,
-			wellSelect,
-			"well_id",
-			"well_name"
-		);
-	};
-
-	wellForm.onsubmit = function (event) {
-		event.preventDefault();
-		submitForm(wellForm, "process_add_well.php");
-	};
-}
-
-// Function to setup Site Form Submission
-function setupSiteFormSubmission() {
-	console.log("Setting up Site Form Submission");
+// Function to setup Report Form Submission
+function setupReportFormSubmission() {
+	console.log("Setting up Report Form Submission");
 
 	// Retrieve data from sessionStorage
 	const savedData = sessionStorage.getItem("selectedData");
 	const selectedData = savedData ? JSON.parse(savedData) : null;
 	const countryId = selectedData ? selectedData.country : null;
 	const fieldId = selectedData ? selectedData.field : null;
+	const siteId = selectedData ? selectedData.site : null;
+	const wellId = selectedData ? selectedData.well : null;
+	const wellboreId = selectedData ? selectedData.wellbore : null;
 
-	console.log("Country ID:", countryId);
-	console.log("Field ID:", fieldId);
-
-	var siteForm = document.getElementById("siteForm");
-	if (!siteForm) {
-		console.error("siteForm not found");
-		return;
-	}
+	var reportForm = document.getElementById("reportForm");
 
 	var countrySelect = document.getElementById("countrySelect");
 	var fieldSelect = document.getElementById("fieldSelect");
+	var siteSelect = document.getElementById("siteSelect");
+	var wellSelect = document.getElementById("wellSelect");
+	var wellboreSelect = document.getElementById("wellboreSelect");
 
-	if (!countrySelect) {
-		console.error("countrySelect not found");
-		return;
-	}
-
-	if (!fieldSelect) {
-		console.error("fieldSelect not found");
-		return;
-	}
-
-	// Fetch countries and set up the country select element
+	// Fetch country name and set up the country select element
 	if (countryId) {
 		fetch(`get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
@@ -424,6 +312,9 @@ function setupSiteFormSubmission() {
 					option.text = data.name; // Set the country name here
 					option.selected = true;
 					countrySelect.appendChild(option);
+
+					// Disable the country select to prevent changes
+					countrySelect.disabled = true;
 				} else {
 					console.error("Country name not found for ID:", countryId);
 				}
@@ -442,6 +333,344 @@ function setupSiteFormSubmission() {
 					option.text = data.field_name; // Set the field name here
 					option.selected = true;
 					fieldSelect.appendChild(option);
+
+					// Disable the field select to prevent changes
+					fieldSelect.disabled = true;
+				} else {
+					console.error("Field name not found for ID:", fieldId);
+				}
+			})
+			.catch((error) => console.error("Error fetching field name:", error));
+	}
+
+	// Fetch site name based on siteId
+	if (siteId) {
+		fetch(`get_sites.php?id=${siteId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.site_name) {
+					var option = document.createElement("option");
+					option.value = siteId;
+					option.text = data.site_name; // Set the site name here
+					option.selected = true;
+					siteSelect.appendChild(option);
+
+					// Disable the site select to prevent changes
+					siteSelect.disabled = true;
+				} else {
+					console.error("Site name not found for ID:", siteId);
+				}
+			})
+			.catch((error) => console.error("Error fetching site name:", error));
+	}
+
+	// Fetch well name based on wellId
+	if (wellId) {
+		fetch(`get_wells.php?id=${wellId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.well_name) {
+					var option = document.createElement("option");
+					option.value = wellId;
+					option.text = data.well_name; // Set the well name here
+					option.selected = true;
+					wellSelect.appendChild(option);
+
+					// Disable the well select to prevent changes
+					wellSelect.disabled = true;
+				} else {
+					console.error("Well name not found for ID:", wellId);
+				}
+			})
+			.catch((error) => console.error("Error fetching well name:", error));
+	}
+
+	// Fetch wellbore name based on wellboreId
+	if (wellboreId) {
+		fetch(`get_wellbores.php?id=${wellboreId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.wellbore_name) {
+					var option = document.createElement("option");
+					option.value = wellboreId;
+					option.text = data.wellbore_name; // Set the wellbore name here
+					option.selected = true;
+					wellboreSelect.appendChild(option);
+
+					// Disable the wellbore select to prevent changes
+					wellboreSelect.disabled = true;
+				} else {
+					console.error("Wellbore name not found for ID:", wellboreId);
+				}
+			})
+			.catch((error) => console.error("Error fetching wellbore name:", error));
+	}
+
+	// Handle form submission
+	reportForm.onsubmit = function (event) {
+		event.preventDefault();
+		submitForm(reportForm, "process_add_report.php");
+	};
+}
+
+// Function to setup Wellbore Form Submission
+function setupWellboreFormSubmission() {
+	console.log("Setting up Wellbore Form Submission");
+
+	// Retrieve data from sessionStorage
+	const savedData = sessionStorage.getItem("selectedData");
+	const selectedData = savedData ? JSON.parse(savedData) : null;
+	const countryId = selectedData ? selectedData.country : null;
+	const fieldId = selectedData ? selectedData.field : null;
+	const siteId = selectedData ? selectedData.site : null;
+	const wellId = selectedData ? selectedData.well : null;
+
+	var wellboreForm = document.getElementById("wellboreForm");
+	if (!wellboreForm) {
+		console.error("wellboreForm not found");
+		return;
+	}
+
+	var countrySelect = document.getElementById("countrySelect");
+	var fieldSelect = document.getElementById("fieldSelect");
+	var siteSelect = document.getElementById("siteSelect");
+	var wellSelect = document.getElementById("wellSelect");
+
+	// Fetch country name and set up the country select element
+	if (countryId) {
+		fetch(`get_countries.php?id=${countryId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.name) {
+					var option = document.createElement("option");
+					option.value = countryId;
+					option.text = data.name; // Set the country name here
+					option.selected = true;
+					countrySelect.appendChild(option);
+
+					// Disable the country select to prevent changes
+					countrySelect.disabled = true;
+				} else {
+					console.error("Country name not found for ID:", countryId);
+				}
+			})
+			.catch((error) => console.error("Error fetching country name:", error));
+	}
+
+	// Fetch field name based on fieldId
+	if (fieldId) {
+		fetch(`get_fields.php?id=${fieldId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.field_name) {
+					var option = document.createElement("option");
+					option.value = fieldId;
+					option.text = data.field_name; // Set the field name here
+					option.selected = true;
+					fieldSelect.appendChild(option);
+
+					// Disable the field select to prevent changes
+					fieldSelect.disabled = true;
+				} else {
+					console.error("Field name not found for ID:", fieldId);
+				}
+			})
+			.catch((error) => console.error("Error fetching field name:", error));
+	}
+
+	// Fetch site name based on siteId
+	if (siteId) {
+		fetch(`get_sites.php?id=${siteId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.site_name) {
+					var option = document.createElement("option");
+					option.value = siteId;
+					option.text = data.site_name; // Set the site name here
+					option.selected = true;
+					siteSelect.appendChild(option);
+
+					// Disable the site select to prevent changes
+					siteSelect.disabled = true;
+				} else {
+					console.error("Site name not found for ID:", siteId);
+				}
+			})
+			.catch((error) => console.error("Error fetching site name:", error));
+	}
+
+	// Fetch well name based on wellId
+	if (wellId) {
+		fetch(`get_wells.php?id=${wellId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.well_name) {
+					var option = document.createElement("option");
+					option.value = wellId;
+					option.text = data.well_name; // Set the well name here
+					option.selected = true;
+					wellSelect.appendChild(option);
+
+					// Disable the well select to prevent changes
+					wellSelect.disabled = true;
+				} else {
+					console.error("Well name not found for ID:", wellId);
+				}
+			})
+			.catch((error) => console.error("Error fetching well name:", error));
+	}
+
+	// Handle form submission
+	wellboreForm.onsubmit = function (event) {
+		event.preventDefault();
+		submitForm(wellboreForm, "process_add_wellbore.php");
+	};
+}
+
+// Function to setup Well Form Submission
+function setupWellFormSubmission() {
+	console.log("Setting up Well Form Submission");
+
+	// Retrieve data from sessionStorage
+	const savedData = sessionStorage.getItem("selectedData");
+	const selectedData = savedData ? JSON.parse(savedData) : null;
+	const countryId = selectedData ? selectedData.country : null;
+	const fieldId = selectedData ? selectedData.field : null;
+	const siteId = selectedData ? selectedData.site : null;
+
+	var wellForm = document.getElementById("wellForm");
+	if (!wellForm) {
+		console.error("wellForm not found");
+		return;
+	}
+
+	var countrySelect = document.getElementById("countrySelect");
+	var fieldSelect = document.getElementById("fieldSelect");
+	var siteSelect = document.getElementById("siteSelect");
+
+	// Fetch countries and set up the country select element
+	if (countryId) {
+		fetch(`get_countries.php?id=${countryId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.name) {
+					var option = document.createElement("option");
+					option.value = countryId;
+					option.text = data.name; // Set the country name here
+					option.selected = true;
+					countrySelect.appendChild(option);
+
+					// Disable the country select to prevent changes
+					countrySelect.disabled = true;
+				} else {
+					console.error("Country name not found for ID:", countryId);
+				}
+			})
+			.catch((error) => console.error("Error fetching country name:", error));
+	}
+
+	// Fetch field name based on fieldId
+	if (fieldId) {
+		fetch(`get_fields.php?id=${fieldId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.field_name) {
+					var option = document.createElement("option");
+					option.value = fieldId;
+					option.text = data.field_name; // Set the field name here
+					option.selected = true;
+					fieldSelect.appendChild(option);
+
+					// Disable the field select to prevent changes
+					fieldSelect.disabled = true;
+				} else {
+					console.error("Field name not found for ID:", fieldId);
+				}
+			})
+			.catch((error) => console.error("Error fetching field name:", error));
+	}
+
+	// Fetch site name based on siteId
+	if (siteId) {
+		fetch(`get_sites.php?id=${siteId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.site_name) {
+					var option = document.createElement("option");
+					option.value = siteId;
+					option.text = data.site_name; // Set the site name here
+					option.selected = true;
+					siteSelect.appendChild(option);
+
+					// Disable the site select to prevent changes
+					siteSelect.disabled = true;
+				} else {
+					console.error("Site name not found for ID:", siteId);
+				}
+			})
+			.catch((error) => console.error("Error fetching site name:", error));
+	}
+
+	wellForm.onsubmit = function (event) {
+		event.preventDefault();
+		submitForm(wellForm, "process_add_well.php");
+	};
+}
+
+// Function to setup Site Form Submission
+function setupSiteFormSubmission() {
+	console.log("Setting up Site Form Submission");
+
+	// Retrieve data from sessionStorage
+	const savedData = sessionStorage.getItem("selectedData");
+	const selectedData = savedData ? JSON.parse(savedData) : null;
+	const countryId = selectedData ? selectedData.country : null;
+	const fieldId = selectedData ? selectedData.field : null;
+
+	var siteForm = document.getElementById("siteForm");
+	if (!siteForm) {
+		console.error("siteForm not found");
+		return;
+	}
+
+	var countrySelect = document.getElementById("countrySelect");
+	var fieldSelect = document.getElementById("fieldSelect");
+
+	// Fetch countries and set up the country select element
+	if (countryId) {
+		fetch(`get_countries.php?id=${countryId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.name) {
+					var option = document.createElement("option");
+					option.value = countryId;
+					option.text = data.name; // Set the country name here
+					option.selected = true;
+					countrySelect.appendChild(option);
+
+					// Disable the country select to prevent changes
+					countrySelect.disabled = true;
+				} else {
+					console.error("Country name not found for ID:", countryId);
+				}
+			})
+			.catch((error) => console.error("Error fetching country name:", error));
+	}
+
+	// Fetch field name based on fieldId
+	if (fieldId) {
+		fetch(`get_fields.php?id=${fieldId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.field_name) {
+					var option = document.createElement("option");
+					option.value = fieldId;
+					option.text = data.field_name; // Set the field name here
+					option.selected = true;
+					fieldSelect.appendChild(option);
+
+					// Disable the field select to prevent changes
+					fieldSelect.disabled = true;
 				} else {
 					console.error("Field name not found for ID:", fieldId);
 				}
@@ -457,8 +686,6 @@ function setupSiteFormSubmission() {
 
 // Function to setup Field Form Submission
 function setupFieldFormSubmission() {
-	console.log("Setting up Field Form Submission");
-
 	// Retrieve data from sessionStorage
 	const savedData = sessionStorage.getItem("selectedData");
 
@@ -467,8 +694,6 @@ function setupFieldFormSubmission() {
 
 	// Extract the country data
 	const countryId = selectedData ? selectedData.country : null;
-
-	console.log("Country ID:", countryId);
 
 	var fieldForm = document.getElementById("fieldForm");
 	if (!fieldForm) {
@@ -493,6 +718,9 @@ function setupFieldFormSubmission() {
 					option.text = data.name; // Set the country name here
 					option.selected = true;
 					countrySelect.appendChild(option);
+
+					// Disable the country select to prevent changes
+					countrySelect.disabled = true;
 				} else {
 					console.error("Country name not found for ID:", countryId);
 				}
