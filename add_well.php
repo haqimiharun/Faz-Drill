@@ -24,6 +24,9 @@
     <div class="form-group">
         <label for="wellName">Well Name</label>
         <input type="text" id="wellName" name="wellName" required>
+        <input type="hidden" id="siteIdHidden" name="siteId" />
+        <input type="hidden" id="fieldIdHidden" name="fieldId" />
+        <input type="hidden" id="countryIdHidden" name="countryId" />
     </div>
     <div class="form-footer">
         <button type="submit" class="btn btn-primary">Add Well</button>

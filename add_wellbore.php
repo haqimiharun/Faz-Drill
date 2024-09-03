@@ -31,6 +31,10 @@
     <div class="form-group">
         <label for="wellboreName">Wellbore Name</label>
         <input type="text" id="wellboreName" name="wellboreName" required>
+        <input type="hidden" id="wellIdHidden" name="wellId" />
+        <input type="hidden" id="siteIdHidden" name="siteId" />
+        <input type="hidden" id="fieldIdHidden" name="fieldId" />
+        <input type="hidden" id="countryIdHidden" name="countryId" />
     </div>
     <div class="form-footer">
         <button type="submit" class="btn btn-primary">Add Wellbore</button>

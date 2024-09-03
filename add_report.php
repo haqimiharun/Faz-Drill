@@ -38,6 +38,11 @@
     <div class="form-group">
         <label for="reportName">Report Name</label>
         <input type="text" id="reportName" name="reportName" required>
+        <input type="hidden" id="wellboreIdHidden" name="wellboreId" />
+        <input type="hidden" id="wellIdHidden" name="wellId" />
+        <input type="hidden" id="siteIdHidden" name="siteId" />
+        <input type="hidden" id="fieldIdHidden" name="fieldId" />
+        <input type="hidden" id="countryIdHidden" name="countryId" />
     </div>
     <div class="form-footer">
         <button type="submit" class="btn btn-primary">Add Report</button>

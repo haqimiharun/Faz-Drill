@@ -437,6 +437,7 @@ img.existing-photo {
 }
 
 .sidebar-menu .treeview-menu > li > a {
+	display: block;
 	font-size: 12px;
 }
 input,

@@ -362,8 +362,6 @@ if(!isset($_SESSION['user'])) {
 							<i class="fa fa-sticky-note"></i> <span>Units Management</span>
 						</a>
 					</li>
-
-
       			</ul>
     		</section>
   		</aside>

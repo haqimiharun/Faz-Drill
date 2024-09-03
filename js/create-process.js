@@ -11,6 +11,11 @@ var span = document.getElementsByClassName("close")[0];
 var dynamicContent = document.getElementById("dynamic-content");
 var loader = document.getElementById("loader");
 
+// Close modal when clicking the close button
+span.onclick = function () {
+	modal.style.display = "none";
+};
+
 // Close the modal when clicking outside of it
 window.onclick = function (event) {
 	if (event.target == modal) {
@@ -294,12 +299,37 @@ function setupReportFormSubmission() {
 	const wellboreId = selectedData ? selectedData.wellbore : null;
 
 	var reportForm = document.getElementById("reportForm");
+	if (!reportForm) {
+		console.error("reportForm not found");
+		return;
+	}
 
 	var countrySelect = document.getElementById("countrySelect");
 	var fieldSelect = document.getElementById("fieldSelect");
 	var siteSelect = document.getElementById("siteSelect");
 	var wellSelect = document.getElementById("wellSelect");
 	var wellboreSelect = document.getElementById("wellboreSelect");
+	var countryIdHidden = document.getElementById("countryIdHidden");
+	var fieldIdHidden = document.getElementById("fieldIdHidden");
+	var siteIdHidden = document.getElementById("siteIdHidden");
+	var wellIdHidden = document.getElementById("wellIdHidden");
+	var wellboreIdHidden = document.getElementById("wellboreIdHidden");
+
+	if (
+		!countrySelect ||
+		!fieldSelect ||
+		!siteSelect ||
+		!wellSelect ||
+		!wellboreSelect ||
+		!countryIdHidden ||
+		!fieldIdHidden ||
+		!siteIdHidden ||
+		!wellIdHidden ||
+		!wellboreIdHidden
+	) {
+		console.error("One or more form elements not found");
+		return;
+	}
 
 	// Fetch country name and set up the country select element
 	if (countryId) {
@@ -313,6 +343,9 @@ function setupReportFormSubmission() {
 					option.selected = true;
 					countrySelect.appendChild(option);
 
+					// Set the hidden input value
+					countryIdHidden.value = countryId;
+
 					// Disable the country select to prevent changes
 					countrySelect.disabled = true;
 				} else {
@@ -322,7 +355,7 @@ function setupReportFormSubmission() {
 			.catch((error) => console.error("Error fetching country name:", error));
 	}
 
-	// Fetch field name based on fieldId
+	// Fetch field name based on fieldId and set up the field select element
 	if (fieldId) {
 		fetch(`get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
@@ -334,6 +367,9 @@ function setupReportFormSubmission() {
 					option.selected = true;
 					fieldSelect.appendChild(option);
 
+					// Set the hidden input value
+					fieldIdHidden.value = fieldId;
+
 					// Disable the field select to prevent changes
 					fieldSelect.disabled = true;
 				} else {
@@ -343,7 +379,7 @@ function setupReportFormSubmission() {
 			.catch((error) => console.error("Error fetching field name:", error));
 	}
 
-	// Fetch site name based on siteId
+	// Fetch site name based on siteId and set up the site select element
 	if (siteId) {
 		fetch(`get_sites.php?id=${siteId}`)
 			.then((response) => response.json())
@@ -355,6 +391,9 @@ function setupReportFormSubmission() {
 					option.selected = true;
 					siteSelect.appendChild(option);
 
+					// Set the hidden input value
+					siteIdHidden.value = siteId;
+
 					// Disable the site select to prevent changes
 					siteSelect.disabled = true;
 				} else {
@@ -364,7 +403,7 @@ function setupReportFormSubmission() {
 			.catch((error) => console.error("Error fetching site name:", error));
 	}
 
-	// Fetch well name based on wellId
+	// Fetch well name based on wellId and set up the well select element
 	if (wellId) {
 		fetch(`get_wells.php?id=${wellId}`)
 			.then((response) => response.json())
@@ -376,6 +415,9 @@ function setupReportFormSubmission() {
 					option.selected = true;
 					wellSelect.appendChild(option);
 
+					// Set the hidden input value
+					wellIdHidden.value = wellId;
+
 					// Disable the well select to prevent changes
 					wellSelect.disabled = true;
 				} else {
@@ -385,7 +427,7 @@ function setupReportFormSubmission() {
 			.catch((error) => console.error("Error fetching well name:", error));
 	}
 
-	// Fetch wellbore name based on wellboreId
+	// Fetch wellbore name based on wellboreId and set up the wellbore select element
 	if (wellboreId) {
 		fetch(`get_wellbores.php?id=${wellboreId}`)
 			.then((response) => response.json())
@@ -397,6 +439,9 @@ function setupReportFormSubmission() {
 					option.selected = true;
 					wellboreSelect.appendChild(option);
 
+					// Set the hidden input value
+					wellboreIdHidden.value = wellboreId;
+
 					// Disable the wellbore select to prevent changes
 					wellboreSelect.disabled = true;
 				} else {
@@ -406,7 +451,6 @@ function setupReportFormSubmission() {
 			.catch((error) => console.error("Error fetching wellbore name:", error));
 	}
 
-	// Handle form submission
 	reportForm.onsubmit = function (event) {
 		event.preventDefault();
 		submitForm(reportForm, "process_add_report.php");
@@ -435,6 +479,24 @@ function setupWellboreFormSubmission() {
 	var fieldSelect = document.getElementById("fieldSelect");
 	var siteSelect = document.getElementById("siteSelect");
 	var wellSelect = document.getElementById("wellSelect");
+	var countryIdHidden = document.getElementById("countryIdHidden");
+	var fieldIdHidden = document.getElementById("fieldIdHidden");
+	var siteIdHidden = document.getElementById("siteIdHidden");
+	var wellIdHidden = document.getElementById("wellIdHidden");
+
+	if (
+		!countrySelect ||
+		!fieldSelect ||
+		!siteSelect ||
+		!wellSelect ||
+		!countryIdHidden ||
+		!fieldIdHidden ||
+		!siteIdHidden ||
+		!wellIdHidden
+	) {
+		console.error("One or more form elements not found");
+		return;
+	}
 
 	// Fetch country name and set up the country select element
 	if (countryId) {
@@ -448,6 +510,9 @@ function setupWellboreFormSubmission() {
 					option.selected = true;
 					countrySelect.appendChild(option);
 
+					// Set the hidden input value
+					countryIdHidden.value = countryId;
+
 					// Disable the country select to prevent changes
 					countrySelect.disabled = true;
 				} else {
@@ -457,7 +522,7 @@ function setupWellboreFormSubmission() {
 			.catch((error) => console.error("Error fetching country name:", error));
 	}
 
-	// Fetch field name based on fieldId
+	// Fetch field name based on fieldId and set up the field select element
 	if (fieldId) {
 		fetch(`get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
@@ -469,6 +534,9 @@ function setupWellboreFormSubmission() {
 					option.selected = true;
 					fieldSelect.appendChild(option);
 
+					// Set the hidden input value
+					fieldIdHidden.value = fieldId;
+
 					// Disable the field select to prevent changes
 					fieldSelect.disabled = true;
 				} else {
@@ -478,7 +546,7 @@ function setupWellboreFormSubmission() {
 			.catch((error) => console.error("Error fetching field name:", error));
 	}
 
-	// Fetch site name based on siteId
+	// Fetch site name based on siteId and set up the site select element
 	if (siteId) {
 		fetch(`get_sites.php?id=${siteId}`)
 			.then((response) => response.json())
@@ -490,6 +558,9 @@ function setupWellboreFormSubmission() {
 					option.selected = true;
 					siteSelect.appendChild(option);
 
+					// Set the hidden input value
+					siteIdHidden.value = siteId;
+
 					// Disable the site select to prevent changes
 					siteSelect.disabled = true;
 				} else {
@@ -499,7 +570,7 @@ function setupWellboreFormSubmission() {
 			.catch((error) => console.error("Error fetching site name:", error));
 	}
 
-	// Fetch well name based on wellId
+	// Fetch well name based on wellId and set up the well select element
 	if (wellId) {
 		fetch(`get_wells.php?id=${wellId}`)
 			.then((response) => response.json())
@@ -511,6 +582,9 @@ function setupWellboreFormSubmission() {
 					option.selected = true;
 					wellSelect.appendChild(option);
 
+					// Set the hidden input value
+					wellIdHidden.value = wellId;
+
 					// Disable the well select to prevent changes
 					wellSelect.disabled = true;
 				} else {
@@ -520,7 +594,6 @@ function setupWellboreFormSubmission() {
 			.catch((error) => console.error("Error fetching well name:", error));
 	}
 
-	// Handle form submission
 	wellboreForm.onsubmit = function (event) {
 		event.preventDefault();
 		submitForm(wellboreForm, "process_add_wellbore.php");
@@ -547,8 +620,23 @@ function setupWellFormSubmission() {
 	var countrySelect = document.getElementById("countrySelect");
 	var fieldSelect = document.getElementById("fieldSelect");
 	var siteSelect = document.getElementById("siteSelect");
+	var countryIdHidden = document.getElementById("countryIdHidden");
+	var fieldIdHidden = document.getElementById("fieldIdHidden");
+	var siteIdHidden = document.getElementById("siteIdHidden");
 
-	// Fetch countries and set up the country select element
+	if (
+		!countrySelect ||
+		!fieldSelect ||
+		!siteSelect ||
+		!countryIdHidden ||
+		!fieldIdHidden ||
+		!siteIdHidden
+	) {
+		console.error("One or more form elements not found");
+		return;
+	}
+
+	// Fetch country name and set up the country select element
 	if (countryId) {
 		fetch(`get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
@@ -560,6 +648,9 @@ function setupWellFormSubmission() {
 					option.selected = true;
 					countrySelect.appendChild(option);
 
+					// Set the hidden input value
+					countryIdHidden.value = countryId;
+
 					// Disable the country select to prevent changes
 					countrySelect.disabled = true;
 				} else {
@@ -569,7 +660,7 @@ function setupWellFormSubmission() {
 			.catch((error) => console.error("Error fetching country name:", error));
 	}
 
-	// Fetch field name based on fieldId
+	// Fetch field name based on fieldId and set up the field select element
 	if (fieldId) {
 		fetch(`get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
@@ -581,6 +672,9 @@ function setupWellFormSubmission() {
 					option.selected = true;
 					fieldSelect.appendChild(option);
 
+					// Set the hidden input value
+					fieldIdHidden.value = fieldId;
+
 					// Disable the field select to prevent changes
 					fieldSelect.disabled = true;
 				} else {
@@ -590,7 +684,7 @@ function setupWellFormSubmission() {
 			.catch((error) => console.error("Error fetching field name:", error));
 	}
 
-	// Fetch site name based on siteId
+	// Fetch site name based on siteId and set up the site select element
 	if (siteId) {
 		fetch(`get_sites.php?id=${siteId}`)
 			.then((response) => response.json())
@@ -601,6 +695,9 @@ function setupWellFormSubmission() {
 					option.text = data.site_name; // Set the site name here
 					option.selected = true;
 					siteSelect.appendChild(option);
+
+					// Set the hidden input value
+					siteIdHidden.value = siteId;
 
 					// Disable the site select to prevent changes
 					siteSelect.disabled = true;
@@ -635,8 +732,15 @@ function setupSiteFormSubmission() {
 
 	var countrySelect = document.getElementById("countrySelect");
 	var fieldSelect = document.getElementById("fieldSelect");
+	var countryIdHidden = document.getElementById("countryIdHidden");
+	var fieldIdHidden = document.getElementById("fieldIdHidden");
 
-	// Fetch countries and set up the country select element
+	if (!countrySelect || !fieldSelect || !countryIdHidden || !fieldIdHidden) {
+		console.error("One or more form elements not found");
+		return;
+	}
+
+	// Fetch country name and set up the country select element
 	if (countryId) {
 		fetch(`get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
@@ -648,6 +752,9 @@ function setupSiteFormSubmission() {
 					option.selected = true;
 					countrySelect.appendChild(option);
 
+					// Set the hidden input value
+					countryIdHidden.value = countryId;
+
 					// Disable the country select to prevent changes
 					countrySelect.disabled = true;
 				} else {
@@ -657,7 +764,7 @@ function setupSiteFormSubmission() {
 			.catch((error) => console.error("Error fetching country name:", error));
 	}
 
-	// Fetch field name based on fieldId
+	// Fetch field name based on fieldId and set up the field select element
 	if (fieldId) {
 		fetch(`get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
@@ -668,6 +775,9 @@ function setupSiteFormSubmission() {
 					option.text = data.field_name; // Set the field name here
 					option.selected = true;
 					fieldSelect.appendChild(option);
+
+					// Set the hidden input value
+					fieldIdHidden.value = fieldId;
 
 					// Disable the field select to prevent changes
 					fieldSelect.disabled = true;
@@ -702,8 +812,9 @@ function setupFieldFormSubmission() {
 	}
 
 	var countrySelect = document.getElementById("countrySelect");
-	if (!countrySelect) {
-		console.error("countrySelect not found");
+	var countryIdHidden = document.getElementById("countryIdHidden");
+	if (!countrySelect || !countryIdHidden) {
+		console.error("countrySelect or countryIdHidden not found");
 		return;
 	}
 
@@ -719,6 +830,9 @@ function setupFieldFormSubmission() {
 					option.selected = true;
 					countrySelect.appendChild(option);
 
+					// Set the hidden input value
+					countryIdHidden.value = countryId;
+
 					// Disable the country select to prevent changes
 					countrySelect.disabled = true;
 				} else {
@@ -731,6 +845,7 @@ function setupFieldFormSubmission() {
 	// Save selected country to sessionStorage on change
 	countrySelect.addEventListener("change", function () {
 		sessionStorage.setItem("selectedCountryId", this.value);
+		countryIdHidden.value = this.value;
 	});
 
 	fieldForm.onsubmit = function (event) {
@@ -769,8 +884,3 @@ function submitForm(form, url) {
 	};
 	xhr.send(formData);
 }
-
-// Close modal when clicking the close button
-span.onclick = function () {
-	modal.style.display = "none";
-};

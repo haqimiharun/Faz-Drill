@@ -17,6 +17,9 @@
     <div class="form-group">
         <label for="siteName">Site Name</label>
         <input type="text" id="siteName" name="siteName" required>
+        <input type="hidden" id="fieldIdHidden" name="fieldId" />
+        <input type="hidden" id="countryIdHidden" name="countryId" />
+
     </div>
     <div class="form-footer">
         <button type="submit" class="btn btn-primary">Add Site</button>

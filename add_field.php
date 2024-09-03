@@ -9,6 +9,7 @@
         </select>
     </div>
     <div class="form-group">
+     <input type="hidden" id="countryIdHidden" name="countryId" />
         <label for="fieldName">Field Name</label>
         <input type="text" id="fieldName" name="fieldName" required>
     </div>
