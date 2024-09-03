@@ -415,6 +415,6 @@ try {
     </div>
 </div>
 
-<script src="js/respones.js"></script>
-<script src="js/create-process.js"></script>
+<script src="respones.js"></script>
+<script src="create-process.js"></script>
 <?php require_once('footer.php'); ?>

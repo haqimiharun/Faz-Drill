@@ -4,8 +4,16 @@
         <label for="countrySelect">Select Country</label>
         <select id="countrySelect" name="countryId" required>
             <option value="">Select a Country</option>
+            <option value="addNewCountry">Add New Country</option>
             <!-- Country options will be populated by AJAX -->
         </select>
+        <!-- Hidden dropdown for adding a new country -->
+        <div id="newCountryDropdown" style="display: none;">
+            <label for="newCountrySelect">New Country</label>
+            <select id="newCountrySelect" name="newCountryId">
+                <!-- New country options will be populated by AJAX -->
+            </select>
+        </div>
     </div>
     <div class="form-group">
         <label for="fieldSelect">Select Field</label>

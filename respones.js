@@ -1,3 +1,38 @@
+let highestRowCount = 0;
+
+function setRowCount(count) {
+	if (count > highestRowCount) {
+		highestRowCount = count;
+		updateTableRows();
+	}
+}
+
+function updateTableRows() {
+	const tbody = document.querySelector("#reportTableBody");
+	const rows = tbody.querySelectorAll("tr");
+
+	// Add rows if needed
+	if (highestRowCount > rows.length) {
+		for (let i = rows.length; i < highestRowCount; i++) {
+			const newRow = document.createElement("tr");
+			newRow.innerHTML = `
+                <td class="country-row"></td>
+                <td class="field-data"></td>
+                <td class="site-data"></td>
+                <td class="well-data"></td>
+                <td class="wellbore-data"></td>
+                <td class="report-data"></td>
+            `;
+			tbody.appendChild(newRow);
+		}
+	}
+	if (highestRowCount < rows.length) {
+		for (let i = rows.length - 1; i >= highestRowCount; i--) {
+			tbody.removeChild(rows[i]);
+		}
+	}
+}
+
 function highlightSelected(level, id) {
 	const rows = document.querySelectorAll("#reportTableBody tr");
 	console.log("Highlighting level:", level, "with ID:", id);
@@ -232,6 +267,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function updateReportData(reports) {
+		setRowCount(reports.length);
+
 		const tbody = document.querySelector("#reportTableBody");
 		const rows = tbody.querySelectorAll("tr");
 
@@ -271,6 +308,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function updateWellboreData(wellbores) {
+		setRowCount(wellbores.length);
+
 		const tbody = document.querySelector("#reportTableBody");
 		const rows = tbody.querySelectorAll("tr");
 
@@ -317,6 +356,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function updateWellData(wells) {
+		setRowCount(wells.length);
+
 		const tbody = document.querySelector("#reportTableBody");
 		const rows = tbody.querySelectorAll("tr");
 
@@ -359,6 +400,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function updateSiteData(sites) {
+		setRowCount(sites.length);
+
 		const tbody = document.querySelector("#reportTableBody");
 		const rows = tbody.querySelectorAll("tr");
 
@@ -403,6 +446,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function updateFieldData(fields) {
+		setRowCount(fields.length);
+
 		const tbody = document.querySelector("#reportTableBody");
 		const rows = tbody.querySelectorAll("tr");
 
