@@ -115,6 +115,7 @@ try {
     background-color: #a0c1ff; /* Slightly darker blue for selected cells */
 }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <section class="content">
 
@@ -145,9 +146,9 @@ try {
                     <thead>
                         <tr>
                             <th>Country
-                                <a title="Add New Country">
+                                <!-- <a title="Add New Country">
                                     <i id="addCountry" class="fas fa-plus-circle"></i>
-                                </a>
+                                </a> -->
                             </th>
                             <th>Field
                                 <a title="Add New Field">

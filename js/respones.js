@@ -231,7 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 
-	// Update functions
 	function updateReportData(reports) {
 		const tbody = document.querySelector("#reportTableBody");
 		const rows = tbody.querySelectorAll("tr");
@@ -250,15 +249,21 @@ document.addEventListener("DOMContentLoaded", function () {
 					reportElement.textContent = report.report_name;
 					reportElement.dataset.reportId = report.report_id;
 
-					// // Add a click event listener to open the report in a new window
-					// reportElement.addEventListener("click", function () {
-					// 	const reportId = this.dataset.reportId;
-					// 	const url = `http://localhost/Faz-Drill/report-header.php?reportId=${encodeURIComponent(
-					// 		reportId
-					// 	)}`;
-					// 	window.open(url, "_blank"); // Open in a new tab or window
-					// });
+					// Create the pencil icon
+					const icon = document.createElement("i");
+					icon.classList.add("fa", "fa-pencil-alt"); // Using FontAwesome for the pencil icon
+					icon.style.cursor = "pointer";
+					icon.style.marginLeft = "10px"; // Add some space between text and icon
+					icon.addEventListener("click", function () {
+						const reportId = reportElement.dataset.reportId;
+						const url = `http://localhost/Faz-Drill/report-header.php?reportId=${encodeURIComponent(
+							reportId
+						)}`;
+						window.open(url, "_blank"); // Open in a new tab or window
+					});
 
+					// Append the report name and icon
+					reportElement.appendChild(icon);
 					reportCell.appendChild(reportElement);
 				}
 			}
