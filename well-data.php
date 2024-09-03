@@ -68,6 +68,66 @@
             <div class="container">
                 <h2>Target Formation</h2>
 
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="Formation-Name">Formation Name</label>
+                        <input type="text" id="Formation-Name" name="Formation-Name" placeholder="Enter Formation Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Formation-Depth">Formation Depth</label>
+                        <input type="text" id="Formation-Depth" name="Formation-Depth" placeholder="Enter Formation Depth">
+                    </div>
+                    <div class="form-group">
+                        <label for="Formation-Tops">Formation Tops</label>
+                        <input type="text" id="Formation-Tops" name="Formation-Tops" placeholder="Enter Formation Tops">
+                    </div>
+                    <div class="form-group">
+                        <label for="Type-of-Lithology">Type of Lithology</label>
+                        <input type="text" id="Type-of-Lithology" name="Type-of-Lithology" placeholder="Enter Type of Lithology">
+                    </div>
+                    <div class="form-group">
+                        <label for="Porosity">Porosity</label>
+                        <input type="text" id="Porosity" name="Porosity" placeholder="Enter Porosity">
+                    </div>
+                    <div class="form-group">
+                        <label for="Darcys(d)-Permeability">Permeability</label>
+                        <input type="text" id="Permeability" name="Permeability" placeholder = "Enter Permeability (Darcys(d))">
+                    </div>
+                    <div class="form-group">
+                        <label for="Fomartion-Pressure">Formation Pressure</label>
+                        <input type="text" id="Formation-Pressure" name="Formation-Pressure" placeholder = "Enter Formation Pressure">
+                    </div>
+                    <div class="form-group">
+                        <label for="Fomartion-Temperature">Formation Temperature</label>
+                        <input type="text" id="Formation-Temperature" name="Formation-Temperature" placeholder = "Enter Formation Temperature">
+                    </div>
+                    <div class="form-group">
+                    <!-- ada redundant data : nnti just call back untk data dibawah -->
+                        <label for="Fluid-Type">Fluid Type</label> 
+                        <input type="text" id="Fluid-Type" name="Fluid-Type" placeholder = "Enter Fluid Type"> 
+                    </div>
+                    <div class="form-group">
+                    <!-- ada redundant data : nnti just call back untk data dibawah -->
+                        <label for="Gas-Shows">Gas Shows</label> 
+                        <input type="text" id="Gas-Shows" name="Gas-Show" placeholder = "Enter Gas Shows"> 
+                    </div>
+                    <div class="form-group">
+                    <!-- ada redundant data : nnti just call back untk data dibawah -->
+                        <label for="Cutting-Description">Gas Description</label> 
+                        <input type="text" id="Gas-Description" name="Gas-Description" placeholder = "Enter Gas Description"> 
+                    </div>
+                    <div class="form-group">
+                    <!-- ada redundant data : nnti just call back untk data dibawah -->
+                        <label for="Shale-Density">Shale Density</label> 
+                        <input type="text" id="Shale-Density" name="Shale-Density" placeholder = "Enter Shale Density"> 
+                    </div>
+                    <div class="form-group">
+                    <!-- ada redundant data : nnti just call back untk data dibawah -->
+                        <label for="Resistivity">Resistivity</label> 
+                        <input type="text" id="Resistivity" name="Resistivity" placeholder = "Enter Resistivity"> 
+                    </div>
+</form>
+
             </div>
         </div>
 
