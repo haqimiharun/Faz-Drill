@@ -10,31 +10,25 @@ try {
     $pdo = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Check if countryId is provided
-    if (isset($_GET['countryId'])) {
-        $countryId = $_GET['countryId'];
+    // Prepare the SQL statement to fetch unique country data from tbl_field
+    $stmt = $pdo->prepare("
+        SELECT DISTINCT c.*
+        FROM tbl_country c
+        JOIN tbl_field f ON c.country_id = f.country_id
+    ");
+    $stmt->execute();
 
-        // Prepare the SQL statement to fetch the specific country data
-        $stmt = $pdo->prepare("SELECT * FROM tbl_country WHERE country_id = :countryId");
-        $stmt->bindParam(':countryId', $countryId, PDO::PARAM_INT);
-        $stmt->execute();
+    // Fetch all unique countries
+    $countries = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Fetch the country data
-        $country = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($country) {
-            // Return the country data as JSON
-            header('Content-Type: application/json');
-            echo json_encode($country);
-        } else {
-            // Return a not found error if country data is not found
-            header('Content-Type: application/json');
-            echo json_encode(["error" => "Country not found"]);
-        }
-    } else {
-        // Return an error if countryId is not provided
+    if ($countries) {
+        // Return the country data as JSON
         header('Content-Type: application/json');
-        echo json_encode(["error" => "No countryId provided"]);
+        echo json_encode($countries);
+    } else {
+        // Return a not found error if no country data is found
+        header('Content-Type: application/json');
+        echo json_encode(["error" => "No countries found"]);
     }
 } catch (PDOException $exception) {
     // Handle any errors

@@ -417,4 +417,5 @@ try {
 
 <script src="respones.js"></script>
 <script src="create-process.js"></script>
+<script src="newReportProcess.js"></script>
 <?php require_once('footer.php'); ?>

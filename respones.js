@@ -28,7 +28,7 @@ function updateTableRows() {
 	}
 	if (highestRowCount < rows.length) {
 		for (let i = rows.length - 1; i >= highestRowCount; i--) {
-			tbody.removeChild(rows[i]);
+			//tbody.removeChild(rows[i]);
 		}
 	}
 }
