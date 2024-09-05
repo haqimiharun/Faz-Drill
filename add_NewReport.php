@@ -9,7 +9,7 @@
         <!-- Hidden dropdown for adding a new country -->
         <div id="newCountryDropdown" style="display: none;">
             <select id="newCountrySelect" name="newCountryId">
-                <option value="">Select a Country</option>
+                <option value="addNewCountry">Select a Country</option>
                 <!-- New country options will be populated by AJAX -->
             </select>
         </div>

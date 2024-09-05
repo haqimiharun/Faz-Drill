@@ -129,292 +129,6 @@ addCountryBtn.onclick = function () {
 };
 
 // Function to setup Report Form Submission
-function setupNewReportFormSubmission() {
-	console.log("Setting up New Report Form Submission");
-
-	var reportForm = document.getElementById("reportForm");
-
-	var countrySelect = document.getElementById("countrySelect");
-	var fieldSelect = document.getElementById("fieldSelect");
-	var siteSelect = document.getElementById("siteSelect");
-	var wellSelect = document.getElementById("wellSelect");
-	var wellboreSelect = document.getElementById("wellboreSelect");
-	var newCountryDropdown = document.getElementById("newCountryDropdown");
-	var newCountrySelect = document.getElementById("newCountrySelect");
-
-	// Add placeholder options
-	function addPlaceholder(selectElement, placeholderText) {
-		selectElement.innerHTML = ""; // Clear previous options
-		var placeholderOption = document.createElement("option");
-		placeholderOption.value = "";
-		placeholderOption.text = placeholderText;
-		placeholderOption.disabled = true;
-		placeholderOption.selected = true;
-		selectElement.appendChild(placeholderOption);
-	}
-
-	// Fetch all countries and populate the country select element
-	fetch("get_SelectedCountry.php")
-		.then((response) => response.json())
-		.then((data) => {
-			if (data.error) {
-				console.error(data.error);
-			} else {
-				data.forEach((country) => {
-					var option = document.createElement("option");
-					option.value = country.country_id;
-					option.text = country.country_name;
-					countrySelect.appendChild(option);
-				});
-				// Add "Add New Country" option
-				var addNewCountryOption = document.createElement("option");
-				addNewCountryOption.value = "addNewCountry";
-				addNewCountryOption.text = "Add New Country";
-				countrySelect.appendChild(addNewCountryOption);
-			}
-		})
-		.catch((error) => console.error("Error fetching countries:", error));
-
-	// Handle "Add New" option for Country
-	countrySelect.addEventListener("change", function () {
-		if (countrySelect.value === "addNewCountry") {
-			// Show the new country dropdown
-			newCountryDropdown.style.display = "block";
-			// Fetch the list of countries to populate the new country dropdown
-			fetch("get_AllCountries.php")
-				.then((response) => response.json())
-				.then((data) => {
-					if (data.error) {
-						console.error(data.error);
-					} else {
-						addPlaceholder(newCountrySelect, "Select a Country");
-						data.forEach((country) => {
-							var option = document.createElement("option");
-							option.value = country.country_id;
-							option.text = country.country_name;
-							newCountrySelect.appendChild(option);
-						});
-					}
-				})
-				.catch((error) =>
-					console.error("Error fetching all countries:", error)
-				);
-		} else {
-			// Hide the new country dropdown if not adding a new country
-			newCountryDropdown.style.display = "none";
-		}
-
-		// Fetch fields when a country is selected
-		if (countrySelect.value !== "addNewCountry") {
-			// fieldSelect.innerHTML = ""; // Clear previous options
-			siteSelect.innerHTML = ""; // Clear site options
-			wellSelect.innerHTML = ""; // Clear well options
-			wellboreSelect.innerHTML = ""; // Clear wellbore options
-			// addPlaceholder(fieldSelect, "Select a Field");
-			addPlaceholder(siteSelect, "Select a Site");
-			addPlaceholder(wellSelect, "Select a Well");
-			addPlaceholder(wellboreSelect, "Select a Wellbore");
-
-			fetch(`get_AllFields.php?countryId=${countrySelect.value}`)
-				.then((response) => response.json())
-				.then((data) => {
-					if (data.status === "success" && data.data.length > 0) {
-						data.data.forEach((field) => {
-							var option = document.createElement("option");
-							option.value = field.field_id; // Ensure to use the correct key for field ID
-							option.text = field.field_name; // Ensure to use the correct key for field name
-							fieldSelect.appendChild(option);
-						});
-						// Add "Add New Field" option
-						var addNewFieldOption = document.createElement("option");
-						addNewFieldOption.value = "addNewField";
-						addNewFieldOption.text = "Add New Field";
-						fieldSelect.appendChild(addNewFieldOption);
-					} else {
-						addPlaceholder(fieldSelect, "No fields available");
-					}
-				})
-				.catch((error) => console.error("Error fetching fields:", error));
-		}
-	});
-
-	// Handle "Add New" option for Field
-	fieldSelect.addEventListener("change", function () {
-		if (fieldSelect.value === "addNewField") {
-			document.getElementById("newFieldDropdown").style.display = "block";
-		} else {
-			document.getElementById("newFieldDropdown").style.display = "none";
-		}
-
-		// Fetch sites when a field is selected
-		if (fieldSelect.value !== "addNewField") {
-			siteSelect.innerHTML = ""; // Clear previous options
-			wellSelect.innerHTML = ""; // Clear well options
-			wellboreSelect.innerHTML = ""; // Clear wellbore options
-			addPlaceholder(siteSelect, "Select a Site");
-			addPlaceholder(wellSelect, "Select a Well");
-			addPlaceholder(wellboreSelect, "Select a Wellbore");
-
-			fetch(`get_AllSites.php?fieldId=${fieldSelect.value}`)
-				.then((response) => response.json())
-				.then((data) => {
-					if (data.status === "success" && data.data.length > 0) {
-						data.data.forEach((site) => {
-							var option = document.createElement("option");
-							option.value = site.site_id; // Ensure to use the correct key for site ID
-							option.text = site.site_name; // Ensure to use the correct key for site name
-							siteSelect.appendChild(option);
-						});
-						// Add "Add New Site" option
-						var addNewSiteOption = document.createElement("option");
-						addNewSiteOption.value = "addNewSite";
-						addNewSiteOption.text = "Add New Site";
-						siteSelect.appendChild(addNewSiteOption);
-					} else {
-						addPlaceholder(siteSelect, "No sites available");
-					}
-				})
-				.catch((error) => console.error("Error fetching sites:", error));
-		}
-	});
-
-	// Handle "Add New" option for Site
-	siteSelect.addEventListener("change", function () {
-		if (siteSelect.value === "addNewSite") {
-			document.getElementById("newSiteDropdown").style.display = "block";
-		} else {
-			document.getElementById("newSiteDropdown").style.display = "none";
-		}
-
-		// Fetch wells when a site is selected
-		if (siteSelect.value !== "addNewSite") {
-			wellSelect.innerHTML = ""; // Clear previous options
-			wellboreSelect.innerHTML = ""; // Clear wellbore options
-			addPlaceholder(wellSelect, "Select a Well");
-			addPlaceholder(wellboreSelect, "Select a Wellbore");
-
-			fetch(`get_AllWells.php?siteId=${siteSelect.value}`)
-				.then((response) => response.json())
-				.then((data) => {
-					if (data.status === "success" && data.data.length > 0) {
-						data.data.forEach((well) => {
-							var option = document.createElement("option");
-							option.value = well.well_id; // Ensure to use the correct key for well ID
-							option.text = well.well_name; // Ensure to use the correct key for well name
-							wellSelect.appendChild(option);
-						});
-						// Add "Add New Well" option
-						var addNewWellOption = document.createElement("option");
-						addNewWellOption.value = "addNewWell";
-						addNewWellOption.text = "Add New Well";
-						wellSelect.appendChild(addNewWellOption);
-					} else {
-						addPlaceholder(wellSelect, "No wells available");
-					}
-				})
-				.catch((error) => console.error("Error fetching wells:", error));
-		}
-	});
-
-	// Handle "Add New" option for Well
-	wellSelect.addEventListener("change", function () {
-		if (wellSelect.value === "addNewWell") {
-			document.getElementById("newWellDropdown").style.display = "block";
-		} else {
-			document.getElementById("newWellDropdown").style.display = "none";
-		}
-
-		// Fetch wellbores when a well is selected
-		if (wellSelect.value !== "addNewWell") {
-			wellboreSelect.innerHTML = ""; // Clear previous options
-			addPlaceholder(wellboreSelect, "Select a Wellbore");
-
-			fetch(`get_AllWellbores.php?wellId=${wellSelect.value}`)
-				.then((response) => response.json())
-				.then((data) => {
-					if (data.status === "success" && data.data.length > 0) {
-						data.data.forEach((wellbore) => {
-							var option = document.createElement("option");
-							option.value = wellbore.wellbore_id; // Ensure to use the correct key for wellbore ID
-							option.text = wellbore.wellbore_name; // Ensure to use the correct key for wellbore name
-							wellboreSelect.appendChild(option);
-						});
-						// Add "Add New Wellbore" option
-						var addNewWellboreOption = document.createElement("option");
-						addNewWellboreOption.value = "addNewWellbore";
-						addNewWellboreOption.text = "Add New Wellbore";
-						wellboreSelect.appendChild(addNewWellboreOption);
-					} else {
-						addPlaceholder(wellboreSelect, "No wellbores available");
-					}
-				})
-				.catch((error) => console.error("Error fetching wellbores:", error));
-		}
-	});
-
-	// Handle "Add New" option for Wellbore
-	wellboreSelect.addEventListener("change", function () {
-		if (wellboreSelect.value === "addNewWellbore") {
-			document.getElementById("newWellboreDropdown").style.display = "block";
-		} else {
-			document.getElementById("newWellboreDropdown").style.display = "none";
-		}
-	});
-
-	// Handle form submission
-	reportForm.onsubmit = function (event) {
-		event.preventDefault();
-
-		let formData = new FormData(reportForm);
-
-		// Prepare data for submission
-		let data = {
-			countryId: formData.get("countryId"),
-			fieldId: formData.get("fieldId"),
-			siteId: formData.get("siteId"),
-			wellId: formData.get("wellId"),
-			wellboreId: formData.get("wellboreId"),
-			reportName: formData.get("reportName"),
-		};
-
-		// Check if any "Add New" option was selected
-		if (data.countryId === "addNewCountry") {
-			data.countryId = formData.get("newCountryId");
-		}
-		if (data.fieldId === "addNewField") {
-			data.newFieldName = formData.get("newFieldName");
-		}
-		if (data.siteId === "addNewSite") {
-			data.newSiteName = formData.get("newSiteName");
-		}
-		if (data.wellId === "addNewWell") {
-			data.newWellName = formData.get("newWellName");
-		}
-		if (data.wellboreId === "addNewWellbore") {
-			data.newWellboreName = formData.get("newWellboreName");
-		}
-
-		// Log data to check
-		console.log("Form Data:", data);
-
-		// Send data to the server
-		fetch("process_add_NewReport.php", {
-			method: "POST",
-			body: JSON.stringify(data),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		})
-			.then((response) => response.json())
-			.then((result) => {
-				console.log("Server Response:", result);
-				// Handle the server response, e.g., show a success message
-			})
-			.catch((error) => console.error("Error:", error));
-	};
-}
-
-// Function to setup Report Form Submission
 function setupReportFormSubmission() {
 	console.log("Setting up Report Form Submission");
 
@@ -465,8 +179,9 @@ function setupReportFormSubmission() {
 		fetch(`get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.name) {
-					var option = document.createElement("option");
 					option.value = countryId;
 					option.text = data.name; // Set the country name here
 					option.selected = true;
@@ -482,6 +197,13 @@ function setupReportFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching country name:", error));
+	} else {
+		// If no country is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Country First";
+		option.disabled = true;
+		option.selected = true;
+		countrySelect.appendChild(option);
 	}
 
 	// Fetch field name based on fieldId and set up the field select element
@@ -489,8 +211,9 @@ function setupReportFormSubmission() {
 		fetch(`get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.field_name) {
-					var option = document.createElement("option");
 					option.value = fieldId;
 					option.text = data.field_name; // Set the field name here
 					option.selected = true;
@@ -506,6 +229,13 @@ function setupReportFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching field name:", error));
+	} else {
+		// If no field is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Field First";
+		option.disabled = true;
+		option.selected = true;
+		fieldSelect.appendChild(option);
 	}
 
 	// Fetch site name based on siteId and set up the site select element
@@ -513,8 +243,9 @@ function setupReportFormSubmission() {
 		fetch(`get_sites.php?id=${siteId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.site_name) {
-					var option = document.createElement("option");
 					option.value = siteId;
 					option.text = data.site_name; // Set the site name here
 					option.selected = true;
@@ -530,6 +261,13 @@ function setupReportFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching site name:", error));
+	} else {
+		// If no site is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Site First";
+		option.disabled = true;
+		option.selected = true;
+		siteSelect.appendChild(option);
 	}
 
 	// Fetch well name based on wellId and set up the well select element
@@ -537,8 +275,9 @@ function setupReportFormSubmission() {
 		fetch(`get_wells.php?id=${wellId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.well_name) {
-					var option = document.createElement("option");
 					option.value = wellId;
 					option.text = data.well_name; // Set the well name here
 					option.selected = true;
@@ -554,6 +293,13 @@ function setupReportFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching well name:", error));
+	} else {
+		// If no well is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Well First";
+		option.disabled = true;
+		option.selected = true;
+		wellSelect.appendChild(option);
 	}
 
 	// Fetch wellbore name based on wellboreId and set up the wellbore select element
@@ -561,8 +307,9 @@ function setupReportFormSubmission() {
 		fetch(`get_wellbores.php?id=${wellboreId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.wellbore_name) {
-					var option = document.createElement("option");
 					option.value = wellboreId;
 					option.text = data.wellbore_name; // Set the wellbore name here
 					option.selected = true;
@@ -578,6 +325,13 @@ function setupReportFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching wellbore name:", error));
+	} else {
+		// If no wellbore is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Wellbore First";
+		option.disabled = true;
+		option.selected = true;
+		wellboreSelect.appendChild(option);
 	}
 
 	reportForm.onsubmit = function (event) {
@@ -632,8 +386,9 @@ function setupWellboreFormSubmission() {
 		fetch(`get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.name) {
-					var option = document.createElement("option");
 					option.value = countryId;
 					option.text = data.name; // Set the country name here
 					option.selected = true;
@@ -649,6 +404,13 @@ function setupWellboreFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching country name:", error));
+	} else {
+		// If no country is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Country First";
+		option.disabled = true;
+		option.selected = true;
+		countrySelect.appendChild(option);
 	}
 
 	// Fetch field name based on fieldId and set up the field select element
@@ -656,8 +418,9 @@ function setupWellboreFormSubmission() {
 		fetch(`get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.field_name) {
-					var option = document.createElement("option");
 					option.value = fieldId;
 					option.text = data.field_name; // Set the field name here
 					option.selected = true;
@@ -673,6 +436,13 @@ function setupWellboreFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching field name:", error));
+	} else {
+		// If no field is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Field First";
+		option.disabled = true;
+		option.selected = true;
+		fieldSelect.appendChild(option);
 	}
 
 	// Fetch site name based on siteId and set up the site select element
@@ -680,8 +450,9 @@ function setupWellboreFormSubmission() {
 		fetch(`get_sites.php?id=${siteId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.site_name) {
-					var option = document.createElement("option");
 					option.value = siteId;
 					option.text = data.site_name; // Set the site name here
 					option.selected = true;
@@ -697,6 +468,13 @@ function setupWellboreFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching site name:", error));
+	} else {
+		// If no site is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Site First";
+		option.disabled = true;
+		option.selected = true;
+		siteSelect.appendChild(option);
 	}
 
 	// Fetch well name based on wellId and set up the well select element
@@ -704,8 +482,9 @@ function setupWellboreFormSubmission() {
 		fetch(`get_wells.php?id=${wellId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.well_name) {
-					var option = document.createElement("option");
 					option.value = wellId;
 					option.text = data.well_name; // Set the well name here
 					option.selected = true;
@@ -721,6 +500,13 @@ function setupWellboreFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching well name:", error));
+	} else {
+		// If no well is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Well First";
+		option.disabled = true;
+		option.selected = true;
+		wellSelect.appendChild(option);
 	}
 
 	wellboreForm.onsubmit = function (event) {
@@ -764,14 +550,14 @@ function setupWellFormSubmission() {
 		console.error("One or more form elements not found");
 		return;
 	}
-
 	// Fetch country name and set up the country select element
 	if (countryId) {
 		fetch(`get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.name) {
-					var option = document.createElement("option");
 					option.value = countryId;
 					option.text = data.name; // Set the country name here
 					option.selected = true;
@@ -787,6 +573,13 @@ function setupWellFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching country name:", error));
+	} else {
+		// If no country is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Country First";
+		option.disabled = true;
+		option.selected = true;
+		countrySelect.appendChild(option);
 	}
 
 	// Fetch field name based on fieldId and set up the field select element
@@ -794,8 +587,9 @@ function setupWellFormSubmission() {
 		fetch(`get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.field_name) {
-					var option = document.createElement("option");
 					option.value = fieldId;
 					option.text = data.field_name; // Set the field name here
 					option.selected = true;
@@ -811,6 +605,13 @@ function setupWellFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching field name:", error));
+	} else {
+		// If no field is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Field First";
+		option.disabled = true;
+		option.selected = true;
+		fieldSelect.appendChild(option);
 	}
 
 	// Fetch site name based on siteId and set up the site select element
@@ -818,8 +619,9 @@ function setupWellFormSubmission() {
 		fetch(`get_sites.php?id=${siteId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.site_name) {
-					var option = document.createElement("option");
 					option.value = siteId;
 					option.text = data.site_name; // Set the site name here
 					option.selected = true;
@@ -835,6 +637,13 @@ function setupWellFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching site name:", error));
+	} else {
+		// If no site is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Site First";
+		option.disabled = true;
+		option.selected = true;
+		siteSelect.appendChild(option);
 	}
 
 	wellForm.onsubmit = function (event) {
@@ -874,8 +683,9 @@ function setupSiteFormSubmission() {
 		fetch(`get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.name) {
-					var option = document.createElement("option");
 					option.value = countryId;
 					option.text = data.name; // Set the country name here
 					option.selected = true;
@@ -891,6 +701,13 @@ function setupSiteFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching country name:", error));
+	} else {
+		// If no country is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Country First";
+		option.disabled = true;
+		option.selected = true;
+		countrySelect.appendChild(option);
 	}
 
 	// Fetch field name based on fieldId and set up the field select element
@@ -898,8 +715,9 @@ function setupSiteFormSubmission() {
 		fetch(`get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.field_name) {
-					var option = document.createElement("option");
 					option.value = fieldId;
 					option.text = data.field_name; // Set the field name here
 					option.selected = true;
@@ -915,6 +733,13 @@ function setupSiteFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching field name:", error));
+	} else {
+		// If no field is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Field First";
+		option.disabled = true;
+		option.selected = true;
+		fieldSelect.appendChild(option);
 	}
 
 	siteForm.onsubmit = function (event) {
@@ -947,13 +772,14 @@ function setupFieldFormSubmission() {
 		return;
 	}
 
-	// Fetch the country name from the server
+	// Fetch country name and set up the country select element
 	if (countryId) {
 		fetch(`get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				var option = document.createElement("option");
+
 				if (data && data.name) {
-					var option = document.createElement("option");
 					option.value = countryId;
 					option.text = data.name; // Set the country name here
 					option.selected = true;
@@ -969,6 +795,13 @@ function setupFieldFormSubmission() {
 				}
 			})
 			.catch((error) => console.error("Error fetching country name:", error));
+	} else {
+		// If no country is chosen, set default text
+		var option = document.createElement("option");
+		option.text = "Choose or Create a Country First";
+		option.disabled = true;
+		option.selected = true;
+		countrySelect.appendChild(option);
 	}
 
 	// Save selected country to sessionStorage on change
