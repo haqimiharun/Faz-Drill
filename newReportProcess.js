@@ -331,7 +331,7 @@ function setupNewReportFormSubmission() {
 
 	reportForm.onsubmit = function (event) {
 		event.preventDefault();
-		submitForm(reportForm, "process_add_report.php");
+		submitForm(reportForm, "process_add_NewReport.php");
 	};
 
 	function submitForm(form, url) {

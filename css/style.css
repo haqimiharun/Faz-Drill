@@ -156,9 +156,34 @@ body {
 	text-decoration: none;
 	cursor: pointer;
 }
-
+/* Input Date Styles */
+input[type="date"] {
+	width: calc(100% - 20px);
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	color: #333;
+	font-size: 14px;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+input[type="date"]:hover,
+input[type="date"]:focus {
+	border-color: #42c3fc;
+	box-shadow: 0 0 5px rgba(66, 195, 252, 0.5);
+}
+input[type="date"]:disabled {
+	background-color: #f0f0f0;
+	color: #999;
+	cursor: not-allowed;
+}
+input[type="date"]::placeholder {
+	color: #999;
+	opacity: 1;
+}
 /* Input DateTime Styles */
-input[type="datetime-local"] {
+input[type="date"] {
 	width: calc(100% - 20px);
 	padding: 8px;
 	border-radius: 4px;
