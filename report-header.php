@@ -14,6 +14,10 @@
             <div class="container">
                 <h2>Supervision</h2>
                 <form action="process-report-header.php" method="post">
+                <div class="form-group">
+                        <label for="Well"> Well</label>
+                        <input type="text" id="Well" name="Well" placeholder="Enter WellName">
+                    </div>
                     <div class="form-group">
                         <label for="engineer">Drilling Engineer/Company</label>
                         <input type="text" id="engineer" name="engineer" placeholder="Enter Engineer/Company Name">
@@ -31,8 +35,73 @@
                         <input type="text" id="toolpusher" name="toolpusher" placeholder="Enter Tool Pusher Name">
                     </div>
                     <div class="form-group">
-                        <label for="operator">Operator</label>
-                        <input type="text" id="operator" name="operator" placeholder="Enter Operator Name">
+                        <label for="Contactor">Contractor</label>
+                        <input type="text" id="Contractor" name="Contractor" placeholder="Enter Contractor Name">
+                    </div>
+                </form>
+            </div>
+            <div class="container">
+                <h2>Report Header</Header></h2>
+                <form action="process-report-header.php" method="post">
+                <div class="form-group">
+                        <label for="Location"> Location</label>
+                        <input type="text" id="Location" name="Location" placeholder="Enter Current Location ">
+                    </div>
+                    <div class="form-group">
+                        <label for="Next-Location">Next Location</label>
+                        <input type="text" id="Next-Locationer" name="Next-Location" placeholder="Enter Next-Location">
+                    </div>
+                    <div class="form-group">
+                        <label for="TD">Proposed TD</label>
+                        <input type="text" id="TD" name="TD" placeholder="Enter Proposed TD">
+                    </div>
+                    <div class="form-group">
+                        <label for="AFE"> AFE</label>
+                        <input type="text" id="AFE" name="AFE" placeholder="Enter AFE">
+                    </div>
+                    <div class="form-group">
+                        <label for="toolpusher">Tool Pusher</label>
+                        <input type="text" id="toolpusher" name="toolpusher" placeholder="Enter Tool Pusher Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Contactor">Contractor</label>
+                        <input type="text" id="Contractor" name="Contractor" placeholder="Enter Contractor Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Objective">Objective</label>
+                        <input type="text" id="Objective" name="Objective" placeholder="Enter Objective Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Location">Location</label>
+                        <input type="text" id="Location" name="Location" placeholder="Enter Location Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Present">Present Operation</label>
+                        <input type="text" id="Present" name="Present" placeholder="Enter Present Operation">
+                    </div>
+                    <div class="form-group">
+                        <label for="Spud-Data">Spud Data</label>
+                        <input type="date" id="Spud-Data" name="Spud-Data" placeholder="Enter Date and Time">
+                    </div>
+                    <div class="form-group">
+                        <label for="Last-Casing">Last Casing</label>
+                        <input type="text" id="Last-Casing" name="Last-Casing" placeholder="Enter Last Casing">
+                    </div>
+                    <div class="form-group">
+                        <label for="Next-Casing">Next Casing</label>
+                        <input type="text" id="Next-Casing" name="Next-Casing" placeholder="Enter Next Casing">
+                    </div>
+                    <div class="form-group">
+                        <label for="Next-Casing">Next Casing</label>
+                        <input type="text" id="Next-Casing" name="Next-Casing" placeholder="Enter Next Casing">
+                    </div>
+                    <div class="form-group">
+                        <label for="LOF-Mudden">Leakoff Mud Density</label>
+                        <input type="text" id="LOF-Mudden" name="LOF-Mudden" placeholder="Enter Leakoff Mud Density">
+                    </div>
+                    <div class="form-group">
+                        <label for="Last-BOP">Last BOP Test</label>
+                        <input type="date" id="Last-BOP" name="Last-BOP" placeholder="Enter Last BOP Test">
                     </div>
                 </form>
             </div>
@@ -49,8 +118,8 @@
                         <input type="number" id="contractor" name="contractor" oninput="calculateTotal()" placeholder="Enter number of contractor">
                     </div>
                     <div class="form-group personnel-group">
-                        <label for="service_co">Service Co</label>
-                        <input type="number" id="service_co" name="service_co" oninput="calculateTotal()" placeholder="Enter number of service co">
+                        <label for="service_co">Service Corporation</label>
+                        <input type="number" id="service_co" name="service_co" oninput="calculateTotal()" placeholder="Enter number of service corporation">
                     </div>
                     <div class="form-group personnel-group">
                         <label for="catering">Catering</label>

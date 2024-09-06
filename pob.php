@@ -49,7 +49,7 @@
                                         <td><input type="text" name="input_1_4" /></td>
                                         <td><input type="text" name="input_1_5" /></td>
                                         <td><input type="text" name="input_1_6" /></td>
-                                        <td><input type="text" id="dayOnRig_1" name="input_1_7" readonly /></td>
+                                        <td><input type="text" id="dayOnRig_1" name="input_1_7" /></td>
                                         <td><input type="text" name="input_1_8" /></td>
                                         <td><input type="text" name="input_1_9" /></td>
                                         <td><input type="text" name="input_1_10" /></td>
