@@ -45,6 +45,14 @@ function setupNewReportFormSubmission() {
 
 	// Handle "Add New" option and cascading reset for Country
 	countrySelect.addEventListener("change", function () {
+		// Hide the new country dropdown if not adding a new country
+		newCountryDropdown.style.display = "none";
+
+		// Reset field and other dependent dropdowns
+		resetDropdown(fieldSelect, "Select a Field");
+		resetDropdown(siteSelect, "Select a Site");
+		resetDropdown(wellSelect, "Select a Well");
+		resetDropdown(wellboreSelect, "Select a Wellbore");
 		if (countrySelect.value === "addNewCountry") {
 			// Show the new country dropdown
 			newCountryDropdown.style.display = "block";
@@ -72,7 +80,6 @@ function setupNewReportFormSubmission() {
 										(country) =>
 											!selectedCountryIds.includes(country.country_id)
 									);
-
 									// Step 4: Populate the new country dropdown
 									addPlaceholder(newCountrySelect, "Select a Country");
 									availableCountries.forEach((country) => {

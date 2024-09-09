@@ -18,7 +18,7 @@
         <label for="fieldSelect">Select Field</label>
         <select id="fieldSelect" name="fieldId" required>
             <option value="">Select a Field</option>
-            <option value="addNewField">Add New Field</option>
+            <!-- <option value="addNewField">Add New Field</option> -->
             <!-- Field options will be populated based on selected country -->
         </select>
         <!-- Hidden input for adding a new field -->
