@@ -49,7 +49,8 @@ body {
 }
 .form-group input[type="text"],
 .form-group input[type="number"],
-.form-group select {
+.form-group select,
+.form-group textarea {
 	width: calc(100% - 20px);
 	padding: 8px;
 	border-radius: 4px;
@@ -125,6 +126,22 @@ body {
 	overflow-x: auto;
 }
 
+/* Specific style for small button column */
+.small-column {
+	width: 100px; /* Set the width as per your requirement */
+	padding: 5px;
+}
+
+.small-column button {
+	width: 50%; /* Ensure button fills the small column */
+	padding: 4px;
+}
+
+.small-column input {
+	width: 100%; /* Ensure input fills the small column */
+	padding: 6px;
+}
+
 /* Popup Styles */
 .popup {
 	display: none;
@@ -183,7 +200,7 @@ input[type="date"]::placeholder {
 	opacity: 1;
 }
 /* Input DateTime Styles */
-input[type="date"] {
+input[type="datetime-local"] {
 	width: calc(100% - 20px);
 	padding: 8px;
 	border-radius: 4px;
@@ -194,6 +211,7 @@ input[type="date"] {
 	font-size: 14px;
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 input[type="datetime-local"]:hover,
 input[type="datetime-local"]:focus {
 	border-color: #42c3fc;

@@ -1,14 +1,4 @@
-<?php require_once('header.php'); ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Well Info Input</title>
-    
-</head>
-<body>
     <div class="wrapper">
         <h1 style="text-align: center;">Well Data</h1>
         <div class="row1">
@@ -126,7 +116,7 @@
                         <label for="Resistivity">Resistivity</label> 
                         <input type="text" id="Resistivity" name="Resistivity" placeholder = "Enter Resistivity"> 
                     </div>
-</form>
+                </form>
 
             </div>
         </div>
@@ -179,72 +169,65 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
                         </div>
                     </form>
-
-                    <script>
-                        let rowCount = 1;
-
-                        function addRow(button) {
-                            const currentRow = button.parentElement.parentElement;
-                            const inputs = currentRow.querySelectorAll('input[type="text"]');
-                            let allFilled = true;
-
-                            // Check if all input fields are filled in the current row
-                            inputs.forEach(input => {
-                                if (input.value.trim() === '') {
-                                    allFilled = false;
-                                }
-                            });
-
-                            if (allFilled) {
-                                rowCount++;
-                                const table = document.getElementById("inputTable").getElementsByTagName('tbody')[0];
-                                const newRow = table.insertRow();
-
-                                for (let i = 0; i < 14; i++) {
-                                    const newCell = newRow.insertCell(i);
-                                    if (i === 0) {
-                                        newCell.innerHTML = `
-                                            <button type="button" class="add-row" onclick="addRow(this)">+</button>
-                                        `;
-                                    } else {
-                                        newCell.innerHTML = `<input type="text" name="input_${rowCount}_${i}" />`;
-                                    }
-                                }
-
-                                // Disable the "Add" button of the current row
-                                button.disabled = true;
-                            } else {
-                                alert("Please fill in all fields before adding a new row.");
-                            }
-                        }
-
-                        // Disable the add button if all fields are filled and prevent adding another row
-                        document.querySelectorAll('tbody tr').forEach(row => {
-                            const addButton = row.querySelector('.add-row');
-                            const inputs = row.querySelectorAll('input[type="text"]');
-                            
-                            let allFilled = true;
-                            inputs.forEach(input => {
-                                if (input.value.trim() === '') {
-                                    allFilled = false;
-                                }
-                            });
-
-                            if (allFilled) {
-                                addButton.disabled = true;
-                            }
-                        });
-                    </script>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-        <div class="btn-group">
-            <button type="submit">Submit</button>
-        </div>
-</body>
-</html>
-    <?php require_once('footer.php'); ?>
+<script>
+    let rowCount = 1;
 
+    function addRow(button) {
+        const currentRow = button.parentElement.parentElement;
+        const inputs = currentRow.querySelectorAll('input[type="text"]');
+        let allFilled = true;
+
+        // Check if all input fields are filled in the current row
+        inputs.forEach(input => {
+            if (input.value.trim() === '') {
+                allFilled = false;
+            }
+        });
+
+        if (allFilled) {
+            rowCount++;
+            const table = document.getElementById("inputTable").getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            for (let i = 0; i < 14; i++) {
+                const newCell = newRow.insertCell(i);
+                if (i === 0) {
+                    newCell.innerHTML = `
+                        <button type="button" class="add-row" onclick="addRow(this)">+</button>
+                    `;
+                } else {
+                    newCell.innerHTML = `<input type="text" name="input_${rowCount}_${i}" />`;
+                }
+            }
+
+            // Disable the "Add" button of the current row
+            button.disabled = true;
+        } else {
+            alert("Please fill in all fields before adding a new row.");
+        }
+    }
+
+    // Disable the add button if all fields are filled and prevent adding another row
+    document.querySelectorAll('tbody tr').forEach(row => {
+        const addButton = row.querySelector('.add-row');
+        const inputs = row.querySelectorAll('input[type="text"]');
+        
+        let allFilled = true;
+        inputs.forEach(input => {
+            if (input.value.trim() === '') {
+                allFilled = false;
+            }
+        });
+
+        if (allFilled) {
+            addButton.disabled = true;
+        }
+    });
+</script>
