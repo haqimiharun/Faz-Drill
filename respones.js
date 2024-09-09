@@ -299,8 +299,22 @@ document.addEventListener("DOMContentLoaded", function () {
 						window.open(url, "_blank"); // Open in a new tab or window
 					});
 
+					// Create the pencil icon
+					const icon2 = document.createElement("i");
+					icon2.classList.add("fa", "fa-cat"); // Using FontAwesome for the pencil icon
+					icon2.style.cursor = "pointer";
+					icon2.style.marginLeft = "10px"; // Add some space between text and icon
+					icon2.addEventListener("click", function () {
+						const reportId = reportElement.dataset.reportId;
+						const url = `http://localhost/Faz-Drill/report-viewer.php?reportId=${encodeURIComponent(
+							reportId
+						)}`;
+						window.open(url, "_blank"); // Open in a new tab or window
+					});
+
 					// Append the report name and icon
 					reportElement.appendChild(icon);
+					reportElement.appendChild(icon2);
 					reportCell.appendChild(reportElement);
 				}
 			}
