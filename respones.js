@@ -504,4 +504,12 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		}
 	}
+
+	function updateAllTableData(reports, wellbores, wells, sites, fields) {
+		updateReportData(reports);
+		updateWellboreData(wellbores);
+		updateWellData(wells);
+		updateSiteData(sites);
+		updateFieldData(fields);
+	}
 });

@@ -1,7 +1,6 @@
 <?php require_once('header-db.php'); ?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <?php
 // Database connection settings
 $dbhost = 'localhost';
@@ -111,9 +110,9 @@ try {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
-.selected-cell {
-    background-color: #a0c1ff; /* Slightly darker blue for selected cells */
-}
+    .selected-cell {
+        background-color: #a0c1ff; /* Slightly darker blue for selected cells */
+    }
 
     .disabled-link {
         pointer-events: none;
