@@ -19,6 +19,13 @@
                         <input type="text" id="Well" name="Well" placeholder="Enter WellName">
                     </div>
                     <div class="form-group">
+                        <label for="Lead-DSV">Lead DSV</label>
+                        <input type="text" id="Lead-DSV" name="Lead-DSV" placeholder="Enter Lead DSV">
+                    </div><div class="form-group">
+                        <label for="-DSNightV">Night DSV</label>
+                        <input type="text" id="Night-DSV" name="Night-DSV" placeholder="Enter Night DSV">
+                    </div>
+                    <div class="form-group">
                         <label for="engineer">Drilling Engineer/Company</label>
                         <input type="text" id="engineer" name="engineer" placeholder="Enter Engineer/Company Name">
                     </div>
@@ -52,7 +59,7 @@
                         <input type="text" id="Next-Locationer" name="Next-Location" placeholder="Enter Next-Location">
                     </div>
                     <div class="form-group">
-                        <label for="TD">Proposed TD</label>
+                        <label for="TD">Proposed TD, length</label>
                         <input type="text" id="TD" name="TD" placeholder="Enter Proposed TD">
                     </div>
                     <div class="form-group">
@@ -72,10 +79,6 @@
                         <input type="text" id="Objective" name="Objective" placeholder="Enter Objective Name">
                     </div>
                     <div class="form-group">
-                        <label for="Location">Location</label>
-                        <input type="text" id="Location" name="Location" placeholder="Enter Location Name">
-                    </div>
-                    <div class="form-group">
                         <label for="Present">Present Operation</label>
                         <input type="text" id="Present" name="Present" placeholder="Enter Present Operation">
                     </div>
@@ -92,16 +95,24 @@
                         <input type="text" id="Next-Casing" name="Next-Casing" placeholder="Enter Next Casing">
                     </div>
                     <div class="form-group">
-                        <label for="Next-Casing">Next Casing</label>
-                        <input type="text" id="Next-Casing" name="Next-Casing" placeholder="Enter Next Casing">
-                    </div>
-                    <div class="form-group">
                         <label for="LOF-Mudden">Leakoff Mud Density</label>
                         <input type="text" id="LOF-Mudden" name="LOF-Mudden" placeholder="Enter Leakoff Mud Density">
                     </div>
                     <div class="form-group">
                         <label for="Last-BOP">Last BOP Test</label>
                         <input type="date" id="Last-BOP" name="Last-BOP" placeholder="Enter Last BOP Test">
+                    </div>
+                    <div class="form-group">
+                        <label for="Repairs">RD/Repairs Last 24 Hrs</label>
+                        <input type="text" id="Repairs" name="Repairs" placeholder="Enter RD/Repairs Last 24 Hrs">
+                    </div>
+                    <div class="form-group">
+                        <label for="Est-AFECost">Est AFE Cost, $</label>
+                        <input type="text" id="Est-AFECost" name="Est-AFECost" placeholder="Enter Est AFE Cost">
+                    </div>
+                    <div class="form-group">
+                        <label for="LostTime">Lost Time Accidents</label>
+                        <input type="date" id="LostTime" name="LostTime" placeholder="Enter Lost Time Accidents">
                     </div>
                 </form>
             </div>
@@ -132,6 +143,7 @@
                     <div class="form-group">
                         <label for="total">Total</label>
                         <input type="number" id="total" name="total" readonly placeholder="0">
+                    </div>
                     </div>
                 </form>
             </div>

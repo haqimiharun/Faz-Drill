@@ -51,11 +51,11 @@
                         <input type="text" id="wellLoc" name="wellLoc" placeholder="Enter Well Location">
                     </div>
                     <div class="form-group">
-                        <label for="TVD-planDepth">Plan Depth (TVD)</label>
+                        <label for="TVD-planDepth">Plan Depth (TVD), Depth</label>
                         <input type="text" id="TVD-planDepth" name="TVD-planDepth" placeholder="Enter Plan Depth (TVD)">
                     </div>
                     <div class="form-group">
-                        <label for="MD-planDepth">Plan Depth (MD)</label>
+                        <label for="MD-planDepth">Plan Depth (MD), Depth</label>
                         <input type="text" id="MD-planDepth" name="MD-planDepth" placeholder="Enter Plan Depth (MD)">
                     </div>
                     <div class="form-group">
@@ -74,11 +74,11 @@
                         <input type="text" id="Formation-Name" name="Formation-Name" placeholder="Enter Formation Name">
                     </div>
                     <div class="form-group">
-                        <label for="Formation-Depth">Formation Depth</label>
+                        <label for="Formation-Depth">Formation Depth, Depth</label>
                         <input type="text" id="Formation-Depth" name="Formation-Depth" placeholder="Enter Formation Depth">
                     </div>
                     <div class="form-group">
-                        <label for="Formation-Tops">Formation Tops</label>
+                        <label for="Formation-Tops">Formation Tops, Depth</label>
                         <input type="text" id="Formation-Tops" name="Formation-Tops" placeholder="Enter Formation Tops">
                     </div>
                     <div class="form-group">
@@ -86,12 +86,12 @@
                         <input type="text" id="Type-of-Lithology" name="Type-of-Lithology" placeholder="Enter Type of Lithology">
                     </div>
                     <div class="form-group">
-                        <label for="Porosity">Porosity</label>
+                        <label for="Porosity">Porosity, Φ</label>
                         <input type="text" id="Porosity" name="Porosity" placeholder="Enter Porosity">
                     </div>
                     <div class="form-group">
-                        <label for="Darcys(d)-Permeability">Permeability</label>
-                        <input type="text" id="Permeability" name="Permeability" placeholder = "Enter Permeability (Darcys(d))">
+                        <label for="Darcys(d)-Permeability">Permeability, K</label>
+                        <input type="text" id="Permeability" name="Permeability" placeholder = "Enter Permeability">
                     </div>
                     <div class="form-group">
                         <label for="Fomartion-Pressure">Formation Pressure</label>
