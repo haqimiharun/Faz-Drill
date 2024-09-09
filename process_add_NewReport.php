@@ -16,6 +16,7 @@ try {
 
     // Get the JSON data
     $data = json_decode(file_get_contents('php://input'), true);
+    error_log(json_encode($data)); // Log incoming JSON data
 
     if (isset($data['countryId'], $data['fieldId'], $data['siteId'], $data['wellId'], $data['wellboreId'], $data['reportName'])) {
         $countryId = $data['countryId'];
@@ -25,74 +26,85 @@ try {
         $wellboreId = $data['wellboreId'];
         $reportName = trim($data['reportName']);
 
+        // Handle new country
         if ($countryId === "addNewCountry" && isset($data['newCountryId'])) {
-            $countryId = $data['newCountryId'];
+            $newCountryId = $data['newCountryId'];
+            $stmt = $pdo->prepare("INSERT INTO tbl_country (country_id) VALUES (:countryId)");
+            $stmt->bindParam(':countryId', $newCountryId);
+            if (!$stmt->execute()) {
+                error_log("Error inserting new country: " . json_encode($stmt->errorInfo()));
+            }
+            $countryId = $pdo->lastInsertId();
         }
 
-        if (!empty($reportName)) {
-            // Handle adding new entries if needed
-            if ($fieldId === "addNewField" && isset($data['newFieldName'])) {
-                $newFieldName = trim($data['newFieldName']);
-                $stmt = $pdo->prepare("INSERT INTO tbl_field (field_name, country_id) VALUES (:fieldName, :countryId)");
-                $stmt->bindParam(':fieldName', $newFieldName);
-                $stmt->bindParam(':countryId', $countryId);
-                $stmt->execute();
-                $fieldId = $pdo->lastInsertId();
-                error_log("New field added: $fieldId - $newFieldName");
-            }
-
-            if ($siteId === "addNewSite" && isset($data['newSiteName'])) {
-                $newSiteName = trim($data['newSiteName']);
-                $stmt = $pdo->prepare("INSERT INTO tbl_site (site_name, field_id, country_id) VALUES (:siteName, :fieldId, :countryId)");
-                $stmt->bindParam(':siteName', $newSiteName);
-                $stmt->bindParam(':fieldId', $fieldId);
-                $stmt->bindParam(':countryId', $countryId);
-                $stmt->execute();
-                $siteId = $pdo->lastInsertId();
-                error_log("New site added: $siteId - $newSiteName");
-            }
-
-            if ($wellId === "addNewWell" && isset($data['newWellName'])) {
-                $newWellName = trim($data['newWellName']);
-                $stmt = $pdo->prepare("INSERT INTO tbl_well (well_name, site_id, field_id, country_id) VALUES (:wellName, :siteId, :fieldId, :countryId)");
-                $stmt->bindParam(':wellName', $newWellName);
-                $stmt->bindParam(':siteId', $siteId);
-                $stmt->bindParam(':fieldId', $fieldId);
-                $stmt->bindParam(':countryId', $countryId);
-                $stmt->execute();
-                $wellId = $pdo->lastInsertId();
-                error_log("New well added: $wellId - $newWellName");
-            }
-
-            if ($wellboreId === "addNewWellbore" && isset($data['newWellboreName'])) {
-                $newWellboreName = trim($data['newWellboreName']);
-                $stmt = $pdo->prepare("INSERT INTO tbl_wellbore (wellbore_name, well_id, country_id, site_id, field_id) VALUES (:wellboreName, :wellId, :countryId, :siteId, :fieldId)");
-                $stmt->bindParam(':wellboreName', $newWellboreName);
-                $stmt->bindParam(':wellId', $wellId);
-                $stmt->bindParam(':countryId', $countryId);
-                $stmt->bindParam(':siteId', $siteId);
-                $stmt->bindParam(':fieldId', $fieldId);
-                $stmt->execute();
-                $wellboreId = $pdo->lastInsertId();
-                error_log("New wellbore added: $wellboreId - $newWellboreName");
-            }
-
-            // Insert the report
-            $stmt = $pdo->prepare("INSERT INTO tbl_report (country_id, field_id, site_id, well_id, wellbore_id, report_name) VALUES (:countryId, :fieldId, :siteId, :wellId, :wellboreId, :reportName)");
+        // Handle new field
+        if ($fieldId === "addNewField" && isset($data['newFieldName'])) {
+            $newFieldName = trim($data['newFieldName']);
+            $stmt = $pdo->prepare("INSERT INTO tbl_field (field_name, country_id) VALUES (:fieldName, :countryId)");
+            $stmt->bindParam(':fieldName', $newFieldName);
             $stmt->bindParam(':countryId', $countryId);
-            $stmt->bindParam(':fieldId', $fieldId);
-            $stmt->bindParam(':siteId', $siteId);
-            $stmt->bindParam(':wellId', $wellId);
-            $stmt->bindParam(':wellboreId', $wellboreId);
-            $stmt->bindParam(':reportName', $reportName);
-            $stmt->execute();
-
-            $response['status'] = 'success';
-            $response['message'] = "Report added successfully!";
-        } else {
-            $response['status'] = 'error';
-            $response['message'] = "Error: Report name cannot be empty.";
+            if (!$stmt->execute()) {
+                error_log("Error inserting new field: " . json_encode($stmt->errorInfo()));
+            }
+            $fieldId = $pdo->lastInsertId();
         }
+
+        // Handle new site
+        if ($siteId === "addNewSite" && isset($data['newSiteName'])) {
+            $newSiteName = trim($data['newSiteName']);
+            $stmt = $pdo->prepare("INSERT INTO tbl_site (site_name, field_id, country_id) VALUES (:siteName, :fieldId, :countryId)");
+            $stmt->bindParam(':siteName', $newSiteName);
+            $stmt->bindParam(':fieldId', $fieldId);
+            $stmt->bindParam(':countryId', $countryId);
+            if (!$stmt->execute()) {
+                error_log("Error inserting new site: " . json_encode($stmt->errorInfo()));
+            }
+            $siteId = $pdo->lastInsertId();
+        }
+
+        // Handle new well
+        if ($wellId === "addNewWell" && isset($data['newWellName'])) {
+            $newWellName = trim($data['newWellName']);
+            $stmt = $pdo->prepare("INSERT INTO tbl_well (well_name, site_id, field_id, country_id) VALUES (:wellName, :siteId, :fieldId, :countryId)");
+            $stmt->bindParam(':wellName', $newWellName);
+            $stmt->bindParam(':siteId', $siteId);
+            $stmt->bindParam(':fieldId', $fieldId);
+            $stmt->bindParam(':countryId', $countryId);
+            if (!$stmt->execute()) {
+                error_log("Error inserting new well: " . json_encode($stmt->errorInfo()));
+            }
+            $wellId = $pdo->lastInsertId();
+        }
+
+        // Handle new wellbore
+        if ($wellboreId === "addNewWellbore" && isset($data['newWellboreName'])) {
+            $newWellboreName = trim($data['newWellboreName']);
+            $stmt = $pdo->prepare("INSERT INTO tbl_wellbore (wellbore_name, well_id, country_id, site_id, field_id) VALUES (:wellboreName, :wellId, :countryId, :siteId, :fieldId)");
+            $stmt->bindParam(':wellboreName', $newWellboreName);
+            $stmt->bindParam(':wellId', $wellId);
+            $stmt->bindParam(':countryId', $countryId);
+            $stmt->bindParam(':siteId', $siteId);
+            $stmt->bindParam(':fieldId', $fieldId);
+            if (!$stmt->execute()) {
+                error_log("Error inserting new wellbore: " . json_encode($stmt->errorInfo()));
+            }
+            $wellboreId = $pdo->lastInsertId();
+        }
+
+        // Insert the report
+        $stmt = $pdo->prepare("INSERT INTO tbl_report (country_id, field_id, site_id, well_id, wellbore_id, report_name) VALUES (:countryId, :fieldId, :siteId, :wellId, :wellboreId, :reportName)");
+        $stmt->bindParam(':countryId', $countryId);
+        $stmt->bindParam(':fieldId', $fieldId);
+        $stmt->bindParam(':siteId', $siteId);
+        $stmt->bindParam(':wellId', $wellId);
+        $stmt->bindParam(':wellboreId', $wellboreId);
+        $stmt->bindParam(':reportName', $reportName);
+        if (!$stmt->execute()) {
+            error_log("Error inserting report: " . json_encode($stmt->errorInfo()));
+        }
+
+        $response['status'] = 'success';
+        $response['message'] = "Report added successfully!";
     } else {
         $response['status'] = 'error';
         $response['message'] = "Error: Invalid request. Please check your form fields.";
@@ -103,3 +115,4 @@ try {
 }
 
 echo json_encode($response);
+?>
