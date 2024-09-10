@@ -829,20 +829,3 @@ function setupCountryFormSubmission() {
 		submitForm(countryForm, "process_add_country.php");
 	};
 }
-
-// Function to submit the form
-function submitForm(form, url) {
-	var formData = new FormData(form);
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === 4 && xhr.status === 200) {
-			console.log("Form submitted successfully");
-			modal.style.display = "none"; // Close the modal
-		} else if (xhr.readyState === 4) {
-			console.error("Error submitting form: " + xhr.status);
-		}
-	};
-	xhr.send(formData);
-}

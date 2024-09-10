@@ -18,5 +18,3 @@
     </div>
     <div id="responseMessage"></div>
 </form>
-
-<script src="js/create-process.js"></script>

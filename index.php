@@ -428,8 +428,41 @@ try {
         </div>
     </div>
 </div>
-
 <script src="respones.js"></script>
 <script src="create-process.js"></script>
 <script src="newReportProcess.js"></script>
+<script>
+
+// Function to submit the form
+function submitForm(form, url) {
+	var formData = new FormData(form);
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        try {
+            var response = JSON.parse(xhr.responseText);
+            if (response.status === 'success') {
+                console.log("Form submitted successfully: " + response.message);
+
+                // Append the new field data to the table
+                updateFieldData([response.newFieldData]);
+
+                modal.style.display = "none"; // Close the modal
+            } else {
+                console.error("Error in response: " + response.message);
+            }
+        } catch (e) {
+            console.error("Failed to parse JSON response", e);
+        }
+    } else if (xhr.readyState === 4) {
+        console.error("Error submitting form: " + xhr.status);
+    }
+};
+
+	xhr.send(formData);
+}
+</script>
+
 <?php require_once('footer.php'); ?>
