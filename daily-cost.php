@@ -10,7 +10,7 @@
                                 <th class="small-column"></th>
                                 <th class="small-column">AFE</th>
                                 <th class="small-column"></th>
-                                <th class="small-column"><input type="datetime-local" id="date-time-LOT" name="date-time-LOT" placeholder="Enter Date and Time"></th>
+                                <th class="small-column"><input type="date" id="date-time-LOT" name="date-time-LOT" placeholder="Enter Date and Time"></th>
                                 <th class="small-column"><button type="button" class="add-row" onclick="addRow(this)">+</button></th>
                             </tr>
                             <tr>                                

@@ -48,7 +48,7 @@ try {
 
         .table th a {
             position: absolute;
-            right: 30px; /* Adjust to position the icon */
+             /* Adjust to position the icon */
             color: lightgray;
             text-decoration: none;
         }
@@ -150,33 +150,48 @@ try {
                     <thead>
                         <tr>
                             <th>Country
-                                <a title="Add New Country" id="addCountryLink" class="disabled-link">
+                                <a title="Add New Country" id="addCountryLink" class="disabled-link" style="right: 18px;">
                                     <i id="addCountry" class="fas fa-plus-circle"></i>
                                 </a>
                             </th>
                             <th>Field
-                                <a title="Add New Field">
+                                <a title="Add New Field" style="right: 18px;">
                                     <i id="addField" class="fas fa-plus-circle"></i>
+                                </a>
+                                <a title="Update Field" style="right: 40px;">
+                                    <i id="updateField" class="fas fa-pencil-alt"></i>
                                 </a>
                             </th>
                             <th>Site
-                                <a title="Add New Site">
+                                <a title="Add New Site" style="right: 18px;">
                                     <i id="addSite" class="fas fa-plus-circle"></i>
+                                </a>
+                                <a title="Update Site" style="right: 40px;">
+                                    <i id="updateSite" class="fas fa-pencil-alt"></i>
                                 </a>
                             </th>
                             <th>Well
-                                <a title="Add New Well">
+                                <a title="Add New Well" style="right: 18px;">
                                     <i id="addWell" class="fas fa-plus-circle"></i>
+                                </a>
+                                <a title="Update Well" style="right: 40px;">
+                                    <i id="updateWell" class="fas fa-pencil-alt"></i>
                                 </a>
                             </th>
                             <th>Wellbore
-                                <a title="Add New Wellbore">
+                                <a title="Add New Wellbore" style="right: 18px;">
                                     <i id="addWellbore" class="fas fa-plus-circle"></i>
+                                </a>
+                                <a title="Update Wellbore" style="right: 40px;">
+                                    <i id="updateWellbore" class="fas fa-pencil-alt"></i>
                                 </a>
                             </th>
                             <th>Report
-                                <a title="Add New Report">
+                                <a title="Add New Report" style="right: 18px;">
                                     <i id="addReport" class="fas fa-plus-circle"></i>
+                                </a>
+                                <a title="Update New Report" style="right: 40px;">
+                                    <i id="updateNewReport" class="fas fa-pencil-alt"></i>
                                 </a>
                             </th>
                         </tr>
