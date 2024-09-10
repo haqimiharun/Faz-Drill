@@ -22,7 +22,7 @@ function setupNewReportFormSubmission() {
 	}
 
 	// Fetch all countries and populate the country select element
-	fetch("get_SelectedCountry.php")
+	fetch("Model/get_SelectedCountry.php")
 		.then((response) => response.json())
 		.then((data) => {
 			if (data.error) {
@@ -58,14 +58,14 @@ function setupNewReportFormSubmission() {
 			newCountryDropdown.style.display = "block";
 
 			// Step 1: Fetch selected countries
-			fetch("get_SelectedCountry.php")
+			fetch("Model/get_SelectedCountry.php")
 				.then((response) => response.json())
 				.then((selectedCountries) => {
 					if (selectedCountries.error) {
 						console.error(selectedCountries.error);
 					} else {
 						// Step 2: Fetch all countries
-						fetch("get_AllCountries.php")
+						fetch("Model/get_AllCountries.php")
 							.then((response) => response.json())
 							.then((allCountries) => {
 								if (allCountries.error) {
@@ -235,7 +235,7 @@ function setupNewReportFormSubmission() {
 
 	// Example fetch functions
 	function fetchFields(countryId) {
-		fetch(`get_AllFields.php?countryId=${countryId}`)
+		fetch(`Model/get_AllFields.php?countryId=${countryId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.status === "success" && data.data.length > 0) {
@@ -258,7 +258,7 @@ function setupNewReportFormSubmission() {
 	}
 
 	function fetchSites(fieldId) {
-		fetch(`get_AllSites.php?fieldId=${fieldId}`)
+		fetch(`Model/get_AllSites.php?fieldId=${fieldId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.status === "success" && data.data.length > 0) {
@@ -286,7 +286,7 @@ function setupNewReportFormSubmission() {
 	}
 
 	function fetchWells(siteId) {
-		fetch(`get_AllWells.php?siteId=${siteId}`)
+		fetch(`Model/get_AllWells.php?siteId=${siteId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.status === "success" && data.data.length > 0) {
@@ -314,7 +314,7 @@ function setupNewReportFormSubmission() {
 	}
 
 	function fetchWellbores(wellId) {
-		fetch(`get_AllWellbores.php?wellId=${wellId}`)
+		fetch(`Model/get_AllWellbores.php?wellId=${wellId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.status === "success" && data.data.length > 0) {
@@ -338,7 +338,7 @@ function setupNewReportFormSubmission() {
 
 	reportForm.onsubmit = function (event) {
 		event.preventDefault();
-		submitForm(reportForm, "process_add_NewReport.php");
+		submitForm(reportForm, "Model/process_add_NewReport.php");
 	};
 
 	function submitForm(form, url) {
