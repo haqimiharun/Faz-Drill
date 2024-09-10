@@ -5,7 +5,7 @@
                 <h2>Bulk</h2>
                 <form action="#" method="post">
                     <div class="form-group">
-                        <label for="barite">Barite</label>
+                        <label for="barite">Barite,</label>
                         <input type="text" id="barite" name="barite" placeholder="Enter Barite">
                     </div>
                     <div class="form-group">
