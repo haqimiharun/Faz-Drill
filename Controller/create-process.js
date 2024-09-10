@@ -46,7 +46,7 @@ function fetchData(url, callback) {
 
 // Fetch fields based on country ID
 function fetchFields(countryId, callback) {
-	fetchData(`get_fields.php?countryId=${countryId}`, callback);
+	fetchData(`Model/get_fields.php?countryId=${countryId}`, callback);
 }
 
 // Fetch sites based on field ID
@@ -95,37 +95,37 @@ function openModal(url, setupFunction) {
 
 // Function to open modal and load Report form
 btn.onclick = function () {
-	openModal("add_NewReport.php", setupNewReportFormSubmission);
+	openModal("View/add_NewReport.php", setupNewReportFormSubmission);
 };
 
 // Function to open modal and load Report form
 addReportBtn.onclick = function () {
-	openModal("add_report.php", setupReportFormSubmission);
+	openModal("View/add_report.php", setupReportFormSubmission);
 };
 
 // Function to open modal and load Wellbore form
 addWellboreBtn.onclick = function () {
-	openModal("add_wellbore.php", setupWellboreFormSubmission);
+	openModal("View/add_wellbore.php", setupWellboreFormSubmission);
 };
 
 // Function to open modal and load Well form
 addWellBtn.onclick = function () {
-	openModal("add_well.php", setupWellFormSubmission);
+	openModal("View/add_well.php", setupWellFormSubmission);
 };
 
 // Function to open modal and load Site form
 addSiteBtn.onclick = function () {
-	openModal("add_site.php", setupSiteFormSubmission);
+	openModal("View/add_site.php", setupSiteFormSubmission);
 };
 
 // Function to open modal and load Field form
 addFieldBtn.onclick = function () {
-	openModal("add_field.php", setupFieldFormSubmission);
+	openModal("View/add_field.php", setupFieldFormSubmission);
 };
 
 // Function to open modal and load Country form
 addCountryBtn.onclick = function () {
-	openModal("add_country.php", setupCountryFormSubmission);
+	openModal("View/add_country.php", setupCountryFormSubmission);
 };
 
 // Function to setup Report Form Submission
@@ -176,7 +176,7 @@ function setupReportFormSubmission() {
 
 	// Fetch country name and set up the country select element
 	if (countryId) {
-		fetch(`get_countries.php?id=${countryId}`)
+		fetch(`Model/get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -208,7 +208,7 @@ function setupReportFormSubmission() {
 
 	// Fetch field name based on fieldId and set up the field select element
 	if (fieldId) {
-		fetch(`get_fields.php?id=${fieldId}`)
+		fetch(`Model/get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -240,7 +240,7 @@ function setupReportFormSubmission() {
 
 	// Fetch site name based on siteId and set up the site select element
 	if (siteId) {
-		fetch(`get_sites.php?id=${siteId}`)
+		fetch(`Model/get_sites.php?id=${siteId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -272,7 +272,7 @@ function setupReportFormSubmission() {
 
 	// Fetch well name based on wellId and set up the well select element
 	if (wellId) {
-		fetch(`get_wells.php?id=${wellId}`)
+		fetch(`Model/get_wells.php?id=${wellId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -304,7 +304,7 @@ function setupReportFormSubmission() {
 
 	// Fetch wellbore name based on wellboreId and set up the wellbore select element
 	if (wellboreId) {
-		fetch(`get_wellbores.php?id=${wellboreId}`)
+		fetch(`Model/get_wellbores.php?id=${wellboreId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -336,7 +336,7 @@ function setupReportFormSubmission() {
 
 	reportForm.onsubmit = function (event) {
 		event.preventDefault();
-		submitForm(reportForm, "process_add_report.php");
+		submitForm(reportForm, "Model/process_add_report.php");
 	};
 }
 
@@ -383,7 +383,7 @@ function setupWellboreFormSubmission() {
 
 	// Fetch country name and set up the country select element
 	if (countryId) {
-		fetch(`get_countries.php?id=${countryId}`)
+		fetch(`Model/get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -415,7 +415,7 @@ function setupWellboreFormSubmission() {
 
 	// Fetch field name based on fieldId and set up the field select element
 	if (fieldId) {
-		fetch(`get_fields.php?id=${fieldId}`)
+		fetch(`Model/get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -447,7 +447,7 @@ function setupWellboreFormSubmission() {
 
 	// Fetch site name based on siteId and set up the site select element
 	if (siteId) {
-		fetch(`get_sites.php?id=${siteId}`)
+		fetch(`Model/get_sites.php?id=${siteId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -479,7 +479,7 @@ function setupWellboreFormSubmission() {
 
 	// Fetch well name based on wellId and set up the well select element
 	if (wellId) {
-		fetch(`get_wells.php?id=${wellId}`)
+		fetch(`Model/get_wells.php?id=${wellId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -511,7 +511,7 @@ function setupWellboreFormSubmission() {
 
 	wellboreForm.onsubmit = function (event) {
 		event.preventDefault();
-		submitForm(wellboreForm, "process_add_wellbore.php");
+		submitForm(wellboreForm, "Model/process_add_wellbore.php");
 	};
 }
 
@@ -552,7 +552,7 @@ function setupWellFormSubmission() {
 	}
 	// Fetch country name and set up the country select element
 	if (countryId) {
-		fetch(`get_countries.php?id=${countryId}`)
+		fetch(`Model/get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -584,7 +584,7 @@ function setupWellFormSubmission() {
 
 	// Fetch field name based on fieldId and set up the field select element
 	if (fieldId) {
-		fetch(`get_fields.php?id=${fieldId}`)
+		fetch(`Model/get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -616,7 +616,7 @@ function setupWellFormSubmission() {
 
 	// Fetch site name based on siteId and set up the site select element
 	if (siteId) {
-		fetch(`get_sites.php?id=${siteId}`)
+		fetch(`Model/get_sites.php?id=${siteId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -648,7 +648,7 @@ function setupWellFormSubmission() {
 
 	wellForm.onsubmit = function (event) {
 		event.preventDefault();
-		submitForm(wellForm, "process_add_well.php");
+		submitForm(wellForm, "Model/process_add_well.php");
 	};
 }
 
@@ -680,7 +680,7 @@ function setupSiteFormSubmission() {
 
 	// Fetch country name and set up the country select element
 	if (countryId) {
-		fetch(`get_countries.php?id=${countryId}`)
+		fetch(`Model/get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -712,7 +712,7 @@ function setupSiteFormSubmission() {
 
 	// Fetch field name based on fieldId and set up the field select element
 	if (fieldId) {
-		fetch(`get_fields.php?id=${fieldId}`)
+		fetch(`Model/get_fields.php?id=${fieldId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -744,7 +744,7 @@ function setupSiteFormSubmission() {
 
 	siteForm.onsubmit = function (event) {
 		event.preventDefault();
-		submitForm(siteForm, "process_add_site.php");
+		submitForm(siteForm, "Model/process_add_site.php");
 	};
 }
 
@@ -774,7 +774,7 @@ function setupFieldFormSubmission() {
 
 	// Fetch country name and set up the country select element
 	if (countryId) {
-		fetch(`get_countries.php?id=${countryId}`)
+		fetch(`Model/get_countries.php?id=${countryId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				var option = document.createElement("option");
@@ -812,7 +812,7 @@ function setupFieldFormSubmission() {
 
 	fieldForm.onsubmit = function (event) {
 		event.preventDefault();
-		submitForm(fieldForm, "process_add_field.php");
+		submitForm(fieldForm, "Model/process_add_field.php");
 	};
 }
 
@@ -826,7 +826,7 @@ function setupCountryFormSubmission() {
 
 	countryForm.onsubmit = function (event) {
 		event.preventDefault();
-		submitForm(countryForm, "process_add_country.php");
+		submitForm(countryForm, "../Modal/process_add_country.php");
 	};
 }
 
