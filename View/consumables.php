@@ -51,15 +51,15 @@
                         <input type="text" id="DWater_board" name="DWater_board" placeholder="Enter Drilling Water On Board">
                     </div>
                     <div class="form-group personnel-group">
-                        <label for="Barite_board">Barite On Board, Volume</label>
+                        <label for="Barite_board">Barite On Board, Weight</label>
                         <input type="text" id="Barite_board" name="Barite_board" placeholder="Enter Barite On Board">
                     </div>
                     <div class="form-group personnel-group">
-                        <label for="Bentonite_board">Bentonite On Board, Volume</label>
+                        <label for="Bentonite_board">Bentonite On Board, Weight</label>
                         <input type="text" id="Bentonite_board" name="Bentonite_board" placeholder="Enter Bentonite On Board">
                     </div>
                     <div class="form-group">
-                        <label for="Cement_board">Cements On Board, Volume</label>
+                        <label for="Cement_board">Cements On Board, Weight</label>
                         <input type="text" id="Cement_board" name="Cement_board" placeholder="Enter Cements On Board">
                     </div>
                 </form>

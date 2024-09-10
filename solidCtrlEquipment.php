@@ -44,7 +44,7 @@
                     </div>
                     <br>
                      <div class="form-group">
-                        <label for="Pump">Efficiency Pump, %</label>
+                        <label for="effiPump">Efficiency Pump</label>
                         <input type="text" id="effiPump" name="effiPump" placeholder="Enter Efficiency Pump">
                     </div>
                      <div class="form-group">
@@ -175,7 +175,7 @@
                         <input type="text" id="feed_flow_rate" name="feed_flow_rate" placeholder="Enter Feed flow rate">
                     </div>
                      <div class="form-group">
-                        <label for="hydroclone_effi">Hydroclone Efficiency, %</label>
+                        <label for="hydroclone_effi">Hydroclone Efficiency</label>
                         <input type="text" id="hydroclone_effi" name="hydroclone_effi" placeholder="Enter Hydroclone Efficiency">
                     </div>
                      <div class="form-group">
@@ -191,7 +191,7 @@
                         <input type="text" id="weight_hydroclone" name="weight_hydroclone" placeholder="Enter Mud Weight">
                     </div>
                      <div class="form-group">
-                        <label for="fluid_loss">Fluid Losses, Volume</label>
+                        <label for="fluid_loss">Fluid Losses</label>
                         <input type="text" id="fluid_loss" name="fluid_loss" placeholder="Enter Fluid Losses">
                     </div>
                      <div class="form-group">
