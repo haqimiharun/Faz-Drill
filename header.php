@@ -264,107 +264,96 @@ if(!isset($_SESSION['user'])) {
   		<?php $cur_page = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1); ?>
 <!-- Side Bar to Manage Shop Activities -->
   		<aside class="main-sidebar">
-    		<section class="sidebar">
-      
-      			<ul class="sidebar-menu">
-
-			        <li class="treeview <?php if( ($cur_page == 'report-header.php') ) {echo 'active';} ?>">
-			          <a href="report-header.php">
-			            <i class="fa fa-file-text-o"></i> <span>Report Header</span>
-			          </a>
-			        </li>
-
-					<li class="treeview <?php if(in_array($cur_page, ['well-data.php', 'LOT-FIT.php', 'formation-data.php','gas-reading.php'])) { echo 'active'; } ?>">
-						<a href="#">
-							<i class="fa fa-database"></i>
-							<span>Well Info</span>
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="well-data.php"><i class="fa fa-circle-o"></i> Well Data</a></li>
-							<li><a href="LOT-FIT.php"><i class="fa fa-circle-o"></i> LOT/FIT</a></li>
-							<li><a href="formation-data.php"><i class="fa fa-circle-o"></i> Formation Data</a></li>
-							<li><a href="gas-reading.php"><i class="fa fa-circle-o"></i> Gas Reading</a></li>
-						</ul>
-					</li>
-
-					<li class="treeview <?php if(in_array($cur_page, ['rig-info.php'])) { echo 'active'; } ?>">
-						<a href="rig-info.php">
-							<i class="fa fa-industry"></i> <span>Rig Information</span>
-						</a>
-					</li>
-
-					<li class="treeview <?php if(in_array($cur_page, ['consumables.php', 'bulk-material.php', 'weather_anchor.php','pob.php','vessels.php'])) { echo 'active'; } ?>">
-						<a href="#">
-							<i class="fa fa-truck"></i>
-							<span>Logistics & Material</span>
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="consumables.php"><i class="fa fa-circle-o"></i> Consumables</a></li>
-							<li><a href="bulk-material.php"><i class="fa fa-circle-o"></i> Bulk & Liquid Material</a></li>
-							<li><a href="weather_anchor.php"><i class="fa fa-circle-o"></i> Weather + Anchor</a></li>
-							<li><a href="pob.php"><i class="fa fa-circle-o"></i> Personnel On Board</a></li>
-							<li><a href="vessels.php"><i class="fa fa-circle-o"></i> Vessels</a></li>
-						</ul>
-					</li>
-
-					<li class="treeview <?php if(in_array($cur_page, ['pipe-data.php', 'BHA-data.php', 'bit-data.php','survey.php','Operation-sum.php','solidCtrlEquipment.php','safety.php', 'mud-data.php', 'mud-vol.php','mud-log.php','formation-eva.php','velocities.php'])) { echo 'active'; } ?>">
-						<a href="#">
-							<i class="fa fa-gears"></i>
-							<span>Operation</span>
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="pipe-data.php"><i class="fa fa-circle-o"></i> Pipe Data</a></li>
-							<li><a href="BHA-data.php"><i class="fa fa-circle-o"></i> BHA Data</a></li>
-							<li><a href="bit-data.php"><i class="fa fa-circle-o"></i> Bit Data</a></li>
-							<li><a href="survey.php"><i class="fa fa-circle-o"></i> Survey</a></li>
-							<li><a href="safety.php"><i class="fa fa-circle-o"></i> Safety</a></li>
-							<li><a href="solidCtrlEquipment.php"><i class="fa fa-circle-o"></i> Solid Control Equipment</a></li>
-							<li><a href="mud-data.php"><i class="fa fa-circle-o"></i> Mud Data</a></li>
-							<li><a href="mud-vol.php"><i class="fa fa-circle-o"></i> Mud Volumes</a></li>
-							<li><a href="mud-log.php"><i class="fa fa-circle-o"></i> Mud Log</a></li>
-							<li><a href="formation-eva.php"><i class="fa fa-circle-o"></i> Formation Evaluation</a></li>
-							<li><a href="velocities.php"><i class="fa fa-circle-o"></i> Velocities</a></li>
-							<li><a href="Operation-sum.php"><i class="fa fa-circle-o"></i> Operation Summary</a></li>
-						</ul>
-					</li>
-
-					<li class="treeview <?php if(in_array($cur_page, ['AFE-cost.php', 'daily-cost.php'])) { echo 'active'; } ?>">
-						<a href="#">
-							<i class="fa fa-truck"></i>
-							<span>Cost</span>
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="AFE-cost.php"><i class="fa fa-circle-o"></i> AFE Cost</a></li>
-							<li><a href="daily-cost.php"><i class="fa fa-circle-o"></i> Daily Cost</a></li>
-						</ul>
-					</li>
-
-					<li class="treeview <?php if(in_array($cur_page, ['reports.php', 'reports-add.php', 'reports-edit.php'])) { echo 'active'; } ?>">
-						<a href="reports.php">
-							<i class="fa fa-file-text"></i> <span>Reports</span>
-						</a>
-					</li>
-
-					<li class="treeview <?php if($cur_page == 'unit-mngmt.php') { echo 'active'; } ?>">
-						<a href="unit-mngmt.php">
-							<i class="fa fa-sticky-note"></i> <span>Units Management</span>
-						</a>
-					</li>
-      			</ul>
-    		</section>
-  		</aside>
-
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="treeview <?php if( ($cur_page == 'report-header.php') ) {echo 'active';} ?>">
+                <a href="report-header.php">
+                    <i class="fa fa-file-text-o"></i> <span>Report Header</span>
+                </a>
+            </li>
+            <li class="treeview <?php if(in_array($cur_page, ['well-data.php', 'LOT-FIT.php', 'formation-data.php', 'gas-reading.php'])) { echo 'active'; } ?>">
+                <a href="#">
+                    <i class="fa fa-database"></i>
+                    <span>Well Info</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="View/well-data.php"><i class="fa fa-circle-o"></i> Well Data</a></li>
+                    <li><a href="View/LOT-FIT.php"><i class="fa fa-circle-o"></i> LOT/FIT</a></li>
+                    <li><a href="View/formation-data.php"><i class="fa fa-circle-o"></i> Formation Data</a></li>
+                    <li><a href="View/gas-reading.php"><i class="fa fa-circle-o"></i> Gas Reading</a></li>
+                </ul>
+            </li>
+            <li class="treeview <?php if(in_array($cur_page, ['rig-info.php'])) { echo 'active'; } ?>">
+                <a href="rig-info.php">
+                    <i class="fa fa-industry"></i> <span>Rig Information</span>
+                </a>
+            </li>
+            <li class="treeview <?php if(in_array($cur_page, ['consumables.php', 'bulk-material.php', 'weather_anchor.php', 'pob.php', 'vessels.php'])) { echo 'active'; } ?>">
+                <a href="#">
+                    <i class="fa fa-truck"></i>
+                    <span>Logistics & Material</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="View/consumables.php"><i class="fa fa-circle-o"></i> Consumables</a></li>
+                    <li><a href="View/bulk-material.php"><i class="fa fa-circle-o"></i> Bulk & Liquid Material</a></li>
+                    <li><a href="View/weather_anchor.php"><i class="fa fa-circle-o"></i> Weather + Anchor</a></li>
+                    <li><a href="View/pob.php"><i class="fa fa-circle-o"></i> Personnel On Board</a></li>
+                    <li><a href="View/vessels.php"><i class="fa fa-circle-o"></i> Vessels</a></li>
+                </ul>
+            </li>
+            <li class="treeview <?php if(in_array($cur_page, ['pipe-data.php', 'BHA-data.php', 'bit-data.php', 'survey.php', 'Operation-sum.php', 'solidCtrlEquipment.php', 'safety.php', 'mud-data.php', 'mud-vol.php', 'mud-log.php', 'formation-eva.php', 'velocities.php'])) { echo 'active'; } ?>">
+                <a href="#">
+                    <i class="fa fa-gears"></i>
+                    <span>Operation</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="View/pipe-data.php"><i class="fa fa-circle-o"></i> Pipe Data</a></li>
+                    <li><a href="View/BHA-data.php"><i class="fa fa-circle-o"></i> BHA Data</a></li>
+                    <li><a href="View/bit-data.php"><i class="fa fa-circle-o"></i> Bit Data</a></li>
+                    <li><a href="View/survey.php"><i class="fa fa-circle-o"></i> Survey</a></li>
+                    <li><a href="View/safety.php"><i class="fa fa-circle-o"></i> Safety</a></li>
+                    <li><a href="View/solidCtrlEquipment.php"><i class="fa fa-circle-o"></i> Solid Control Equipment</a></li>
+                    <li><a href="View/mud-data.php"><i class="fa fa-circle-o"></i> Mud Data</a></li>
+                    <li><a href="View/mud-vol.php"><i class="fa fa-circle-o"></i> Mud Volumes</a></li>
+                    <li><a href="View/mud-log.php"><i class="fa fa-circle-o"></i> Mud Log</a></li>
+                    <li><a href="View/formation-eva.php"><i class="fa fa-circle-o"></i> Formation Evaluation</a></li>
+                    <li><a href="View/velocities.php"><i class="fa fa-circle-o"></i> Velocities</a></li>
+                    <li><a href="View/Operation-sum.php"><i class="fa fa-circle-o"></i> Operation Summary</a></li>
+                </ul>
+            </li>
+            <li class="treeview <?php if(in_array($cur_page, ['AFE-cost.php', 'daily-cost.php'])) { echo 'active'; } ?>">
+                <a href="#">
+                    <i class="fa fa-dollar-sign"></i> <span>Cost</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="AFE-cost.php"><i class="fa fa-circle-o"></i> AFE Cost</a></li>
+                    <li><a href="daily-cost.php"><i class="fa fa-circle-o"></i> Daily Cost</a></li>
+                </ul>
+            </li>
+            <li class="treeview <?php if(in_array($cur_page, ['reports.php', 'reports-add.php', 'reports-edit.php'])) { echo 'active'; } ?>">
+                <a href="View/reports.php">
+                    <i class="fa fa-file-text"></i> <span>Reports</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'unit-mngmt.php') { echo 'active'; } ?>">
+                <a href="View/unit-mngmt.php">
+                    <i class="fa fa-sticky-note"></i> <span>Units Management</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+</aside>
   		<div class="content-wrapper">
 
