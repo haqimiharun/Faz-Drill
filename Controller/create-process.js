@@ -829,3 +829,37 @@ function setupCountryFormSubmission() {
 		submitForm(countryForm, "process_add_country.php");
 	};
 }
+
+// Function to submit the form
+function submitForm(form, url, countryId) {
+	var formData = new FormData(form);
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			console.log("Form submitted successfully");
+			modal.style.display = "none"; // Close the modal
+
+			var responseData;
+			try {
+				// Try to parse the response as JSON
+				responseData = JSON.parse(xhr.responseText);
+
+				// Check the response status
+				if (responseData.status === "success") {
+					// Fetch and update the full field data for the country
+					fetchFieldsForCountry(countryId);
+				} else {
+					// Handle errors or warnings
+					alert(responseData.message);
+				}
+			} catch (e) {
+				console.error("Failed to parse JSON response", e);
+			}
+		} else if (xhr.readyState === 4) {
+			console.error("Error submitting form: " + xhr.status);
+		}
+	};
+	xhr.send(formData);
+}

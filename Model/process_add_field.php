@@ -5,10 +5,14 @@ $dbname = 'fazdrill';
 $dbuser = 'root';
 $dbpass = '';
 
+header('Content-Type: application/json'); // Set content type to JSON
+
 try {
     // Establish the database connection
     $pdo = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $response = [];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['countryId'], $_POST['fieldName'])) {
         $countryId = intval($_POST['countryId']);
@@ -23,7 +27,9 @@ try {
             $count = $stmt->fetchColumn();
 
             if ($count > 0) {
-                echo "Error: Field already exists for this country.";
+                // If the field already exists, send an error response
+                $response['status'] = 'error';
+                $response['message'] = 'Error: Field already exists for this country.';
             } else {
                 // Prepare the insert statement
                 $stmt = $pdo->prepare("INSERT INTO tbl_field (country_id, field_name) VALUES (:countryId, :fieldName)");
@@ -31,15 +37,33 @@ try {
                 $stmt->bindParam(':fieldName', $fieldName);
                 $stmt->execute();
 
-                echo "Field added successfully!";
+                // Send success response with the added field data
+                $response['status'] = 'success';
+                $response['message'] = 'Field added successfully!';
+                $response['field'] = [
+                    'field_id' => $pdo->lastInsertId(),
+                    'field_name' => $fieldName,
+                    'country_id' => $countryId
+                ];
             }
         } else {
-            echo "Error: Field name cannot be empty.";
+            // Handle empty field name
+            $response['status'] = 'error';
+            $response['message'] = 'Error: Field name cannot be empty.';
         }
     } else {
-        echo "Error: Invalid request.";
+        // Handle invalid request
+        $response['status'] = 'error';
+        $response['message'] = 'Error: Invalid request.';
     }
+
+    // Return the response as JSON
+    echo json_encode($response);
+
 } catch (PDOException $exception) {
-    echo "Error: " . htmlspecialchars($exception->getMessage());
+    // Catch and return any database errors
+    $response['status'] = 'error';
+    $response['message'] = 'Error: ' . htmlspecialchars($exception->getMessage());
+    echo json_encode($response);
 }
 ?>

@@ -114,7 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		row.addEventListener("click", function () {
 			const countryId = this.getAttribute("data-country-id");
 
-			fetch("get_AllFields.php?countryId=" + encodeURIComponent(countryId))
+			fetch(
+				"Model/get_AllFields.php?countryId=" + encodeURIComponent(countryId)
+			)
 				.then((response) => response.json())
 				.then((data) => {
 					if (data.status === "success") {
@@ -139,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				const fieldElement = target.closest(".field-data div");
 				const fieldId = fieldElement.dataset.fieldId;
 				if (fieldId) {
-					fetch("get_AllSites.php?fieldId=" + encodeURIComponent(fieldId))
+					fetch("Model/get_AllSites.php?fieldId=" + encodeURIComponent(fieldId))
 						.then((response) => response.json())
 						.then((data) => {
 							if (data.status === "success") {
@@ -158,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				const siteElement = target.closest(".site-data div");
 				const siteId = siteElement.dataset.siteId;
 				if (siteId) {
-					fetch("get_AllWells.php?siteId=" + encodeURIComponent(siteId))
+					fetch("Model/get_AllWells.php?siteId=" + encodeURIComponent(siteId))
 						.then((response) => response.json())
 						.then((data) => {
 							if (data.status === "success") {
@@ -177,7 +179,9 @@ document.addEventListener("DOMContentLoaded", function () {
 				const wellElement = target.closest(".well-data div");
 				const wellId = wellElement.dataset.wellId;
 				if (wellId) {
-					fetch("get_AllWellbores.php?wellId=" + encodeURIComponent(wellId))
+					fetch(
+						"Model/get_AllWellbores.php?wellId=" + encodeURIComponent(wellId)
+					)
 						.then((response) => response.json())
 						.then((data) => {
 							if (data.status === "success") {
@@ -199,7 +203,8 @@ document.addEventListener("DOMContentLoaded", function () {
 				const wellboreId = wellboreElement.dataset.wellboreId;
 				if (wellboreId) {
 					fetch(
-						"get_report_data.php?wellboreId=" + encodeURIComponent(wellboreId)
+						"Model/get_report_data.php?wellboreId=" +
+							encodeURIComponent(wellboreId)
 					)
 						.then((response) => response.json())
 						.then((data) => {
@@ -306,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					icon2.style.marginLeft = "10px"; // Add some space between text and icon
 					icon2.addEventListener("click", function () {
 						const reportId = reportElement.dataset.reportId;
-						const url = `http://localhost/Faz-Drill/report-viewer.php?reportId=${encodeURIComponent(
+						const url = `http://localhost/Faz-Drill/View/report-viewer.php?reportId=${encodeURIComponent(
 							reportId
 						)}`;
 						window.open(url, "_blank"); // Open in a new tab or window
@@ -504,12 +509,30 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		}
 	}
-
-	function updateAllTableData(reports, wellbores, wells, sites, fields) {
-		updateReportData(reports);
-		updateWellboreData(wellbores);
-		updateWellData(wells);
-		updateSiteData(sites);
-		updateFieldData(fields);
-	}
 });
+
+function fetchFieldsForCountry(countryId) {
+	var xhr = new XMLHttpRequest();
+	xhr.open(
+		"GET",
+		`fetch_fields_for_country.php?countryId=${encodeURIComponent(countryId)}`,
+		true
+	);
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			try {
+				var fields = JSON.parse(xhr.responseText);
+				if (Array.isArray(fields)) {
+					updateFieldData(fields);
+				} else {
+					console.error("Unexpected data format or error:", fields.error);
+				}
+			} catch (e) {
+				console.error("Failed to parse JSON response", e);
+			}
+		} else if (xhr.readyState === 4) {
+			console.error("Error fetching data: " + xhr.status);
+		}
+	};
+	xhr.send();
+}
