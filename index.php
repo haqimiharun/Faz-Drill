@@ -158,7 +158,7 @@ try {
                                 <a title="Add New Field" style="right: 18px;">
                                     <i id="addField" class="fas fa-plus-circle"></i>
                                 </a>
-                                <a title="Update Field" style="right: 40px;">
+                                <a title="Edit Field" style="right: 40px;">
                                     <i id="updateField" class="fas fa-pencil-alt"></i>
                                 </a>
                             </th>
@@ -166,7 +166,7 @@ try {
                                 <a title="Add New Site" style="right: 18px;">
                                     <i id="addSite" class="fas fa-plus-circle"></i>
                                 </a>
-                                <a title="Update Site" style="right: 40px;">
+                                <a title="Edit Site" style="right: 40px;">
                                     <i id="updateSite" class="fas fa-pencil-alt"></i>
                                 </a>
                             </th>
@@ -174,7 +174,7 @@ try {
                                 <a title="Add New Well" style="right: 18px;">
                                     <i id="addWell" class="fas fa-plus-circle"></i>
                                 </a>
-                                <a title="Update Well" style="right: 40px;">
+                                <a title="Edit Well" style="right: 40px;">
                                     <i id="updateWell" class="fas fa-pencil-alt"></i>
                                 </a>
                             </th>
@@ -182,7 +182,7 @@ try {
                                 <a title="Add New Wellbore" style="right: 18px;">
                                     <i id="addWellbore" class="fas fa-plus-circle"></i>
                                 </a>
-                                <a title="Update Wellbore" style="right: 40px;">
+                                <a title="Edit Wellbore" style="right: 40px;">
                                     <i id="updateWellbore" class="fas fa-pencil-alt"></i>
                                 </a>
                             </th>
@@ -190,7 +190,7 @@ try {
                                 <a title="Add New Report" style="right: 18px;">
                                     <i id="addReport" class="fas fa-plus-circle"></i>
                                 </a>
-                                <a title="Update New Report" style="right: 40px;">
+                                <a title="Edit New Report" style="right: 40px;">
                                     <i id="updateNewReport" class="fas fa-pencil-alt"></i>
                                 </a>
                             </th>
@@ -433,39 +433,6 @@ try {
 <script src="Controller/newReportProcess.js"></script>
 <script>
 
-// Function to submit the form
-function submitForm(form, url, countryId) {
-    var formData = new FormData(form);
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log("Form submitted successfully");
-            modal.style.display = "none"; // Close the modal
-
-            var responseData;
-            try {
-                // Try to parse the response as JSON
-                responseData = JSON.parse(xhr.responseText);
-
-                // Check the response status
-                if (responseData.status === "success") {
-                    // Fetch and update the full field data for the country
-                    fetchFieldsForCountry(countryId);
-                } else {
-                    // Handle errors or warnings
-                    alert(responseData.message);
-                }
-            } catch (e) {
-                console.error("Failed to parse JSON response", e);
-            }
-        } else if (xhr.readyState === 4) {
-            console.error("Error submitting form: " + xhr.status);
-        }
-    };
-    xhr.send(formData);
-}
 
 
 </script>

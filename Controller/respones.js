@@ -510,29 +510,3 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 });
-
-function fetchFieldsForCountry(countryId) {
-	var xhr = new XMLHttpRequest();
-	xhr.open(
-		"GET",
-		`fetch_fields_for_country.php?countryId=${encodeURIComponent(countryId)}`,
-		true
-	);
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === 4 && xhr.status === 200) {
-			try {
-				var fields = JSON.parse(xhr.responseText);
-				if (Array.isArray(fields)) {
-					updateFieldData(fields);
-				} else {
-					console.error("Unexpected data format or error:", fields.error);
-				}
-			} catch (e) {
-				console.error("Failed to parse JSON response", e);
-			}
-		} else if (xhr.readyState === 4) {
-			console.error("Error fetching data: " + xhr.status);
-		}
-	};
-	xhr.send();
-}

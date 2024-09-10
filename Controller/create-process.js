@@ -826,37 +826,29 @@ function setupCountryFormSubmission() {
 
 	countryForm.onsubmit = function (event) {
 		event.preventDefault();
-		submitForm(countryForm, "../Modal/process_add_country.php");
+		submitForm(countryForm, "Modal/process_add_country.php");
 	};
 }
 
-// Function to submit the form
-function submitForm(form, url, countryId) {
+function submitForm(form, url) {
 	var formData = new FormData(form);
+
+	// Create an object to store form data for logging
+	var formDataObject = {};
+	formData.forEach((value, key) => {
+		formDataObject[key] = value;
+	});
+
+	// Log form data to console
+	console.log("Submitting form with data:", formDataObject);
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			console.log("Form submitted successfully");
+			console.log("Server response:", xhr.responseText);
 			modal.style.display = "none"; // Close the modal
-
-			var responseData;
-			try {
-				// Try to parse the response as JSON
-				responseData = JSON.parse(xhr.responseText);
-
-				// Check the response status
-				if (responseData.status === "success") {
-					// Fetch and update the full field data for the country
-					fetchFieldsForCountry(countryId);
-				} else {
-					// Handle errors or warnings
-					alert(responseData.message);
-				}
-			} catch (e) {
-				console.error("Failed to parse JSON response", e);
-			}
 		} else if (xhr.readyState === 4) {
 			console.error("Error submitting form: " + xhr.status);
 		}
