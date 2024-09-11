@@ -6,8 +6,12 @@
 <div class="content">
     <section id="report-header">
         <?php include 'View/report-header.php'; ?> 
+    </section id="well-info">
+<div>
+    <section id="well-info">
+        <h1 style="text-align: center;">Well Information</h1>
     </section>
-    
+</div>
     <section id="well-data">
         <?php include 'View/well-data.php'; ?>
     </section>
@@ -27,7 +31,11 @@
     <section id="rig-info">
         <?php include 'View/rig-info.php'; ?>
     </section>
-
+<div>
+    <section id="logi-mate">
+        <h1 style="text-align: center;">Logistics & Material</h1>
+    </section>
+</div>
     <section id="consumables">
         <?php include 'View/consumables.php'; ?>
     </section>
@@ -47,7 +55,11 @@
     <section id="vessels">
         <?php include 'View/vessels.php'; ?>
     </section>
-
+<div>
+    <section id="operation">
+        <h1 style="text-align: center;">Operation</h1>
+    </section>
+</div>
     <section id="pipe-data">
         <?php include 'View/pipe-data.php'; ?>
     </section>

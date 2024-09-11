@@ -81,6 +81,7 @@ body {
 .btn-group {
 	text-align: center;
 	margin-top: 20px;
+	align-items: center;
 }
 .btn-group button {
 	padding: 10px 20px;
@@ -125,7 +126,12 @@ body {
 .table-wrapper {
 	overflow-x: auto;
 }
-
+.centrelized {
+	display: flex;
+	justify-content: center; /* Centers the button horizontally */
+	align-items: center; /* Centers the button vertically (optional) */
+	padding: 10px; /* Optional padding for spacing */
+}
 /* Specific style for small button column */
 .small-column {
 	width: 100px; /* Set the width as per your requirement */

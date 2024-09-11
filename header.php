@@ -260,10 +260,16 @@ if(!isset($_SESSION['user'])) {
   });
 </script>
 
+<style>
+.sidebar-menu a.active {
+    background-color: #00AFB9; /* Active link background */
+    color: white; /* Active link text color */
+}
 
+</style>
   		<?php $cur_page = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1); ?>
 <!-- Side Bar to Manage Shop Activities -->
-  		<aside class="main-sidebar">
+<aside class="main-sidebar">
     <section class="sidebar">
         <ul class="sidebar-menu">
             <li class="treeview <?php if( ($cur_page == 'report-header.php') ) {echo 'active';} ?>">
@@ -272,7 +278,7 @@ if(!isset($_SESSION['user'])) {
                 </a>
             </li>
             <li class="treeview <?php if(in_array($cur_page, ['well-data.php', 'LOT-FIT.php', 'formation-data.php', 'gas-reading.php'])) { echo 'active'; } ?>">
-                <a href="#well-data">
+                <a href="#well-info">
                     <i class="fa fa-database"></i>
                     <span>Well Info</span>
                     <span class="pull-right-container">
@@ -292,7 +298,7 @@ if(!isset($_SESSION['user'])) {
                 </a>
             </li>
             <li class="treeview <?php if(in_array($cur_page, ['consumables.php', 'bulk-material.php', 'weather_anchor.php', 'pob.php', 'vessels.php'])) { echo 'active'; } ?>">
-                <a href="#consumables">
+                <a href="#logi-mate">
                     <i class="fa fa-truck"></i>
                     <span>Logistics & Material</span>
                     <span class="pull-right-container">
@@ -308,7 +314,7 @@ if(!isset($_SESSION['user'])) {
                 </ul>
             </li>
             <li class="treeview <?php if(in_array($cur_page, ['pipe-data.php', 'BHA-data.php', 'bit-data.php', 'survey.php', 'Operation-sum.php', 'solidCtrlEquipment.php', 'safety.php', 'mud-data.php', 'mud-vol.php', 'mud-log.php', 'formation-eva.php', 'velocities.php'])) { echo 'active'; } ?>">
-                <a href="#pipe-data">
+                <a href="#operation">
                     <i class="fa fa-gears"></i>
                     <span>Operation</span>
                     <span class="pull-right-container">
@@ -332,14 +338,8 @@ if(!isset($_SESSION['user'])) {
             </li>
             <li class="treeview <?php if(in_array($cur_page, ['daily-cost.php'])) { echo 'active'; } ?>">
                 <a href="#daily-cost">
-                    <i class="fa fa-dollar-sign"></i> <span>Cost</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+                    <i class="fa fa-industry"></i> <span>Daily Cost</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="#daily-cost"><i class="fa fa-circle-o"></i> Daily Cost</a></li>
-                </ul>
             </li>
             <li class="treeview <?php if(in_array($cur_page, ['reports.php', 'reports-add.php', 'reports-edit.php'])) { echo 'active'; } ?>">
                 <a href="#reports">
@@ -393,5 +393,35 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-</script>
+document.addEventListener('DOMContentLoaded', function () {
+    const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
 
+    window.addEventListener('scroll', function () {
+        let currentAnchor = '';
+
+        // Loop through each sidebar link
+        sidebarLinks.forEach(link => {
+            const target = document.querySelector(link.getAttribute('href'));
+
+            if (target) {
+                const targetTop = target.offsetTop - 100; // Adjust for offset (if needed)
+                const targetHeight = target.offsetHeight;
+
+                // Check if the window scroll position is within the target section
+                if (window.scrollY >= targetTop && window.scrollY < targetTop + targetHeight) {
+                    currentAnchor = link.getAttribute('href');
+                }
+            }
+        });
+
+        // Update the active state of sidebar links
+        sidebarLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === currentAnchor) {
+                link.classList.add('active');
+            }
+        });
+    });
+});
+
+</script>
