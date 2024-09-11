@@ -533,6 +533,10 @@ a:focus {
 	-o-transform: rotate(-90deg);
 	transform: rotate(-90deg);
 }
+.sidebar-menu li.active a {
+	background-color: #007bff; /* Change this to your preferred active color */
+	color: white; /* Active text color */
+}
 .sidebar-menu li.active > .treeview-menu {
 	display: block;
 }
