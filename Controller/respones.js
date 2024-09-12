@@ -298,15 +298,27 @@ document.addEventListener("DOMContentLoaded", function () {
 					icon.style.marginLeft = "10px"; // Add some space between text and icon
 					icon.addEventListener("click", function () {
 						const reportId = reportElement.dataset.reportId;
-						const url = `http://localhost/Faz-Drill/report_information.php?reportId=${encodeURIComponent(
-							reportId
-						)}`;
-						window.open(url, "_blank"); // Open in a new tab or window
+						// Save reportId to session
+						fetch(
+							`http://localhost/Faz-Drill/Controller/save_report_id.php?reportId=${encodeURIComponent(
+								reportId
+							)}`
+						)
+							.then((response) => response.text())
+							.then(() => {
+								const url = `http://localhost/Faz-Drill/report_information.php?reportId=${encodeURIComponent(
+									reportId
+								)}`;
+								window.open(url, "_blank"); // Open in a new tab or window
+							})
+							.catch((error) =>
+								console.error("Error saving report ID:", error)
+							);
 					});
 
-					// Create the pencil icon
+					// Create the cat icon
 					const icon2 = document.createElement("i");
-					icon2.classList.add("fa", "fa-cat"); // Using FontAwesome for the pencil icon
+					icon2.classList.add("fa", "fa-cat"); // Using FontAwesome for the cat icon
 					icon2.style.cursor = "pointer";
 					icon2.style.marginLeft = "10px"; // Add some space between text and icon
 					icon2.addEventListener("click", function () {

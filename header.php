@@ -9,11 +9,34 @@ $error_message = '';
 $success_message = '';
 $error_message1 = '';
 $success_message1 = '';
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 // Check if the user is logged in or not
 if(!isset($_SESSION['user'])) {
 	header('location: login.php');
 	exit;
+}
+
+$reportId = $_SESSION['reportId'];
+
+if ($reportId) {
+    try {
+        // Prepare and execute SQL query to get the report name
+        $stmt = $pdo->prepare('SELECT report_name FROM tbl_report WHERE report_id = :reportId');
+        $stmt->execute(['reportId' => $reportId]);
+        $report = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($report) {
+            $reportName = $report['report_name'];
+        } else {
+            $reportName = 'Unknown Report Name';
+        }
+    } catch (PDOException $e) {
+        $reportName = 'Error fetching report name';
+        error_log('Database query error: ' . $e->getMessage());
+    }
+} else {
+    $reportName = 'No Report Selected';
 }
 ?>
 
@@ -121,7 +144,7 @@ if(!isset($_SESSION['user'])) {
                 <!-- Add more dull characteristics as needed -->
             </div>
 
-<!-- Reason Pulled Section -->
+    <!-- Reason Pulled Section -->
             <div style="width:30%; margin-bottom:20px;">
                 <h4>Reason Pulled</h4>
                 <label><input type="radio" name="reason_pulled" value="BHA"> BHA - Change</label><br>
@@ -185,46 +208,47 @@ if(!isset($_SESSION['user'])) {
 </div>
 
 <body class="hold-transition fixed skin-blue sidebar-mini">
-
 	<div class="wrapper">
-
 <header class="main-header">
-
-			<a href="index.php" class="logo">
-				<span class="logo-lg">FAZ-DRILL</span>
-			</a>
-
-			<nav class="navbar navbar-static-top">
-				
-				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-					<span class="sr-only">Toggle navigation</span>
-				</a>
-
-				<span>Dashboard</span>
-<!-- Top Bar ... User Information .. Login/Log out Area-->
-				<div class="navbar-custom-menu">
-					<ul class="nav navbar-nav">
-						<li class="dropdown user user-menu">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							</a>
-							<ul class="dropdown-menu">
-								<li class="user-footer">
-									<div>
-										<a href="profile-edit.php" class="btn btn-default btn-flat">Edit Profile</a>
-									</div>
-									<div>
-										<a href="logout.php" class="btn btn-default btn-flat">Log out</a>
-									</div>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-
-			</nav>
+    <a href="index.php" class="logo">
+        <span class="logo-lg">FAZ-DRILL</span>
+    </a>
+    <nav class="navbar navbar-static-top">
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>        
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="bc" class="bc-nav">
+        <ol class="bc" id="breadcrumb">
+            <li class="bc-item"><a href="#" id="breadcrumb-report-name"><?php echo htmlspecialchars($reportName); ?></a></li>>
+            <li class="bc-item"><a href="#" id="breadcrumb-main-menu"></a></li>>
+            <li class="bc-item active" aria-current="page" id="breadcrumb-sub-menu"></li>
+        </ol>
+    </nav>
+        <!-- Top Bar ... User Information .. Login/Log out Area-->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="user-footer">
+                            <div>
+                                <a href="profile-edit.php" class="btn btn-default btn-flat">Edit Profile</a>
+                            </div>
+                            <div>
+                                <a href="logout.php" class="btn btn-default btn-flat">Log out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </header>
 
 <script>
+
   document.addEventListener('DOMContentLoaded', function() {
     // Get the page title element
     var titleElement = document.getElementById('page-title');
@@ -267,7 +291,7 @@ if(!isset($_SESSION['user'])) {
 }
 
 </style>
-  		<?php $cur_page = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1); ?>
+  	<?php $cur_page = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1); ?>
 <!-- Side Bar to Manage Shop Activities -->
 <aside class="main-sidebar">
     <section class="sidebar">
@@ -355,8 +379,69 @@ if(!isset($_SESSION['user'])) {
     </section>
 </aside>
   		<div class="content-wrapper">
+</body>
 
 <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll("section[id]");
+            const breadcrumbReportName = document.getElementById('breadcrumb-report-name');
+            const breadcrumbMainMenu = document.querySelector('#breadcrumb li:nth-child(2) a');
+            const breadcrumbSubmenu = document.querySelector('#breadcrumb li:nth-child(3)');
+
+            const menuStructure = {
+                "report-header": { main: "Report Header", sub: "Report Header" },
+                "well-data": { main: "Well Info", sub: "Well Data" },
+                "LOT-FIT": { main: "Well Info", sub: "LOT/FIT" },
+                "formation-data": { main: "Well Info", sub: "Formation Data" },
+                "gas-reading": { main: "Well Info", sub: "Gas Reading" },
+                "rig-info": { main: "Rig Information", sub: "Rig Information" },
+                "consumables": { main: "Logistics & Material", sub: "Consumables" },
+                "bulk-material": { main: "Logistics & Material", sub: "Bulk & Liquid Material" },
+                "weather_anchor": { main: "Logistics & Material", sub: "Weather + Anchor" },
+                "pob": { main: "Logistics & Material", sub: "Personnel On Board" },
+                "vessels": { main: "Logistics & Material", sub: "Vessels" },
+                "pipe-data": { main: "Operation", sub: "Pipe Data" },
+                "BHA-data": { main: "Operation", sub: "BHA Data" },
+                "bit-data": { main: "Operation", sub: "Bit Data" },
+                "survey": { main: "Operation", sub: "Survey" },
+                "safety": { main: "Operation", sub: "Safety" },
+                "solidCtrlEquipment": { main: "Operation", sub: "Solid Control Equipment" },
+                "mud-data": { main: "Operation", sub: "Mud Data" },
+                "mud-vol": { main: "Operation", sub: "Mud Volumes" },
+                "mud-log": { main: "Operation", sub: "Mud Log" },
+                "formation-eva": { main: "Operation", sub: "Formation Evaluation" },
+                "velocities": { main: "Operation", sub: "Velocities" },
+                "Operation-sum": { main: "Operation", sub: "Operation Summary" },
+                "daily-cost": { main: "Daily Cost", sub: "Daily Cost" },
+                "reports": { main: "Reports", sub: "Reports" },
+                "unit-mngmt": { main: "Units Management", sub: "Units Management" }
+            };
+
+            window.addEventListener('scroll', () => {
+                let currentSection = '';
+
+                // Loop through sections to find the current one in view
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.pageYOffset >= sectionTop - 60) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                if (currentSection && menuStructure[currentSection]) {
+                    const { main, sub } = menuStructure[currentSection];
+                    breadcrumbMainMenu.textContent = main;
+                    if (sub) {
+                        breadcrumbSubmenu.classList.remove('active');
+                        breadcrumbSubmenu.innerHTML = `<a href="#">${sub}</a>`;
+                    } else {
+                        breadcrumbSubmenu.classList.add('active');
+                        breadcrumbSubmenu.textContent = 'Submenu';
+                    }
+                }
+            });
+        });
+
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {

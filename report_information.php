@@ -3,6 +3,8 @@
     require_once('header.php'); 
 ?>
 
+
+
 <div class="content">
     <section id="report-header">
         <?php include 'View/report-header.php'; ?> 
