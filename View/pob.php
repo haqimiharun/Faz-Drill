@@ -1,4 +1,5 @@
     <div class="wrapper">
+        <h3 style="text-align: center;">Personnel On Board</h3>
         <div class="row1">
             <div class="container">
                 <h2>Personnel On Board</h2>

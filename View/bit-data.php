@@ -1,5 +1,5 @@
     <div class="wrapper">
-    <h1 style="text-align: center;">Bit Data</h1>
+    <h3 style="text-align: center;">Bit Data</h3>
         <div class="row1">
             <div class="container">
                 <h2>New Bit</h2>

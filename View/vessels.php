@@ -1,6 +1,6 @@
 
     <div class="wrapper">
-            <h1 style="text-align: center;">Vessels</h1>
+            <h3 style="text-align: center;">Vessels</h3>
         <div class="row1">
 
             <div class="container">

@@ -3,12 +3,15 @@
     require_once('header.php'); 
 ?>
 
-
-
 <div class="content">
+<div>
+    <section id="report-header">
+        <h1 style="text-align: center;">Report Header</h1>
+    </section>
+</div>
     <section id="report-header">
         <?php include 'View/report-header.php'; ?> 
-    </section id="well-info">
+    </section>
 <div>
     <section id="well-info">
         <h1 style="text-align: center;">Well Information</h1>
@@ -76,6 +79,10 @@
 
     <section id="survey">
         <?php include 'View/survey.php'; ?>
+    </section>
+
+    <section id="safety">
+        <?php include 'View/safety.php'; ?>
     </section>
 
     <section id="solidCtrlEquipment">

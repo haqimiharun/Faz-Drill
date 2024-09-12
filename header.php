@@ -286,7 +286,7 @@ if ($reportId) {
 
 <style>
 .sidebar-menu a.active {
-    background-color: #00AFB9; /* Active link background */
+    background-color: #2BAAE1; /* Active link background */
     color: white; /* Active link text color */
 }
 

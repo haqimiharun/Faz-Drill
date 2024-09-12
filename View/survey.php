@@ -1,5 +1,5 @@
     <div class="wrapper">
-        <h1 style="text-align: center;">Survey Data</h1>
+        <h3 style="text-align: center;">Survey Data</h3>
         <div class="row1">
             <div class="container">
                 <form action="process.php" method="POST">

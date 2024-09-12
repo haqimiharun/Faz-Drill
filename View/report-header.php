@@ -57,14 +57,6 @@
                         <input type="text" id="AFE" name="AFE" placeholder="Enter AFE">
                     </div>
                     <div class="form-group">
-                        <label for="toolpusher">Tool Pusher</label>
-                        <input type="text" id="toolpusher" name="toolpusher" placeholder="Enter Tool Pusher Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="Contactor">Contractor</label>
-                        <input type="text" id="Contractor" name="Contractor" placeholder="Enter Contractor Name">
-                    </div>
-                    <div class="form-group">
                         <label for="Objective">Objective</label>
                         <input type="text" id="Objective" name="Objective" placeholder="Enter Objective Name">
                     </div>
