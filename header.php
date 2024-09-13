@@ -337,7 +337,7 @@ if ($reportId) {
                     <li><a href="#vessels"><i class="fa fa-circle-o"></i> Vessels</a></li>
                 </ul>
             </li>
-            <li class="treeview <?php if(in_array($cur_page, ['pipe-data.php', 'BHA-data.php', 'bit-data.php', 'survey.php', 'Operation-sum.php', 'solidCtrlEquipment.php', 'safety.php', 'mud-data.php', 'mud-vol.php', 'mud-log.php', 'formation-eva.php', 'velocities.php'])) { echo 'active'; } ?>">
+            <li class="treeview <?php if(in_array($cur_page, ['pipe-data.php', 'BHA-data.php', 'bit-data.php','drlg-data.php', 'survey.php', 'Operation-sum.php', 'solidCtrlEquipment.php', 'safety.php', 'mud-data.php', 'mud-vol.php', 'mud-log.php', 'formation-eva.php', 'velocities.php'])) { echo 'active'; } ?>">
                 <a href="#operation">
                     <i class="fa fa-gears"></i>
                     <span>Operation</span>
@@ -349,6 +349,7 @@ if ($reportId) {
                     <li><a href="#pipe-data"><i class="fa fa-circle-o"></i> Pipe Data</a></li>
                     <li><a href="#BHA-data"><i class="fa fa-circle-o"></i> BHA Data</a></li>
                     <li><a href="#bit-data"><i class="fa fa-circle-o"></i> Bit Data</a></li>
+                    <li><a href="#drlg-data"><i class="fa fa-circle-o"></i> Drilling Data</a></li>
                     <li><a href="#survey"><i class="fa fa-circle-o"></i> Survey</a></li>
                     <li><a href="#safety"><i class="fa fa-circle-o"></i> Safety</a></li>
                     <li><a href="#solidCtrlEquipment"><i class="fa fa-circle-o"></i> Solid Control Equipment</a></li>
@@ -403,6 +404,7 @@ if ($reportId) {
                 "pipe-data": { main: "Operation", sub: "Pipe Data" },
                 "BHA-data": { main: "Operation", sub: "BHA Data" },
                 "bit-data": { main: "Operation", sub: "Bit Data" },
+                "drlg-data": { main: "Operation", sub: "Drilling Data" },
                 "survey": { main: "Operation", sub: "Survey" },
                 "safety": { main: "Operation", sub: "Safety" },
                 "solidCtrlEquipment": { main: "Operation", sub: "Solid Control Equipment" },

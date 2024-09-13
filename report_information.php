@@ -77,6 +77,10 @@
         <?php include 'View/bit-data.php'; ?>
     </section>
 
+    <section id="drlg-data">
+        <?php include 'View/drlg-data.php'; ?>
+    </section>
+
     <section id="survey">
         <?php include 'View/survey.php'; ?>
     </section>
@@ -142,14 +146,14 @@
             const newRow = table.insertRow();
 
             // Insert new cells for each column
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 14; i++) {
                 const newCell = newRow.insertCell(i);
                 if (i === 0) {
                     newCell.innerHTML = `
                         <button type="button" class="add-row" onclick="addRow(this)">+</button>
                     `;
                 } else if (i === 7) {
-                    newCell.innerHTML = `<input type="text" id="dayOnRig_${rowCount}" name="input_${rowCount}_${i}" readonly />`;
+                    newCell.innerHTML = `<input type="text" id="dayOnRig_${rowCount}" name="input_${rowCount}_${i}" />`;
                 } else {
                     newCell.innerHTML = `<input type="text" id="input_${rowCount}_${i}" name="input_${rowCount}_${i}" oninput="updateDayOnRig(this)" />`;
                 }

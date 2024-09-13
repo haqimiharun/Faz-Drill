@@ -1,0 +1,101 @@
+.wrapper-rh {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 20px;
+	padding: 20px;
+	box-sizing: border-box;
+	background-color: #f8f8f8;
+	border: 1px solid #ccc;
+}
+
+.container-rh {
+	background-color: #ffffff;
+	padding: 20px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+}
+
+.container-rh2 {
+	background-color: #ffffff;
+	padding: 20px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	display: grid;
+	grid-template-columns: 1fr 1;
+	grid-gap: 20px;
+}
+
+.personnel {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 20px;
+}
+
+h2,
+h3 {
+	text-align: center;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+h2 {
+	font-size: 22px;
+}
+
+h3 {
+	font-size: 26px;
+}
+
+.form-group-rh {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+label {
+	font-size: 0.9em;
+	margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+select {
+	padding: 8px;
+	font-size: 0.9em;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+/* Grid for the personnel section */
+.personnel-group {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
+}
+
+.radio-group {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 10px;
+}
+
+button,
+input[type="submit"] {
+	padding: 8px 15px;
+	background-color: #28a745;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+	background-color: #218838;
+}
