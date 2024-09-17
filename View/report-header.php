@@ -1,53 +1,45 @@
-<link rel="stylesheet" href="css/report_info/report-header.css">
 
-<div class="wrapper-rh">
-    <!-- First Row (Supervision and Report Header) -->
-    <div class="container-rh">
-        <form action="process-report-header.php" method="post">
-            <h2>Supervision</h2>
-            <div class="form-group-rh">
-                <label for="sv-dt">Date & Time</label>
-                <input type="datetime-local" id="date-time" name="date-time">
-            </div>
-            <div class="form-group-rh">
-                <label for="Well">Well</label>
-                <input type="text" id="Well" name="Well" placeholder="Enter Well Name">
-            </div>
-            <div class="form-group-rh">
-                <label for="Lead-DSV">Lead DSV</label>
-                <input type="text" id="Lead-DSV" name="Lead-DSV" placeholder="Enter Lead DSV">
-            </div>
-            <div class="form-group-rh">
-                <label for="Night-DSV">Night DSV</label>
-                <input type="text" id="Night-DSV" name="Night-DSV" placeholder="Enter Night DSV">
-            </div>
-            <div class="form-group-rh">
-                <label for="engineer">Drilling Engineer/Company</label>
-                <input type="text" id="engineer" name="engineer" placeholder="Enter Engineer/Company Name">
-            </div>
-            <div class="form-group-rh">
-                <label for="geologist">Well Site Geologist</label>
-                <input type="text" id="geologist" name="geologist" placeholder="Enter Geologist Name">
-            </div>
-            <div class="form-group-rh">
-                <label for="rep">Government Representative on Site</label>
-                <input type="text" id="rep" name="rep" placeholder="Enter Representative Name">
-            </div>
-            <div class="form-group-rh">
-                <label for="toolpusher">Tool Pusher</label>
-                <input type="text" id="toolpusher" name="toolpusher" placeholder="Enter Tool Pusher Name">
-            </div>
-            <div class="form-group-rh">
-                <label for="Contractor">Contractor</label>
-                <input type="text" id="Contractor" name="Contractor" placeholder="Enter Contractor Name">
-            </div>
-        </form>
-
-        <form action="process-report-header.php" method="post">
-            <h2>Report Header</h2>
-            <div class="form-group-rh">
-                <label for="Location">Location</label>
-                <input type="text" id="Location" name="Location" placeholder="Enter Current Location">
+    <div class="wrapper">
+        <div class="row1">
+            <div class="container">
+                <h2>Supervision</h2>
+                <form action="process-report-header.php" method="post">
+                <div class="form-group">
+                        <label for="date-time">Date & Time</label>
+                        <input type="datetime-local" id="date-time" name="date-time" placeholder="Enter Date and Time">
+                    </div>
+                <div class="form-group">
+                        <label for="Well"> Well</label>
+                        <input type="text" id="Well" name="Well" placeholder="Enter WellName">
+                    </div>
+                    <div class="form-group">
+                        <label for="Lead-DSV">Lead DSV</label>
+                        <input type="text" id="Lead-DSV" name="Lead-DSV" placeholder="Enter Lead DSV">
+                    </div><div class="form-group">
+                        <label for="-DSNightV">Night DSV</label>
+                        <input type="text" id="Night-DSV" name="Night-DSV" placeholder="Enter Night DSV">
+                    </div>
+                    <div class="form-group">
+                        <label for="engineer">Drilling Engineer/Company</label>
+                        <input type="text" id="engineer" name="engineer" placeholder="Enter Engineer/Company Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="geologist">Well Site Geologist</label>
+                        <input type="text" id="geologist" name="geologist" placeholder="Enter Geologist Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="rep">Government Representative on Site</label>
+                        <input type="text" id="rep" name="rep" placeholder="Enter Representative Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="toolpusher">Tool Pusher</label>
+                        <input type="text" id="toolpusher" name="toolpusher" placeholder="Enter Tool Pusher Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Contactor">Contractor</label>
+                        <input type="text" id="Contractor" name="Contractor" placeholder="Enter Contractor Name">
+                    </div>
+                </form>
             </div>
             <div class="form-group-rh">
                 <label for="Next-Location">Next Location</label>
@@ -114,17 +106,19 @@
                 </select>
             </div>
 
-            <!-- Daily and Accumulative Costs Section -->
-            <h2>Daily and Accumulative Costs</h2>
-            <div class="form-group-rh">
-                <label for="daily_cost">Daily Well Cost</label>
-                <input type="number" id="daily_cost" name="daily_cost" value="0">
+            <div class="container">
+                <h2>Daily and Accumulative Costs</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="daily_cost">Daily Well Cost, $</label>
+                        <input type="number" id="daily_cost" name="daily_cost" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="accum_cost">Accumulative Cost, $</label>
+                        <input type="number" id="accum_cost" name="accum_cost" value="0">
+                    </div>
+                </form>
             </div>
-            <div class="form-group-rh">
-                <label for="accum_cost">Accumulative Cost</label>
-                <input type="number" id="accum_cost" name="accum_cost" value="0">
-            </div>
-        </form>
+        </div>
     </div>
-</div>
 

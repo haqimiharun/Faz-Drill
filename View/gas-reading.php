@@ -31,11 +31,11 @@
             <div class="container">
                 <form>
                     <div class="form-group">
-                        <label for="mudGels10sec">Gas chromatograph (GC) Analysis</label>
+                        <label for="mudGels10sec">Gas chromatograph (GC) Analysis, sec</label>
                         <input type="text" id="mudGels10sec" name="mudGels10sec" placeholder="Enter 10 Sec Gels">
                     </div>
                     <div class="form-group">
-                        <label for="mudGels30min">Hydrocarbon potential</label>
+                        <label for="mudGels30min">Hydrocarbon potential, min</label>
                         <input type="text" id="mudGels30min" name="mudGels30min" placeholder="Enter 30 Min Gels">
                     </div>
                     <div class="form-group">
