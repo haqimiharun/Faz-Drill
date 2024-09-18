@@ -24,12 +24,8 @@
         <?php include 'View/well-data.php'; ?>
     </section>
 
-    <section id="LOT-FIT">
-        <?php include 'View/LOT-FIT.php'; ?>
-    </section>
-
-    <section id="formation-data">
-        <?php include 'View/formation-data.php'; ?>
+    <section id="LOT-FIT-FD">
+        <?php include 'View/LOT-FIT+FD.php'; ?>
     </section>
 
     <section id="gas-reading">

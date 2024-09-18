@@ -8,15 +8,15 @@
             <h2>Well Data</h2>
                 <div class="form-group-wd">
                     <label for="fieldName">Field Name</label>
-                    <input type="text" id="fieldName" name="fieldName" placeholder="Enter Field Name">
+                    <input type="text" id="fieldName" name="fieldName" disabled>
                 </div>
                 <div class="form-group-wd">
                     <label for="wellName">Well Name</label>
-                    <input type="text" id="wellName" name="wellName" placeholder="Enter Well Name">
+                    <input type="text" id="wellName" name="wellName" disabled>
                 </div>
                 <div class="form-group-wd">
                     <label for="wellbore">Wellbore</label>
-                    <input type="text" id="wellbore" name="wellbore" placeholder="Enter Wellbore">
+                    <input type="text" id="wellbore" name="wellbore" disabled>
                 </div>
                 <div class="form-group-wd">
                     <label for="wellType">Well Type</label>
@@ -43,11 +43,17 @@
                 </div>
                 <div class="form-group-wd">
                     <label for="TVD-planDepth">Plan Depth (TVD)</label>
-                    <input type="text" id="TVD-planDepth" name="TVD-planDepth" placeholder="Enter Plan Depth (TVD)">
+                    <div class="input_value">
+                        <input type="text" id="TVD-planDepth" name="TVD-planDepth" placeholder="Enter Plan Depth (TVD)">
+                        <input type="text" id="TVD-planDepth_value" name="TVD-planDepth_value">
+                    </div>
                 </div>
                 <div class="form-group-wd">
                     <label for="MD-planDepth">Plan Depth (MD)</label>
-                    <input type="text" id="MD-planDepth" name="MD-planDepth" placeholder="Enter Plan Depth (MD)">
+                    <div class="input_value">
+                        <input type="text" id="MD-planDepth" name="MD-planDepth" placeholder="Enter Plan Depth (MD)">
+                        <input type="text" id="MD-planDepth_value" name="MD-planDepth_value">
+                    </div>
                 </div>
             </form>
        
@@ -63,11 +69,17 @@
                     </div>
                     <div class="form-group-wd">
                         <label for="Formation-Depth">Formation Depth</label>
-                        <input type="text" id="Formation-Depth" name="Formation-Depth" placeholder="Enter Formation Depth">
+                        <div class="input_value">
+                            <input type="text" id="Formation-Depth" name="Formation-Depth" placeholder="Enter Formation Depth">
+                            <input type="text" id="Formation-Depth_value" name="Formation-Depth_value">
+                        </div>
                     </div>
                     <div class="form-group-wd">
                         <label for="Formation-Tops">Formation Tops</label>
-                        <input type="text" id="Formation-Tops" name="Formation-Tops" placeholder="Enter Formation Tops">
+                        <div class="input_value">
+                            <input type="text" id="Formation-Tops" name="Formation-Tops" placeholder="Enter Formation Tops">
+                            <input type="text" id="Formation-Tops_value" name="Formation-Tops_value">
+                        </div>
                     </div>
                     <div class="form-group-wd">
                         <label for="Type-of-Lithology">Type of Lithology</label>
@@ -75,21 +87,33 @@
                     </div>
                     <div class="form-group-wd">
                         <label for="Porosity">Porosity, Φ</label>
-                        <input type="text" id="Porosity" name="Porosity" placeholder="Enter Porosity">
+                        <div class="input_value">
+                            <input type="text" id="Porosity" name="Porosity" placeholder="Enter Porosity">
+                            <input type="text" id="Porosity_value" name="Porosity_value">
+                        </div>
                     </div>
                 </div>
                 <div class="tfB">               
                     <div class="form-group-wd">
                         <label for="Permeability">Permeability, K</label>
-                        <input type="text" id="Permeability" name="Permeability" placeholder="Enter Permeability">
+                        <div class="input_value">
+                            <input type="text" id="Permeability" name="Permeability" placeholder="Enter Permeability">
+                            <input type="text" id="Permeability_value" name="Permeability_value">
+                        </div>
                     </div>
                     <div class="form-group-wd">
                         <label for="Formation-Pressure">Formation Pressure</label>
-                        <input type="text" id="Formation-Pressure" name="Formation-Pressure" placeholder="Enter Formation Pressure">
+                        <div class="input_value">
+                            <input type="text" id="Formation-Pressure" name="Formation-Pressure" placeholder="Enter Formation Pressure">
+                            <input type="text" id="Formation-Pressure_value" name="Formation-Pressure_value">
+                        </div>
                     </div>
                     <div class="form-group-wd">
                         <label for="Formation-Temperature">Formation Temperature</label>
-                        <input type="text" id="Formation-Temperature" name="Formation-Temperature" placeholder="Enter Formation Temperature">
+                        <div class="input_value">
+                            <input type="text" id="Formation-Temperature" name="Formation-Temperature" placeholder="Enter Formation Temperature">
+                            <input type="text" id="Formation-Temperature_value" name="Formation-Temperature_value">
+                        </div>
                     </div>
                     <div class="form-group-wd">
                         <label for="Fluid-Type">Fluid Type</label>

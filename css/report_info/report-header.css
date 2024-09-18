@@ -55,6 +55,12 @@ h3 {
 	margin-bottom: 10px;
 }
 
+.input_value {
+	display: grid;
+	grid-template-columns: 80% 18%;
+	gap: 2%;
+}
+
 label {
 	font-size: 0.9em;
 	margin-bottom: 5px;

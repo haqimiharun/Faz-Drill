@@ -306,7 +306,7 @@ if ($reportId) {
                     <i class="fa fa-industry"></i> <span>Rig Information</span>
                 </a>
             </li>
-            <li class="treeview <?php if(in_array($cur_page, ['well-data.php', 'LOT-FIT.php', 'formation-data.php', 'gas-reading.php'])) { echo 'active'; } ?>">
+            <li class="treeview <?php if(in_array($cur_page, ['well-data.php', 'LOT-FIT+FD.php', 'gas-reading.php'])) { echo 'active'; } ?>">
                 <a href="#well-info">
                     <i class="fa fa-database"></i>
                     <span>Well Info</span>
@@ -316,8 +316,7 @@ if ($reportId) {
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="#well-data"><i class="fa fa-circle-o"></i> Well Data</a></li>
-                    <li><a href="#LOT-FIT"><i class="fa fa-circle-o"></i> LOT/FIT</a></li>
-                    <li><a href="#formation-data"><i class="fa fa-circle-o"></i> Formation Data</a></li>
+                    <li><a href="#LOT-FIT-FD"><i class="fa fa-circle-o"></i> LOT/FIT + Formation Data</a></li>
                     <li><a href="#gas-reading"><i class="fa fa-circle-o"></i> Gas Reading</a></li>
                 </ul>
             </li>
@@ -392,7 +391,7 @@ if ($reportId) {
             const menuStructure = {
                 "report-header": { main: "Report Header", sub: "Report Header" },
                 "well-data": { main: "Well Info", sub: "Well Data" },
-                "LOT-FIT": { main: "Well Info", sub: "LOT/FIT" },
+                "LOT-FIT-FD": { main: "Well Info", sub: "LOT/FIT + Formation Data" },
                 "formation-data": { main: "Well Info", sub: "Formation Data" },
                 "gas-reading": { main: "Well Info", sub: "Gas Reading" },
                 "rig-info": { main: "Rig Information", sub: "Rig Information" },

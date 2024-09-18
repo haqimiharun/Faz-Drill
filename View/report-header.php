@@ -11,7 +11,7 @@
             </div>
             <div class="form-group-rh">
                 <label for="Well">Well</label>
-                <input type="text" id="Well" name="Well" placeholder="Enter Well Name">
+                <input type="text" id="Well" name="Well" disabled>
             </div>
             <div class="form-group-rh">
                 <label for="Lead-DSV">Lead DSV</label>
@@ -23,7 +23,11 @@
             </div>
             <div class="form-group-rh">
                 <label for="engineer">Drilling Engineer/Company</label>
-                <input type="text" id="engineer" name="engineer" placeholder="Enter Engineer/Company Name">
+                <select id="engineer" name="engineer">
+                    <option value="0">Select an Item</option>
+                    <option value="1">engineer1</option>
+                    <option value="2">engineer2</option>
+                </select>
             </div>
             <div class="form-group-rh">
                 <label for="geologist">Well Site Geologist</label>
@@ -53,13 +57,16 @@
                 <label for="Next-Location">Next Location</label>
                 <input type="text" id="Next-Locationer" name="Next-Location" placeholder="Enter Next Location">
             </div>
-            <div class="form-group-rh">
+            <div class="form-group-rh-value">
                 <label for="TD">Proposed TD, length</label>
-                <input type="text" id="TD" name="TD" placeholder="Enter Proposed TD">
+                <div class="input_value">
+                    <input type="text" id="TD" name="TD" placeholder="Enter Proposed TD">
+                    <input type="text" id="TD_Value" name="TD_Value" readonly >
+                </div>
             </div>
             <div class="form-group-rh">
                 <label for="AFE">AFE</label>
-                <input type="text" id="AFE" name="AFE" placeholder="Enter AFE">
+                <input type="text" id="AFE" name="AFE" disabled>
             </div>
             <div class="form-group-rh">
                 <label for="Objective">Objective</label>
