@@ -200,19 +200,6 @@
             <button type="button" class="add-btn" data-target="rescue_vessel">Add New</button>
         </div>
     </div>
-    <div class="form-group">
-                        <label for="Vessel">Vessel</label>
-                        <select id="mudPV" name="mudPV">
-                            <option value="" disabled selected>Select Vessel</option>
-                            <option value="type1">Drillship</option>
-                            <option value="type2">Semi-Submersible Rig</option>
-                            <option value="type3">Jack-Up Rig</option>
-                            <option value="type3">Platform Supply Vessel (PSV)</option>
-                            <option value="type3">Anchor Hanlding Tug Supply (AHTS) Vessel</option>
-                            <option value="type3">Crew Boat</option>
-                            <option value="type3">Well Intervantion Vessel</option>
-                        </select>
-                    </div>
             </div>
         </div>
     </div>

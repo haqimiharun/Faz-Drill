@@ -47,12 +47,12 @@
                         <input type="text" id="mudHTHP" name="mudHTHP" placeholder="Enter HTHP 300 Degree">
                     </div>
                     <div class="form-group">
-                        <label for="mudSolid">Solid, %</label>
+                        <label for="mudSolid">Solid%</label>
                         <input type="text" id="mudSolid" name="mudSolid" placeholder="Enter Mud Solid">
                     </div>
                     <div class="form-group">
-                        <label for="mudSan">Sand, %</label>
-                        <input type="text" id="mudSan" name="mudSan" placeholder="Enter Mud San">
+                        <label for="mudSand">Sand%</label>
+                        <input type="text" id="mudSand" name="mudSand" placeholder="Enter Mud Sand">
                     </div>
                     <div class="form-group">
                         <label for="mudMBT">MBT</label>
@@ -71,8 +71,8 @@
                         <input type="text" id="mudMF" name="mudMF" placeholder="Enter Mud MF">
                     </div>
                     <div class="form-group">
-                        <label for="mudChorides">Chorides, %</label>
-                        <input type="text" id="mudChorides" name="mudChorides" placeholder="Enter Mud Chorides">
+                        <label for="mudChlorides">Chlorides</label>
+                        <input type="text" id="mudChlorides" name="mudChlorides" placeholder="Enter Mud Chlorides">
                     </div>
                 </form>
             </div>
@@ -81,11 +81,11 @@
                 <!-- <h2>Oil %</h2> -->
                 <form>
                     <div class="form-group">
-                        <label for="mudOil">Oil, %</label>
+                        <label for="mudOil">Oil%</label>
                         <input type="text" id="mudOil" name="mudOil" placeholder="Enter Mud Oil">
                     </div>
                     <div class="form-group">
-                        <label for="mudWater">Water, %</label>
+                        <label for="mudWater">Water%</label>
                         <input type="text" id="mudWater" name="mudWater" placeholder="Enter Mud Water">
                     </div>
                     <div class="form-group">
@@ -93,23 +93,23 @@
                         <input type="text" id="mudCalcium" name="mudCalcium" placeholder="Enter Calcium">
                     </div>
                     <div class="form-group">
-                        <label for="mudHGS">HGS, %</label>
+                        <label for="mudHGS">HGS%</label>
                         <input type="text" id="mudHGS" name="mudHGS" placeholder="Enter Mud HGS">
                     </div>
                     <div class="form-group">
-                        <label for="mudPitVol">Pit Volume </label>
+                        <label for="mudPitVol">Pit Volume</label>
                         <input type="text" id="mudPitVol" name="mudPitVol" placeholder="Enter Pit Volume">
                     </div>
                     <div class="form-group">
-                        <label for="mudHoleVol">Hole Volume </label>
+                        <label for="mudHoleVol">Hole Volume</label>
                         <input type="text" id="mudPM" name="mudPM" placeholder="Enter Hole Volume">
                     </div>
                     <div class="form-group">
-                        <label for="mudTimeChk">Time Mud Check, time</label>
-                        <input type="time" id="mudTimeChk" name="mudTimeChk" placeholder="Enter Time Mud Check">
+                        <label for="mudTimeChk">Time Mud Check (hour:minute)</label>
+                        <input type="text" id="mudTimeChk" name="mudTimeChk" placeholder="Enter Time Mud Check">
                     </div>
                     <div class="form-group">
-                        <label for="mudLostInHole">Mud Lost In Hole, Volume</label>
+                        <label for="mudLostInHole">Mud Lost In Hole</label>
                         <input type="text" id="mudLostInHole" name="mudLostInHole" placeholder="Enter Mud Lost In Hole">
                     </div>
                 </form>
@@ -127,15 +127,15 @@
                         <input type="text" id="mudLoseHr" name="mudLoseHr" placeholder="Enter Mud Losses">
                     </div>
                     <div class="form-group">
-                        <label for="ttl_day_lose">Total Daily Losses, Volume</label>
+                        <label for="ttl_day_lose">Total Daily Losses</label>
                         <input type="text" id="ttl_day_lose" name="ttl_day_lose" placeholder="Enter Total Daily Losses">
                     </div>
                     <div class="form-group">
-                        <label for="day_mud_cost">Daily Mud Cost, $</label>
+                        <label for="day_mud_cost">Daily Mud Cost</label>
                         <input type="text" id="day_mud_cost" name="day_mud_cost" placeholder="Enter Daily Mud Cost">
                     </div>
                     <div class="form-group">
-                        <label for="ttl_mud">Total Mud, Volume</label>
+                        <label for="ttl_mud">Total Mud</label>
                         <input type="text" id="ttl_mud" name="ttl_mud" placeholder="Enter Total Mud">
                     </div>
                 </form>

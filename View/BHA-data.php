@@ -8,8 +8,8 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Outside Diameter (OD), Length</th>
-                                    <th>Inside Diameter (ID), Length</th>
+                                    <th>Outside Diameter (OD)</th>
+                                    <th>Inside Diameter (ID)</th>
                                     <th>Weight</th>
                                     <th>Length</th>
                                 </tr>
@@ -110,13 +110,13 @@
                         <input type="text" id="DDC" name="DDC" placeholder="Enter Directional Drilling Contractor">
                     </div>
                     <div class="form-group" style="display: flex; align-items: center;">
-                        <label for="daily_cost">Daily Cost, $:</label>
+                        <label for="daily_cost">Daily Cost:</label>
                         <input type="text" id="daily_cost" name="daily_cost" placeholder="Enter Daily Cost" style="margin-right: 7px;">
 
-                        <label for="dol">Days on Location, Day:</label>
+                        <label for="dol">Days on Location:</label>
                         <input type="text" id="dol" name="dol" placeholder="Days on Location" style="margin-right: 10px;">
 
-                        <label for="cost_ttl">Total Cost, $:</label>
+                        <label for="cost_ttl">Total Cost:</label>
                         <input type="text" id="cost_ttl" name="cost_ttl" placeholder="Total Cost" readonly>
                     </div>
                 </form>

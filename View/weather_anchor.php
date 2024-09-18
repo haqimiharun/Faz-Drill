@@ -21,7 +21,7 @@
                         <input type="text" id="mudPV" name="mudPV" placeholder="Enter Mud PV">
                     </div>
                     <div class="form-group">
-                        <label for="mudYP">Wind Speed</label>
+                        <label for="mudYP">Wind Speed Knots</label>
                         <input type="text" id="mudYP" name="mudYP" placeholder="Enter Mud YP">
                     </div>
                     <div class="form-group">
