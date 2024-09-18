@@ -20,6 +20,22 @@
                             <input type="text" id="mudViscosity" name="mudViscosity" placeholder="Enter Mud Viscosity">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="mudPV">Gas/Oil Ratio (GOR)</label>
+                        <input type="text" id="mudPV" name="mudPV" placeholder="Enter Mud PV">
+                    </div>
+                    <div class="form-group">
+                        <label for="mudYP">Show Time</label>
+                        <input type="text" id="mudYP" name="mudYP" placeholder="Enter Mud YP">
+                    </div>
+                </form>
+            </div>
+
+            <div class="container">
+                <form>
+                    <div class="form-group">
+                        <label for="mudGels10sec">Gas chromatograph (GC) Analysis, sec</label>
+                        <input type="text" id="mudGels10sec" name="mudGels10sec" placeholder="Enter 10 Sec Gels">
                     <div class="grid2">
                         <div class="form-group-gr">
                             <label for="mudPV">Gas/Oil Ratio (GOR)</label>

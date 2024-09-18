@@ -1,63 +1,61 @@
-<link rel="stylesheet" href="css/report_info/well-data.css">
 
-<div class="wrapper-wd">
-    <!-- First Row: Well Data & Target Formation -->
-    <div class="row1-wd">
-        <div class="container-wd">
-            <form action="#" method="post">
-            <h2>Well Data</h2>
-                <div class="form-group-wd">
-                    <label for="fieldName">Field Name</label>
-                    <input type="text" id="fieldName" name="fieldName" placeholder="Enter Field Name">
-                </div>
-                <div class="form-group-wd">
-                    <label for="wellName">Well Name</label>
-                    <input type="text" id="wellName" name="wellName" placeholder="Enter Well Name">
-                </div>
-                <div class="form-group-wd">
-                    <label for="wellbore">Wellbore</label>
-                    <input type="text" id="wellbore" name="wellbore" placeholder="Enter Wellbore">
-                </div>
-                <div class="form-group-wd">
-                    <label for="wellType">Well Type</label>
-                    <select id="wellType" name="wellType">
-                        <option value="" disabled selected>Select Well Type</option>
-                        <option value="wildcat">Wildcat</option>
-                        <option value="exploration">Exploration</option>
-                        <option value="development">Development</option>
-                        <option value="infill">Infill</option>
-                        <option value="injection">Injection</option>
-                    </select>
-                </div>
-                <div class="form-group-wd">
-                    <label for="wellLoc">Well Location</label>
-                    <div>
-                        <input type="radio" id="useLatLong" name="locationType" value="latlong">
-                        <label for="useLatLong">Use Longitude and Latitude</label>
+    <div class="wrapper">
+        <h3 style="text-align: center;">Well Data</h3>
+        <div class="row1">
+            <div class="container">
+                <h2>Well Data</h2>
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="fieldName">Field Name</label>
+                        <input type="text" id="fieldName" name="fieldName" placeholder="Enter Field Name">
                     </div>
-                    <div>
-                        <input type="radio" id="useNorthingEasting" name="locationType" value="northingeasting">
-                        <label for="useNorthingEasting">Use Northing and Easting</label>
+                    <div class="form-group">
+                        <label for="wellName">Well Name</label>
+                        <input type="text" id="wellName" name="wellName" placeholder="Enter Well Name">
                     </div>
-                    <input type="text" id="wellLoc" name="wellLoc" placeholder="Enter Well Location">
-                </div>
-                <div class="form-group-wd">
-                    <label for="TVD-planDepth">Plan Depth (TVD)</label>
-                    <input type="text" id="TVD-planDepth" name="TVD-planDepth" placeholder="Enter Plan Depth (TVD)">
-                </div>
-                <div class="form-group-wd">
-                    <label for="MD-planDepth">Plan Depth (MD)</label>
-                    <input type="text" id="MD-planDepth" name="MD-planDepth" placeholder="Enter Plan Depth (MD)">
-                </div>
-            </form>
-       
-            <form action="#" method="post">
-            <div id="myDIV">
-                <div class="tfT">
-                <h2 class="item1">Target Formation</h2>
-                </div>
-                <div class="tfA">
-                    <div class="form-group-wd">
+                    <div class="form-group">
+                        <label for="wellbore">Wellbore</label>
+                        <input type="text" id="wellbore" name="wellbore" placeholder="Enter Wellbore">
+                    </div>
+                    <div class="form-group">
+                        <label for="mudPV">Well Type</label>
+                        <select id="mudPV" name="mudPV">
+                            <option value="" disabled selected>Select Well Type</option>
+                            <option value="type1">Wildcat</option>
+                            <option value="type2">Exploration</option>
+                            <option value="type3">Development</option>
+                            <option value="type3">Infill</option>
+                            <option value="type3">Injection</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="wellLoc">Well Location</label>
+                        <div>
+                            <input type="radio" id="useLatLong" name="locationType" value="latlong">
+                            <label for="useLatLong">Use Longitude and Latitude</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="useNorthingEasting" name="locationType" value="northingeasting">
+                            <label for="useNorthingEasting">Use Northing and Easting</label>
+                        </div>
+                        <input type="text" id="wellLoc" name="wellLoc" placeholder="Enter Well Location">
+                    </div>
+                    <div class="form-group">
+                        <label for="TVD-planDepth">Plan Depth (TVD), Depth</label>
+                        <input type="text" id="TVD-planDepth" name="TVD-planDepth" placeholder="Enter Plan Depth (TVD)">
+                    </div>
+                    <div class="form-group">
+                        <label for="MD-planDepth">Plan Depth (MD), Depth</label>
+                        <input type="text" id="MD-planDepth" name="MD-planDepth" placeholder="Enter Plan Depth (MD)">
+                    </div>
+                </form>
+            </div>
+
+            <div class="container">
+                <h2>Target Formation</h2>
+
+                <form action="#" method="post">
+                    <div class="form-group">
                         <label for="Formation-Name">Formation Name</label>
                         <input type="text" id="Formation-Name" name="Formation-Name" placeholder="Enter Formation Name">
                     </div>
@@ -95,9 +93,10 @@
                         <label for="Fluid-Type">Fluid Type</label>
                         <input type="text" id="Fluid-Type" name="Fluid-Type" placeholder="Enter Fluid Type">
                     </div>
-                    <div class="form-group-wd">
-                        <label for="Gas-Shows">Gas Shows</label>
-                        <input type="text" id="Gas-Shows" name="Gas-Shows" placeholder="Enter Gas Shows">
+                    <div class="form-group">
+                    <!-- ada redundant data : nnti just call back untk data dibawah -->
+                        <label for="Gas-Shows">Gas Shows, %</label> 
+                        <input type="text" id="Gas-Shows" name="Gas-Show" placeholder = "Enter Gas Shows"> 
                     </div>
                 </div>
                 <div class="tfC">
