@@ -30,13 +30,13 @@
                             <input type="text" id="mudYP" name="mudYP" placeholder="Enter Mud YP">
                         </div>
                         <div class="form-group-gr">
-                            <label for="mudGels10sec">Gas chromatograph (GC) Analysis</label>
+                            <label for="mudGels10sec">Gas chromatograph (GC) Analysis, Sec</label>
                             <input type="text" id="mudGels10sec" name="mudGels10sec" placeholder="Enter 10 Sec Gels">
                         </div>
                     </div>
                     <div class="grid3">
                         <div class="form-group-gr">
-                            <label for="mudGels30min">Hydrocarbon potential</label>
+                            <label for="mudGels30min">Hydrocarbon potential, min</label>
                             <input type="text" id="mudGels30min" name="mudGels30min" placeholder="Enter 30 Min Gels">
                         </div>
                         <div class="form-group-gr">
