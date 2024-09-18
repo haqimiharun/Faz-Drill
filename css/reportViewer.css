@@ -1,22 +1,25 @@
 body {
 	font-family: Arial, sans-serif;
 	margin: 0;
-	padding: 0;
+	padding: 10px;
 	background-color: #f4f4f4;
 }
 
 .report-container {
-	width: 80%;
+	width: 95%;
 	margin: 20px auto;
 	background-color: white;
-	padding: 20px;
-	border-radius: 8px;
+	border-radius: 3px;
+	border-style: solid;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 header {
 	text-align: center;
-	margin-bottom: 20px;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	padding: 40px 20px 0px 20px;
 }
 
 header h1 {
@@ -26,7 +29,7 @@ header h1 {
 
 header h2 {
 	font-size: 1.2em;
-	margin: 5px 0;
+	margin: 1px 0;
 }
 
 header p {
@@ -34,38 +37,152 @@ header p {
 	color: #555;
 }
 
-.section {
-	margin-bottom: 20px;
+#well_Info {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
 }
 
-.section h3 {
-	font-size: 1.5em;
-	border-bottom: 2px solid #ddd;
-	padding-bottom: 10px;
+#well_Info div {
+	border-width: 0px 0px 1px 1px;
+	border-style: solid;
+	padding-left: 5px;
 }
 
-table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-top: 10px;
+.wellTitle {
+	grid-column: 1 / span 4;
+	background-color: #dfdfdf;
+	text-align: center;
+	/* font-weight: bold; */
+	padding: 2px 0px 2px 0px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
 }
 
-table,
-th,
-td {
-	border: 1px solid #ddd;
+.eventDesc {
+	padding-bottom: 16px;
 }
 
-th,
-td {
-	padding: 10px;
-	text-align: left;
+.sixItem {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
 }
 
-th {
-	background-color: #f4f4f4;
+.Obj,
+.field-platform,
+.AFE_No,
+.Start_date,
+.Spud_date,
+.End_date {
+	border-width: 0px 0px 0px 1px;
+	border-style: solid;
 }
 
-td {
-	background-color: #fff;
+.blnk {
+	text-decoration: none;
+	border-width: 0px 0px 1px 1px;
+	border-style: solid;
+}
+
+#well_Info2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+
+#well_Info2 div {
+	padding-left: 5px;
+}
+
+.depthDays {
+	border-width: 0px 1px 1px 0px;
+	border-style: solid;
+	grid-column: 1 / span 4;
+	background-color: #dfdfdf;
+	text-align: center;
+	/* font-weight: bold; */
+	padding: 2px 0px 2px 0px;
+}
+
+.Cost {
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	background-color: #dfdfdf;
+	text-align: center;
+	/* font-weight: bold; */
+	padding: 2px 0px 2px 0px;
+}
+
+.dol,
+.dfs,
+.ttlDays,
+.md,
+.tvd,
+.progress,
+.rttingHrs,
+.cumRotHrs,
+.avgROP,
+.lastCasing,
+.lastHoleSize,
+.lastShoeTMD,
+.lastShoeTVD,
+.blnk1 {
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+
+.estDays,
+.finalTMD,
+.blnk2 {
+	border-width: 0px 1px 1px 0px;
+	border-style: solid;
+}
+
+.dailyNPT {
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+}
+
+.cummNPT,
+.curnHoleSize {
+	border-width: 0px 1px 1px 0px;
+	border-style: solid;
+}
+.expenditure {
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+}
+
+#well_Info3 {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+
+.statusTitle {
+	border-width: 1px 0px 0px 0px;
+	border-style: solid;
+}
+
+.statusInfo {
+	grid-column: 2 / span 4;
+	border-width: 1px 0px 0px 0px;
+	border-style: solid;
+}
+
+.remarks {
+	border-width: 0px 0px 3px 0px;
+	border-style: solid;
+}
+
+.operationSum {
+	background-color: #dfdfdf;
+	text-align: center;
+	/* font-weight: bold; */
+	padding: 2px 0px 2px 0px;
 }
