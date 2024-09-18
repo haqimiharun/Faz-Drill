@@ -301,6 +301,11 @@ if ($reportId) {
                     <i class="fa fa-file-text-o"></i> <span>Report Header</span>
                 </a>
             </li>
+            <li class="treeview <?php if(in_array($cur_page, ['rig-info.php'])) { echo 'active'; } ?>">
+                <a href="#rig-info">
+                    <i class="fa fa-industry"></i> <span>Rig Information</span>
+                </a>
+            </li>
             <li class="treeview <?php if(in_array($cur_page, ['well-data.php', 'LOT-FIT.php', 'formation-data.php', 'gas-reading.php'])) { echo 'active'; } ?>">
                 <a href="#well-info">
                     <i class="fa fa-database"></i>
@@ -315,11 +320,6 @@ if ($reportId) {
                     <li><a href="#formation-data"><i class="fa fa-circle-o"></i> Formation Data</a></li>
                     <li><a href="#gas-reading"><i class="fa fa-circle-o"></i> Gas Reading</a></li>
                 </ul>
-            </li>
-            <li class="treeview <?php if(in_array($cur_page, ['rig-info.php'])) { echo 'active'; } ?>">
-                <a href="#rig-info">
-                    <i class="fa fa-industry"></i> <span>Rig Information</span>
-                </a>
             </li>
             <li class="treeview <?php if(in_array($cur_page, ['consumables.php', 'bulk-material.php', 'weather_anchor.php', 'pob.php', 'vessels.php'])) { echo 'active'; } ?>">
                 <a href="#logi-mate">

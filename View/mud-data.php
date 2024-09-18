@@ -51,8 +51,8 @@
                         <input type="text" id="mudSolid" name="mudSolid" placeholder="Enter Mud Solid">
                     </div>
                     <div class="form-group">
-                        <label for="mudSan">San%</label>
-                        <input type="text" id="mudSan" name="mudSan" placeholder="Enter Mud San">
+                        <label for="mudSand">Sand%</label>
+                        <input type="text" id="mudSand" name="mudSand" placeholder="Enter Mud Sand">
                     </div>
                     <div class="form-group">
                         <label for="mudMBT">MBT</label>
@@ -71,8 +71,8 @@
                         <input type="text" id="mudMF" name="mudMF" placeholder="Enter Mud MF">
                     </div>
                     <div class="form-group">
-                        <label for="mudChorides">Chorides</label>
-                        <input type="text" id="mudChorides" name="mudChorides" placeholder="Enter Mud Chorides">
+                        <label for="mudChlorides">Chlorides</label>
+                        <input type="text" id="mudChlorides" name="mudChlorides" placeholder="Enter Mud Chlorides">
                     </div>
                 </form>
             </div>

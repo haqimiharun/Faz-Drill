@@ -12,6 +12,9 @@
     <section id="report-header">
         <?php include 'View/report-header.php'; ?> 
     </section>
+    <section id="rig-info">
+        <?php include 'View/rig-info.php'; ?>
+    </section>
 <div>
     <section id="well-info">
         <h1 style="text-align: center;">Well Information</h1>
@@ -31,10 +34,6 @@
 
     <section id="gas-reading">
         <?php include 'View/gas-reading.php'; ?>
-    </section>
-
-    <section id="rig-info">
-        <?php include 'View/rig-info.php'; ?>
     </section>
 <div>
     <section id="logi-mate">
