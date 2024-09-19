@@ -5,11 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Drilling Report</title>
     <link rel="stylesheet" href="../css/reportViewer.css">
+    <style>
+        /* Set the size of the page to A4 */
+        .report-container-main {
+            width: 210mm;
+            height: 297mm;
+            margin: auto;
+            padding: 3mm; /* Optional padding */
+            box-sizing: border-box; /* Ensure padding is included in the size */
+            background-color: #fff;
+            border: 1px solid #000; /* Optional border for visual reference */
+        }
+
+        /* Prevent page from being scaled */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .report-container {
+                page-break-before: always;
+                box-shadow: none;
+            }
+        }
+
+        /* Optional: Make the content responsive when viewed on screen */
+        @media screen {
+            body, html {
+                height: 100%;
+                width: 100%;
+            }
+
+            .report-container {
+                max-width: 100%;
+                height: auto;
+                margin: 20px auto;
+            }
+        }
+    </style>
 </head>
 <body>
+<div class="report-container-main">
     <div class="report-container">
         <header>
-            <h3>Daily Drilling Report</h3>
+            <h2>Daily Drilling Report</h2>
         </header>
 
         <section class="section">
@@ -67,8 +106,7 @@
                 <div class="blnk">:</div>
                 <div class="blnk">:</div>
                 <div class="blnk">:</div>
-
-            </div>    
+            </div>
             <div id="well_Info">    
                 <div class="block">
                 Block:
@@ -208,28 +246,136 @@
         <section>
             <div class="operationSum">
                 OPERATION SUMMARY
+                <div class="operationSumPart1">
+                    <div class="p1">
+                        <div class="fromTo">
+                            From - To
+                        </div> 
+                        <div class="hours">
+                            Hrs
+                        </div> 
+                        <div class="phaseCode">
+                            Phase Code
+                        </div> 
+                        <div class="actCode">
+                            Activity Code
+                        </div>
+                        <div class="ductiveCode">
+                            Productive Code / Non-Production Code
+                        </div> 
+                        <div class="NPT">
+                            NPT
+                        </div>
+                        <div class="rigStatus">
+                            Rig Status
+                        </div>
+                        <div class="MDForm">
+                            MD Form (m)
+                        </div>
+                    </div>
+                    <div class="p2">
+                        Operation
+                    </div>
+                </div>
             </div>
-            <div class="">
-
+            <div class="operationSumPart2">
+                <div class="p3">
+                    <div class="fromTo">
+                        na
+                    </div> 
+                    <div class="hours">
+                        na
+                    </div> 
+                    <div class="phaseCode">
+                        na
+                    </div> 
+                    <div class="actCode">
+                        na
+                    </div>
+                    <div class="ductiveCode">
+                        na
+                    </div> 
+                    <div class="NPT">
+                        na
+                    </div>
+                    <div class="rigStatus">
+                        na
+                    </div>
+                    <div class="MDForm">
+                        na
+                    </div>
+                </div>
+                <div class="p4">
+                    na
+                </div>
             </div>
         </section>
+    </div>
+    <hr class="hr1">
+    <div class="report-container">
+        <header>
+            <h3>Daily Drilling Report</h3>
+        </header>
 
         <section class="section">
-            <h3>Daily Activity</h3>
-            <table>
-                <tr>
-                    <th>Time</th>
-                    <th>Activity</th>
-                </tr>
-                <tr>
-                    <td>08:00</td>
-                    <td>Started drilling...</td>
-                </tr>
-                <!-- Add more rows as needed -->
-            </table>
+            <div id="well_Info">
+                <div class="well">
+                    Well: 
+                </div>
+                <div class="wellbore">
+                    Wellbore:
+                </div>
+                <div class="reportNo">
+                    Report No:
+                </div>
+                <div class="reportDate">
+                    Report Date:
+                </div>
+            </div>
+            <div class="a2ndPart">
+                <div class="bitData">
+                    <div class="bitDataTitle" > BIT DATA
+                    </div>
+                    <div class="bitData1" > Bit No.
+                    </div>
+                    <div class="bitData2" > na
+                    </div>
+                    <div class="bitData3" > na
+                    </div>
+                    <div class="bitData1" > Run
+                    </div>
+                    <div class="bitData2" > na
+                    </div>
+                    <div class="bitData3" > na
+                    </div>
+                </div>
+                <div class="mudCheck1">
+                    <div class="mudCheck1Title"> MUD CHECK
+                    </div>
+                    <div class="mudCheck1Cost"> Daily Mud: na USD
+                    </div>
+                    <div class="mudCheck1_1"> Type
+                    </div>
+                    <div class="mudCheck1_2"> Synthetic Based
+                    </div>
+                    <div class="mudCheck1_3"> na
+                    </div>
+                </div>
+                <div class="mudCheck2">
+                    <div class="mudCheck2Title"> MUD CHECK
+                    </div>
+                    <div class="mudCheck2Cost"> Cum. Mud cost: na USD
+                    </div>
+                    <div class="mudCheck2_1"> Pm (cc)
+                    </div>
+                    <div class="mudCheck2_2"> 0.00
+                    </div>
+                    <div class="mudCheck2_3"> na
+                    </div>
+                </div>
+            </div>
         </section>
-
-        <!-- Add additional sections as needed -->
     </div>
+</div>
 </body>
 </html>
