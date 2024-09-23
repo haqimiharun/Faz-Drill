@@ -705,33 +705,59 @@
                 <div class="AC_Title">
                     Assembly Components
                 </div>
-                <div class="sixItem">
-                    <div class="Obj">
-                    Objection
-                    </div>
-                    <div class="field-platform">
-                    Field / Platform
-                    </div>
-                    <div class="AFE_No">
-                    AFE No
-                    </div>
-                    <div class="Start_date">
-                    Start date
-                    </div>
-                    <div class="Spud_date">
-                    Spud date
-                    </div>
-                    <div class="End_date">
-                    End date
-                    </div>
-                    <div class="blnk">:</div>
-                    <div class="blnk">:</div>
-                    <div class="blnk">:</div>
-                    <div class="blnk">:</div>
-                    <div class="blnk">:</div>
-                    <div class="blnk">:</div>
+                <div class="componentTypeAC">
+                    Component type
+                </div>
+                <div class="NoJointAC">
+                    No. of Joints
+                </div>
+                <div class="LengthAC">
+                    Length (m)
+                </div>
+                <div class="ODAC">
+                    OD (in)
+                </div>
+                <div class="IDAC">
+                    ID (in)
+                </div>
+                <div class="connectionAC">
+                    Connection
+                </div>
+                <div class="weightAC">
+                    Weight (ppf)
+                </div>
+                <div class="GradeAC">
+                    Grade
+                </div>
+                <div class="PinBoxAC">
+                    Pin Box
+                </div>
+                <div class="SerialNoAC">
+                    Serial No.
+                </div>
+                <div class="SpiralAC">
+                    Left or right spiral
+                </div>
+                <div class="fishNetAC">
+                    Fish Neck
+                </div>
+                <div class="conn_OD">
+                    OD (in)
+                </div>
+                <div class="conn_Name">
+                    Name
+                </div>
+                <div class="nf_Length">
+                    Length (m)
+                </div>
+                <div class="nf_OD">
+                    OD (in)
+                </div>
+                <div class="ct1">
+                    Heavy Weight Drill Pipe
                 </div>
             </div>
+            
         </section>
     </div>
 </div>

@@ -370,7 +370,7 @@ header p {
 	border-style: solid;
 }
 
-#AC .AC_Title {
+.AC_Title {
 	grid-column: 1 / span 16;
 	background-color: #dfdfdf;
 	text-align: center;
@@ -400,4 +400,113 @@ header p {
 
 .ACreportDate {
 	grid-column: 14 / span 3;
+}
+
+.componentTypeAC {
+	grid-area: 3 / 1 / span 3 / span 3;
+	text-align: center;
+	border-width: 0px 1px 1px 0px;
+	border-style: solid;
+}
+
+.NoJointAC {
+	grid-area: 3 / 4 / span 3 / span 1;
+	text-align: center;
+	border-width: 0px 1px 1px 0px;
+	border-style: solid;
+}
+
+.LengthAC {
+	grid-area: 3 / 5 / span 3 / span 1;
+	text-align: center;
+	border-width: 0px 1px 1px 0px;
+	border-style: solid;
+}
+
+.ODAC {
+	grid-area: 3 / 6 / span 3 / span 1;
+	text-align: center;
+	border-width: 0px 1px 1px 0px;
+	border-style: solid;
+}
+
+.IDAC {
+	grid-area: 3 / 7 / span 3 / span 1;
+	text-align: center;
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+}
+
+.connectionAC {
+	grid-area: 3 / 8 / span 1 / span 2;
+	text-align: center;
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+}
+
+.weightAC {
+	grid-area: 3 / 10 / span 3 / span 1;
+	text-align: center;
+	border-width: 0px 1px 1px 0px;
+	border-style: solid;
+}
+
+.GradeAC {
+	grid-area: 3 / 11 / span 3 / span 1;
+	text-align: center;
+	border-width: 0px 1px 1px 0px;
+	border-style: solid;
+}
+
+.PinBoxAC {
+	grid-area: 3 / 12 / span 3 / span 1;
+	text-align: center;
+	border-width: 0px 1px 1px 0px;
+	border-style: solid;
+}
+
+.SerialNoAC {
+	grid-area: 3 / 13 / span 3 / span 1;
+	text-align: center;
+	border-width: 0px 1px 1px 0px;
+	border-style: solid;
+}
+.SpiralAC {
+	grid-area: 3 / 14 / span 3 / span 1;
+	text-align: center;
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+}
+.fishNetAC {
+	grid-area: 3 / 15 / span 1 / span 2;
+	text-align: center;
+	border-width: 0px 0px 1px 1px;
+	border-style: solid;
+}
+.conn_OD {
+	grid-area: 5 / 8;
+	text-align: center;
+	border-width: 0px 0px 1px 1px;
+	border-style: solid;
+}
+.conn_Name {
+	grid-area: 5 / 9;
+	text-align: center;
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+}
+.nf_Length {
+	grid-area: 5 / 15;
+	text-align: center;
+	border-width: 0px 0px 1px 1px;
+	border-style: solid;
+}
+.nf_OD {
+	grid-area: 5 / 16;
+	text-align: center;
+	border-width: 0px 0px 1px 1px;
+	border-style: solid;
+}
+.ct1 {
+	grid-area: 6 / 1;
 }
