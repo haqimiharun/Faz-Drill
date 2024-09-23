@@ -245,14 +245,13 @@ header p {
 .a2ndPart {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	border-style: solid;
 }
 
 .bitData {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	border-style: solid;
-	border-width: 0px 4px 4px 0px;
+	border-width: 1px 2px 0px 0px;
 	text-align: center;
 }
 
@@ -266,25 +265,22 @@ header p {
 	grid-column: 1 / span 3;
 	border-style: solid;
 	border-width: 1px 1px 1px 1px;
+	background-color: #dfdfdf;
 }
 
 .mudCheck1 {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	border-style: solid;
-	border-width: 0px 4px 4px 0px;
+	border-width: 1px 2px 1px 0px;
 	text-align: center;
-}
-
-.mudCheck1 {
-	border-style: solid;
-	border-width: 1px 1px 1px 1px;
 }
 
 .mudCheck1Title {
 	grid-column: 1 / span 3;
 	border-style: solid;
 	border-width: 0px 0px 1px 0px;
+	background-color: #dfdfdf;
 }
 
 .mudCheck1Cost {
@@ -292,13 +288,14 @@ header p {
 	text-align: start;
 	border-style: solid;
 	border-width: 0px 0px 1px 0px;
+	background-color: #dfdfdf;
 }
 
 .mudCheck2 {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	border-style: solid;
-	border-width: 0px 0px 4px 0px;
+	border-width: 1px 1px 1px 1px;
 	text-align: center;
 }
 
@@ -306,6 +303,7 @@ header p {
 	grid-column: 1 / span 3;
 	border-style: solid;
 	border-width: 0px 0px 1px 0px;
+	background-color: #dfdfdf;
 }
 
 .mudCheck2Cost {
@@ -313,4 +311,93 @@ header p {
 	text-align: start;
 	border-style: solid;
 	border-width: 0px 0px 1px 0px;
+	background-color: #dfdfdf;
+}
+
+.mudCheck1_1 {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+	text-align: start;
+	padding-left: 2px;
+}
+
+.mudCheck1_2 {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+	text-align: end;
+}
+
+.mudCheck2_1 {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+	text-align: start;
+	padding-left: 2px;
+}
+
+.mudCheck2_2 {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+	text-align: end;
+}
+
+.bha_part {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.bha_title1 {
+	grid-column: 1 / span 3;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 2px 0px 1px 0px;
+	text-align: center;
+}
+
+.bha_title2 {
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 2px 0px 1px 0px;
+}
+
+.bha_data3 {
+	grid-column: 3 / span 2;
+}
+
+#AC {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+
+#AC .AC_Title {
+	grid-column: 1 / span 16;
+	background-color: #dfdfdf;
+	text-align: center;
+	/* font-weight: bold; */
+	padding: 2px 0px 2px 0px;
+	border-width: 1px 0px 1px 0px;
+	border-style: solid;
+}
+
+.ACwell {
+	grid-column: 1 / span 7;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+
+.ACwellbore {
+	grid-column: 8 / span 3;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+
+.ACreportNo {
+	grid-column: 11 / span 3;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+
+.ACreportDate {
+	grid-column: 14 / span 3;
 }
