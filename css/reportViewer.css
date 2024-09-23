@@ -366,8 +366,6 @@ header p {
 #AC {
 	display: grid;
 	grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
-	border-width: 0px 1px 0px 0px;
-	border-style: solid;
 }
 
 .AC_Title {
@@ -407,6 +405,7 @@ header p {
 	text-align: center;
 	border-width: 0px 1px 1px 0px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 
 .NoJointAC {
@@ -414,6 +413,7 @@ header p {
 	text-align: center;
 	border-width: 0px 1px 1px 0px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 
 .LengthAC {
@@ -421,6 +421,7 @@ header p {
 	text-align: center;
 	border-width: 0px 1px 1px 0px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 
 .ODAC {
@@ -428,6 +429,7 @@ header p {
 	text-align: center;
 	border-width: 0px 1px 1px 0px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 
 .IDAC {
@@ -435,6 +437,7 @@ header p {
 	text-align: center;
 	border-width: 0px 0px 1px 0px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 
 .connectionAC {
@@ -442,6 +445,7 @@ header p {
 	text-align: center;
 	border-width: 0px 1px 1px 1px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 
 .weightAC {
@@ -449,6 +453,7 @@ header p {
 	text-align: center;
 	border-width: 0px 1px 1px 0px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 
 .GradeAC {
@@ -456,6 +461,7 @@ header p {
 	text-align: center;
 	border-width: 0px 1px 1px 0px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 
 .PinBoxAC {
@@ -463,6 +469,7 @@ header p {
 	text-align: center;
 	border-width: 0px 1px 1px 0px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 
 .SerialNoAC {
@@ -470,43 +477,252 @@ header p {
 	text-align: center;
 	border-width: 0px 1px 1px 0px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 .SpiralAC {
 	grid-area: 3 / 14 / span 3 / span 1;
 	text-align: center;
 	border-width: 0px 0px 1px 0px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 .fishNetAC {
 	grid-area: 3 / 15 / span 1 / span 2;
 	text-align: center;
 	border-width: 0px 0px 1px 1px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 .conn_OD {
 	grid-area: 5 / 8;
 	text-align: center;
 	border-width: 0px 0px 1px 1px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 .conn_Name {
 	grid-area: 5 / 9;
 	text-align: center;
 	border-width: 0px 1px 1px 1px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 .nf_Length {
 	grid-area: 5 / 15;
 	text-align: center;
 	border-width: 0px 0px 1px 1px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 .nf_OD {
 	grid-area: 5 / 16;
 	text-align: center;
 	border-width: 0px 0px 1px 1px;
 	border-style: solid;
+	background-color: #dfdfdf;
 }
 .ct1 {
-	grid-area: 6 / 1;
+	grid-area: 6 / 1 / span 1 / span 3;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+
+.ct1-NoJointAC {
+	grid-area: 6 / 4;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+.ct1-LengthAC {
+	grid-area: 6 / 5;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+.ct1-ODAC {
+	grid-area: 6 / 6;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+.ct1-IDAC {
+	grid-area: 6 / 7;
+	padding: 5px 5px 15px 5px;
+}
+.ct1-conn_OD {
+	grid-area: 6 / 8;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 0px 0px 1px;
+	border-style: solid;
+}
+.ct1-conn_Name {
+	grid-area: 6 / 9;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 1px;
+	border-style: solid;
+}
+.ct1-weightAC {
+	grid-area: 6 / 10;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+.ct1-GradeAC {
+	grid-area: 6 / 11;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+.ct1-PinBoxAC {
+	grid-area: 6 / 12;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+.ct1-SerialNoAC {
+	grid-area: 6 / 13;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+}
+.ct1-SpiralAC {
+	grid-area: 6 / 14;
+	padding: 5px 5px 15px 5px;
+}
+.ct1-nf_Length {
+	grid-area: 6 / 15;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 0px 0px 1px;
+	border-style: solid;
+}
+.ct1-nf_OD {
+	grid-area: 6 / 16;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 0px 0px 1px;
+	border-style: solid;
+}
+
+.ct2 {
+	grid-area: 7 / 1 / span 1 / span 3;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+
+.ct2-NoJointAC {
+	grid-area: 7 / 4;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+.ct2-LengthAC {
+	grid-area: 7 / 5;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+.ct2-ODAC {
+	grid-area: 7 / 6;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+.ct2-IDAC {
+	grid-area: 7 / 7;
+	padding: 5px 5px 15px 5px;
+	background-color: #e9e9e9;
+}
+.ct2-conn_OD {
+	grid-area: 7 / 8;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 0px 0px 1px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+.ct2-conn_Name {
+	grid-area: 7 / 9;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 1px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+.ct2-weightAC {
+	grid-area: 7 / 10;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+.ct2-GradeAC {
+	grid-area: 7 / 11;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+.ct2-PinBoxAC {
+	grid-area: 7 / 12;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+.ct2-SerialNoAC {
+	grid-area: 7 / 13;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+.ct2-SpiralAC {
+	grid-area: 7 / 14;
+	padding: 5px 5px 15px 5px;
+	background-color: #e9e9e9;
+}
+.ct2-nf_Length {
+	grid-area: 7 / 15;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 0px 0px 1px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+.ct2-nf_OD {
+	grid-area: 7 / 16;
+	padding: 5px 5px 15px 5px;
+	border-width: 0px 0px 0px 1px;
+	border-style: solid;
+	background-color: #e9e9e9;
+}
+
+.gas_mud {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.gasReadTitle {
+	text-align: center;
+	border-style: solid;
+	border-width: 2px 1px 1px 0px;
+	background-color: #dfdfdf;
+}
+.mudVolTitle {
+	text-align: center;
+	border-style: solid;
+	border-width: 2px 1px 1px 0px;
+	grid-area: 1 / 2 / span 1 / span 2;
+	background-color: #dfdfdf;
+}
+
+.gasRead {
+	display: grid;
+	grid-template-columns: 45% 10% 45%;
+}
+
+.avgConnGas_value {
+	text-align: end;
 }

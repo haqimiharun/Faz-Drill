@@ -659,22 +659,22 @@
                     Bit no 2
                 </div>
                     <div class="bha_data1">
-                        Date/Time in
+                        Date/Time in:
                     </div>
                     <div class="bha_data2">
-                        Date/Time Out
+                        Date/Time Out:
                     </div>
                     <div class="bha_data3">
                         Purpose:
                     </div>
                     <div class="bha_data1">
-                        BHA Length (m)
+                        BHA Length (m):
                     </div>
                     <div class="bha_data2">
-                        Min. ID
+                        Min. ID:
                     </div>
                     <div class="bha_data3">
-                        Weight (Above/Below) Jars
+                        Weight (Above/Below) Jars:
                     </div>
                 </div>
         </section>
@@ -754,10 +754,111 @@
                     OD (in)
                 </div>
                 <div class="ct1">
-                    Heavy Weight Drill Pipe
+                    Dummy 1
+                </div>
+                <div class="ct1-NoJointAC">
+                    
+                </div>
+                <div class="ct1-LengthAC">
+                    
+                </div>
+                <div class="ct1-ODAC">
+                    
+                </div>
+                <div class="ct1-IDAC">
+                    
+                </div>
+                <div class="ct1-conn_OD">
+                    
+                </div>
+                <div class="ct1-conn_Name">
+                    
+                </div>
+                <div class="ct1-weightAC">
+                    
+                </div>
+                <div class="ct1-GradeAC">
+                    
+                </div>
+                <div class="ct1-PinBoxAC">
+                    
+                </div>
+                <div class="ct1-SerialNoAC">
+                    
+                </div>
+                <div class="ct1-SpiralAC">
+                    
+                </div>
+                <div class="ct1-nf_Length">
+                    
+                </div>
+                <div class="ct1-nf_OD">
+                    
+                </div>
+                <div class="ct2">
+                    Dummy 2
+                </div>
+                <div class="ct2-NoJointAC">
+                    
+                </div>
+                <div class="ct2-LengthAC">
+                    
+                </div>
+                <div class="ct2-ODAC">
+                    
+                </div>
+                <div class="ct2-IDAC">
+                    
+                </div>
+                <div class="ct2-conn_OD">
+                    
+                </div>
+                <div class="ct2-conn_Name">
+                    
+                </div>
+                <div class="ct2-weightAC">
+                    
+                </div>
+                <div class="ct2-GradeAC">
+                    
+                </div>
+                <div class="ct2-PinBoxAC">
+                    
+                </div>
+                <div class="ct2-SerialNoAC">
+                    
+                </div>
+                <div class="ct2-SpiralAC">
+                    
+                </div>
+                <div class="ct2-nf_Length">
+                    
+                </div>
+                <div class="ct2-nf_OD">
+                    
                 </div>
             </div>
-            
+        </section>
+        <section class="section">
+            <div class="gas_mud">
+                <div class="gasReadTitle"> 
+                    GAS READING
+                </div>
+                <div class="mudVolTitle"> 
+                    MUD VOLUME
+                </div>
+                <div class="gasRead">
+                    <div class="avgConnGas">
+                        Avg. conn. gas (%)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="avgConnGas_value">
+                        
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 </div>
