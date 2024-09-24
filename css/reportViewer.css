@@ -704,25 +704,338 @@ header p {
 	grid-template-columns: 1fr 1fr 1fr;
 }
 
+.pumpPipeVelo {
+	display: grid;
+	grid-template-columns: 44% 30% 26%;
+}
+
 .gasReadTitle {
 	text-align: center;
 	border-style: solid;
-	border-width: 2px 1px 1px 0px;
+	border-width: 3px 1px 1px 0px;
 	background-color: #dfdfdf;
 }
 .mudVolTitle {
 	text-align: center;
 	border-style: solid;
-	border-width: 2px 1px 1px 0px;
+	border-width: 3px 1px 1px 0px;
 	grid-area: 1 / 2 / span 1 / span 2;
 	background-color: #dfdfdf;
 }
 
-.gasRead {
+.gasRead,
+.mudRead {
 	display: grid;
 	grid-template-columns: 45% 10% 45%;
 }
 
-.avgConnGas_value {
+.eql {
+	text-align: center;
+}
+
+.avgConnGas_value,
+.ttlStringVol_value,
+.maxConnGas_value,
+.ttlAnnularVol_value,
+.avgGasTrip_value,
+.ttlPitVol_value,
+.maxGasTrip_value,
+.lines_value,
+.avgBgGas_value,
+.blank_end,
+.maxBgGas_value,
+.avgH2S_value,
+.maxH2S_value,
+.ttlSysVol_value {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
 	text-align: end;
+}
+
+.ttlSysVol {
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+}
+
+.eql_systemVol {
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+	text-align: center;
+}
+
+.ttlSysVol_value {
+	border-style: solid;
+	border-width: 1px 1px 0px 0px;
+}
+
+.pumpHydraulicTitle,
+.annVeloTitle {
+	text-align: center;
+	border-style: solid;
+	border-width: 3px 0px 1px 0px;
+	background-color: #dfdfdf;
+}
+
+.pipeDataTitle {
+	text-align: center;
+	border-style: solid;
+	border-width: 3px 3px 1px 3px;
+	background-color: #dfdfdf;
+}
+
+.pumpHydraulic {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto;
+}
+
+.pipeData {
+	display: grid;
+	grid-template-columns: 35% 15% 35% 15%;
+}
+
+.annVelo {
+	display: grid;
+	grid-template-columns: 70% 30%;
+}
+
+.Pump,
+.Pump1,
+.Pump2,
+.Pump3,
+.Liner,
+.Liner1,
+.Liner2,
+.Liner3,
+.Stroke,
+.Stroke1,
+.Stroke2,
+.Stroke3,
+.EFF,
+.EFF1,
+.EFF2,
+.EFF3,
+.Pressure,
+.Pressure1,
+.Pressure2,
+.Pressure3,
+.SPM,
+.SPM1,
+.SPM2,
+.SPM3,
+.Output,
+.Output1,
+.Output2,
+.Output3,
+.drillPipe,
+.drillCollar,
+.riser {
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+}
+
+.Pump4,
+.Liner4,
+.Stroke4,
+.EFF4,
+.Pressure4,
+.SPM4,
+.Output4,
+.drillPipe_value,
+.drillCollar_value,
+.riser_value {
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+}
+
+.minID,
+.DC_OD,
+.DC,
+.HWDP_OD,
+.HWDP {
+	border-style: solid;
+	border-width: 0px 1px 1px 3px;
+}
+
+.minID_value,
+.DC_OD_value,
+.DC_value,
+.HWDP_OD_value,
+.HWDP_value {
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+}
+
+.BHA,
+.DP_OD,
+.stringRotWeight,
+.pickUpWeight,
+.slackOffWeight {
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+}
+
+.BHA_value,
+.DP_OD_value,
+.stringRotWeight_value,
+.pickUpWeight_value,
+.slackOffWeight_value {
+	border-style: solid;
+	border-width: 0px 3px 1px 0px;
+}
+
+.shakerCentrifugeHydrocyclone {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.shakerTitle {
+	text-align: center;
+	border-style: solid;
+	border-width: 0px 3px 1px 0px;
+	background-color: #dfdfdf;
+}
+
+.shakerData {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.shakerType,
+.shakerMesh {
+	text-align: center;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+}
+
+.shakerHrs {
+	text-align: center;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 0px 3px 1px 0px;
+}
+
+.shakerTypeValue,
+.shakerMeshValue {
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+}
+
+.shakerHrsValue {
+	border-style: solid;
+	border-width: 0px 3px 1px 0px;
+}
+
+.centrifugeData {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.centrifuge2Value {
+	border-style: solid;
+	border-width: 0px 3px 1px 0px;
+}
+
+.centrifugeTypeValue,
+.centrifuge1Value,
+.centrifugeType,
+.centrifuge1 {
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+}
+.centrifuge2 {
+	border-style: solid;
+	border-width: 0px 3px 1px 0px;
+}
+
+.centrifugeTitle {
+	text-align: center;
+	border-style: solid;
+	border-width: 0px 3px 1px 0px;
+	background-color: #dfdfdf;
+}
+
+.hydrocycloneData {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.hydrocycloneType {
+	text-align: center;
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+	background-color: #dfdfdf;
+}
+
+.hydrocycloneHrs {
+	text-align: center;
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+	background-color: #dfdfdf;
+}
+
+.hydrocycloneTitle {
+	text-align: center;
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+	background-color: #dfdfdf;
+}
+
+.hydrocycloneTypeValue {
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+}
+
+.hydrocycloneHrsValue {
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+}
+
+.lotfit_fd {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.LOTFIT_title,
+.formationData_title {
+	text-align: center;
+	border-style: solid;
+	border-width: 3px 1px 1px 0px;
+	background-color: #dfdfdf;
+}
+
+.LotFitData {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.fdData {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.EMW,
+.MAASP,
+.maxMudWt {
+	text-align: center;
+	border-style: solid;
+	border-width: 1px 1px 1px 0px;
+	background-color: #dfdfdf;
+}
+
+.fd_formation,
+.fd_top {
+	text-align: center;
+	border-style: solid;
+	border-width: 1px 1px 1px 0px;
+	background-color: #dfdfdf;
+}
+
+.EMWValue,
+.MAASPValue,
+.maxMudWtValue,
+.fd_formationValue,
+.fd_topValue {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
 }

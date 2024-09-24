@@ -858,9 +858,618 @@
                         
                     </div>
                 </div>
+                <div class="mudRead">
+                    <div class="ttlStringVol">
+                        Total string vol. (bbl)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="ttlStringVol_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="mudBuilt">
+                        mudBuilt (bbl)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="mudBuilt_value">
+                        
+                    </div>
+                </div>
+                <div class="gasRead">
+                    <div class="maxConnGas">
+                        Max. connection gas (%)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="maxConnGas_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="ttlAnnularVol">
+                        Total annular vol. (bbl)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="ttlAnnularVol_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="mudSurfaceTtl">
+                        Surface Total (bbl)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="mudSurfaceTtl_value">
+                        
+                    </div>
+                </div>
+                <div class="gasRead">
+                    <div class="avgGasTrip">
+                        Avg. gas trip (%)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="avgGasTrip_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="ttlPitVol">
+                        Total pit vol. (bbl)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="ttlPitVol_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="mudCumSurface">
+                        Cum. Surface (bbl)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="mudCumSurface_value">
+                        
+                    </div>
+                </div>
+                <div class="gasRead">
+                    <div class="maxGasTrip">
+                        Max. gas trip (%)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="maxGasTrip_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="lines">
+                        Lines (bbl)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="lines_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="subSurfaceTtl">
+                        Subsurface total (bbl)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="subSurfaceTtl_value">
+                        
+                    </div>
+                </div>
+                <div class="gasRead">
+                    <div class="avgBgGas">
+                        Avg. background gas (%)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="avgBgGas_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank_end">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="mudDumped">
+                        Dumped (bbl)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="mudDumped_value">
+                        
+                    </div>
+                </div>
+                <div class="gasRead">
+                    <div class="maxBgGas">
+                        Max. background gas (%)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="maxBgGas_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank_end">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank">
+                        
+                    </div>
+                </div>
+                <div class="gasRead">
+                    <div class="avgH2S">
+                        Avg. H2S (%)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="avgH2S_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank_end">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank">
+                        
+                    </div>
+                </div>
+                <div class="gasRead">
+                    <div class="maxH2S">
+                        Max. H2S (%)
+                    </div>
+                    <div class="eql">
+                        :
+                    </div>
+                    <div class="maxH2S_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="ttlSysVol">
+                        Total system vol. (bbl)
+                    </div>
+                    <div class="eql_systemVol">
+                        :
+                    </div>
+                    <div class="ttlSysVol_value">
+                        
+                    </div>
+                </div>
+                <div class="mudRead">
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank">
+                        
+                    </div>
+                    <div class="blank">
+                        
+                    </div>
+                </div>
+
+            </div>
+            <div class="pumpPipeVelo">
+                <div class="pumpHydraulicTitle">
+                    PUMP/HYDRAULICS
+                </div>
+                <div class="pipeDataTitle">
+                    PIPE DATA
+                </div>
+                <div class="annVeloTitle">
+                    ANN. VELOCITIES
+                </div>
+                <div class="pumpHydraulic">
+                    <div class="Pump">
+                        Pump
+                    </div>
+                    <div class="Pump1">
+                        
+                    </div>
+                    <div class="Pump2">
+                        
+                    </div>
+                    <div class="Pump3">
+                        
+                    </div>
+                    <div class="Pump4">
+                        
+                    </div>
+                    <div class="Liner">
+                        Liner
+                    </div>
+                    <div class="Liner1">
+                        
+                    </div>
+                    <div class="Liner2">
+                        
+                    </div>
+                    <div class="Liner3">
+                        
+                    </div>
+                    <div class="Liner4">
+                        
+                    </div>
+                    <div class="Stroke">
+                        Stroke
+                    </div>
+                    <div class="Stroke1">
+                        
+                    </div>
+                    <div class="Stroke2">
+                        
+                    </div>
+                    <div class="Stroke3">
+                        
+                    </div>
+                    <div class="Stroke4">
+                        
+                    </div>
+                    <div class="EFF">
+                        EFF
+                    </div>
+                    <div class="EFF1">
+                        
+                    </div>
+                    <div class="EFF2">
+                        
+                    </div>
+                    <div class="EFF3">
+                        
+                    </div>
+                    <div class="EFF4">
+                        
+                    </div>
+                    <div class="Pressure">
+                        Pressure
+                    </div>
+                    <div class="Pressure1">
+                        
+                    </div>
+                    <div class="Pressure2">
+                        
+                    </div>
+                    <div class="Pressure3">
+                        
+                    </div>
+                    <div class="Pressure4">
+                        
+                    </div>
+                    <div class="SPM">
+                        SPM
+                    </div>
+                    <div class="SPM1">
+                        
+                    </div>
+                    <div class="SPM2">
+                        
+                    </div>
+                    <div class="SPM3">
+                        
+                    </div>
+                    <div class="SPM4">
+                        
+                    </div>
+                    <div class="Output">
+                        Output
+                    </div>
+                    <div class="Output1">
+                        
+                    </div>
+                    <div class="Output2">
+                        
+                    </div>
+                    <div class="Output3">
+                        
+                    </div>
+                    <div class="Output4">
+                        
+                    </div>
+                </div>
+                <div class="pipeData">
+                    <div class="minID">
+                        Min ID (in)
+                    </div>
+                    <div class="minID_value">
+                        
+                    </div>
+                    <div class="BHA">
+                        BHA (m)
+                    </div>
+                    <div class="BHA_value">
+                        
+                    </div>
+                    <div class="DC_OD">
+                        DC OD (in)
+                    </div>
+                    <div class="DC_OD_value">
+                        
+                    </div>
+                    <div class="DP_OD">
+                        DP OD (in)
+                    </div>
+                    <div class="DP_OD_value">
+                        
+                    </div>
+                    <div class="DC">
+                        DC (m)
+                    </div>
+                    <div class="DC_value">
+                        
+                    </div>
+                    <div class="stringRotWeight">
+                        String Rot Weight
+                    </div>
+                    <div class="stringRotWeight_value">
+                        
+                    </div>
+                    <div class="HWDP_OD">
+                        HWDP OD (in)
+                    </div>
+                    <div class="HWDP_OD_value">
+                        
+                    </div>
+                    <div class="pickUpWeight">
+                        Pick-Up Weight
+                    </div>
+                    <div class="pickUpWeight_value">
+                        
+                    </div>
+                    <div class="HWDP">
+                        HWDP (m)
+                    </div>
+                    <div class="HWDP_value">
+                        
+                    </div>
+                    <div class="slackOffWeight">
+                        Slack Off Weight
+                    </div>
+                    <div class="slackOffWeight_value">
+                        
+                    </div>
+                </div>
+                <div class="annVelo">
+                    <div class="drillPipe">
+                        Drill Pipe (m/min)
+                    </div>
+                    <div class="drillPipe_value">
+                        
+                    </div>
+                    <div class="drillCollar">
+                        Drill Collar (m/min)
+                    </div>
+                    <div class="drillCollar_value">
+                        
+                    </div>
+                    <div class="riser">
+                        Riser (m/min)
+                    </div>
+                    <div class="riser_value">
+                        
+                    </div>
+                </div>
             </div>
         </section>
     </div>
+
+    <hr class="hr1">
+    <div class="report-container">
+        <header>
+            <h3>Daily Drilling Report</h3>
+        </header>
+
+        <section class="section">
+            <div id="well_Info">
+                <div class="well">
+                    Well: 
+                </div>
+                <div class="wellbore">
+                    Wellbore:
+                </div>
+                <div class="reportNo">
+                    Report No:
+                </div>
+                <div class="reportDate">
+                    Report Date:
+                </div>
+            </div>
+            <div class="shakerCentrifugeHydrocyclone">
+                <div class="shaker">
+                    <div class="shakerTitle" > SHAKER
+                    </div>
+                    <div class="shakerData" >
+                        <div class="shakerType" > 
+                            Type
+                        </div>
+                        <div class="shakerMesh" > 
+                            Mesh Size
+                        </div>
+                        <div class="shakerHrs" > 
+                            Hrs
+                        </div>
+                        <div class="shakerTypeValue" > 
+                            <br>
+                        </div>
+                        <div class="shakerMeshValue" > 
+                            <br>
+                        </div>
+                        <div class="shakerHrsValue" > 
+                            <br>
+                        </div>
+                        <div class="shakerTypeValue" > 
+                            <br>
+                        </div>
+                        <div class="shakerMeshValue" > 
+                            <br>
+                        </div>
+                        <div class="shakerHrsValue" > 
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="centrifuge">
+                    <div class="centrifugeTitle"> CENTRIFUGE
+                    </div>
+                    <div class="centrifugeData">
+                        <div class="centrifugeType"> Type
+                        </div>
+                        <div class="centrifuge1"> CENTRIFUGE
+                        </div>
+                        <div class="centrifuge2"> CENTRIFUGE
+                        </div>
+                        <div class="centrifugeTypeValue" > 
+                            <br>
+                        </div>
+                        <div class="centrifuge1Value" > 
+                            <br>
+                        </div>
+                        <div class="centrifuge2Value" > 
+                            <br>
+                        </div>
+                        <div class="centrifugeTypeValue" > 
+                            <br>
+                        </div>
+                        <div class="centrifuge1Value" > 
+                            <br>
+                        </div>
+                        <div class="centrifuge2Value" > 
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="hydrocyclone">
+                    <div class="hydrocycloneTitle"> HYDROCYCLONE
+                    </div>
+                    <div class="hydrocycloneData">
+                        <div class="hydrocycloneType"> Type
+                        </div>
+                        <div class="hydrocycloneHrs"> HRS
+                        </div>
+                        <div class="hydrocycloneTypeValue"> <br>
+                        </div>
+                        <div class="hydrocycloneHrsValue"> <br>
+                        </div>
+                        <div class="hydrocycloneTypeValue"> <br>
+                        </div>
+                        <div class="hydrocycloneHrsValue"> <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lotfit_fd">
+                <div class="LotFit">
+                    <div class="LOTFIT_title">
+                        LOT/FIT
+                    </div>
+                    <div class="LotFitData">
+                        <div class="EMW">
+                            EMW
+                        </div>
+                        <div class="MAASP">
+                            MAASP
+                        </div>
+                        <div class="maxMudWt">
+                            Max Mud Wt
+                        </div>
+                        <div class="EMWValue">
+                            <br>
+                        </div>
+                        <div class="MAASPValue">
+                            
+                        </div>
+                        <div class="maxMudWtValue">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="formData">
+                    <div class="formationData_title">
+                        FORMATION DATA
+                    </div>
+                    <div class="fdData">
+                        <div class="fd_formation">
+                            Formation
+                        </div>
+                        <div class="fd_top">
+                            Top (m)
+                        </div>
+                        <div class="fd_formationValue">
+                            
+                        </div>
+                        <div class="fd_topValue">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+
 </div>
 </body>
 </html>
