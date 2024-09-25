@@ -1039,3 +1039,322 @@ header p {
 	border-style: solid;
 	border-width: 0px 1px 0px 0px;
 }
+
+.supportCraft {
+	display: grid;
+	grid-template-columns: 30% 40% 15% 15%;
+	border-style: solid;
+	border-width: 3px 1px 1px 1px;
+}
+
+.supCraft_title {
+	display: grid;
+	grid-area: 1 / 1 / span 1 / span 4;
+	text-align: center;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+}
+
+.name_title,
+.comment_title,
+.arrival_title {
+	text-align: center;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+
+.departure_title {
+	text-align: center;
+	background-color: #dfdfdf;
+}
+
+.nameData,
+.commentData,
+.arrivalData {
+	border-style: solid;
+	border-width: 1px 1px 0px 0px;
+}
+
+.departureData {
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+}
+
+.bulks {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
+}
+
+.bulks_title {
+	display: grid;
+	grid-area: 1 / 1 / span 1 / span 11;
+	text-align: center;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 3px 0px 1px 1px;
+}
+
+.bulksData div,
+.bulks_data div {
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+}
+
+.weatherSafetyPersonnel {
+	display: grid;
+	grid-template-columns: 30% 30% 40%;
+}
+
+.weatherData {
+	display: grid;
+	grid-template-columns: 75% 25%;
+}
+
+.weather_title {
+	display: grid;
+	grid-area: 1 / 1 / span 1 / span 2;
+	text-align: center;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 2px 2px 1px 0px;
+}
+
+.weatherData {
+	border-style: solid;
+	border-width: 1px 2px 1px 0px;
+}
+
+.safetyCards {
+	border-style: solid;
+	border-width: 0px 3px 0px 3px;
+}
+
+.safetyCards_title {
+	display: grid;
+	grid-area: 1 / 1 / span 1 / span 3;
+	text-align: center;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 2px 1px 0px 0px;
+}
+.safetyCardsSubTitle {
+	display: grid;
+	grid-template-columns: 35% 30% 35%;
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+
+.SC_blank {
+	border-style: solid;
+	border-width: 1px 1px 0px 0px;
+}
+.dailySC {
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+}
+
+.cumulativeSC {
+	border-style: solid;
+	border-width: 1px 0px 0px 1px;
+}
+
+.positiveCards {
+	display: grid;
+	grid-template-columns: 35% 30% 35%;
+	border-style: solid;
+	border-width: 1px 0px 1px 0px;
+}
+
+.positiveCards div {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+
+.unsafeCond {
+	display: grid;
+	grid-template-columns: 35% 30% 35%;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+}
+
+.unsafeCond div {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+
+.unsafeAct {
+	display: grid;
+	grid-template-columns: 35% 30% 35%;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+}
+
+.unsafeAct div {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+
+.ttlCards {
+	display: grid;
+	grid-template-columns: 35% 30% 35%;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+}
+
+.ttlCards div {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+
+.separator {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+.personnel {
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+}
+.personnel_title {
+	text-align: center;
+	grid-area: 1 / 1 / span 1 / span 2;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 2px 1px 1px 0px;
+}
+
+.personnel_1stHalf {
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+}
+
+.personnel_2ndHalf {
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+}
+
+.ttlNoPeople,
+.ttlNoBed {
+	grid-area: 1 / 1 / span 1 / span 2;
+}
+
+.companyPeople {
+	display: grid;
+	grid-template-columns: 75% 25%;
+}
+
+.CompanyTitle {
+	border-style: solid;
+	border-width: 1px 1px 0px 0px;
+}
+
+.PeopleTitle {
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+}
+
+.CompanyData {
+	border-style: solid;
+	border-width: 1px 1px 0px 0px;
+}
+
+.PeopleData {
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+}
+
+.anchorTension {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+}
+
+.anchorTension_title {
+	grid-area: 1 / 1 / span 1 / span 14;
+	text-align: center;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 3px 1px 1px 0px;
+}
+
+.AT_num,
+.AT_numData {
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+	text-align: center;
+}
+
+.tension_d1,
+.direction_d1,
+.tension,
+.direction {
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+	padding-left: 5px;
+}
+
+.safety {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	border-style: solid;
+	border-width: 3px 1px 0px 0px;
+}
+
+.safety_title {
+	grid-area: 1 / 1 / span 1 / span 4;
+	text-align: center;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+}
+
+.safetyData {
+	display: grid;
+	grid-template-columns: auto auto;
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+
+.surveys {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto auto auto auto;
+	border-style: solid;
+	border-width: 3px 1px 0px 0px;
+}
+
+.surveys_title {
+	grid-area: 1 / 1 / span 1 / span 9;
+	text-align: center;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+}
+
+.surveyData {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+
+.surveysDataTitle {
+	text-align: center;
+	background-color: #dfdfdf;
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+
+.surveysData1,
+.surveysData3,
+.surveysData5,
+.surveysData7 {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+
+.surveysData2,
+.surveysData4,
+.surveysData6 {
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+	background-color: #e9e9e9;
+}
