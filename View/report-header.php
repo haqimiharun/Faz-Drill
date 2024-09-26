@@ -1,137 +1,33 @@
 <link rel="stylesheet" href="css/report_info/report-header.css">
 
 <div class="wrapper-rh">
-    <!-- First Row (Supervision and Report Header) -->
     <div class="container-rh">
-        <form action="process-report-header.php" method="post">
-            <h2>Supervision</h2>
-            <div class="form-group-rh">
-                <label for="sv-dt">Date & Time</label>
-                <input type="datetime-local" id="date-time" name="date-time">
-            </div>
-            <div class="form-group-rh">
-                <label for="Well">Well</label>
-                <input type="text" id="Well" name="Well" disabled>
-            </div>
-            <div class="form-group-rh">
-                <label for="Lead-DSV">Lead DSV</label>
-                <input type="text" id="Lead-DSV" name="Lead-DSV" placeholder="Enter Lead DSV">
-            </div>
-            <div class="form-group-rh">
-                <label for="Night-DSV">Night DSV</label>
-                <input type="text" id="Night-DSV" name="Night-DSV" placeholder="Enter Night DSV">
-            </div>
-            <div class="form-group-rh">
-                <label for="engineer">Drilling Engineer/Company</label>
-                <select id="engineer" name="engineer">
-                    <option value="0">Select an Item</option>
-                    <option value="1">engineer1</option>
-                    <option value="2">engineer2</option>
-                </select>
-            </div>
-            <div class="form-group-rh">
-                <label for="geologist">Well Site Geologist</label>
-                <input type="text" id="geologist" name="geologist" placeholder="Enter Geologist Name">
-            </div>
-            <div class="form-group-rh">
-                <label for="rep">Government Representative on Site</label>
-                <input type="text" id="rep" name="rep" placeholder="Enter Representative Name">
-            </div>
-            <div class="form-group-rh">
-                <label for="toolpusher">Tool Pusher</label>
-                <input type="text" id="toolpusher" name="toolpusher" placeholder="Enter Tool Pusher Name">
-            </div>
-            <div class="form-group-rh">
-                <label for="Contractor">Contractor</label>
-                <input type="text" id="Contractor" name="Contractor" placeholder="Enter Contractor Name">
-            </div>
-        </form>
-
-        <form action="process-report-header.php" method="post">
-            <h2>Report Header</h2>
-            <div class="form-group-rh">
-                <label for="Location">Location</label>
-                <input type="text" id="Location" name="Location" placeholder="Enter Current Location">
-            </div>
-            <div class="form-group-rh">
-                <label for="Next-Location">Next Location</label>
-                <input type="text" id="Next-Locationer" name="Next-Location" placeholder="Enter Next Location">
-            </div>
-            <div class="form-group-rh-value">
-                <label for="TD">Proposed TD, length</label>
-                <div class="input_value">
-                    <input type="text" id="TD" name="TD" placeholder="Enter Proposed TD">
-                    <input type="text" id="TD_Value" name="TD_Value" readonly >
-                </div>
-            </div>
-            <div class="form-group-rh">
-                <label for="AFE">AFE</label>
-                <input type="text" id="AFE" name="AFE" disabled>
-            </div>
-            <div class="form-group-rh">
-                <label for="Objective">Objective</label>
-                <input type="text" id="Objective" name="Objective" placeholder="Enter Objective Name">
-            </div>
-            <div class="form-group-rh">
-                <label for="Present">Present Operation</label>
-                <input type="text" id="Present" name="Present" placeholder="Enter Present Operation">
-            </div>
-        </form>
-    </div>
-
-    <!-- Second Row (Personnel, Well Location & Profile, Daily and Accumulative Costs) -->
-    <div class="container-rh2">
         <form>
-            <h2>Personnel</h2>
-            <div class="personnel">
-                <div class="form-group-rh personnel-group">
-                    <label class="rh-personnel" for="company">Company</label>
-                    <input type="number" id="company" name="company" oninput="calculateTotal()" placeholder="Enter number of company">
-                    
-                    <label class="rh-personnel" for="contractor">Contractor</label>
-                    <input type="number" id="contractor" name="contractor" oninput="calculateTotal()" placeholder="Enter number of contractor">
+            <div class="form-row-rh">
+                <!-- Well -->
+                <div class="form-group-rh">
+                    <label for="Well">Well:</label>
+                    <input type="text" id="Well" name="Well" disabled>
                 </div>
-                <div class="form-group-rh personnel-group">
-                    <label class="rh-personnel" for="service_co">Service Co</label>
-                    <input type="number" id="service_co" name="service_co" oninput="calculateTotal()" placeholder="Enter number of service corporation">
-                    
-                    <label class="rh-personnel" for="catering">Catering</label>
-                    <input type="number" id="catering" name="catering" oninput="calculateTotal()" placeholder="Enter number of catering">
-                </div>
-                <div class="form-group-rh personnel-group">
-                    <label class="rh-personnel" for="other">Others</label>
-                    <input type="number" id="other" name="other" oninput="calculateTotal()" placeholder="Enter number of others">
-                    
-                    <label class="rh-personnel" for="total">Total</label>
-                    <input type="number" id="total" name="total" readonly placeholder="0">
-                </div>
-            </div>
-            <!-- Well Location & Profile Section -->
-            <h2>Well Location & Profile</h2>
-            <div class="form-group-rh radio-group">
-                <label><input type="radio" name="location" value="On Shore"> On Shore</label>
-                <label><input type="radio" name="location" value="Shallow Water"> Shallow Water</label>
-                <label><input type="radio" name="location" value="Deep Water"> Deep Water</label>
-            </div>
-            <div class="form-group-rh">
-                <label for="profile">Profile</label>
-                <select id="profile" name="profile">
-                    <option value="Vertical">Vertical</option>
-                    <option value="Horizontal">Horizontal</option>
-                </select>
-            </div>
 
-            <!-- Daily and Accumulative Costs Section -->
-            <h2>Daily and Accumulative Costs</h2>
-            <div class="form-group-rh">
-                <label for="daily_cost">Daily Well Cost</label>
-                <input type="number" id="daily_cost" name="daily_cost" value="0">
-            </div>
-            <div class="form-group-rh">
-                <label for="accum_cost">Accumulative Cost</label>
-                <input type="number" id="accum_cost" name="accum_cost" value="0">
+                <!-- Wellbore No -->
+                <div class="form-group-rh">
+                    <label for="Wellbore-No">Wellbore No:</label>
+                    <input type="text" id="Wellbore-No" name="Wellbore-No" disabled>
+                </div>
+
+                <!-- Report No -->
+                <div class="form-group-rh">
+                    <label for="Report-No">Report No:</label>
+                    <input type="text" id="Report-No" name="Report-No" disabled>
+                </div>
+
+                <!-- Report Date -->
+                <div class="form-group-rh">
+                    <label for="Report-Date">Report Date:</label>
+                    <input type="text" id="Report-Date" name="Report-Date" disabled>
+                </div>
             </div>
         </form>
     </div>
 </div>
-

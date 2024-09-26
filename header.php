@@ -301,12 +301,7 @@ if ($reportId) {
                     <i class="fa fa-file-text-o"></i> <span>Report Header</span>
                 </a>
             </li>
-            <li class="treeview <?php if(in_array($cur_page, ['rig-info.php'])) { echo 'active'; } ?>">
-                <a href="#rig-info">
-                    <i class="fa fa-industry"></i> <span>Rig Information</span>
-                </a>
-            </li>
-            <li class="treeview <?php if(in_array($cur_page, ['well-data.php', 'LOT-FIT+FD.php', 'gas-reading.php'])) { echo 'active'; } ?>">
+            <li class="treeview <?php if(in_array($cur_page, ['well-data.php', 'rig-info.php', 'depth_days.php', 'LOT-FIT+FD.php', 'gas-reading.php'])) { echo 'active'; } ?>">
                 <a href="#well-info">
                     <i class="fa fa-database"></i>
                     <span>Well Info</span>
@@ -316,6 +311,8 @@ if ($reportId) {
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="#well-data"><i class="fa fa-circle-o"></i> Well Data</a></li>
+                    <li><a href="#rig-info"><i class="fa fa-circle-o"></i> Rig Information</a></li>
+                    <li><a href="#depth-days"><i class="fa fa-circle-o"></i> Depth Days</a></li>
                     <li><a href="#LOT-FIT-FD"><i class="fa fa-circle-o"></i> LOT/FIT + Formation Data</a></li>
                     <li><a href="#gas-reading"><i class="fa fa-circle-o"></i> Gas Reading</a></li>
                 </ul>
@@ -391,6 +388,7 @@ if ($reportId) {
             const menuStructure = {
                 "report-header": { main: "Report Header", sub: "Report Header" },
                 "well-data": { main: "Well Info", sub: "Well Data" },
+                "depth-days": { main: "Well Info", sub: "Depth Days" },
                 "LOT-FIT-FD": { main: "Well Info", sub: "LOT/FIT + Formation Data" },
                 "formation-data": { main: "Well Info", sub: "Formation Data" },
                 "gas-reading": { main: "Well Info", sub: "Gas Reading" },

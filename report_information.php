@@ -12,9 +12,6 @@
     <section id="report-header">
         <?php include 'View/report-header.php'; ?> 
     </section>
-    <section id="rig-info">
-        <?php include 'View/rig-info.php'; ?>
-    </section>
 <div>
     <section id="well-info">
         <h1 style="text-align: center;">Well Information</h1>
@@ -23,11 +20,15 @@
     <section id="well-data">
         <?php include 'View/well-data.php'; ?>
     </section>
-
+    <section id="depth-days">
+        <?php include 'View/depth_days.php'; ?>
+    </section>
+    <section id="rig-info">
+        <?php include 'View/rig-info.php'; ?>
+    </section>
     <section id="LOT-FIT-FD">
         <?php include 'View/LOT-FIT+FD.php'; ?>
     </section>
-
     <section id="gas-reading">
         <?php include 'View/gas-reading.php'; ?>
     </section>
