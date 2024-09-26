@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					icon2.style.marginLeft = "10px"; // Add some space between text and icon
 					icon2.addEventListener("click", function () {
 						const reportId = reportElement.dataset.reportId;
-						const url = `http://localhost/Faz-Drill/View/report-viewer.php?reportId=${encodeURIComponent(
+						const url = `http://localhost/Faz-Drill/View/reportViewer/report-viewer.php?reportId=${encodeURIComponent(
 							reportId
 						)}`;
 						window.open(url, "_blank"); // Open in a new tab or window
