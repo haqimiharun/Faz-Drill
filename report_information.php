@@ -12,49 +12,14 @@
     <section id="report-header">
         <?php include 'View/report-header.php'; ?> 
     </section>
-<div>
-    <section id="well-info">
-        <h1 style="text-align: center;">Well Information</h1>
-    </section>
-</div>
     <section id="well-data">
         <?php include 'View/well-data.php'; ?>
     </section>
     <section id="depth-days">
         <?php include 'View/depth_days.php'; ?>
     </section>
-    <section id="rig-info">
-        <?php include 'View/rig-info.php'; ?>
-    </section>
-    <section id="LOT-FIT-FD">
-        <?php include 'View/LOT-FIT+FD.php'; ?>
-    </section>
     <section id="gas-reading">
         <?php include 'View/gas-reading.php'; ?>
-    </section>
-<div>
-    <section id="logi-mate">
-        <h1 style="text-align: center;">Logistics & Material</h1>
-    </section>
-</div>
-    <section id="consumables">
-        <?php include 'View/consumables.php'; ?>
-    </section>
-
-    <section id="bulk-material">
-        <?php include 'View/bulk-material.php'; ?>
-    </section>
-
-    <section id="weather_anchor">
-        <?php include 'View/weather_anchor.php'; ?>
-    </section>
-
-    <section id="pob">
-        <?php include 'View/pob.php'; ?>
-    </section>
-
-    <section id="vessels">
-        <?php include 'View/vessels.php'; ?>
     </section>
 <div>
     <section id="operation">
@@ -81,12 +46,8 @@
         <?php include 'View/drlg-data.php'; ?>
     </section>
 
-    <section id="survey">
-        <?php include 'View/survey.php'; ?>
-    </section>
-
-    <section id="safety">
-        <?php include 'View/safety.php'; ?>
+    <section id="solidCtrlEquipment">
+        <?php include 'View/solidCtrlEquipment.php'; ?>
     </section>
 
     <section id="pumpHydraulics">
@@ -99,26 +60,6 @@
 
     <section id="mud-vol">
         <?php include 'View/mud-vol.php'; ?>
-    </section>
-
-    <section id="mud-log">
-        <?php include 'View/mud-log.php'; ?>
-    </section>
-
-    <section id="formation-eva">
-        <?php include 'View/formation-eva.php'; ?>
-    </section>
-
-    <section id="velocities">
-        <?php include 'View/velocities.php'; ?>
-    </section>
-
-    <section id="Operation-sum">
-        <?php include 'View/Operation-sum.php'; ?>
-    </section>
-
-    <section id="daily-cost">
-        <?php include 'View/daily-cost.php'; ?>
     </section>
 </div>
 
