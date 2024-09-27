@@ -1,235 +1,37 @@
-    <div class="wrapper">
-        <h3 style="text-align: center;">Bottom Hole Assembly (BHA)</h3>
-        <div class="row1">
-            <div class="container">
-                <form action="process.php" method="POST">
-                    <div class="table-wrapper">
-                        <table class="table-custom">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Outside Diameter (OD), Length</th>
-                                    <th>Inside Diameter (ID), Length</th>
-                                    <th>Weight</th>
-                                    <th>Length</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>Drill Collar 1(Top)</th>
-                                    <td><input type="text" name="input_1_1" /></td>
-                                    <td><input type="text" name="input_1_2" /></td>
-                                    <td><input type="text" name="input_1_3" /></td>
-                                    <td><input type="text" name="input_1_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>(Updated DC1) XO</th>
-                                    <td><input type="text" name="input_2_1" /></td>
-                                    <td><input type="text" name="input_2_2" /></td>
-                                    <td></td>
-                                    <td><input type="text" name="input_2_3" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Drill Collar 2</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>(Updated DC2) XO</th>
-                                    <td><input type="text" name="input_4_1" /></td>
-                                    <td><input type="text" name="input_4_2" /></td>
-                                    <td></td>
-                                    <td><input type="text" name="input_4_3" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Drill Collar 3(Bottom)</th>
-                                    <td><input type="text" name="input_5_1" /></td>
-                                    <td><input type="text" name="input_5_2" /></td>
-                                    <td><input type="text" name="input_5_3" /></td>
-                                    <td><input type="text" name="input_5_4" /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </form>
-            <br>
-                <form action="process.php" method="POST">
-                    <div class="table-wrapper">
-                        <table class="table-custom">
-                            <thead>
-                                <tr>
-                                    <th></th> <!-- Empty top-left corner cell -->
-                                    <th>Hours</th>
-                                    <th>Serial No:</th>
-                                    <th>Manufacturer</th>
-                                    <th>IBS Days</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>Jars</th>
-                                    <td><input type="text" name="input_1_1" /></td>
-                                    <td><input type="text" name="input_1_2" /></td>
-                                    <td><input type="text" name="input_1_3" /></td>
-                                    <td><input type="text" name="input_1_4" /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </form>
-            <br>
-                <form action="process.php" method="POST">
-                    <div class="table-wrapper">
-                        <table class="table-custom">
-                            <thead>
-                                <tr>
-                                    <th></th> <!-- Empty top-left corner cell -->
-                                    <th>Distance from bit</th>
-                                    <th>Serial No/Type</th>
-                                    <th>Gamma Placement</th>
-                                    <th>Other</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>MWD</th>
-                                    <td><input type="text" name="input_1_1" /></td>
-                                    <td><input type="text" name="input_1_2" /></td>
-                                    <td><input type="text" name="input_1_3" /></td>
-                                    <td><input type="text" name="input_1_4" /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+<link rel="stylesheet" href="css/report_info/bha-data.css">
+<h2>Bit Data</h2>
+<div class="wrapper-bd">
+    <div class="container-bd">
+        <!-- BHA No -->
+        <label for="bha-no">BHA No:</label>
+        <input type="text" id="bha-no" name="bha-no" placeholder="Enter BHA No">
 
-                <br>
-                    <div class="form-group">
-                        <label for="DDC">Directional Drilling Contractor</label>
-                        <input type="text" id="DDC" name="DDC" placeholder="Enter Directional Drilling Contractor">
-                    </div>
-                    <div class="form-group" style="display: flex; align-items: center;">
-                        <label for="daily_cost">Daily Cost, $:</label>
-                        <input type="text" id="daily_cost" name="daily_cost" placeholder="Enter Daily Cost" style="margin-right: 7px;">
+        <!-- Bit No -->
+        <label for="bit-no">Bit No:</label>
+        <input type="text" id="bit-no" name="bit-no" placeholder="Enter Bit No">
 
-                        <label for="dol">Days on Location, Day:</label>
-                        <input type="text" id="dol" name="dol" placeholder="Days on Location" style="margin-right: 10px;">
+        <!-- Date/Time In -->
+        <label for="date-time-in">Date/Time In:</label>
+        <input type="text" id="date-time-in" name="date-time-in" placeholder="Enter Date/Time In">
 
-                        <label for="cost_ttl">Total Cost, $:</label>
-                        <input type="text" id="cost_ttl" name="cost_ttl" placeholder="Total Cost" readonly>
-                    </div>
-                </form>
-            </div>
+        <!-- BHA Length -->
+        <label for="bha-length">BHA Length (Length):</label>
+        <input type="text" id="bha-length" name="bha-length" placeholder="Enter BHA Length">
 
-            <div class="container">
-                <form action="process.php" method="POST">
-                    <div class="table-wrapper">
-                        <table class="table-custom">
-                            <thead>
-                                <tr>
-                                    <th>Ancilery Equiqment</th> <!-- Empty top-left corner cell -->
-                                    <th>Fishing Neck</th>
-                                    <th>Inside Diameter (ID)</th>
-                                    <th>Length</th>
-                                    <th>Serial No:</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>X-Over</th>
-                                    <td><input type="text" name="input_1_1" /></td>
-                                    <td><input type="text" name="input_1_2" /></td>
-                                    <td><input type="text" name="input_1_3" /></td>
-                                    <td><input type="text" name="input_1_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Spacer Joint</th>
-                                    <td><input type="text" name="input_2_1" /></td>
-                                    <td><input type="text" name="input_2_2" /></td>
-                                    <td><input type="text" name="input_2_3" /></td>
-                                    <td><input type="text" name="input_2_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Jar Intensifier</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Earth Quakers</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Jars</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Earth Quakers</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Stabaliser/Rmr</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Redback Roller</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Stabaliser/Rmr</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>0</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Other</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <!-- Date/Time Out -->
+        <label for="date-time-out">Date/Time Out:</label>
+        <input type="text" id="date-time-out" name="date-time-out" placeholder="Enter Date/Time Out">
+
+        <!-- Mind ID -->
+        <label for="mind-id">Mind ID (in):</label>
+        <input type="text" id="mind-id" name="mind-id" placeholder="Enter Mind ID">
+
+        <!-- Purpose -->
+        <label for="purpose">Purpose:</label>
+        <input type="text" id="purpose" name="purpose" placeholder="Enter Purpose">
+
+        <!-- Weight (Above/Below) Jars -->
+        <label for="weight-jars">Weight (Above/Below) Jars:</label>
+        <input type="text" id="weight-jars" name="weight-jars" placeholder="Enter Weight (Above/Below) Jars">
     </div>
-
-<script>
-    document.getElementById('daily_cost').addEventListener('input', calculateTotalCost);
-    document.getElementById('dol').addEventListener('input', calculateTotalCost);
-
-    function calculateTotalCost() {
-        const dailyCost = parseFloat(document.getElementById('daily_cost').value) || 0;
-        const daysOnLocation = parseInt(document.getElementById('dol').value) || 0;
-        const totalCost = dailyCost * daysOnLocation;
-        document.getElementById('cost_ttl').value = totalCost.toFixed(2); // Display with 2 decimal places
-    }
-</script>
-
+</div>

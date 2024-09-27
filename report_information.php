@@ -69,6 +69,10 @@
         <?php include 'View/BHA-data.php'; ?>
     </section>
 
+    <section id="BHA-compoment">
+        <?php include 'View/bha_component.php'; ?>
+    </section>
+
     <section id="bit-data">
         <?php include 'View/bit-data.php'; ?>
     </section>
@@ -85,12 +89,12 @@
         <?php include 'View/safety.php'; ?>
     </section>
 
-    <section id="solidCtrlEquipment">
-        <?php include 'View/solidCtrlEquipment.php'; ?>
+    <section id="pumpHydraulics">
+        <?php include 'View/pump-hydraulics.php'; ?>
     </section>
 
-    <section id="mud-data">
-        <?php include 'View/mud-data.php'; ?>
+    <section id="mud-check">
+        <?php include 'View/mud-check.php'; ?>
     </section>
 
     <section id="mud-vol">

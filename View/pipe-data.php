@@ -1,112 +1,51 @@
+<link rel="stylesheet" href="css/report_info/pipe-data.css">
 
-    <div class="wrapper">
-        <h3 style="text-align: center;">Pipe Data</h3>
-        <div class="row1">
-            <div class="container">
-                <form action="process.php" method="POST">
-                    <div class="table-wrapper">
-                        <table class="table-custom">
-                            <thead>
-                                <tr>
-                                    <th></th> <!-- Empty top-left corner cell -->
-                                    <th></th>
-                                    <th>Connection</th>
-                                    <th>Outside Diameter (OD)</th>
-                                    <th>Inside Diameter (ID)</th>
-                                    <th>Weight</th>
-                                    <th>Length</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>Drill Pipe 1</th>
-                                    <th>Top</th>
-                                    <td><input type="text" name="input_1_1" /></td>
-                                    <td><input type="text" name="input_1_2" /></td>
-                                    <td><input type="text" name="input_1_3" /></td>
-                                    <td><input type="text" name="input_1_4" /></td>
-                                    <td><input type="text" name="input_1_5" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Drill Pipe 2</th>
-                                    <th>Middle</th>
-                                    <td><input type="text" name="input_2_1" /></td>
-                                    <td><input type="text" name="input_2_2" /></td>
-                                    <td><input type="text" name="input_2_3" /></td>
-                                    <td><input type="text" name="input_2_4" /></td>
-                                    <td><input type="text" name="input_2_5" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Drill Pipe 3</th>
-                                    <th>Bottom</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                    <td><input type="text" name="input_3_5" /></td>
-                                </tr>
-                                <tr>
-                                    <th>Drill Pipe 4</th>
-                                    <th>Bottom</th>
-                                    <td><input type="text" name="input_4_1" /></td>
-                                    <td><input type="text" name="input_4_2" /></td>
-                                    <td><input type="text" name="input_4_3" /></td>
-                                    <td><input type="text" name="input_4_4" /></td>
-                                    <td><input type="text" name="input_4_5" /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </form>
-            </div>
+<div class="wrapper-pd">
+    <div class="container-pd">
+        <form>
+            <h2>Pipe Data</h2>
 
-            <div class="container">
-                <form action="process.php" method="POST">
-                    <div class="table-wrapper">
-                        <table class="table-custom">
-                            <thead>
-                                <tr>
-                                    <th></th> <!-- Empty top-left corner cell -->
-                                    <th></th>
-                                    <th>Connection</th>
-                                    <th>Outside Diameter (OD)</th>
-                                    <th>Inside Diameter (ID)</th>
-                                    <th>Weight</th>
-                                    <th>Length</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>Heavy Wt</th>
-                                    <th>Top</th>
-                                    <td><input type="text" name="input_1_1" /></td>
-                                    <td><input type="text" name="input_1_2" /></td>
-                                    <td><input type="text" name="input_1_3" /></td>
-                                    <td><input type="text" name="input_1_4" /></td>
-                                    <td><input type="text" name="input_1_5" /></td>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <th>Middle</th>
-                                    <td><input type="text" name="input_2_1" /></td>
-                                    <td><input type="text" name="input_2_2" /></td>
-                                    <td><input type="text" name="input_2_3" /></td>
-                                    <td><input type="text" name="input_2_4" /></td>
-                                    <td><input type="text" name="input_2_5" /></td>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <th>Bottom</th>
-                                    <td><input type="text" name="input_3_1" /></td>
-                                    <td><input type="text" name="input_3_2" /></td>
-                                    <td><input type="text" name="input_3_3" /></td>
-                                    <td><input type="text" name="input_3_4" /></td>
-                                    <td><input type="text" name="input_3_5" /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </form>
+            <div class="form-group-pd">
+                <!-- Min ID -->
+                <label for="min-id">Min ID:</label>
+                <input type="text" id="min-id" name="min-id">
+
+                <!-- DC OD -->
+                <label for="dc-od">DC OD:</label>
+                <input type="text" id="dc-od" name="dc-od">
+
+                <!-- DC Length -->
+                <label for="dc-length">DC Length:</label>
+                <input type="text" id="dc-length" name="dc-length">
+
+                <!-- HWDP OD -->
+                <label for="hwdp-od">HWDP OD:</label>
+                <input type="text" id="hwdp-od" name="hwdp-od">
+
+                <!-- HWDP Length -->
+                <label for="hwdp-length">HWDP Length:</label>
+                <input type="text" id="hwdp-length" name="hwdp-length">
+
+                <!-- BHA Length -->
+                <label for="bha-length">BHA Length:</label>
+                <input type="text" id="bha-length" name="bha-length">
+
+                <!-- DP OD -->
+                <label for="dp-od">DP OD:</label>
+                <input type="text" id="dp-od" name="dp-od">
+
+                <!-- String Rot Weight -->
+                <label for="string-rot-weight">String Rot Weight:</label>
+                <input type="text" id="string-rot-weight" name="string-rot-weight">
+
+                <!-- Pick-Up Weight -->
+                <label for="pick-up-weight">Pick-Up Weight:</label>
+                <input type="text" id="pick-up-weight" name="pick-up-weight">
+
+                <!-- Slack Off Weight -->
+                <label for="slack-off-weight">Slack Off Weight:</label>
+                <input type="text" id="slack-off-weight" name="slack-off-weight">
             </div>
-        </div>
+        </form>
     </div>
+</div>

@@ -333,7 +333,7 @@ if ($reportId) {
                     <li><a href="#vessels"><i class="fa fa-circle-o"></i> Vessels</a></li>
                 </ul>
             </li>
-            <li class="treeview <?php if(in_array($cur_page, ['pipe-data.php', 'BHA-data.php', 'bit-data.php','drlg-data.php', 'survey.php', 'Operation-sum.php', 'solidCtrlEquipment.php', 'safety.php', 'mud-data.php', 'mud-vol.php', 'mud-log.php', 'formation-eva.php', 'velocities.php'])) { echo 'active'; } ?>">
+            <li class="treeview <?php if(in_array($cur_page, ['pipe-data.php', 'BHA-data.php', 'bit-data.php','bha_component.php','drlg-data.php', 'survey.php', 'Operation-sum.php', 'solidCtrlEquipment.php', 'pump-hydraulics.php', 'safety.php', 'mud-check.php', 'mud-vol.php', 'mud-log.php', 'formation-eva.php', 'velocities.php'])) { echo 'active'; } ?>">
                 <a href="#operation">
                     <i class="fa fa-gears"></i>
                     <span>Operation</span>
@@ -344,12 +344,14 @@ if ($reportId) {
                 <ul class="treeview-menu">
                     <li><a href="#pipe-data"><i class="fa fa-circle-o"></i> Pipe Data</a></li>
                     <li><a href="#BHA-data"><i class="fa fa-circle-o"></i> BHA Data</a></li>
+                    <li><a href="#BHA-component"><i class="fa fa-circle-o"></i> BHA Component</a></li>
                     <li><a href="#bit-data"><i class="fa fa-circle-o"></i> Bit Data</a></li>
                     <li><a href="#drlg-data"><i class="fa fa-circle-o"></i> Drilling Data</a></li>
                     <li><a href="#survey"><i class="fa fa-circle-o"></i> Survey</a></li>
                     <li><a href="#safety"><i class="fa fa-circle-o"></i> Safety</a></li>
                     <li><a href="#solidCtrlEquipment"><i class="fa fa-circle-o"></i> Solid Control Equipment</a></li>
-                    <li><a href="#mud-data"><i class="fa fa-circle-o"></i> Mud Data</a></li>
+                    <li><a href="#pumpHydraulics"><i class="fa fa-circle-o"></i> Pump/Hydraulic</a></li>
+                    <li><a href="#mud-check"><i class="fa fa-circle-o"></i> Mud Check</a></li>
                     <li><a href="#mud-vol"><i class="fa fa-circle-o"></i> Mud Volumes</a></li>
                     <li><a href="#mud-log"><i class="fa fa-circle-o"></i> Mud Log</a></li>
                     <li><a href="#formation-eva"><i class="fa fa-circle-o"></i> Formation Evaluation</a></li>
@@ -400,12 +402,13 @@ if ($reportId) {
                 "vessels": { main: "Logistics & Material", sub: "Vessels" },
                 "pipe-data": { main: "Operation", sub: "Pipe Data" },
                 "BHA-data": { main: "Operation", sub: "BHA Data" },
+                "BHA-component": { main: "Operation", sub: "BHA Component" },
                 "bit-data": { main: "Operation", sub: "Bit Data" },
                 "drlg-data": { main: "Operation", sub: "Drilling Data" },
                 "survey": { main: "Operation", sub: "Survey" },
                 "safety": { main: "Operation", sub: "Safety" },
                 "solidCtrlEquipment": { main: "Operation", sub: "Solid Control Equipment" },
-                "mud-data": { main: "Operation", sub: "Mud Data" },
+                "mud-check": { main: "Operation", sub: "Mud Check" },
                 "mud-vol": { main: "Operation", sub: "Mud Volumes" },
                 "mud-log": { main: "Operation", sub: "Mud Log" },
                 "formation-eva": { main: "Operation", sub: "Formation Evaluation" },

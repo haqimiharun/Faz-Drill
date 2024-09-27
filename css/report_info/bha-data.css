@@ -1,0 +1,39 @@
+/* BHA Data Section (bd) */
+.wrapper-bd {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.container-bd {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+}
+
+.container-bd label {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.container-bd input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	resize: none;
+}
+
+input:disabled,
+textarea:disabled {
+	background-color: #f0f0f0;
+	color: #888;
+}
