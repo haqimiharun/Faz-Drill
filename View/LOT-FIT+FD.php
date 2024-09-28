@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/report_view/lot-fit.css">
+<link rel="stylesheet" href="css/report_info/lot-fit.css">
 
 <div class="wrapper-lf">
     <div class="container-lf">
@@ -33,3 +33,4 @@
         </form>
     </div>
 </div>
+ 

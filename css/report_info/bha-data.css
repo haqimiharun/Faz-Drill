@@ -1,22 +1,22 @@
 /* BHA Data Section (bd) */
-.wrapper-bd {
+.wrapper-bha {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 20px;
 }
 
-.container-bd {
+.container-bha {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 20px;
 }
 
-.container-bd label {
+.container-bha label {
 	font-weight: bold;
 	margin-bottom: 5px;
 }
 
-.container-bd input {
+.container-bha input {
 	width: 100%;
 	padding: 10px;
 	border: 1px solid #ccc;

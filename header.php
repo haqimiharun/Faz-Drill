@@ -317,7 +317,7 @@ if ($reportId) {
                     <li><a href="#gas-reading"><i class="fa fa-circle-o"></i> Gas Reading</a></li>
                 </ul>
             </li>
-            <li class="treeview <?php if(in_array($cur_page, ['consumables.php', 'bulk-material.php', 'weather_anchor.php', 'pob.php', 'vessels.php'])) { echo 'active'; } ?>">
+            <li class="treeview <?php if(in_array($cur_page, ['consumables.php', 'bulk-material.php', 'weather.php', 'pob.php', 'vessels.php'])) { echo 'active'; } ?>">
                 <a href="#logi-mate">
                     <i class="fa fa-truck"></i>
                     <span>Logistics & Material</span>
@@ -328,7 +328,7 @@ if ($reportId) {
                 <ul class="treeview-menu">
                     <li><a href="#consumables"><i class="fa fa-circle-o"></i> Consumables</a></li>
                     <li><a href="#bulk-material"><i class="fa fa-circle-o"></i> Bulk & Liquid Material</a></li>
-                    <li><a href="#weather_anchor"><i class="fa fa-circle-o"></i> Weather + Anchor</a></li>
+                    <li><a href="#weather"><i class="fa fa-circle-o"></i> Weather</a></li>
                     <li><a href="#pob"><i class="fa fa-circle-o"></i> Personnel On Board</a></li>
                     <li><a href="#vessels"><i class="fa fa-circle-o"></i> Vessels</a></li>
                 </ul>
@@ -397,7 +397,7 @@ if ($reportId) {
                 "rig-info": { main: "Rig Information", sub: "Rig Information" },
                 "consumables": { main: "Logistics & Material", sub: "Consumables" },
                 "bulk-material": { main: "Logistics & Material", sub: "Bulk & Liquid Material" },
-                "weather_anchor": { main: "Logistics & Material", sub: "Weather + Anchor" },
+                "weather": { main: "Logistics & Material", sub: "Weather" },
                 "pob": { main: "Logistics & Material", sub: "Personnel On Board" },
                 "vessels": { main: "Logistics & Material", sub: "Vessels" },
                 "pipe-data": { main: "Operation", sub: "Pipe Data" },

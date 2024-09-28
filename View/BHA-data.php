@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="css/report_info/bha-data.css">
-<h2>Bit Data</h2>
+<h2>Button Hole Assembly</h2>
 <div class="wrapper-bd">
     <div class="container-bd">
         <!-- BHA No -->

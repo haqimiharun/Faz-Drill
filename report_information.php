@@ -18,16 +18,17 @@
     <section id="depth-days">
         <?php include 'View/depth_days.php'; ?>
     </section>
-    <section id="gas-reading">
-        <?php include 'View/gas-reading.php'; ?>
-    </section>
 <div>
     <section id="operation">
         <h1 style="text-align: center;">Operation</h1>
     </section>
 </div>
-    <section id="pipe-data">
-        <?php include 'View/pipe-data.php'; ?>
+    <section id="bit-data">
+        <?php include 'View/bit-data.php'; ?>
+    </section>
+
+    <section id="mud-check">
+        <?php include 'View/mud-check.php'; ?>
     </section>
 
     <section id="BHA-data">
@@ -37,29 +38,41 @@
     <section id="BHA-compoment">
         <?php include 'View/bha_component.php'; ?>
     </section>
-
-    <section id="bit-data">
-        <?php include 'View/bit-data.php'; ?>
+    
+    <section id="gas-reading">
+        <?php include 'View/gas-reading.php'; ?>
     </section>
 
-    <section id="drlg-data">
-        <?php include 'View/drlg-data.php'; ?>
+    <section id="mud-vol">
+        <?php include 'View/mud-vol.php'; ?>
+    </section>
+
+    <section id="pumpHydraulics">
+        <?php include 'View/pump-hydraulics.php'; ?>
+    </section>
+    
+    <section id="pipe-data">
+        <?php include 'View/pipe-data.php'; ?>
     </section>
 
     <section id="solidCtrlEquipment">
         <?php include 'View/solidCtrlEquipment.php'; ?>
     </section>
 
-    <section id="pumpHydraulics">
-        <?php include 'View/pump-hydraulics.php'; ?>
+    <section id="LOT-FIT+FD">
+        <?php include 'View/LOT-FIT+FD.php'; ?>
     </section>
 
-    <section id="mud-check">
-        <?php include 'View/mud-check.php'; ?>
+    <section id="supportCraft">
+        <?php include 'View/supportCraft.php'; ?>
     </section>
 
-    <section id="mud-vol">
-        <?php include 'View/mud-vol.php'; ?>
+    <section id="bulks">
+        <?php include 'View/bulks.php'; ?>
+    </section>
+
+    <section id="weather">
+        <?php include 'View/weather.php'; ?>
     </section>
 </div>
 
