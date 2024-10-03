@@ -74,6 +74,19 @@
     <section id="weather">
         <?php include 'View/weather.php'; ?>
     </section>
+
+    <section id="safetyCard">
+        <?php include 'View/safetyCard.php'; ?>
+    </section>
+
+    <section id="personnel">
+        <?php include 'View/personnel.php'; ?>
+    </section>
+
+    <section id="anchorTension">
+        <?php include 'View/anchorTension.php'; ?>
+    </section>
+
 </div>
 
 <?php require_once('footer.php'); ?>

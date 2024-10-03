@@ -80,7 +80,7 @@
                 Night DS:
                 </div>
                 <div class="rigName">
-                PCSB Engineer:
+                Engineer:
                 </div>
             </div>
             <div id="well_Info2">
