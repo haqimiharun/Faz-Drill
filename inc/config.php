@@ -12,10 +12,10 @@ $dbhost = 'localhost';
 $dbname = 'fazdrill';
 
 // Database Username
-$dbuser = 'root';
+$dbuser = 'postgres';;
 
 // Database Password
-$dbpass = '';
+$dbpass = 'ftsb@123';
 
 // Defining base url
 define("BASE_URL", "");
@@ -24,7 +24,7 @@ define("BASE_URL", "");
 define("ADMIN_URL", BASE_URL . "admin" . "/");
 
 try {
-	$pdo = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
+	$pdo = new PDO("pgsql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch( PDOException $exception ) {

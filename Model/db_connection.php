@@ -1,11 +1,11 @@
 <!-- db_connection.php -->
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "postgre";
+$password = "ftsb@123";
 $dbname = "fazdrill";
 
 // Create connection
-$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+$pdo = new PDO("pgsql:host=$servername;dbname=$dbname", $username, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>

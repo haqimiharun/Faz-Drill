@@ -2,14 +2,14 @@
 // Database connection settings
 $dbhost = 'localhost';
 $dbname = 'fazdrill';
-$dbuser = 'root';
-$dbpass = '';
+$dbuser = 'postgres';
+$dbpass = 'ftsb@123';
 
 header('Content-Type: application/json'); // Set content type to JSON
 
 try {
     // Establish the database connection
-    $pdo = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
+    $pdo = new PDO("pgsql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $response = [];

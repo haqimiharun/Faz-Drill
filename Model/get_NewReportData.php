@@ -2,12 +2,12 @@
 // Database configuration
 $dbhost = 'localhost';
 $dbname = 'fazdrill';
-$dbuser = 'root';
-$dbpass = '';
+$dbuser = 'postgres';
+$dbpass = 'ftsb@123';
 
 try {
     // Create a new PDO instance
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+    $pdo = new PDO("pgsql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Prepare SQL queries
