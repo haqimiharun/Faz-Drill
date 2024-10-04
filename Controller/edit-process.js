@@ -1,31 +1,20 @@
 // Get elements
-var editReportBtn = document.getElementById("updateReport");
-var editWellboreBtn = document.getElementById("updateWellbore");
-var editWellBtn = document.getElementById("updateWell");
-var editSiteBtn = document.getElementById("updateSite");
-var editFieldBtn = document.getElementById("updateField");
-var modal = document.getElementById("myModal");
-var span = document.getElementsByClassName("close")[0];
-var dynamicContent = document.getElementById("dynamic-content");
-var loader = document.getElementById("loader");
+const editReportBtn = document.getElementById("updateNewReport");
+const editWellboreBtn = document.getElementById("updateWellbore");
+const editWellBtn = document.getElementById("updateWell");
+const editSiteBtn = document.getElementById("updateSite");
+const editFieldBtn = document.getElementById("updateField");
 
-// Close modal when clicking the close button
-span.onclick = function () {
-	modal.style.display = "none";
-};
+// Close modal functionality
+span.onclick = () => (modal.style.display = "none");
+window.onclick = (event) =>
+	event.target === modal && (modal.style.display = "none");
 
-// Close the modal when clicking outside of it
-window.onclick = function (event) {
-	if (event.target == modal) {
-		modal.style.display = "none";
-	}
-};
-
-// Function to fetch data from server
+// Fetch data helper function
 function fetchData(url, callback) {
 	const xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
-	xhr.onreadystatechange = function () {
+	xhr.onreadystatechange = () => {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {
 				try {
@@ -42,210 +31,135 @@ function fetchData(url, callback) {
 	xhr.send();
 }
 
-// Fetch fields based on country ID
+// Fetch country and field data
 function fetchFields(countryId, callback) {
 	fetchData(`Model/get_fields.php?countryId=${countryId}`, callback);
 }
 
-// Fetch sites based on field ID
-function fetchSites(fieldId, callback) {
-	fetchData(`get_sites.php?fieldId=${fieldId}`, callback);
-}
-
-// Fetch wells based on site ID
-function fetchWells(siteId, callback) {
-	fetchData(`get_wells.php?siteId=${siteId}`, callback);
-}
-
-// Fetch wellbores based on well ID
-function fetchWellbores(wellId, callback) {
-	fetchData(`get_wellbores.php?wellId=${wellId}`, callback);
-}
-
-// Function to open modal and load form into it
+// Open modal and load content
 function openModal(url, setupFunction) {
 	modal.style.display = "block";
 	loader.style.display = "block";
 	dynamicContent.innerHTML = "";
 
-	var xhr = new XMLHttpRequest();
+	const xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
-	xhr.onreadystatechange = function () {
+	xhr.onreadystatechange = () => {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			loader.style.display = "none";
 			dynamicContent.innerHTML = xhr.responseText;
 			console.log("Modal content loaded");
 
-			// Ensure the modal content is loaded before calling setupFunction
-			setTimeout(function () {
+			setTimeout(() => {
 				if (typeof setupFunction === "function") {
 					setupFunction();
 				} else {
 					console.error("setupFunction is not a valid function");
 				}
-			}, 500); // Increase delay if necessary
+			}, 500);
 		} else if (xhr.readyState === 4) {
-			console.error("Error at onreadystatechange: " + xhr.status);
+			console.error("Error loading modal content:", xhr.status);
 		}
 	};
 	xhr.send();
 }
 
-// Function to open modal and load Report form
-editReportBtn.onclick = function () {
-	openModal("View/add_report.php", setupReportFormSubmission);
-};
+// Modal trigger functions
+editReportBtn.onclick = () => openModal("View/add_report.php", editReport);
+editWellboreBtn.onclick = () =>
+	openModal("View/add_wellbore.php", editWellbore);
+editWellBtn.onclick = () => openModal("View/add_well.php", editWell);
+editSiteBtn.onclick = () => openModal("View/add_site.php", editSite);
+editFieldBtn.onclick = () => openModal("View/edit_field.php", editField);
 
-// Function to open modal and load Wellbore form
-editWellboreBtn.onclick = function () {
-	openModal("View/add_wellbore.php", setupWellboreFormSubmission);
-};
+// Edit field form logic
+function editField() {
+	const savedData = sessionStorage.getItem("selectedData");
+	const selectedData = savedData ? JSON.parse(savedData) : null;
 
-// Function to open modal and load Well form
-editWellBtn.onclick = function () {
-	openModal("View/add_well.php", setupWellFormSubmission);
-};
+	const countryId = selectedData ? selectedData.country : null;
+	const fieldId = selectedData ? selectedData.field : null;
 
-// Function to open modal and load Site form
-editSiteBtn.onclick = function () {
-	openModal("View/add_site.php", setupSiteFormSubmission);
-};
+	const editFieldForm = document.getElementById("editFieldForm");
+	if (!editFieldForm) {
+		console.error("editFieldForm not found");
+		return;
+	}
 
-// Function to open modal and load Field form
-editFieldBtn.onclick = function () {
-	openModal("View/add_field.php", setupFieldFormSubmission);
-};
+	const countrySelect = document.getElementById("countrySelect");
+	const fieldNameInput = document.getElementById("fieldName");
 
-function setupReportFormSubmission() {
-	var form = document.querySelector("#reportForm"); // Adjust selector as needed
+	if (!countrySelect || !fieldNameInput) {
+		console.error("One or more form elements not found");
+		return;
+	}
 
-	form.onsubmit = function (event) {
-		event.preventDefault();
-
-		var formData = new FormData(form);
-
-		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "Model/edit_report.php", true); // Update URL as needed
-		xhr.onload = function () {
-			if (xhr.status === 200) {
-				var response = JSON.parse(xhr.responseText);
-				if (response.status === "success") {
-					updateTableRow(response.item); // Define this function to update the table
-					modal.style.display = "none";
+	if (countryId) {
+		fetch(`Model/get_countries.php?id=${countryId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.name) {
+					const option = new Option(data.name, countryId, true);
+					countrySelect.add(option);
+					countrySelect.value = countryId;
+					countrySelect.disabled = true; // Disable selection
 				} else {
-					console.error("Error:", response.message);
+					console.error("Country name not found for ID:", countryId);
 				}
-			} else {
-				console.error("Request failed:", xhr.status);
-			}
-		};
-		xhr.send(formData);
+			})
+			.catch((error) => console.error("Error fetching country name:", error));
+	} else {
+		const option = new Option(
+			"Choose or Create a Country First",
+			"",
+			true,
+			true
+		);
+		option.disabled = true;
+		countrySelect.add(option);
+	}
+
+	if (fieldId) {
+		fetch(`Model/get_fields.php?id=${fieldId}`)
+			.then((response) => response.json())
+			.then((fieldData) => {
+				if (fieldData && fieldData.field_name) {
+					fieldNameInput.value = fieldData.field_name; // Pre-fill field name
+				} else {
+					console.error("Field data not found for ID:", fieldId);
+				}
+			})
+			.catch((error) => console.error("Error fetching field data:", error));
+	}
+	editFieldForm.onsubmit = function (event) {
+		event.preventDefault();
+		submitForm(editFieldForm, "Model/process_edit_field.php");
 	};
 }
 
-function updateTableRow(item) {
-	// Adjust the selector and updating logic as needed
-	var row = document.querySelector(`tr[data-id='${item.id}']`);
-	if (row) {
-		row.querySelector(".name").textContent = item.name;
-		row.querySelector(".description").textContent = item.description;
-		// Update other fields as needed
-	}
-}
+// Submit form data
+function submitForm(form, url) {
+	var formData = new FormData(form);
 
-function setupReportFormSubmission() {
-	// Fetch existing data (e.g., based on URL parameters or session storage)
-	var reportId = getParameterByName("id"); // Define this function to extract parameters
-	if (reportId) {
-		fetchData(`Model/get_report.php?id=${reportId}`, function (data) {
-			if (data.status === "success") {
-				populateReportForm(data.item);
-			} else {
-				console.error("Error fetching report data:", data.message);
-			}
-		});
-	}
+	// Create an object to store form data for logging
+	var formDataObject = {};
+	formData.forEach((value, key) => {
+		formDataObject[key] = value;
+	});
 
-	// Form submission handling
-	var form = document.querySelector("#reportForm");
-	form.onsubmit = function (event) {
-		event.preventDefault();
+	// Log form data to console
+	console.log("Submitting form with data:", formDataObject);
 
-		var formData = new FormData(form);
-
-		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "Model/edit_report.php", true);
-		xhr.onload = function () {
-			if (xhr.status === 200) {
-				var response = JSON.parse(xhr.responseText);
-				if (response.status === "success") {
-					updateTableRow(response.item);
-					modal.style.display = "none";
-				} else {
-					console.error("Error:", response.message);
-				}
-			} else {
-				console.error("Request failed:", xhr.status);
-			}
-		};
-		xhr.send(formData);
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			console.log("Form submitted successfully");
+			console.log("Server response:", xhr.responseText);
+			modal.style.display = "none"; // Close the modal
+		} else if (xhr.readyState === 4) {
+			console.error("Error submitting form: " + xhr.status);
+		}
 	};
-}
-
-function setupWellboreFormSubmission() {
-	// Get the wellbore ID from URL parameters or any other source
-	var wellboreId = getParameterByName("id"); // Define this function to extract parameters
-
-	if (wellboreId) {
-		// Fetch existing wellbore data
-		fetchData(`Model/get_wellbore.php?id=${wellboreId}`, function (data) {
-			if (data.status === "success") {
-				populateWellboreForm(data.item);
-			} else {
-				console.error("Error fetching wellbore data:", data.message);
-			}
-		});
-	}
-
-	// Form submission handling
-	var form = document.querySelector("#wellboreForm"); // Adjust selector as needed
-	form.onsubmit = function (event) {
-		event.preventDefault();
-
-		var formData = new FormData(form);
-
-		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "Model/edit_wellbore.php", true); // Update URL as needed
-		xhr.onload = function () {
-			if (xhr.status === 200) {
-				var response = JSON.parse(xhr.responseText);
-				if (response.status === "success") {
-					updateTableRow(response.item); // Update the table or list
-					modal.style.display = "none";
-				} else {
-					console.error("Error:", response.message);
-				}
-			} else {
-				console.error("Request failed:", xhr.status);
-			}
-		};
-		xhr.send(formData);
-	};
-}
-
-// Function to populate the wellbore form with existing data
-function populateWellboreForm(item) {
-	var form = document.querySelector("#wellboreForm");
-	form.querySelector("[name='name']").value = item.name;
-	form.querySelector("[name='description']").value = item.description;
-	form.querySelector("[name='depth']").value = item.depth; // Adjust as needed
-	form.querySelector("[name='status']").value = item.status; // Adjust as needed
-	// Populate other fields as needed
-}
-
-function populateReportForm(item) {
-	var form = document.querySelector("#reportForm");
-	form.querySelector("[name='name']").value = item.name;
-	form.querySelector("[name='description']").value = item.description;
-	// Populate other fields as needed
+	xhr.send(formData);
 }

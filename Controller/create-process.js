@@ -759,9 +759,9 @@ function setupFieldFormSubmission() {
 	// Extract the country data
 	const countryId = selectedData ? selectedData.country : null;
 
-	var fieldForm = document.getElementById("fieldForm");
-	if (!fieldForm) {
-		console.error("fieldForm not found");
+	var addFieldForm = document.getElementById("addFieldForm");
+	if (!addFieldForm) {
+		console.error("addFieldForm not found");
 		return;
 	}
 
@@ -810,9 +810,9 @@ function setupFieldFormSubmission() {
 		countryIdHidden.value = this.value;
 	});
 
-	fieldForm.onsubmit = function (event) {
+	addFieldForm.onsubmit = function (event) {
 		event.preventDefault();
-		submitForm(fieldForm, "Model/process_add_field.php");
+		submitForm(addFieldForm, "Model/process_add_field.php");
 	};
 }
 

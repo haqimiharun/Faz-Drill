@@ -336,11 +336,6 @@ function setupNewReportFormSubmission() {
 			.catch((error) => console.error("Error fetching wellbores:", error));
 	}
 
-	reportForm.onsubmit = function (event) {
-		event.preventDefault();
-		submitForm(reportForm, "Model/process_add_NewReport.php");
-	};
-
 	function submitForm(form, url) {
 		var formData = new FormData(form);
 
@@ -356,12 +351,21 @@ function setupNewReportFormSubmission() {
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", url, true);
 		xhr.onreadystatechange = function () {
-			if (xhr.readyState === 4 && xhr.status === 200) {
-				console.log("Form submitted successfully");
-				console.log("Server response:", xhr.responseText);
-				modal.style.display = "none"; // Close the modal
-			} else if (xhr.readyState === 4) {
-				console.error("Error submitting form: " + xhr.status);
+			if (xhr.readyState === 4) {
+				if (xhr.status === 200) {
+					console.log("Form submitted successfully");
+					console.log("Server response:", xhr.responseText);
+					modal.style.display = "none"; // Close the modal
+
+					// Optionally, reset the form
+					form.reset();
+
+					// Provide feedback to the user (you can customize this)
+					alert("Form submitted successfully!"); // Or use a more sophisticated method
+				} else {
+					console.error("Error submitting form: " + xhr.status);
+					alert("There was an error submitting the form. Please try again."); // Notify user of error
+				}
 			}
 		};
 		xhr.send(formData);
