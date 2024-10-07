@@ -285,10 +285,10 @@ if ($reportId) {
 </script>
 
 <style>
-.sidebar-menu a.active {
-    background-color: #2BAAE1; /* Active link background */
-    color: white; /* Active link text color */
-}
+    .sidebar-menu a.active {
+        background-color: #2BAAE1; /* Active link background */
+        color: white; /* Active link text color */
+    }
 
 </style>
   	<?php $cur_page = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1); ?>
@@ -296,6 +296,11 @@ if ($reportId) {
 <aside class="main-sidebar">
     <section class="sidebar">
         <ul class="sidebar-menu">
+            <li class="treeview <?php if( ($cur_page == 'report-header.php') ) {echo 'active';} ?>">
+                <a href="#report-header">
+                    <i class="fa fa-file-text-o"></i> <span>Report Header</span>
+                </a>
+            </li>
             <li class="treeview <?php if( ($cur_page == 'report-header.php') ) {echo 'active';} ?>">
                 <a href="#report-header">
                     <i class="fa fa-file-text-o"></i> <span>Report Header</span>
@@ -358,6 +363,21 @@ if ($reportId) {
                     <li><a href="#velocities"><i class="fa fa-circle-o"></i> Velocities</a></li>
                     <li><a href="#Operation-sum"><i class="fa fa-circle-o"></i> Operation Summary</a></li>
                 </ul>
+            </li>
+            <li class="treeview <?php if(in_array($cur_page, ['daily-cost.php'])) { echo 'active'; } ?>">
+                <a href="#daily-cost">
+                    <i class="fa fa-industry"></i> <span>Daily Cost</span>
+                </a>
+            </li>
+            <li class="treeview <?php if(in_array($cur_page, ['reports.php', 'reports-add.php', 'reports-edit.php'])) { echo 'active'; } ?>">
+                <a href="#reports">
+                    <i class="fa fa-file-text"></i> <span>Reports</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'unit-mngmt.php') { echo 'active'; } ?>">
+                <a href="#unit-mngmt">
+                    <i class="fa fa-sticky-note"></i> <span>Units Management</span>
+                </a>
             </li>
             <li class="treeview <?php if(in_array($cur_page, ['daily-cost.php'])) { echo 'active'; } ?>">
                 <a href="#daily-cost">

@@ -1,47 +1,57 @@
-    <div class="wrapper">
-    <h3 style="text-align: center;">Safety</h3>
-        <div class="row1">
-            <div class="container">
-                <!-- <h2></h2> -->
-                <form action="process-drill-fluids.php" method="post">
-                    <div class="form-group">
-                        <label for="data_equip_inspec">Data Equipment Inspection</label>
-                        <input type="text" id="data_equip_inspec" name="data_equip_inspec" placeholder="Enter Data Equipment Inspection">
-                    </div>
-                    <div class="form-group">
-                        <label for="safety_device_chck">Safety device checks</label>
-                        <input type="text" id="safety_device_chck" name="safety_device_chck" placeholder="Enter Safety device checks">
-                    </div>
-                    <div class="form-group">
-                        <label for="ppe_usage">Personal protective equipment (PPE) Usage</label>
-                        <input type="text" id="ppe_usage" name="ppe_usage" placeholder="Enter Personal protective equipment (PPE) Usage">
-                    </div>
-                    <div class="form-group">
-                        <label for="spill_res">Spill Respone</label>
-                        <input type="text" id="spill_res" name="spill_res" placeholder="Enter Spill Respone">
-                    </div>
-                </form>
-            </div>
+<link rel="stylesheet" href="css/report_info/safety.css">
+<div class="wrapper-safety">
+    <div class="container-safety">
+        <h2>Safety</h2>
+        <form>
+            <div class="form-group-safety">
+                <label for="days-last-nlta">Days Since Last NLTA:</label>
+                <input type="text" id="days-last-nlta" name="days_since_last_nlta">
 
-            <div class="container">
-                <form>
-                    <div class="form-group">
-                        <label for="waste_mng">Waste Management</label>
-                        <input type="text" id="waste_mng" name="waste_mng" placeholder="Enter Waste Management">
-                    </div>
-                    <div class="form-group">
-                        <label for="air_quality">Air quality monitoring</label>
-                        <input type="text" id="air_quality" name="air_quality" placeholder="Enter Air Quality Monitoring">
-                    </div>
-                    <div class="form-group">
-                        <label for="noise_lvl">Noise Level monitoring</label>
-                        <input type="text" id="noise_lvl" name="noise_lvl" placeholder="Enter Noise Level monitoring">
-                    </div>
-                    <div class="form-group">
-                        <label for="safety_recom">Safety recommedations (comment box)</label>
-                        <input type="text" id="safety_recom" name="safety_recom" placeholder="Enter Safety recommedations">
-                    </div>
-                </form>
+                <label for="days-since-lta">Days Since LTA:</label>
+                <input type="text" id="days-since-lta" name="days_since_lta">
+
+                <label for="stop-cards">STOP Cards:</label>
+                <input type="text" id="stop-cards" name="stop_cards">
+
+                <label for="incident-accident">Incident / Accident:</label>
+                <input type="text" id="incident-accident" name="incident_accident">
+
+                <label for="drill-type">Drill Type:</label>
+                <input type="text" id="drill-type" name="drill_type">
+
+                <label for="last-drill">Last Drill:</label>
+                <input type="text" id="last-drill" name="last_drill">
+
+                <label for="last-fire-drill">Last Fire Drill:</label>
+                <input type="text" id="last-fire-drill" name="last_fire_drill">
+
+                <label for="next-fire-drill">Next Fire Drill:</label>
+                <input type="text" id="next-fire-drill" name="next_fire_drill">
+
+                <label for="last-weekly-rig-check">Last Weekly Rig Check:</label>
+                <input type="text" id="last-weekly-rig-check" name="last_weekly_rig_check">
+
+                <label for="daily-inspection-done">Daily Inspection Done:</label>
+                <input type="text" id="daily-inspection-done" name="daily_inspection_done">
+
+                <label for="last-safety-inspection">Last Safety Inspection:</label>
+                <input type="text" id="last-safety-inspection" name="last_safety_inspection">
+
+                <label for="last-bop-function-test">Last BOP Function Test:</label>
+                <input type="text" id="last-bop-function-test" name="last_bop_function_test">
+
+                <label for="last-bop-pressure-test">Last BOP Pressure Test:</label>
+                <input type="text" id="last-bop-pressure-test" name="last_bop_pressure_test">
+
+                <label for="next-test-due">Next Test Due:</label>
+                <input type="text" id="next-test-due" name="next_test_due">
+
+                <label for="last-safety-meeting">Last Safety Meeting:</label>
+                <input type="text" id="last-safety-meeting" name="last_safety_meeting">
+
+                <label for="last-bop-drill">Last BOP Drill:</label>
+                <input type="text" id="last-bop-drill" name="last_bop_drill">
             </div>
-        </div>
+        </form>
     </div>
+</div>

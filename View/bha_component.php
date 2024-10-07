@@ -3,7 +3,7 @@
 <div class="wrapper-bc">
     <div class="container-bc">
         <form>
-            <h2>Assembly Components</h2>
+            <h2>BHA Components</h2>
 
             <div class="form-group-bc">
                 <!-- Component Type -->

@@ -1,0 +1,29 @@
+.wrapper-safety {
+	margin: 20px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+}
+
+.container-safety {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group-safety {
+	display: grid;
+	grid-template-columns: 1fr 2fr; /* 1 part label, 2 parts input */
+	gap: 10px;
+}
+
+.form-group-safety label {
+	text-align: right; /* Align labels to the right */
+	padding-right: 10px;
+}
+
+.form-group-safety input {
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}

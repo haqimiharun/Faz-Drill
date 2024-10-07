@@ -4,25 +4,18 @@
 ?>
 
 <div class="content">
-<div>
-    <section id="report-header">
-        <h1 style="text-align: center;">Report Header</h1>
-    </section>
-</div>
     <section id="report-header">
         <?php include 'View/report-header.php'; ?> 
     </section>
+
     <section id="well-data">
         <?php include 'View/well-data.php'; ?>
     </section>
+
     <section id="depth-days">
         <?php include 'View/depth_days.php'; ?>
     </section>
-<div>
-    <section id="operation">
-        <h1 style="text-align: center;">Operation</h1>
-    </section>
-</div>
+    
     <section id="bit-data">
         <?php include 'View/bit-data.php'; ?>
     </section>
@@ -87,51 +80,19 @@
         <?php include 'View/anchorTension.php'; ?>
     </section>
 
+    <section id="safety">
+        <?php include 'View/safety.php'; ?>
+    </section>
+
+    <section id="survey">
+        <?php include 'View/survey.php'; ?>
+    </section>
 </div>
 
 <?php require_once('footer.php'); ?>
 
 <script>
     let rowCount = 1;
-
-    // Function to add a new row
-    function addRow(button) {
-        const currentRow = button.parentElement.parentElement;
-        const inputs = currentRow.querySelectorAll('input[type="text"]');
-        let allFilled = true;
-
-        // Check if all input fields are filled in the current row
-        inputs.forEach(input => {
-            if (input.value.trim() === '') {
-                allFilled = false;
-            }
-        });
-
-        if (allFilled) {
-            rowCount++;
-            const table = document.getElementById("inputTable").getElementsByTagName('tbody')[0];
-            const newRow = table.insertRow();
-
-            // Insert new cells for each column
-            for (let i = 0; i < 14; i++) {
-                const newCell = newRow.insertCell(i);
-                if (i === 0) {
-                    newCell.innerHTML = `
-                        <button type="button" class="add-row" onclick="addRow(this)">+</button>
-                    `;
-                } else if (i === 7) {
-                    newCell.innerHTML = `<input type="text" id="dayOnRig_${rowCount}" name="input_${rowCount}_${i}" />`;
-                } else {
-                    newCell.innerHTML = `<input type="text" id="input_${rowCount}_${i}" name="input_${rowCount}_${i}" oninput="updateDayOnRig(this)" />`;
-                }
-            }
-
-            // Disable the "Add" button of the current row
-            button.disabled = true;
-        } else {
-            alert("Please fill in all fields before adding a new row.");
-        }
-    }
 
     // Function to update the "Day On Rig" field
     function updateDayOnRig(input) {

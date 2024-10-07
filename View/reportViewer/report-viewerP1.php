@@ -27,23 +27,23 @@
                 <div class="reportDate">
                     Report Date:
                 </div>
-                <div class="wellTitle">
+                <div id="wellInfo" class="wellTitle">
                     WELL INFO
                 </div>
-                <div class="eventDesc">
+                <div id="eventDesc" class="eventDesc">
                 Event Description:
                 </div>
-                <div class="waterDepth">
+                <div id="waterDepth" class="waterDepth">
                 Water Depth: 
                 </div>
-                <div class="region">
+                <div id="region" class="region">
                 Region:
                 </div>
-                <div class="rigName">
+                <div id="rigName" class="rigName">
                 Rig Name:
                 </div>
             </div>
-            <div class="sixItem">
+            <div id="sixItem" class="sixItem">
                 <div class="Obj">
                 Objection
                 </div>
@@ -84,84 +84,84 @@
                 </div>
             </div>
             <div id="well_Info2">
-                <div class="depthDays">
+                <div id="depthDays" class="depthDays">
                     DEPTH DAYS
                 </div>
-                <div class="Cost">
+                <div id="Cost" class="Cost">
                     COSTS (USD)
                 </div>
-                <div class="dol">
+                <div id="dol" class="dol">
                     DOL :
                 </div>
-                <div class="md">
+                <div id="md" class="md">
                     MD :
                 </div>
-                <div class="rttingHrs">
+                <div id="rttingHrs" class="rttingHrs">
                     Rotating Hrs :
                 </div>
-                <div class="lastCasing">
+                <div id="lastCasing" class="lastCasing">
                     Last Casing :
                 </div>
-                <div class="dailyCost">
+                <div id="dailyCost" class="dailyCost">
                     Daily Cost :
                 </div>
-                <div class="dfs">
+                <div id="dfs" class="dfs">
                     DFS :
                 </div>
-                <div class="tvd">
+                <div id="tvd" class="tvd">
                     TVD :
                 </div>
-                <div class="cumRotHrs">
+                <div id="cumRotHrs" class="cumRotHrs">
                     Cum Rot Hrs :
                 </div>
-                <div class="lastHoleSize">
+                <div id="lastHoleSize" class="lastHoleSize">
                     Last Hole Size :
                 </div>
-                <div class="cummCost">
+                <div id="cummCost" class="cummCost">
                     Cumm Cost :
                 </div>
-                <div class="ttlDays">
+                <div id="ttlDays" class="ttlDays">
                     Total Days :
                 </div>
-                <div class="progress">
+                <div id="progress" class="progress">
                     Progress :
                 </div>
-                <div class="avgROP">
+                <div id="avgROP" class="avgROP">
                     Avg ROP :
                 </div>
-                <div class="lastShoeTMD">
+                <div id="lastShoeTMD" class="lastShoeTMD">
                     Last Shoe TMD :
                 </div>
-                <div class="AFECost">
+                <div id="AFECost" class="AFECost">
                     AFE Cost :
                 </div>
-                <div class="estDays">
+                <div id="estDays" class="estDays">
                     Est days :
                 </div>
-                <div class="finalTMD">
+                <div id="finalTMD" class="finalTMD">
                     Final TMD :
                 </div>
-                <div class="blnk1">
+                <div id="blnk1" class="blnk1">
                 </div>
-                <div class="lastShoeTVD">
+                <div id="lastShoeTVD" class="lastShoeTVD">
                     Last Shoe TVD :
                 </div>
-                <div class="suppCost">
+                <div id="suppCost" class="suppCost">
                     Supp Costs / Days :
                 </div>
-                <div class="dailyNPT">
+                <div id="dailyNPT" class="dailyNPT">
                     Daily NPT :
                 </div>
-                <div class="cummNPT">
+                <div id="cummNPT" class="cummNPT">
                     Cumm NPT :
                 </div>
-                <div class="blnk2">
+                <div id="blnk2" class="blnk2">
                     
                 </div>
-                <div class="curnHoleSize">
+                <div id="curnHoleSize" class="curnHoleSize">
                     Current Hole Size :
                 </div>
-                <div class="expenditure">
+                <div id="expenditure" class="expenditure">
                     Expenditure :
                 </div>
             </div>
@@ -275,5 +275,8 @@
     </div> 
 </div>
 <hr class="hr1">
+
+<script src="../../Controller/report-viewer/report-viewerP1.js"></script>
+
 </body>
 </html>
