@@ -72,42 +72,39 @@ editWellBtn.onclick = () => openModal("View/add_well.php", editWell);
 editSiteBtn.onclick = () => openModal("View/add_site.php", editSite);
 editFieldBtn.onclick = () => openModal("View/edit_field.php", editField);
 
-// Edit field form logic
-function editField() {
+// Function to initialize and handle the edit field form
+async function editField() {
 	const savedData = sessionStorage.getItem("selectedData");
 	const selectedData = savedData ? JSON.parse(savedData) : null;
 
-	const countryId = selectedData ? selectedData.country : null;
-	const fieldId = selectedData ? selectedData.field : null;
+	const countryId = selectedData?.country || null;
+	const fieldId = selectedData?.field || null;
 
+	const countrySelect = document.getElementById("countrySelect");
+	const fieldNameInput = document.getElementById("fieldName");
 	const editFieldForm = document.getElementById("editFieldForm");
+
 	if (!editFieldForm) {
 		console.error("editFieldForm not found");
 		return;
 	}
 
-	const countrySelect = document.getElementById("countrySelect");
-	const fieldNameInput = document.getElementById("fieldName");
-
-	if (!countrySelect || !fieldNameInput) {
-		console.error("One or more form elements not found");
-		return;
-	}
-
+	// Fetch country data
 	if (countryId) {
-		fetch(`Model/get_countries.php?id=${countryId}`)
-			.then((response) => response.json())
-			.then((data) => {
-				if (data && data.name) {
-					const option = new Option(data.name, countryId, true);
-					countrySelect.add(option);
-					countrySelect.value = countryId;
-					countrySelect.disabled = true; // Disable selection
-				} else {
-					console.error("Country name not found for ID:", countryId);
-				}
-			})
-			.catch((error) => console.error("Error fetching country name:", error));
+		try {
+			const response = await fetch(`Model/get_countries.php?id=${countryId}`);
+			const data = await response.json();
+			if (data && data.name) {
+				const option = new Option(data.name, countryId, true);
+				countrySelect.add(option);
+				countrySelect.value = countryId;
+				countrySelect.disabled = true; // Disable selection
+			} else {
+				console.error("Country name not found for ID:", countryId);
+			}
+		} catch (error) {
+			console.error("Error fetching country name:", error);
+		}
 	} else {
 		const option = new Option(
 			"Choose or Create a Country First",
@@ -119,47 +116,64 @@ function editField() {
 		countrySelect.add(option);
 	}
 
+	// Fetch field data
 	if (fieldId) {
-		fetch(`Model/get_fields.php?id=${fieldId}`)
-			.then((response) => response.json())
-			.then((fieldData) => {
-				if (fieldData && fieldData.field_name) {
-					fieldNameInput.value = fieldData.field_name; // Pre-fill field name
-				} else {
-					console.error("Field data not found for ID:", fieldId);
-				}
-			})
-			.catch((error) => console.error("Error fetching field data:", error));
+		try {
+			const response = await fetch(`Model/get_fields.php?id=${fieldId}`);
+			const fieldData = await response.json();
+			if (fieldData && fieldData.field_name) {
+				fieldNameInput.value = fieldData.field_name; // Pre-fill field name
+			} else {
+				console.error("Field data not found for ID:", fieldId);
+			}
+		} catch (error) {
+			console.error("Error fetching field data:", error);
+		}
 	}
-	editFieldForm.onsubmit = function (event) {
-		event.preventDefault();
-		submitForm(editFieldForm, "Model/process_edit_field.php");
-	};
+
+	// Set up form submission
+	editFieldForm.addEventListener("submit", async (event) => {
+		event.preventDefault(); // Prevent default form submission
+		console.log("Form submission initiated");
+		await submitEditForm(editFieldForm, "Model/process_edit_field.php"); // Call the submit function
+	});
 }
 
-// Submit form data
-function submitForm(form, url) {
-	var formData = new FormData(form);
+// Submit form data using fetch
+async function submitEditForm(form, url) {
+	const formData = new FormData(form);
 
 	// Create an object to store form data for logging
-	var formDataObject = {};
-	formData.forEach((value, key) => {
-		formDataObject[key] = value;
-	});
+	const formDataObject = Object.fromEntries(formData.entries());
 
 	// Log form data to console
-	console.log("Submitting form with data:", formDataObject);
+	console.log("Submitting edit form with data:", formDataObject);
 
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === 4 && xhr.status === 200) {
+	try {
+		const response = await fetch(url, {
+			method: "POST",
+			body: formData,
+		});
+		if (response.ok) {
+			const responseData = await response.json();
 			console.log("Form submitted successfully");
-			console.log("Server response:", xhr.responseText);
-			modal.style.display = "none"; // Close the modal
-		} else if (xhr.readyState === 4) {
-			console.error("Error submitting form: " + xhr.status);
+			console.log("Server response:", responseData);
+			// Display a success message or close the modal
+			document.getElementById("responseMessage").innerText =
+				responseData.message || "Field updated successfully.";
+			// Close modal (if it exists)
+			modal.style.display = "none";
+		} else {
+			console.error("Error submitting form:", response.status);
+			document.getElementById("responseMessage").innerText =
+				"Error submitting form: " + response.status;
 		}
-	};
-	xhr.send(formData);
+	} catch (error) {
+		console.error("Network error while submitting form:", error);
+		document.getElementById("responseMessage").innerText =
+			"Network error: " + error.message;
+	}
 }
+
+// Call the editField function to initialize the form
+document.addEventListener("DOMContentLoaded", editField);

@@ -11,7 +11,7 @@
         <input type="text" id="fieldName" name="fieldName" required>
     </div>
     <div class="form-footer">
-        <button type="submit" class="btn btn-primary" id="submitEditButton">Update Field</button> <!-- Default to Add Field -->
+        <button type="submit" class="btn btn-primary" id="submitEditButton">Update Field</button>
     </div>
     <div id="responseMessage"></div>
 </form>
