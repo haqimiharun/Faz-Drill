@@ -1,6 +1,6 @@
 <!-- HTML form for adding a new field -->
 
-<form id="addFieldForm" action="" method="POST">
+<form id="fieldForm" action="" method="POST">
     <div class="form-group">
         <label for="countrySelect">Select Country</label>
         <select id="countrySelect" name="countryId" required>
@@ -14,8 +14,7 @@
         <input type="text" id="fieldName" name="fieldName" required>
     </div>
     <div class="form-footer">
-        <button type="submit" class="btn btn-primary" id="submitButton">Add Field</button> <!-- Default text -->
+        <button type="submit" class="btn btn-primary">Add Field</button>
     </div>
     <div id="responseMessage"></div>
 </form>
- 
