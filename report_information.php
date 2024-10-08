@@ -15,7 +15,11 @@
     <section id="depth-days">
         <?php include 'View/depth_days.php'; ?>
     </section>
-    
+
+    <section id="costInfo">
+        <?php include 'View/costInfo.php'; ?>
+    </section>
+
     <section id="bit-data">
         <?php include 'View/bit-data.php'; ?>
     </section>
@@ -47,13 +51,29 @@
     <section id="pipe-data">
         <?php include 'View/pipe-data.php'; ?>
     </section>
-
-    <section id="solidCtrlEquipment">
-        <?php include 'View/solidCtrlEquipment.php'; ?>
+    
+    <section id="annVelo">
+        <?php include 'View/annVelocities.php'; ?>
     </section>
 
-    <section id="LOT-FIT+FD">
-        <?php include 'View/LOT-FIT+FD.php'; ?>
+    <section id="shaker">
+        <?php include 'View/shaker.php'; ?>
+    </section>
+
+    <section id="centrifuge">
+        <?php include 'View/centrifuge.php'; ?>
+    </section>
+
+    <section id="hydrocyclone">
+        <?php include 'View/hydrocyclone.php'; ?>
+    </section>
+
+    <section id="LotFit">
+        <?php include 'View/LOT-FIT.php'; ?>
+    </section>
+
+    <section id="formData">
+        <?php include 'View/formData.php'; ?>
     </section>
 
     <section id="supportCraft">

@@ -16,16 +16,16 @@
 
         <section class="section">
             <div id="AC">
-                <div class="ACwell">
+                <div id="ACwell" class="ACwell">
                     Well: 
                 </div>
-                <div class="ACwellbore">
+                <div id="ACwellbore" class="ACwellbore">
                     Wellbore:
                 </div>
-                <div class="ACreportNo">
+                <div id="ACreportNo" class="ACreportNo">
                     Report No:
                 </div>
-                <div class="ACreportDate">
+                <div id="ACreportDate" class="ACreportDate">
                     Report Date:
                 </div>
                 <div class="AC_Title">
@@ -167,14 +167,14 @@
             </div>
         </section>
         <section class="section">
-            <div class="gas_mud">
-                <div class="gasReadTitle"> 
+            <div id="gas_mud" class="gas_mud">
+                <div id="gasReadTitle" class="gasReadTitle"> 
                     GAS READING
                 </div>
                 <div class="mudVolTitle"> 
                     MUD VOLUME
                 </div>
-                <div class="gasRead">
+                <div id="gasRead" class="gasRead">
                     <div class="avgConnGas">
                         Avg. conn. gas (%)
                     </div>
@@ -207,7 +207,7 @@
                         
                     </div>
                 </div>
-                <div class="gasRead">
+                <div id="gasRead1" class="gasRead">
                     <div class="maxConnGas">
                         Max. connection gas (%)
                     </div>
@@ -240,7 +240,7 @@
                         
                     </div>
                 </div>
-                <div class="gasRead">
+                <div id="gasRead2" class="gasRead">
                     <div class="avgGasTrip">
                         Avg. gas trip (%)
                     </div>
@@ -273,7 +273,7 @@
                         
                     </div>
                 </div>
-                <div class="gasRead">
+                <div id="gasRead3" class="gasRead">
                     <div class="maxGasTrip">
                         Max. gas trip (%)
                     </div>
@@ -306,7 +306,7 @@
                         
                     </div>
                 </div>
-                <div class="gasRead">
+                <div id="gasRead4" class="gasRead">
                     <div class="avgBgGas">
                         Avg. background gas (%)
                     </div>
@@ -339,7 +339,7 @@
                         
                     </div>
                 </div>
-                <div class="gasRead">
+                <div id="gasRead4" class="gasRead">
                     <div class="maxBgGas">
                         Max. background gas (%)
                     </div>
@@ -372,7 +372,7 @@
                         
                     </div>
                 </div>
-                <div class="gasRead">
+                <div id="gasRead5" class="gasRead">
                     <div class="avgH2S">
                         Avg. H2S (%)
                     </div>
@@ -405,7 +405,7 @@
                         
                     </div>
                 </div>
-                <div class="gasRead">
+                <div id="gasRead6" class="gasRead">
                     <div class="maxH2S">
                         Max. H2S (%)
                     </div>
@@ -441,16 +441,16 @@
 
             </div>
             <div class="pumpPipeVelo">
-                <div class="pumpHydraulicTitle">
+                <div id="pumpHydraulicTitle" class="pumpHydraulicTitle">
                     PUMP/HYDRAULICS
                 </div>
-                <div class="pipeDataTitle">
+                <div id="pipeDataTitle" class="pipeDataTitle">
                     PIPE DATA
                 </div>
-                <div class="annVeloTitle">
+                <div id="annVeloTitle" class="annVeloTitle">
                     ANN. VELOCITIES
                 </div>
-                <div class="pumpHydraulic">
+                <div id="pumpHydraulic" class="pumpHydraulic">
                     <div class="Pump">
                         Pump
                     </div>
@@ -557,7 +557,7 @@
                         
                     </div>
                 </div>
-                <div class="pipeData">
+                <div id="pipeData" class="pipeData">
                     <div class="minID">
                         Min ID (in)
                     </div>
@@ -619,7 +619,7 @@
                         
                     </div>
                 </div>
-                <div class="annVelo">
+                <div id="annVelo" class="annVelo">
                     <div class="drillPipe">
                         Drill Pipe (m/min)
                     </div>
@@ -645,5 +645,8 @@
 
 </div>
 <hr class="hr1">
+
+<script src="../../Controller/report-viewer/report-viewerP3.js"></script>
+
 </body>
 </html>

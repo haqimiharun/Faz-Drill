@@ -301,97 +301,129 @@ if ($reportId) {
                     <i class="fa fa-file-text-o"></i> <span>Report Header</span>
                 </a>
             </li>
-            <li class="treeview <?php if( ($cur_page == 'report-header.php') ) {echo 'active';} ?>">
-                <a href="#report-header">
-                    <i class="fa fa-file-text-o"></i> <span>Report Header</span>
+            <li class="treeview <?php if( ($cur_page == 'well-data.php') ) {echo 'active';} ?>">
+                <a href="#well-data">
+                    <i class="fa fa-file-text-o"></i> <span>Well Data</span>
                 </a>
             </li>
-            <li class="treeview <?php if(in_array($cur_page, ['well-data.php', 'rig-info.php', 'depth_days.php', 'LOT-FIT+FD.php', 'gas-reading.php'])) { echo 'active'; } ?>">
-                <a href="#well-info">
-                    <i class="fa fa-database"></i>
-                    <span>Well Info</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#well-data"><i class="fa fa-circle-o"></i> Well Data</a></li>
-                    <li><a href="#rig-info"><i class="fa fa-circle-o"></i> Rig Information</a></li>
-                    <li><a href="#depth-days"><i class="fa fa-circle-o"></i> Depth Days</a></li>
-                    <li><a href="#LOT-FIT-FD"><i class="fa fa-circle-o"></i> LOT/FIT + Formation Data</a></li>
-                    <li><a href="#gas-reading"><i class="fa fa-circle-o"></i> Gas Reading</a></li>
-                </ul>
-            </li>
-            <li class="treeview <?php if(in_array($cur_page, ['consumables.php', 'bulk-material.php', 'weather.php', 'pob.php', 'vessels.php'])) { echo 'active'; } ?>">
-                <a href="#logi-mate">
-                    <i class="fa fa-truck"></i>
-                    <span>Logistics & Material</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#consumables"><i class="fa fa-circle-o"></i> Consumables</a></li>
-                    <li><a href="#bulk-material"><i class="fa fa-circle-o"></i> Bulk & Liquid Material</a></li>
-                    <li><a href="#weather"><i class="fa fa-circle-o"></i> Weather</a></li>
-                    <li><a href="#pob"><i class="fa fa-circle-o"></i> Personnel On Board</a></li>
-                    <li><a href="#vessels"><i class="fa fa-circle-o"></i> Vessels</a></li>
-                </ul>
-            </li>
-            <li class="treeview <?php if(in_array($cur_page, ['pipe-data.php', 'BHA-data.php', 'bit-data.php','bha_component.php','drlg-data.php', 'survey.php', 'Operation-sum.php', 'solidCtrlEquipment.php', 'pump-hydraulics.php', 'safety.php', 'mud-check.php', 'mud-vol.php', 'mud-log.php', 'formation-eva.php', 'velocities.php'])) { echo 'active'; } ?>">
-                <a href="#operation">
-                    <i class="fa fa-gears"></i>
-                    <span>Operation</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#pipe-data"><i class="fa fa-circle-o"></i> Pipe Data</a></li>
-                    <li><a href="#BHA-data"><i class="fa fa-circle-o"></i> BHA Data</a></li>
-                    <li><a href="#BHA-component"><i class="fa fa-circle-o"></i> BHA Component</a></li>
-                    <li><a href="#bit-data"><i class="fa fa-circle-o"></i> Bit Data</a></li>
-                    <li><a href="#drlg-data"><i class="fa fa-circle-o"></i> Drilling Data</a></li>
-                    <li><a href="#survey"><i class="fa fa-circle-o"></i> Survey</a></li>
-                    <li><a href="#safety"><i class="fa fa-circle-o"></i> Safety</a></li>
-                    <li><a href="#solidCtrlEquipment"><i class="fa fa-circle-o"></i> Solid Control Equipment</a></li>
-                    <li><a href="#pumpHydraulics"><i class="fa fa-circle-o"></i> Pump/Hydraulic</a></li>
-                    <li><a href="#mud-check"><i class="fa fa-circle-o"></i> Mud Check</a></li>
-                    <li><a href="#mud-vol"><i class="fa fa-circle-o"></i> Mud Volumes</a></li>
-                    <li><a href="#mud-log"><i class="fa fa-circle-o"></i> Mud Log</a></li>
-                    <li><a href="#formation-eva"><i class="fa fa-circle-o"></i> Formation Evaluation</a></li>
-                    <li><a href="#velocities"><i class="fa fa-circle-o"></i> Velocities</a></li>
-                    <li><a href="#Operation-sum"><i class="fa fa-circle-o"></i> Operation Summary</a></li>
-                </ul>
-            </li>
-            <li class="treeview <?php if(in_array($cur_page, ['daily-cost.php'])) { echo 'active'; } ?>">
-                <a href="#daily-cost">
-                    <i class="fa fa-industry"></i> <span>Daily Cost</span>
+            <li class="treeview <?php if( ($cur_page == 'depth_days.php') ) {echo 'active';} ?>">
+                <a href="#depth-days">
+                    <i class="fa fa-file-text-o"></i> <span>Depth Days</span>
                 </a>
             </li>
-            <li class="treeview <?php if(in_array($cur_page, ['reports.php', 'reports-add.php', 'reports-edit.php'])) { echo 'active'; } ?>">
-                <a href="#reports">
-                    <i class="fa fa-file-text"></i> <span>Reports</span>
+            <li class="treeview <?php if( ($cur_page == 'costInfo.php') ) {echo 'active';} ?>">
+                <a href="#costInfo">
+                    <i class="fa fa-file-text-o"></i> <span>Cost Information</span>
                 </a>
             </li>
-            <li class="treeview <?php if($cur_page == 'unit-mngmt.php') { echo 'active'; } ?>">
-                <a href="#unit-mngmt">
-                    <i class="fa fa-sticky-note"></i> <span>Units Management</span>
+            <li class="treeview <?php if( ($cur_page == 'bit-data.php') ) {echo 'active';} ?>">
+                <a href="#bit-data">
+                    <i class="fa fa-file-text-o"></i> <span>Bit Data</span>
                 </a>
             </li>
-            <li class="treeview <?php if(in_array($cur_page, ['daily-cost.php'])) { echo 'active'; } ?>">
-                <a href="#daily-cost">
-                    <i class="fa fa-industry"></i> <span>Daily Cost</span>
+            <li class="treeview <?php if( ($cur_page == 'mud-check.php') ) {echo 'active';} ?>">
+                <a href="#mud-check">
+                    <i class="fa fa-file-text-o"></i> <span>Mud Check</span>
                 </a>
             </li>
-            <li class="treeview <?php if(in_array($cur_page, ['reports.php', 'reports-add.php', 'reports-edit.php'])) { echo 'active'; } ?>">
-                <a href="#reports">
-                    <i class="fa fa-file-text"></i> <span>Reports</span>
+            <li class="treeview <?php if( ($cur_page == 'BHA-data.php') ) {echo 'active';} ?>">
+                <a href="#BHA-data">
+                    <i class="fa fa-file-text-o"></i> <span>BHA Data</span>
                 </a>
             </li>
-            <li class="treeview <?php if($cur_page == 'unit-mngmt.php') { echo 'active'; } ?>">
-                <a href="#unit-mngmt">
-                    <i class="fa fa-sticky-note"></i> <span>Units Management</span>
+            <li class="treeview <?php if( ($cur_page == 'bha_component.php') ) {echo 'active';} ?>">
+                <a href="#BHA-compoment">
+                    <i class="fa fa-file-text-o"></i> <span>BHA Component</span>
+                </a>
+            </li>
+            <li class="treeview <?php if( ($cur_page == 'gas-reading.php') ) {echo 'active';} ?>">
+                <a href="#gas-reading">
+                    <i class="fa fa-file-text-o"></i> <span>Gas Reading</span>
+                </a>
+            </li>
+            <li class="treeview <?php if( ($cur_page == 'mud-vol.php') ) {echo 'active';} ?>">
+                <a href="#mud-vol">
+                    <i class="fa fa-file-text-o"></i> <span>Mud Volume</span>
+                </a>
+            </li>
+            <li class="treeview <?php if( ($cur_page == 'pump-hydraulics.php') ) {echo 'active';} ?>">
+                <a href="#pumpHydraulics">
+                    <i class="fa fa-file-text-o"></i> <span>Pump Hydraulics</span>
+                </a>
+            </li>
+            <li class="treeview <?php if( ($cur_page == 'pipe-data.php') ) {echo 'active';} ?>">
+                <a href="#pipe-data">
+                    <i class="fa fa-file-text-o"></i> <span>Pipe Data</span>
+                </a>
+            </li>
+            <li class="treeview <?php if( ($cur_page == 'annVelocities.php') ) {echo 'active';} ?>">
+                <a href="#annVelo">
+                    <i class="fa fa-file-text-o"></i> <span>Annular Velocities</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'shaker.php') { echo 'active'; } ?>">
+                <a href="#shaker">
+                    <i class="fa fa-sticky-note"></i> <span>Shaker</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'centrifuge.php') { echo 'active'; } ?>">
+                <a href="#centrifuge">
+                    <i class="fa fa-sticky-note"></i> <span>Centrifuge</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'hydrocyclone.php') { echo 'active'; } ?>">
+                <a href="#hydrocyclone">
+                    <i class="fa fa-sticky-note"></i> <span>Hydrocyclone</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'LOT-FIT.php') { echo 'active'; } ?>">
+                <a href="#LotFit">
+                    <i class="fa fa-sticky-note"></i> <span>LOT-FIT</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'formData.php') { echo 'active'; } ?>">
+                <a href="#formData">
+                    <i class="fa fa-sticky-note"></i> <span>Formation Data</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'supportCraft.php') { echo 'active'; } ?>">
+                <a href="#supportCraft">
+                    <i class="fa fa-sticky-note"></i> <span>Support Craft</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'bulks.php') { echo 'active'; } ?>">
+                <a href="#bulks">
+                    <i class="fa fa-sticky-note"></i> <span>Bulks</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'weather.php') { echo 'active'; } ?>">
+                <a href="#weather">
+                    <i class="fa fa-sticky-note"></i> <span>Weather</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'safetyCard.php') { echo 'active'; } ?>">
+                <a href="#safetyCard">
+                    <i class="fa fa-sticky-note"></i> <span>Safety Cards</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'personnel.php') { echo 'active'; } ?>">
+                <a href="#personnel">
+                    <i class="fa fa-sticky-note"></i> <span>Personnel</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'anchorTension.php') { echo 'active'; } ?>">
+                <a href="#anchorTension">
+                    <i class="fa fa-sticky-note"></i> <span>Anchor Tension</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'safety.php') { echo 'active'; } ?>">
+                <a href="#safety">
+                    <i class="fa fa-sticky-note"></i> <span>Safety</span>
+                </a>
+            </li>
+            <li class="treeview <?php if($cur_page == 'survey.php') { echo 'active'; } ?>">
+                <a href="#survey">
+                    <i class="fa fa-sticky-note"></i> <span>Survey</span>
                 </a>
             </li>
         </ul>
@@ -401,130 +433,71 @@ if ($reportId) {
 </body>
 
 <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const sections = document.querySelectorAll("section[id]");
-            const breadcrumbReportName = document.getElementById('breadcrumb-report-name');
-            const breadcrumbMainMenu = document.querySelector('#breadcrumb li:nth-child(2) a');
-            const breadcrumbSubmenu = document.querySelector('#breadcrumb li:nth-child(3)');
+       document.addEventListener('DOMContentLoaded', function () {
+    const sections = document.querySelectorAll("section[id], div[id]");
+    const breadcrumbMainMenu = document.querySelector('#breadcrumb li:nth-child(2) a');
+    const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
 
-            const menuStructure = {
-                "report-header": { main: "Report Header", sub: "Report Header" },
-                "well-data": { main: "Well Info", sub: "Well Data" },
-                "depth-days": { main: "Well Info", sub: "Depth Days" },
-                "LOT-FIT-FD": { main: "Well Info", sub: "LOT/FIT + Formation Data" },
-                "formation-data": { main: "Well Info", sub: "Formation Data" },
-                "gas-reading": { main: "Well Info", sub: "Gas Reading" },
-                "rig-info": { main: "Rig Information", sub: "Rig Information" },
-                "consumables": { main: "Logistics & Material", sub: "Consumables" },
-                "bulk-material": { main: "Logistics & Material", sub: "Bulk & Liquid Material" },
-                "weather": { main: "Logistics & Material", sub: "Weather" },
-                "pob": { main: "Logistics & Material", sub: "Personnel On Board" },
-                "vessels": { main: "Logistics & Material", sub: "Vessels" },
-                "pipe-data": { main: "Operation", sub: "Pipe Data" },
-                "BHA-data": { main: "Operation", sub: "BHA Data" },
-                "BHA-component": { main: "Operation", sub: "BHA Component" },
-                "bit-data": { main: "Operation", sub: "Bit Data" },
-                "drlg-data": { main: "Operation", sub: "Drilling Data" },
-                "survey": { main: "Operation", sub: "Survey" },
-                "safety": { main: "Operation", sub: "Safety" },
-                "solidCtrlEquipment": { main: "Operation", sub: "Solid Control Equipment" },
-                "mud-check": { main: "Operation", sub: "Mud Check" },
-                "mud-vol": { main: "Operation", sub: "Mud Volumes" },
-                "mud-log": { main: "Operation", sub: "Mud Log" },
-                "formation-eva": { main: "Operation", sub: "Formation Evaluation" },
-                "velocities": { main: "Operation", sub: "Velocities" },
-                "Operation-sum": { main: "Operation", sub: "Operation Summary" },
-                "daily-cost": { main: "Daily Cost", sub: "Daily Cost" },
-                "reports": { main: "Reports", sub: "Reports" },
-                "unit-mngmt": { main: "Units Management", sub: "Units Management" }
-            };
+    const menuStructure = {
+        "report-header": "Report Header",
+        "well-data": "Well Info",
+        "depth-days": "Depth Days",
+        "costInfo": "Cost Information",
+        "bit-data": "Bit Data",
+        "mud-check": "Mud Check",
+        "BHA-data": "BHA Data",
+        "BHA-compoment": "BHA Component",
+        "gas-reading": "Gas Reading",
+        "mud-vol": "Mud Volume",
+        "pump-hydraulics": "Pump/Hydraulics",
+        "pipe-data": "Pipe Data",
+        "annVelo": "Annular Velocities",
+        "shaker": "Shaker",
+        "centrifuge": "Centrifuge",
+        "hydrocyclone": "Hydrocyclone",
+        "LotFit": "LOT-FIT",
+        "formData": "Formation Data",
+        "supportCraft": "Support Craft",
+        "bulks": "Bulks",
+        "weather": "Weather",
+        "safetyCard": "Safety Card",
+        "personnel": "Personnel",
+        "anchorTension": "Anchor Tension",
+        "safety": "Safety",
+        "survey-sum": "Survey Summary"
+    };
 
-            window.addEventListener('scroll', () => {
-                let currentSection = '';
-
-                // Loop through sections to find the current one in view
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (window.pageYOffset >= sectionTop - 60) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-
-                if (currentSection && menuStructure[currentSection]) {
-                    const { main, sub } = menuStructure[currentSection];
-                    breadcrumbMainMenu.textContent = main;
-                    if (sub) {
-                        breadcrumbSubmenu.classList.remove('active');
-                        breadcrumbSubmenu.innerHTML = `<a href="#">${sub}</a>`;
-                    } else {
-                        breadcrumbSubmenu.classList.add('active');
-                        breadcrumbSubmenu.textContent = 'Submenu';
-                    }
-                }
+    // Smooth scrolling for sidebar links
+    sidebarLinks.forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
         });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
     });
-  });
-
-document.addEventListener('DOMContentLoaded', function () {
-    const sections = document.querySelectorAll("div[id]");
-    const menuLinks = document.querySelectorAll(".sidebar-menu li a");
 
     window.addEventListener('scroll', () => {
         let currentSection = '';
 
-        // Loop through sections to find the current one in view
+        // Loop through sections to find the one currently in view
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 60) {  // Adjust this offset as needed
+            const sectionHeight = section.offsetHeight;
+            if (window.pageYOffset >= sectionTop - 60 && window.pageYOffset < sectionTop + sectionHeight) {
                 currentSection = section.getAttribute('id');
             }
         });
 
-        // Remove active class from all links and add to the current section's link
-        menuLinks.forEach(link => {
-            link.parentElement.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.parentElement.classList.add('active');
-            }
-        });
-    });
-});
-document.addEventListener('DOMContentLoaded', function () {
-    const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+        // Update breadcrumb if current section exists in menuStructure
+        if (currentSection && menuStructure[currentSection]) {
+            breadcrumbMainMenu.textContent = menuStructure[currentSection];
+        }
 
-    window.addEventListener('scroll', function () {
-        let currentAnchor = '';
-
-        // Loop through each sidebar link
-        sidebarLinks.forEach(link => {
-            const target = document.querySelector(link.getAttribute('href'));
-
-            if (target) {
-                const targetTop = target.offsetTop - 100; // Adjust for offset (if needed)
-                const targetHeight = target.offsetHeight;
-
-                // Check if the window scroll position is within the target section
-                if (window.scrollY >= targetTop && window.scrollY < targetTop + targetHeight) {
-                    currentAnchor = link.getAttribute('href');
-                }
-            }
-        });
-
-        // Update the active state of sidebar links
+        // Update sidebar links active state
         sidebarLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === currentAnchor) {
+            if (link.getAttribute('href') === `#${currentSection}`) {
                 link.classList.add('active');
             }
         });

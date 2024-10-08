@@ -46,18 +46,6 @@
                 <label for="slack-off-weight">Slack Off Weight:</label>
                 <input type="text" id="slack-off-weight" name="slack-off-weight">
             </div>
-
-            <h2>Annular Velocities</h2>
-            <div class="form-group-av">
-                <label for="drill-pipe">Drill Pipe (m/min):</label>
-                <input type="text" id="drill-pipe" name="drill-pipe">
-
-                <label for="drill-collar">Drill Collar (m/min):</label>
-                <input type="text" id="drill-collar" name="drill-collar">
-
-                <label for="riser">Riser (m/min):</label>
-                <input type="text" id="riser" name="riser">
-            </div>
         </form>
     </div>
 </div>

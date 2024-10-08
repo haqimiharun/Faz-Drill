@@ -4,20 +4,6 @@
     <div class="container-equip">
         <form class="pecah3"> 
             <div class="form-group-equip">
-            <h2>Shaker</h2>
-                <!-- Shaker Type -->
-                <label for="shaker-type">Type:</label>
-                <input type="text" id="shaker-type" name="shaker-type">
-
-                <!-- Shaker Mesh Size -->
-                <label for="mesh-size">Mesh Size:</label>
-                <input type="text" id="mesh-size" name="mesh-size">
-
-                <!-- Shaker Hrs -->
-                <label for="shaker-hrs">Hrs:</label>
-                <input type="text" id="shaker-hrs" name="shaker-hrs">
-            </div>
-            <div class="form-group-equip">
             <h2>Centrifuge</h2>
                 <!-- Centrifuge Type -->
                 <label for="centrifuge-type">Type:</label>
@@ -49,16 +35,6 @@
                 <!-- Centrifuge Opcode -->
                 <label for="opcode">Opcode:</label>
                 <input type="text" id="opcode" name="opcode">
-            </div>
-            <div class="form-group-equip">
-            <h2>Hydrocyclone</h2>
-                <!-- Hydrocyclone Type -->
-                <label for="hydrocyclone-type">Type:</label>
-                <input type="text" id="hydrocyclone-type" name="hydrocyclone-type">
-
-                <!-- Hydrocyclone HRS -->
-                <label for="hydrocyclone-hrs">HRS:</label>
-                <input type="text" id="hydrocyclone-hrs" name="hydrocyclone-hrs">
             </div>
         </form>
     </div>

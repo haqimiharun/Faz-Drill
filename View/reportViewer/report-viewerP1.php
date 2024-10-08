@@ -70,16 +70,16 @@
                 <div class="blnk">:</div>
             </div>
             <div id="well_Info">    
-                <div class="block">
+                <div id="block" class="block">
                 Block:
                 </div>
-                <div class="leadDS">
+                <div id="leadDS" class="leadDS">
                 Lead DS:
                 </div>
-                <div class="NightDS">
+                <div id="NightDS" class="NightDS">
                 Night DS:
                 </div>
-                <div class="rigName">
+                <div id="engName" class="engName">
                 Engineer:
                 </div>
             </div>
@@ -165,7 +165,7 @@
                     Expenditure :
                 </div>
             </div>
-            <div class="wellTitle">
+            <div id="statusttl" class="wellTitle">
                 STATUS
             </div>
             <div id="well_Info3">
@@ -206,7 +206,7 @@
             </div>
         </section>
         <section>
-            <div class="operationSum">
+            <div id="operationSum" class="operationSum">
                 OPERATION SUMMARY
                 <div class="operationSumPart1">
                     <div class="p1">
@@ -240,7 +240,7 @@
                     </div>
                 </div>
             </div>
-            <div class="operationSumPart2">
+            <div id="operationSum2" class="operationSumPart2">
                 <div class="p3">
                     <div class="fromTo">
                         

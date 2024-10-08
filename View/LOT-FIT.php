@@ -18,18 +18,6 @@
                 <label for="max-mud-wt">Max Mud Wt:</label>
                 <input type="text" id="max-mud-wt" name="max-mud-wt">
             </div>
-
-            <h2>FORMATION DATA</h2>
-
-            <div class="form-group-lf">
-                <!-- EMW -->
-                <label for="frmation">Formation</label>
-                <input type="text" id="frmation" name="frmation">
-
-                <!-- MAASP -->
-                <label for="top">Top(m)</label>
-                <input type="text" id="top" name="top">
-            </div>
         </form>
     </div>
 </div>

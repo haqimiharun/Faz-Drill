@@ -1,3 +1,4 @@
+//Well Information
 document.getElementById("wellInfo").addEventListener("click", function () {
 	openPopup("wellInfo");
 });
@@ -19,13 +20,20 @@ document.getElementById("sixItem").addEventListener("click", function () {
 document.getElementById("well_Info").addEventListener("click", function () {
 	openPopup("wellInfo");
 });
+document.getElementById("block").addEventListener("click", function () {
+	openPopup("wellInfo");
+});
+document.getElementById("leadDS").addEventListener("click", function () {
+	openPopup("wellInfo");
+});
+document.getElementById("NightDS").addEventListener("click", function () {
+	openPopup("wellInfo");
+});
+document.getElementById("engName").addEventListener("click", function () {
+	openPopup("wellInfo");
+});
 
-function openPopup(field) {
-	// Open a new popup window (this URL will handle the popup content)
-	let popupUrl = `../../View/reportViewer/reportViewerPopup.php?field=${field}`;
-	window.open(popupUrl, "Popup", "width=400,height=400");
-}
-
+//Depth Day
 document.getElementById("depthDays").addEventListener("click", function () {
 	openPopup("depthDay");
 });
@@ -90,12 +98,7 @@ document.getElementById("curnHoleSize").addEventListener("click", function () {
 	openPopup("depthDay");
 });
 
-function openPopup(field) {
-	// Open a new popup window (this URL will handle the popup content)
-	let popupUrl = `../../View/reportViewer/reportViewerPopup.php?field=${field}`;
-	window.open(popupUrl, "Popup", "width=400,height=400");
-}
-
+//Cost Information
 document.getElementById("Cost").addEventListener("click", function () {
 	openPopup("costInfo");
 });
@@ -113,6 +116,22 @@ document.getElementById("suppCost").addEventListener("click", function () {
 });
 document.getElementById("expenditure").addEventListener("click", function () {
 	openPopup("costInfo");
+});
+
+//Status Information
+document.getElementById("well_Info3").addEventListener("click", function () {
+	openPopup("status");
+});
+document.getElementById("statusttl").addEventListener("click", function () {
+	openPopup("status");
+});
+
+//Operation Summary
+document.getElementById("operationSum").addEventListener("click", function () {
+	openPopup("operationSum");
+});
+document.getElementById("operationSum2").addEventListener("click", function () {
+	openPopup("operationSum");
 });
 
 function openPopup(field) {

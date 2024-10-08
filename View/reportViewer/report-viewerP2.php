@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="a2ndPart">
-                <div class="bitData">
+                <div id="bitData" class="bitData">
                     <div class="bitDataTitle" > BIT DATA
                     </div>
                     <div class="bitData1" > Bit No.
@@ -142,7 +142,7 @@
                     <div class="bitData3" > 
                     </div>
                 </div>
-                <div class="mudCheck1">
+                <div id="mudCheck1" class="mudCheck1">
                     <div class="mudCheck1Title"> MUD CHECK
                     </div>
                     <div class="mudCheck1Cost"> Daily Mud: na USD
@@ -244,7 +244,7 @@
                     <div class="mudCheck1_3"> <br>
                     </div>
                 </div>
-                <div class="mudCheck2">
+                <div id="mudCheck2" class="mudCheck2">
                     <div class="mudCheck2Title"> MUD CHECK
                     </div>
                     <div class="mudCheck2Cost"> Cum. Mud cost: na USD
@@ -347,7 +347,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bha_part">
+            <div id="bha_part" class="bha_part">
                 <div class="bha_title1">
                     BHA no.# 2
                 </div>
@@ -381,5 +381,8 @@
         </section>
     </div>
 </div>
+
+<script src="../../Controller/report-viewer/report-viewerP2.js"></script>
+
 </body>
 </html>

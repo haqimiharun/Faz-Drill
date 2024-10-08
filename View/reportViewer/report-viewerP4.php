@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="shakerCentrifugeHydrocyclone">
-                <div class="shaker">
+                <div id="shaker" class="shaker">
                     <div class="shakerTitle" > SHAKER
                     </div>
                     <div class="shakerData" >
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="centrifuge">
+                <div id="centrifuge" class="centrifuge">
                     <div class="centrifugeTitle"> CENTRIFUGE
                     </div>
                     <div class="centrifugeData">
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="hydrocyclone">
+                <div id="hydrocyclone" class="hydrocyclone">
                     <div class="hydrocycloneTitle"> HYDROCYCLONE
                     </div>
                     <div class="hydrocycloneData">
@@ -113,7 +113,7 @@
                 </div>
             </div>
             <div class="lotfit_fd">
-                <div class="LotFit">
+                <div id="LotFit" class="LotFit">
                     <div class="LOTFIT_title">
                         LOT/FIT
                     </div>
@@ -138,7 +138,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="formData">
+                <div id="formData" class="formData">
                     <div class="formationData_title">
                         FORMATION DATA
                     </div>
@@ -158,7 +158,7 @@
                     </div>
                 </div>
             </div>
-            <div class="supportCraft">
+            <div id="supportCraft" class="supportCraft">
                 <div class="supCraft_title">
                     SUPPORT CRAFT
                 </div>
@@ -227,7 +227,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bulks">
+            <div id="bulks" class="bulks">
                 <div class="bulks_title">
                     BULKS
                 </div>
@@ -486,7 +486,7 @@
                 </div>
             </div>
             <div class="weatherSafetyPersonnel">
-                <div class="weather">
+                <div id="weather" class="weather">
                     <div class="weather_title">
                         WEATHER
                     </div>
@@ -595,7 +595,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="safetyCards">
+                <div id="safetyCards" class="safetyCards">
                     <div class="safetyCards_title">
                         SAFETY CARDS
                     </div>
@@ -653,7 +653,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="personnel">
+                <div id="personnel" class="personnel">
                     <div class="personnel_title">
                         PERSONNEL
                     </div>
@@ -711,7 +711,7 @@
                     </div>
                 </div>
             </div>
-            <div class="anchorTension">
+            <div id="anchorTension" class="anchorTension">
                 <div class="anchorTension_title">
                     ANCHOR TENSION
                 </div>
@@ -870,7 +870,7 @@
                     </div>
                 </div>
             </div>
-            <div class="safety">
+            <div id="safety" class="safety">
                 <div class="safety_title">
                     SAFETY
                 </div>
@@ -979,7 +979,7 @@
                     </div>
                 </div>
             </div>
-            <div class="surveys">
+            <div id="surveys" class="surveys">
                 <div class="surveys_title">
                     SURVEYS
                 </div>
@@ -1220,7 +1220,9 @@
             </div>
         </section>
     </div>
-
 </div>
+
+<script src="../../Controller/report-viewer/report-viewerP4.js"></script>
+
 </body>
 </html>
