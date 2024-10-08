@@ -36,6 +36,19 @@
         <input type="hidden" id="fieldIdHidden" name="fieldId" />
         <input type="hidden" id="countryIdHidden" name="countryId" />
     </div>
+    <hr>
+    <hr>
+    <div class="form-group">
+        <label for="rigConfig">Rig Configuration</label>
+        <select id="rigConfig" name="rigConfig" required>
+            <option value="">Rig Configuration</option>
+            <!-- Country options will be populated by AJAX -->
+        </select>
+    </div>
+    <div class="form-group">
+        <h5 for="wellboreSetting">WELLBORE INITIAL SETTINGS</h5>
+        <input type="checkbox" name="sideTrack" value="true"> Apply as a sidetrack
+    </div>
     <div class="form-footer">
         <button type="submit" class="btn btn-primary">Add Wellbore</button>
     </div>

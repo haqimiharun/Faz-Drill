@@ -66,6 +66,13 @@
         <label for="reportName">Report Name</label>
         <input type="text" id="reportName" name="reportName" required>
     </div>
+    <div class="form-group">
+        <label for="unitTempSelect">Select Unit Template</label>
+        <select id="unitTempSelect" name="unitTemplateId" required>
+            <option value="">Select a Unit Measurement Template</option>
+            <!-- Country options will be populated by AJAX -->
+        </select>
+    </div>
     <div class="form-footer">
         <button type="submit" class="btn btn-primary">Add Report</button>
     </div>

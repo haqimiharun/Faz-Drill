@@ -150,7 +150,7 @@ try {
                     <thead>
                         <tr>
                             <th>Country
-                                <a title="Add New Country" id="addCountryLink" class="disabled-link" style="right: 18px;">
+                                <a title="Add New Country" id="addCountryLink" style="right: 18px;">
                                     <i id="addCountry" class="fas fa-plus-circle"></i>
                                 </a>
                             </th>

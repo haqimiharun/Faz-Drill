@@ -44,6 +44,13 @@
         <input type="hidden" id="fieldIdHidden" name="fieldId" />
         <input type="hidden" id="countryIdHidden" name="countryId" />
     </div>
+    <div class="form-group">
+        <label for="unitTempSelect">Select Unit Template</label>
+        <select id="unitTempSelect" name="unitTemplateId" required>
+            <option value="">Select a Unit Measurement Template</option>
+            <!-- Country options will be populated by AJAX -->
+        </select>
+    </div>
     <div class="form-footer">
         <button type="submit" class="btn btn-primary">Add Report</button>
     </div>
