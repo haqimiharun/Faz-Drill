@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Country</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <style>
+        <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -18,9 +18,13 @@
         .form-footer {
             margin-top: 20px;
         }
+        .sbs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
         #map {
-            height: 400px; /* Increased height for better visibility */
-            width: 100%; /* Make the map fill the width */
+            height: 300px; /* Increased height for better visibility */
+            width: 96%; /* Make the map fill the width */
             border: 1px solid #ccc; /* Optional: Add a border for better visibility */
         }
     </style>
@@ -42,25 +46,30 @@
                 <input type="radio" name="mapSystem" value="EPSGcode"> EPSG Code
             </label>
         </div>
-        <div class="form-group">
-            <label for="locEPSG">Location EPSG code</label>
-            <select id="locEPSG" name="locEPSG"></select>
-        </div>
-        <div class="form-group">
-            <label for="mapSys">Map System</label>
-            <select id="mapSys" name="mapSys"></select>
-        </div>
-        <div class="form-group">
-            <label for="Datum">Datum</label>
-            <select id="Datum" name="Datum"></select>
-        </div>
-        <div class="form-group">
-            <label for="Location">Location</label>
-            <select id="Location" name="Location"></select>
-        </div>
-        <div class="form-group">
-            <h5>Map Visualization</h5>
-            <div id="map"></div> <!-- Map will be rendered here -->
+        <div class="sbs">
+            <div class="sbs2">
+                <div class="form-group">
+                    <label for="locEPSG">Location EPSG code</label>
+                    <select type="text" id="locEPSG" name="locEPSG"></select>
+                </div>
+                <div class="form-group">
+                    <label for="mapSys">Map System</label>
+                    <select type="text" id="mapSys" name="mapSys"></select>
+                </div>
+                <div class="form-group">
+                    <label for="Datum">Datum</label>
+                    <select type="text" id="Datum" name="Datum"></select>
+                </div>
+                <div class="form-group">
+                    <label for="Location">Location</label>
+                    <select type="text" id="Location" name="Location"></select>
+                </div>
+            </div>
+            <div class="sbs2">
+                <div class="form-group">
+                    <div id="map"></div> <!-- Map will be rendered here -->
+                </div>
+            </div>
         </div>
         <div class="form-footer">
             <button type="submit" class="btn btn-primary">Add Country</button>
