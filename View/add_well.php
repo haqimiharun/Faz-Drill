@@ -1,5 +1,4 @@
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -263,36 +262,3 @@
     
     <div id="responseMessage"></div>
 </form>
-<script>
-$(document).ready(function() {
-    // Initialize the map
-    var map = L.map('map').setView([0, 0], 2); // Default center at [0, 0] with zoom level 2
-
-    // Add OpenStreetMap tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    // Optionally add a marker
-    var marker = L.marker([0, 0]).addTo(map);
-    
-    // Update marker position on map click
-    map.on('click', function(e) {
-        var lat = e.latlng.lat;
-        var lng = e.latlng.lng;
-        marker.setLatLng(e.latlng);
-        $('#NorthingLoc').val(lat);
-        $('#EastingLoc').val(lng);
-    });
-});
-</script>
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="../../Controller/reportProfileSetup.js"></script>
-
-<!-- Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-

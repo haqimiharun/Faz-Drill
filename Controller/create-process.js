@@ -64,6 +64,15 @@ function fetchWellbores(wellId, callback) {
 	fetchData(`get_wellbores.php?wellId=${wellId}`, callback);
 }
 
+// Function to dynamically load a JavaScript file
+function loadScript(src, callback) {
+	var script = document.createElement("script");
+	script.src = src;
+	script.onload = function () {
+		if (callback) callback();
+	};
+	document.head.appendChild(script);
+}
 // Function to open modal and load form into it
 function openModal(url, setupFunction) {
 	modal.style.display = "block";
@@ -77,6 +86,14 @@ function openModal(url, setupFunction) {
 			loader.style.display = "none";
 			dynamicContent.innerHTML = xhr.responseText;
 			console.log("Modal content loaded");
+
+			// Load any necessary scripts after content is loaded
+			loadScript("Controller/reportProfileSetup.js", function () {
+				console.log("Script loaded and executed.");
+				if (typeof setupFunction === "function") {
+					setupFunction();
+				}
+			});
 
 			// Ensure the modal content is loaded before calling setupFunction
 			setTimeout(function () {
