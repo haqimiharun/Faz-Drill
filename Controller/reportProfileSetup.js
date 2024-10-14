@@ -6,6 +6,8 @@ function toggleVisibility() {
 	const geoCoorDMS = document.getElementById("geoCoorDMS");
 
 	// Debugging statements to check if elements are found
+	console.log("Checking visibility...");
+
 	if (ddRadio) {
 		console.log("ddRadio detected:", ddRadio);
 	} else {
@@ -31,7 +33,7 @@ function toggleVisibility() {
 	}
 
 	// Only proceed if all required elements are found
-	if (!dmsRadio || !geoCoorDD || !geoCoorDMS) {
+	if (!ddRadio || !dmsRadio || !geoCoorDD || !geoCoorDMS) {
 		console.error("One or more elements are not found.");
 		return; // Exit the function if any elements are missing
 	}
@@ -43,33 +45,76 @@ function toggleVisibility() {
 		geoCoorDD.style.display = "block";
 		geoCoorDMS.style.display = "none";
 		console.log("Showing DD coordinates.");
-	} else {
+	} else if (dmsRadio.checked) {
 		geoCoorDD.style.display = "none";
 		geoCoorDMS.style.display = "block";
 		console.log("Showing DMS coordinates.");
 	}
 }
 
-// Set default visibility on page load
-document.addEventListener("DOMContentLoaded", function () {
-	console.log("DOM fully loaded and parsed.");
-	toggleVisibility(); // Initial toggle to set the default state
+// Call toggleVisibility() immediately to set the initial state
+toggleVisibility(); // Initial toggle to set the default state
 
-	const ddRadio = document.getElementById("dd");
-	const dmsRadio = document.getElementById("dms");
+const ddRadio = document.getElementById("dd");
+const dmsRadio = document.getElementById("dms");
 
-	// Additional logging for radio buttons
-	if (ddRadio) {
-		console.log("ddRadio event listener added.");
-		ddRadio.addEventListener("change", toggleVisibility);
-	} else {
-		console.error("ddRadio element not found, cannot add event listener.");
+// Additional logging for radio buttons
+if (ddRadio) {
+	console.log("ddRadio event listener added.");
+	ddRadio.addEventListener("change", function () {
+		console.log("ddRadio changed");
+		toggleVisibility();
+	});
+} else {
+	console.error("ddRadio element not found, cannot add event listener.");
+}
+
+if (dmsRadio) {
+	console.log("dmsRadio event listener added.");
+	dmsRadio.addEventListener("change", function () {
+		console.log("dmsRadio changed");
+		toggleVisibility();
+	});
+} else {
+	console.error("dmsRadio element not found, cannot add event listener.");
+}
+
+function loadScript(src, callback) {
+	let script = document.createElement("script");
+	script.src = src;
+	script.async = true;
+
+	script.onload = function () {
+		console.log(`${src} loaded successfully.`);
+		if (callback) callback();
+	};
+
+	script.onerror = function () {
+		console.error(`Error loading script: ${src}`);
+	};
+
+	document.head.appendChild(script);
+}
+
+// Load any necessary scripts after content is loaded
+loadScript("https://unpkg.com/leaflet/dist/leaflet.js", function () {
+	console.log("Map script loaded and executed.");
+	if (typeof setupFunction === "function") {
+		setupFunction();
 	}
 
-	if (dmsRadio) {
-		console.log("dmsRadio event listener added.");
-		dmsRadio.addEventListener("change", toggleVisibility);
-	} else {
-		console.error("dmsRadio element not found, cannot add event listener.");
-	}
+	// Initialize the map
+	const map = L.map("map").setView([51.505, -0.09], 13); // Set the initial view [latitude, longitude], zoom level
+
+	// Add a tile layer to the map (this is the visual representation of the map)
+	L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+		maxZoom: 19,
+		attribution: "© OpenStreetMap",
+	}).addTo(map);
+
+	// Add a marker to the map
+	const marker = L.marker([51.5, -0.09]).addTo(map); // Set marker position
+	marker.bindPopup("<b>Hello!</b><br>This is a marker.").openPopup(); // Popup text
+
+	// Optional: Add more markers or layers as needed
 });
