@@ -538,12 +538,15 @@ function setupWellFormSubmission() {
 	console.log("Setting up Well Form Submission");
 
 	// Load any necessary scripts after content is loaded
-	loadScript("Controller/reportProfileSetup.js", function () {
-		console.log("Script loaded and executed.");
-		if (typeof setupFunction === "function") {
-			setupFunction();
+	loadScript(
+		"Controller/reportProfileSetup/reportProfileSetupWell.js",
+		function () {
+			console.log("Script loaded and executed.");
+			if (typeof setupFunction === "function") {
+				setupFunction();
+			}
 		}
-	});
+	);
 
 	// Retrieve data from sessionStorage
 	const savedData = sessionStorage.getItem("selectedData");
@@ -682,12 +685,15 @@ function setupWellFormSubmission() {
 function setupSiteFormSubmission() {
 	console.log("Setting up Site Form Submission");
 	// Load any necessary scripts after content is loaded
-	loadScript("Controller/reportProfileSetup.js", function () {
-		console.log("Script loaded and executed.");
-		if (typeof setupFunction === "function") {
-			setupFunction();
+	loadScript(
+		"Controller/reportProfileSetup/reportProfileSetupSite.js",
+		function () {
+			console.log("Script loaded and executed.");
+			if (typeof setupFunction === "function") {
+				setupFunction();
+			}
 		}
-	});
+	);
 	// Retrieve data from sessionStorage
 	const savedData = sessionStorage.getItem("selectedData");
 	const selectedData = savedData ? JSON.parse(savedData) : null;
@@ -782,6 +788,16 @@ function setupSiteFormSubmission() {
 
 // Function to setup Field Form Submission
 function setupFieldFormSubmission() {
+	// Load any necessary scripts after content is loaded
+	loadScript(
+		"Controller/reportProfileSetup/reportProfileSetupField.js",
+		function () {
+			console.log("Script loaded and executed.");
+			if (typeof setupFunction === "function") {
+				setupFunction();
+			}
+		}
+	);
 	// Retrieve data from sessionStorage
 	const savedData = sessionStorage.getItem("selectedData");
 
@@ -850,6 +866,17 @@ function setupFieldFormSubmission() {
 
 // Function to setup Country Form Submission
 function setupCountryFormSubmission() {
+	// Load any necessary scripts after content is loaded
+	loadScript(
+		"Controller/reportProfileSetup/reportProfileSetupCountry.js",
+		function () {
+			console.log("Script loaded and executed.");
+			if (typeof setupFunction === "function") {
+				setupFunction();
+			}
+		}
+	);
+
 	var countryForm = document.getElementById("countryForm");
 	if (!countryForm) {
 		console.error("countryForm not found");

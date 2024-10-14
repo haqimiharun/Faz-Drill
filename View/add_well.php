@@ -136,12 +136,12 @@
                 </div>
                 <!-- Toggle button group for radio buttons -->
                 <div style="margin-top: -10px; margin-bottom: 10px;" class="btn-group" data-toggle="buttons">
-                     <input type="radio" id="dd" name="geoCoor" checked>
+                     <input type="radio" id="dd_well" name="geoCoor" checked>
                     <label for="dd">DD Coordinates</label>
-                    <input type="radio" id="dms" name="geoCoor">
+                    <input type="radio" id="dms_well" name="geoCoor">
                     <label for="dms">DMS Coordinates</label>
                 </div>
-                <div id="geoCoorDD" class="geoCoorDD">
+                <div id="geoCoorDD_well" class="geoCoorDD">
                     <div class="sbs">
                         <div class="form-group">
                             <label for="longitudeDD">Longitude</label>
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="geoCoorDMS" class="geoCoorDMS">
+                <div id="geoCoorDMS_well" class="geoCoorDMS">
                     <p for="wellSetting">Longitude</p>
                     <div class="sbs">
                         <div class="sbs">
@@ -233,5 +233,3 @@
     
     <div id="responseMessage"></div>
 </form>
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="Controller/reportProfileSetup.js" defer></script>

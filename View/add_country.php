@@ -40,29 +40,29 @@
         <div class="form-group">
             <h5 for="countrySetting">COUNTRY INITIAL SETTINGS</h5>
             <label>
-                <input type="radio" name="mapSystem" value="mapSystem" required> Map System
+                <input type="radio" name="mapSystemType" value="mapSystemCountry" required checked> Map System
             </label>
             <label>
-                <input type="radio" name="mapSystem" value="EPSGcode"> EPSG Code
+                <input type="radio" name="mapSystemType" value="EPSGcodeCountry"> EPSG Code
             </label>
         </div>
         <div class="sbs">
             <div class="sbs2">
                 <div class="form-group">
                     <label for="locEPSG">Location EPSG code</label>
-                    <select type="text" id="locEPSG" name="locEPSG"></select>
+                    <select type="text" id="locEPSGCountry" name="locEPSG"></select>
                 </div>
                 <div class="form-group">
                     <label for="mapSys">Map System</label>
-                    <select type="text" id="mapSys" name="mapSys"></select>
+                    <select type="text" id="mapSysCountry" name="mapSys"></select>
                 </div>
                 <div class="form-group">
                     <label for="Datum">Datum</label>
-                    <select type="text" id="Datum" name="Datum"></select>
+                    <select type="text" id="DatumCountry" name="Datum"></select>
                 </div>
                 <div class="form-group">
                     <label for="Location">Location</label>
-                    <select type="text" id="Location" name="Location"></select>
+                    <select type="text" id="LocationCountry" name="Location"></select>
                 </div>
             </div>
             <div class="sbs2">
