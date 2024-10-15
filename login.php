@@ -43,27 +43,33 @@ $csrf = new CSRF_Protect();
 $error_message = '';
 
 if (isset($_POST['form1'])) {
-    // Proceed with login logic as shown previously
     if (empty($_POST['email']) || empty($_POST['password'])) {
         $error_message = 'Email and/or Password cannot be empty<br>';
     } else {
-        $correct_email = 'test@mail.com';
-        $correct_password_hash = password_hash('password123', PASSWORD_DEFAULT);
+        // Sanitize user input
         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
         $password = $_POST['password'];
-        if ($email !== $correct_email) {
-            $error_message .= 'Email Address does not match<br>';
-        } else {
-            if (!password_verify($password, $correct_password_hash)) {
-                $error_message .= 'Password does not match<br>';
-            } else {
-                $_SESSION['user'] = ['email' => $correct_email];
+
+        // Prepare statement to fetch user from the database
+        $statement = $pdo->prepare("SELECT * FROM tbl_user WHERE email=? AND status=?");
+        $statement->execute(array($email, 'Active'));
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            // Verify password with MD5
+            if (md5($password) === $result['password']) { // MD5 password check
+                $_SESSION['user'] = $result; // Store user details in session
                 header("location: index.php");
                 exit();
+            } else {
+                $error_message .= 'Password does not match<br>';
             }
+        } else {
+            $error_message .= 'Email Address does not match<br>';
         }
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -107,11 +113,8 @@ if (isset($_POST['form1'])) {
             <div class="form-group has-feedback">
                 <input class="form-control" placeholder="Password" name="password" type="password" autocomplete="off" value="">
             </div>
-            <div class="row1">
-                <div class="col-xs-8"></div>
-                <div class="col-xs-4">
-                    <input type="submit" class="btn btn-success btn-block btn-flat login-button" name="form1" value="Log In">
-                </div>
+            <div>
+                <input type="submit" class="btn btn-success btn-block btn-flat login-button" name="form1" value="Log In">
             </div>
         </form>
     </div>

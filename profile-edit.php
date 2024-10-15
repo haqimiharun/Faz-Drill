@@ -187,7 +187,7 @@ foreach ($result as $row) {
 									<div class="form-group">
 							            <label for="" class="col-sm-2 control-label">Existing Photo</label>
 							            <div class="col-sm-6" style="padding-top:6px;">
-							                <img src="../assets/uploads/<?php echo $photo; ?>" class="existing-photo" width="140">
+							                <img src="../../assets/uploads/<?php echo $photo; ?>" class="existing-photo" width="140">
 							            </div>
 							        </div>
 									

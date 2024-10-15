@@ -127,7 +127,6 @@ try {
   <li><a href="#" id="browse-link" data-target="browse-content">Browse</a></li>
   <li><a href="#" id="recent-link" data-target="recent-content">Recent</a></li>
   <li><a href="#" id="my-design-link" data-target="my-design-content">My Design</a></li>
-  <li><a href="#" id="orphaned-design-link" data-target="orphaned-design-content">Orphaned Design</a></li>
 </ul>
 
 <section class="content-header">
@@ -222,7 +221,7 @@ try {
                 <table id="example3" class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
-                            <th>Design</th>
+                            <th>Report</th>
                             <th>Country</th>
                             <th>Field</th>
                             <th>Site</th>
