@@ -15,16 +15,16 @@
 
         <section class="section">
             <div id="well_Info">
-                <div class="well">
-                    Well: 
+                <div class="well" id="wellDisplay">
+                    Well:
                 </div>
-                <div class="wellbore">
+                <div class="wellbore" id="wellboreDisplay">
                     Wellbore:
                 </div>
-                <div class="reportNo">
+                <div class="reportNo" id="reportNoDisplay">
                     Report No:
                 </div>
-                <div class="reportDate">
+                <div class="reportDate" id="reportDateDisplay">
                     Report Date:
                 </div>
                 <div id="wellInfo" class="wellTitle">
@@ -275,8 +275,7 @@
     </div> 
 </div>
 <hr class="hr1">
-
 <script src="../../Controller/report-viewer/report-viewerP1.js"></script>
-
+<script src="../../Controller/reportInformation/report-header.js"></script>
 </body>
 </html>

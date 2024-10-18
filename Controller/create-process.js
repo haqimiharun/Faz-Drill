@@ -113,37 +113,40 @@ function openModal(url, setupFunction) {
 
 // Function to open modal and load Report form
 btn.onclick = function () {
-	openModal("View/add_NewReport.php", setupNewReportFormSubmission);
+	openModal(
+		"View/addPopupModal/add_NewReport.php",
+		setupNewReportFormSubmission
+	);
 };
 
 // Function to open modal and load Report form
 addReportBtn.onclick = function () {
-	openModal("View/add_report.php", setupReportFormSubmission);
+	openModal("View/addPopupModal/add_report.php", setupReportFormSubmission);
 };
 
 // Function to open modal and load Wellbore form
 addWellboreBtn.onclick = function () {
-	openModal("View/add_wellbore.php", setupWellboreFormSubmission);
+	openModal("View/addPopupModal/add_wellbore.php", setupWellboreFormSubmission);
 };
 
 // Function to open modal and load Well form
 addWellBtn.onclick = function () {
-	openModal("View/add_well.php", setupWellFormSubmission);
+	openModal("View/addPopupModal/add_well.php", setupWellFormSubmission);
 };
 
 // Function to open modal and load Site form
 addSiteBtn.onclick = function () {
-	openModal("View/add_site.php", setupSiteFormSubmission);
+	openModal("View/addPopupModal/add_site.php", setupSiteFormSubmission);
 };
 
 // Function to open modal and load Field form
 addFieldBtn.onclick = function () {
-	openModal("View/add_field.php", setupFieldFormSubmission);
+	openModal("View/addPopupModal/add_field.php", setupFieldFormSubmission);
 };
 
 // Function to open modal and load Country form
 addCountryBtn.onclick = function () {
-	openModal("View/add_country.php", setupCountryFormSubmission);
+	openModal("View/addPopupModal/add_country.php", setupCountryFormSubmission);
 };
 
 // Function to setup Report Form Submission

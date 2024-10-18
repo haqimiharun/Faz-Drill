@@ -221,8 +221,7 @@ if ($reportId) {
     <nav aria-label="bc" class="bc-nav">
         <ol class="bc" id="breadcrumb">
             <li class="bc-item"><a href="#" id="breadcrumb-report-name"><?php echo htmlspecialchars($reportName); ?></a></li>>
-            <li class="bc-item"><a href="#" id="breadcrumb-main-menu"></a></li>>
-            <li class="bc-item active" aria-current="page" id="breadcrumb-sub-menu"></li>
+            <li class="bc-item"><a href="#" id="breadcrumb-main-menu"></a></li>
         </ol>
     </nav>
         <!-- Top Bar ... User Information .. Login/Log out Area-->
@@ -314,6 +313,16 @@ if ($reportId) {
             <li class="treeview <?php if( ($cur_page == 'costInfo.php') ) {echo 'active';} ?>">
                 <a href="#costInfo">
                     <i class="fa fa-file-text-o"></i> <span>Cost Information</span>
+                </a>
+            </li>
+            <li class="treeview <?php if( ($cur_page == 'status.php') ) {echo 'active';} ?>">
+                <a href="#status">
+                    <i class="fa fa-file-text-o"></i> <span>Status</span>
+                </a>
+            </li>
+            <li class="treeview <?php if( ($cur_page == 'operationSumm.php') ) {echo 'active';} ?>">
+                <a href="#operationSumm">
+                    <i class="fa fa-file-text-o"></i> <span>Operation Summary</span>
                 </a>
             </li>
             <li class="treeview <?php if( ($cur_page == 'bit-data.php') ) {echo 'active';} ?>">
@@ -443,6 +452,8 @@ if ($reportId) {
         "well-data": "Well Info",
         "depth-days": "Depth Days",
         "costInfo": "Cost Information",
+        "status": "Status",
+        "operationSumm": "Operation Summary",
         "bit-data": "Bit Data",
         "mud-check": "Mud Check",
         "BHA-data": "BHA Data",

@@ -20,6 +20,14 @@
         <?php include 'View/costInfo.php'; ?>
     </section>
 
+    <section id="status">
+        <?php include 'View/status.php'; ?>
+    </section>
+
+    <section id="operationSumm">
+        <?php include 'View/operationSumm.php'; ?>
+    </section>
+
     <section id="bit-data">
         <?php include 'View/bit-data.php'; ?>
     </section>

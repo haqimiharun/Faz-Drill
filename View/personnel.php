@@ -1,129 +1,138 @@
 <link rel="stylesheet" href="css/report_info/personnel.css">
 
-<div class="wrapper-personnel">
-    <div class="container-personnel">
-        <form>
-            <h2>Personnel</h2>
+<div class="wrapper">
+    <h3 style="text-align: center;">Personnel On Board</h3>
+    <div class="row1">
+        <div class="container">
+            <h2>Personnel On Board</h2>
+            <!-- Display the total number of people -->
+            <label>Total Number of People: <span id="total-people">0</span></label>
+            <form action="process.php" method="POST">
+                <div class="table-wrapper">
+                    <table class="table-custom" id="inputTable">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Company Name</th>
+                                <th>Arrival Date</th>
+                                <th>Exit Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Start with one row -->
+                            <tr>
+                                <td>
+                                    <button type="button" class="add-row" onclick="addRow(this)">+</button>
+                                </td>
+                                <td><input type="text" name="name[]" oninput="updateTotalPeople()" /></td>
+                                <td><input type="text" name="occupation[]" /></td>
+                                <td><input type="text" name="company_name[]" /></td>
+                                <td><input type="date" name="arrival_date[]" /></td>
+                                <td><input type="date" name="exit_date[]" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-            <div class="form-group-personnel">
-                <!-- Total Number of People (TNOP) - System Input -->
-                <label for="total-people">Total No. of People:</label>
-                <input type="text" id="total-people" name="total-people" disabled>
-
-                <!-- Add button to add new TNOP row -->
-                <button type="button" id="add-tno-row" class="add-btn">Add TNOP</button>
-
-                <!-- TNOP Table -->
-                <table id="tno-table">
-                    <thead>
-                        <tr>
-                            <th>Company (TNOP)</th>
-                            <th>People (TNOP)</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" name="company-tno[]"></td>
-                            <td><input type="number" name="people-tno[]" class="people-tno" oninput="calculateTotalPeople()"></td>
-                            <td><button type="button" class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <!-- Total Number of Beds (NOB) - System Input -->
-                <label for="total-beds">No of Beds:</label>
-                <input type="text" id="total-beds" name="total-beds" disabled>
-
-                <!-- Add button to add new NOB row -->
-                <button type="button" id="add-nob-row" class="add-btn">Add NOB</button>
-
-                <!-- NOB Table -->
-                <table id="nob-table">
-                    <thead>
-                        <tr>
-                            <th>Company (NOB)</th>
-                            <th>People (NOB)</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" name="company-nob[]"></td>
-                            <td><input type="number" name="people-nob[]" class="people-nob" oninput="calculateTotalBeds()"></td>
-                            <td><button type="button" class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </form>
+                <!-- New table for Cabin/Bunk assignments -->
+                <div class="table-wrapper" style="margin-top: 20px;">
+                    <h3>Beds Assignments</h3>
+                    <label>Total Number of Beds: <span id="total-bunks">0</span></label>
+                    <table class="table-custom" id="bunkTable">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Beds Number</th>
+                                <th>Assigned Personnel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button type="button" class="add-bunk-row" onclick="addBunkRow(this)">+</button>
+                                </td>
+                                <td><input type="text" name="bunk_number[]" oninput="updateTotalBunks()" /></td>
+                                <td><input type="text" name="assigned_personnel[]" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-
 <script>
-
-// Function to add new row for TNOP
-document.getElementById('add-tno-row').addEventListener('click', function() {
-    const table = document.getElementById('tno-table').getElementsByTagName('tbody')[0];
+function addRow(button) {
+    const table = button.closest('table').getElementsByTagName('tbody')[0];
     const newRow = table.insertRow();
 
-    const companyCell = newRow.insertCell(0);
-    const peopleCell = newRow.insertCell(1);
-    const actionCell = newRow.insertCell(2);
+    newRow.innerHTML = `
+        <td>
+            <button type="button" class="delete-row" onclick="deleteRow(this)">-</button>
+        </td>
+        <td><input type="text" name="name[]" oninput="updateTotalPeople()" /></td>
+        <td><input type="text" name="occupation[]" /></td>
+        <td><input type="text" name="company_name[]" /></td>
+        <td><input type="date" name="arrival_date[]" /></td>
+        <td><input type="date" name="exit_date[]" /></td>
+    `;
+    updateTotalPeople(); // Update total after adding a new row
+}
 
-    companyCell.innerHTML = '<input type="text" name="company-tno[]">';
-    peopleCell.innerHTML = '<input type="number" name="people-tno[]" class="people-tno" oninput="calculateTotalPeople()">';
-    actionCell.innerHTML = '<button type="button" class="delete-btn" onclick="deleteRow(this)">Delete</button>';
-});
-
-// Function to add new row for NOB
-document.getElementById('add-nob-row').addEventListener('click', function() {
-    const table = document.getElementById('nob-table').getElementsByTagName('tbody')[0];
-    const newRow = table.insertRow();
-
-    const companyCell = newRow.insertCell(0);
-    const peopleCell = newRow.insertCell(1);
-    const actionCell = newRow.insertCell(2);
-
-    companyCell.innerHTML = '<input type="text" name="company-nob[]">';
-    peopleCell.innerHTML = '<input type="number" name="people-nob[]" class="people-nob" oninput="calculateTotalBeds()">';
-    actionCell.innerHTML = '<button type="button" class="delete-btn" onclick="deleteRow(this)">Delete</button>';
-});
-
-// Function to delete a row
 function deleteRow(button) {
     const row = button.parentNode.parentNode;
     row.parentNode.removeChild(row);
-    calculateTotalPeople();
-    calculateTotalBeds();
+    updateTotalPeople(); // Update total after deleting a row
 }
 
-// Function to calculate total people for TNOP
-function calculateTotalPeople() {
-    const peopleInputs = document.querySelectorAll('.people-tno');
+// Function to update total number of people
+function updateTotalPeople() {
+    const names = document.querySelectorAll('input[name="name[]"]');
     let total = 0;
 
-    peopleInputs.forEach(input => {
-        const value = parseInt(input.value) || 0;
-        total += value;
+    names.forEach(input => {
+        if (input.value.trim() !== '') {
+            total++;
+        }
     });
 
-    document.getElementById('total-people').value = total;
+    document.getElementById('total-people').textContent = total;
 }
 
-// Function to calculate total beds for NOB
-function calculateTotalBeds() {
-    const peopleInputs = document.querySelectorAll('.people-nob');
+function addBunkRow(button) {
+    const table = button.closest('table').getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow();
+
+    newRow.innerHTML = `
+        <td>
+            <button type="button" class="delete-row" onclick="deleteBunkRow(this)">-</button>
+        </td>
+        <td><input type="text" name="bunk_number[]" oninput="updateTotalBunks()" /></td>
+        <td><input type="text" name="assigned_personnel[]" /></td>
+    `;
+    updateTotalBunks(); // Update total after adding a new bunk row
+}
+
+function deleteBunkRow(button) {
+    const row = button.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+    updateTotalBunks(); // Update total after deleting a bunk row
+}
+
+// Function to update total number of bunks
+function updateTotalBunks() {
+    const bunks = document.querySelectorAll('input[name="bunk_number[]"]');
     let total = 0;
 
-    peopleInputs.forEach(input => {
-        const value = parseInt(input.value) || 0;
-        total += value;
+    bunks.forEach(input => {
+        if (input.value.trim() !== '') {
+            total++;
+        }
     });
 
-    document.getElementById('total-beds').value = total;
+    document.getElementById('total-bunks').textContent = total;
 }
-
-
 </script>

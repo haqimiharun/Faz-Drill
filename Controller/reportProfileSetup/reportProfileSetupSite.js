@@ -1,9 +1,9 @@
 // Function to toggle visibility
 function toggleVisibility() {
-	const geoCoorDD_site = document.getElementById("geoCoorDD_site");
-	const geoCoorDMS_site = document.getElementById("geoCoorDMS_site");
-	const ddRadio_site = document.getElementById("dd_site");
-	const dmsRadio_site = document.getElementById("dms_site");
+	geoCoorDD_site = document.getElementById("geoCoorDD_site");
+	geoCoorDMS_site = document.getElementById("geoCoorDMS_site");
+	ddRadio_site = document.getElementById("dd_site");
+	dmsRadio_site = document.getElementById("dms_site");
 
 	// Debugging statements to check if elements are found
 	console.log("Checking visibility...");
@@ -54,8 +54,8 @@ function toggleVisibility() {
 
 // Call toggleVisibility() immediately to set the initial state
 toggleVisibility(); // Initial toggle to set the default state
-const ddRadio_site = document.getElementById("dd_site");
-const dmsRadio_site = document.getElementById("dms_site");
+ddRadio_site = document.getElementById("dd_site");
+dmsRadio_site = document.getElementById("dms_site");
 // Additional logging for radio buttons
 if (ddRadio_site) {
 	console.log("ddRadio event listener added.");

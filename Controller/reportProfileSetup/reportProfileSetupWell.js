@@ -1,9 +1,9 @@
 // Function to toggle visibility
 function toggleVisibility() {
-	const geoCoorDD_well = document.getElementById("geoCoorDD_well");
-	const geoCoorDMS_well = document.getElementById("geoCoorDMS_well");
-	const ddRadio_well = document.getElementById("dd_well");
-	const dmsRadio_well = document.getElementById("dms_well");
+	geoCoorDD_well = document.getElementById("geoCoorDD_well");
+	geoCoorDMS_well = document.getElementById("geoCoorDMS_well");
+	ddRadio_well = document.getElementById("dd_well");
+	dmsRadio_well = document.getElementById("dms_well");
 
 	// Debugging statements to check if elements are found
 	console.log("Checking visibility...");
@@ -54,8 +54,8 @@ function toggleVisibility() {
 
 // Call toggleVisibility() immediately to set the initial state
 toggleVisibility(); // Initial toggle to set the default state
-const ddRadio_well = document.getElementById("dd_well");
-const dmsRadio_well = document.getElementById("dms_well");
+ddRadio_well = document.getElementById("dd_well");
+dmsRadio_well = document.getElementById("dms_well");
 // Additional logging for radio buttons
 if (ddRadio_well) {
 	console.log("ddRadio event listener added.");

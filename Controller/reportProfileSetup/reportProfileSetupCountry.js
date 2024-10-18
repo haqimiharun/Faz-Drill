@@ -1,16 +1,16 @@
 // Function to toggle input fields based on the selected map system
+locEPSGCountry = document.getElementById("locEPSGCountry");
+mapSysCountry = document.getElementById("mapSysCountry");
+DatumCountry = document.getElementById("DatumCountry");
+LocationCountry = document.getElementById("LocationCountry");
+
 function toggleMapSystem() {
-	const epsgRadioCountry = document.querySelector(
+	epsgRadioCountry = document.querySelector(
 		'input[name="mapSystemType"][value="EPSGcodeCountry"]'
 	);
-	const mapSystemRadioCountry = document.querySelector(
+	mapSystemRadioCountry = document.querySelector(
 		'input[name="mapSystemType"][value="mapSystemCountry"]'
 	);
-
-	const locEPSGCountry = document.getElementById("locEPSGCountry");
-	const mapSysCountry = document.getElementById("mapSysCountry");
-	const DatumCountry = document.getElementById("DatumCountry");
-	const LocationCountry = document.getElementById("LocationCountry");
 
 	// Debugging to check if the radio buttons and input fields are found
 	if (
@@ -47,10 +47,10 @@ function toggleMapSystem() {
 toggleMapSystem();
 
 // Add event listeners for the radio buttons
-const epsgRadioCountry = document.querySelector(
+epsgRadioCountry = document.querySelector(
 	'input[name="mapSystemType"][value="EPSGcodeCountry"]'
 );
-const mapSystemRadioCountry = document.querySelector(
+mapSystemRadioCountry = document.querySelector(
 	'input[name="mapSystemType"][value="mapSystemCountry"]'
 );
 
