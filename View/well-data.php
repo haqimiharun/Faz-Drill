@@ -2,16 +2,16 @@
 
 <div class="wrapper-wd">
     <div class="container-rh">
-        <form action="#" method="post">
+        <form class="well-data-form" action="#" method="post">
             <h2>Well Data Information</h2>
             <div class="form-row-wd">
                 <div class="form-group-wd">
                     <label for="company">Company</label>
-                    <input type="text" id="company" name="company" value="<?php echo htmlspecialchars($company); ?>" readonly>
+                    <input type="text" id="company" name="company" readonly>
                 </div>
                 <div class="form-group-wd">
                     <label for="country">Country</label>
-                    <input type="text" id="country" name="country" value="<?php echo htmlspecialchars($country); ?>" readonly>
+                    <input type="text" id="country" name="country" readonly>
                 </div>
                 <div class="form-group-wd">
                     <label for="eventDesc">Event Description</label>
@@ -22,33 +22,23 @@
                 </div>
                 <div class="form-group-wd">
                     <label for="region">Region</label>
-                    <select id="region" name="region">
-                        <option value="" disabled selected>Select Region</option>
-                        <?php foreach ($regions as $region): ?>
-                            <option value="<?php echo htmlspecialchars($region['region_name']); ?>"><?php echo htmlspecialchars($region['region_name']); ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                    <input type="text" id="region" name="region" readonly>
                 </div>
                 <div class="form-group-wd">
                     <label for="block">Block</label>
-                    <select id="block" name="block">
-                        <option value="" disabled selected>Select Block</option>
-                        <?php foreach ($blocks as $block): ?>
-                            <option value="<?php echo htmlspecialchars($block['block_name']); ?>"><?php echo htmlspecialchars($block['block_name']); ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                    <input type="text" id="block" name="block" readonly>
                 </div>
                 <div class="form-group-wd">
                     <label for="field">Field</label>
-                    <input type="text" id="field" name="field" value="<?php echo htmlspecialchars($field); ?>" readonly>
+                    <input type="text" id="field" name="field" readonly>
                 </div>
                 <div class="form-group-wd">
-                    <label for="platform">Field/Platform</label>
-                    <input type="text" id="platform" name="platform" placeholder="Enter Field/Platform">
+                    <label for="platform">Platform</label>
+                    <input type="text" id="platform" name="platform" placeholder="Enter Platform"> <!-- User Input -->
                 </div>
                 <div class="form-group-wd">
                     <label for="rigName">Rig Name</label>
-                    <select id="rigName" name="rigName">
+                    <select id="rigName" name="rigName" >
                         <option value="" disabled selected>Select Rig Name</option>
                         <!-- Populate from Rig Name Library -->
                     </select>
@@ -56,10 +46,6 @@
                 <div class="form-group-wd">
                     <label for="waterDepth">Water Depth</label>
                     <input type="text" id="waterDepth" name="waterDepth" placeholder="Enter Water Depth"> <!-- User Input -->
-                </div>
-                <div class="form-group-wd">
-                    <label for="depth">Depth</label>
-                    <input type="text" id="depth" name="depth" placeholder="Enter Depth"> <!-- User Input -->
                 </div>
                 <div class="form-group-wd">
                     <label for="objective">Objective</label>
@@ -90,9 +76,16 @@
                     <input type="text" id="nightDS" name="nightDS" placeholder="Enter Night DS"> <!-- User Input -->
                 </div>
                 <div class="form-group-wd">
-                    <label for="pcsbEng">PCSB Engineer</label>
-                    <input type="text" id="pcsbEng" name="pcsbEng" placeholder="Enter PCSB Engineer"> <!-- User Input -->
+                    <label for="pcsbEng">Engineer</label>
+                    <input type="text" id="pcsbEng" name="pcsbEng" placeholder="Enter Engineer"> <!-- User Input -->
                 </div>
+            </div>
+             <!-- Buttons Section -->
+            <div class="button-area">
+                <button type="button" id="WDsaveButton">Save</button>
+                <button type="submit" id="WDsubmitButton">Submit</button>
+                <button type="button" id="WDclearButton">Clear</button>
+                <button type="button" id="WDnextButton">Next</button>
             </div>
         </form>
     </div>

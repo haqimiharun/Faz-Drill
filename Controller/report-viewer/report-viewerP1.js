@@ -1,141 +1,156 @@
-//Well Information
+// Get the reportId from the current URL
+const urlParams = new URLSearchParams(window.location.search);
+const reportId = urlParams.get("reportId"); // Extract reportId from the URL
+
+// Well Information
 document.getElementById("wellInfo").addEventListener("click", function () {
-	openPopup("wellInfo");
+	openPopup("wellInfo", reportId);
 });
-document.getElementById("eventDesc").addEventListener("click", function () {
-	openPopup("wellInfo");
+document.getElementById("wi_eventDesc").addEventListener("click", function () {
+	openPopup("wellInfo", reportId);
 });
-document.getElementById("waterDepth").addEventListener("click", function () {
-	openPopup("wellInfo");
+document.getElementById("wi_waterDepth").addEventListener("click", function () {
+	openPopup("wellInfo", reportId);
 });
-document.getElementById("region").addEventListener("click", function () {
-	openPopup("wellInfo");
+document.getElementById("wi_region").addEventListener("click", function () {
+	openPopup("wellInfo", reportId);
 });
-document.getElementById("rigName").addEventListener("click", function () {
-	openPopup("wellInfo");
+document.getElementById("wi_rigName").addEventListener("click", function () {
+	openPopup("wellInfo", reportId);
 });
 document.getElementById("sixItem").addEventListener("click", function () {
-	openPopup("wellInfo");
+	openPopup("wellInfo", reportId);
 });
 document.getElementById("well_Info").addEventListener("click", function () {
-	openPopup("wellInfo");
+	openPopup("wellInfo", reportId);
 });
-document.getElementById("block").addEventListener("click", function () {
-	openPopup("wellInfo");
+document.getElementById("wi_block").addEventListener("click", function () {
+	openPopup("wellInfo", reportId);
 });
-document.getElementById("leadDS").addEventListener("click", function () {
-	openPopup("wellInfo");
+document.getElementById("wi_leadDS").addEventListener("click", function () {
+	openPopup("wellInfo", reportId);
 });
-document.getElementById("NightDS").addEventListener("click", function () {
-	openPopup("wellInfo");
+document.getElementById("wi_NightDS").addEventListener("click", function () {
+	openPopup("wellInfo", reportId);
 });
-document.getElementById("engName").addEventListener("click", function () {
-	openPopup("wellInfo");
+document.getElementById("wi_engName").addEventListener("click", function () {
+	openPopup("wellInfo", reportId);
 });
 
-//Depth Day
+// Depth Day
 document.getElementById("depthDays").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("dol").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("md").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("rttingHrs").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("lastCasing").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("dfs").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("tvd").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("cumRotHrs").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("lastHoleSize").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("ttlDays").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("progress").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("avgROP").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("lastShoeTMD").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("estDays").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("finalTMD").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("blnk1").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("lastShoeTVD").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("dailyNPT").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("cummNPT").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("blnk2").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 document.getElementById("curnHoleSize").addEventListener("click", function () {
-	openPopup("depthDay");
+	openPopup("depthDay", reportId);
 });
 
-//Cost Information
+// Cost Information
 document.getElementById("Cost").addEventListener("click", function () {
-	openPopup("costInfo");
+	openPopup("costInfo", reportId);
 });
 document.getElementById("dailyCost").addEventListener("click", function () {
-	openPopup("costInfo");
+	openPopup("costInfo", reportId);
 });
 document.getElementById("cummCost").addEventListener("click", function () {
-	openPopup("costInfo");
+	openPopup("costInfo", reportId);
 });
 document.getElementById("AFECost").addEventListener("click", function () {
-	openPopup("costInfo");
+	openPopup("costInfo", reportId);
 });
 document.getElementById("suppCost").addEventListener("click", function () {
-	openPopup("costInfo");
+	openPopup("costInfo", reportId);
 });
 document.getElementById("expenditure").addEventListener("click", function () {
-	openPopup("costInfo");
+	openPopup("costInfo", reportId);
 });
 
-//Status Information
+// Status Information
 document.getElementById("well_Info3").addEventListener("click", function () {
-	openPopup("status");
+	openPopup("status", reportId);
 });
 document.getElementById("statusttl").addEventListener("click", function () {
-	openPopup("status");
+	openPopup("status", reportId);
 });
 
-//Operation Summary
+// Operation Summary
 document.getElementById("operationSum").addEventListener("click", function () {
-	openPopup("operationSum");
+	openPopup("operationSum", reportId);
 });
 document.getElementById("operationSum2").addEventListener("click", function () {
-	openPopup("operationSum");
+	openPopup("operationSum", reportId);
 });
 
 function openPopup(field) {
-	// Open a new popup window (this URL will handle the popup content)
-	let popupUrl = `../../View/reportViewer/reportViewerPopup.php?field=${field}`;
-	window.open(popupUrl, "Popup", "width=400,height=400");
+	// Get the reportId from the current URL
+	const urlParams = new URLSearchParams(window.location.search);
+	const reportId = urlParams.get("reportId"); // Extract reportId from the URL
+
+	// Check if reportId is valid
+	if (!reportId) {
+		console.error("Report ID not found in URL.");
+		alert("Error: Report ID is required to proceed.");
+		return; // Exit the function if reportId is missing
+	}
+
+	// Open a new popup window with the field and reportId parameters
+	const popupUrl = `../../View/reportViewer/reportViewerPopup.php?field=${field}&reportId=${reportId}`;
+	window.open(popupUrl, "Popup", "width=800,height=600");
 }

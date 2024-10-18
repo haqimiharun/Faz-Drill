@@ -77,8 +77,16 @@
                 <label for="Current-Hole-Size">Current Hole Size (in):</label>
                 <input type="text" id="Current-Hole-Size" name="Current-Hole-Size" placeholder="Enter Current Hole Size" required>
             </div>
+            <div class="button-area">
+                <button type="button" id="DDbackButton">Back</button>
+                <button type="button" id="DDsaveButton">Save</button>
+                <button type="submit" id="DDsubmitButton">Submit</button>
+                <button type="button" id="DDclearButton">Clear</button>
+                <button type="button" id="DDnextButton">Next</button>
+            </div>
         </form>
     </div>
 </div>
 
+<script src="Controller/reportInformation/depth-days.js" defer></script>
 

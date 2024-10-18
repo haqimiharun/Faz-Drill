@@ -35,13 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
 					if (reportNoInput) reportNoInput.value = data.reportno; // Populate report number
 					if (reportDateInput) reportDateInput.value = data.reportdate; // Populate report date
 
-					if (wellInputViewer) wellInputViewer.textContent = data.well; // Display well name
+					if (wellInputViewer)
+						wellInputViewer.textContent = `Well: ${data.well}`; // Display "Well: wellname"
 					if (wellboreInputViewer)
-						wellboreInputViewer.textContent = data.wellbore; // Display wellbore number
+						wellboreInputViewer.textContent = `Wellbore: ${data.wellbore}`; // Display "Wellbore: wellborenumber"
 					if (reportNoInputViewer)
-						reportNoInputViewer.textContent = data.reportno; // Display report number
+						reportNoInputViewer.textContent = `Report No: ${data.reportno}`; // Display "Report No: reportnumber"
 					if (reportDateInputViewer)
-						reportDateInputViewer.textContent = data.reportdate; // Display report date
+						reportDateInputViewer.textContent = `Report Date: ${data.reportdate}`; // Display "Report Date: reportdate`
 				}
 			})
 			.catch((error) => console.error("Fetch Error:", error));

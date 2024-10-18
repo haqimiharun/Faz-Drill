@@ -30,16 +30,16 @@
                 <div id="wellInfo" class="wellTitle">
                     WELL INFO
                 </div>
-                <div id="eventDesc" class="eventDesc">
+                <div id="wi_eventDesc" class="eventDesc">
                 Event Description:
                 </div>
-                <div id="waterDepth" class="waterDepth">
+                <div id="wi_waterDepth" class="waterDepth">
                 Water Depth: 
                 </div>
-                <div id="region" class="region">
+                <div id="wi_region" class="region">
                 Region:
                 </div>
-                <div id="rigName" class="rigName">
+                <div id="wi_rigName" class="rigName">
                 Rig Name:
                 </div>
             </div>
@@ -62,24 +62,24 @@
                 <div class="End_date">
                 End date
                 </div>
-                <div class="blnk">:</div>
-                <div class="blnk">:</div>
-                <div class="blnk">:</div>
-                <div class="blnk">:</div>
-                <div class="blnk">:</div>
-                <div class="blnk">:</div>
+                <div class="blnk" id="wi_Obj_value">:</div>
+                <div class="blnk" id="wi_AFE_No_value">:</div>
+                <div class="blnk" id="wi_field-platform_value">:</div>
+                <div class="blnk" id="wi_Start_date_value">:</div>
+                <div class="blnk" id="wi_Spud_date_value">:</div>
+                <div class="blnk" id="wi_End_date_value">:</div>
             </div>
             <div id="well_Info">    
-                <div id="block" class="block">
+                <div id="wi_block" class="block">
                 Block:
                 </div>
-                <div id="leadDS" class="leadDS">
+                <div id="wi_leadDS" class="leadDS">
                 Lead DS:
                 </div>
-                <div id="NightDS" class="NightDS">
+                <div id="wi_NightDS" class="NightDS">
                 Night DS:
                 </div>
-                <div id="engName" class="engName">
+                <div id="wi_engName" class="engName">
                 Engineer:
                 </div>
             </div>
@@ -276,6 +276,5 @@
 </div>
 <hr class="hr1">
 <script src="../../Controller/report-viewer/report-viewerP1.js"></script>
-<script src="../../Controller/reportInformation/report-header.js"></script>
 </body>
 </html>

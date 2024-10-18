@@ -18,6 +18,6 @@ document.getElementById("bha_part").addEventListener("click", function () {
 
 function openPopup(field) {
 	// Open a new popup window (this URL will handle the popup content)
-	let popupUrl = `../../View/reportViewer/reportViewerPopup.php?field=${field}`;
-	window.open(popupUrl, "Popup", "width=400,height=400");
+	let popupUrl = `../../View/reportViewer/reportViewerPopup.php?field=${field}&reportId=${reportId}`;
+	window.open(popupUrl, "Popup", "width=800,height=600");
 }
