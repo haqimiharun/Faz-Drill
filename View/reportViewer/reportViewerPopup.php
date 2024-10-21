@@ -10,7 +10,6 @@
 <body>
     <div class="content">
         <section id="report-header">
-            <form action="">
             <?php 
             // Get the field and reportId from the URL
             $field = isset($_GET['field']) ? $_GET['field'] : '';
@@ -113,10 +112,8 @@
                 echo "<p>Unable to load the requested data. Please try again.</p>";
             }
             ?>
-        </form>
         </section>
     </div>
-
     <script src="http://localhost/Faz-Drill/Controller/reportInformation/well-data.js" defer></script>
     <script>
         // Get the field from the URL

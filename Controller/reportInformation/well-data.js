@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+	initializeForm(); // Call the initialization function
+	setupFormSubmission(); // Set up form submission logic
+});
+
+function initializeForm() {
+	const reportIdInput = document.getElementById("reportId");
+	const formData = new FormData(document.getElementById("wellDataForm"));
 	// Function to retrieve reportId from the URL
 	function getReportIdFromUrl() {
 		const params = new URLSearchParams(window.location.search);
@@ -8,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const reportId = getReportIdFromUrl(); // Retrieve reportId from URL
 	if (reportId) {
 		fetchWellData(reportId); // Fetch well data using the retrieved reportId
+		reportIdInput.value = reportId; // Set the value of the hidden input
 	} else {
 		console.error("Report ID not found in URL.");
 	}
@@ -15,11 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Call the functions to load event descriptions and rig names
 	loadEventDescriptions();
 	loadRigNames();
-});
+	console.log(reportId);
+}
 
 // Function to fetch well data from the server/database
 function fetchWellData(reportId) {
-	const url = `http://localhost/Faz-Drill/Model/reportViewerDatabase/wellDataConn.php?reportId=${reportId}`; // Changed to reportId
+	const url = `http://localhost/Faz-Drill/Model/reportViewerDatabase/wellDataConn.php?reportId=${reportId}`;
 	console.log("Fetching data from:", url); // Log the URL for debugging
 
 	return fetch(url)
@@ -56,7 +65,7 @@ function populateReadOnlyFields(data) {
 function loadEventDescriptions() {
 	fetch(
 		"http://localhost/Faz-Drill/Model/reportViewerDatabase/libraryEventCaller.php"
-	) // Replace with the actual path to your PHP script
+	)
 		.then((response) => response.json())
 		.then((data) => {
 			const eventDescSelect = document.getElementById("eventDesc");
@@ -87,7 +96,7 @@ function loadEventDescriptions() {
 function loadRigNames() {
 	fetch(
 		"http://localhost/Faz-Drill/Model/reportViewerDatabase/libraryRigCaller.php"
-	) // Replace with the actual path to your PHP script
+	)
 		.then((response) => response.json())
 		.then((data) => {
 			const rigSelect = document.getElementById("rigName");
@@ -112,62 +121,132 @@ function loadRigNames() {
 		.catch((error) => console.error("Error fetching rig names:", error));
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-	document.getElementById("WDclearButton").onclick = function () {
-		// Prompt for confirmation
-		var confirmClear = confirm("Are you sure you want to clear all fields?");
-
-		// If the user confirms, clear the fields
-		if (confirmClear) {
-			document.getElementById("eventDesc").value = "";
-			document.getElementById("rigName").value = "";
-			document.getElementById("platform").value = "";
-			document.getElementById("waterDepth").value = "";
-			document.getElementById("objective").value = "";
-			document.getElementById("afeNo").value = "";
-			document.getElementById("startDate").value = "";
-			document.getElementById("spudDate").value = "";
-			document.getElementById("endDate").value = "";
-			document.getElementById("leadDS").value = "";
-			document.getElementById("nightDS").value = "";
-			document.getElementById("pcsbEng").value = "";
+// Common submission function
+function handleSubmit(isNext) {
+	// Optional: Perform validation here
+	let allFieldsFilled = true;
+	formData.forEach((value) => {
+		if (!value) {
+			allFieldsFilled = false;
 		}
-	};
+	});
 
-	document.getElementById("WDsaveButton").onclick = function () {
-		// Logic for saving data, e.g., using AJAX
-		alert("Data saved successfully!");
-	};
+	if (!allFieldsFilled) {
+		alert("Please fill in all required fields before saving.");
+		return; // Stop the function if any field is empty
+	}
 
-	document.getElementById("WDnextButton").onclick = function () {
-		// Get the current field from the URL
-		const urlParams = new URLSearchParams(window.location.search);
-		const field = urlParams.get("field");
-		const reportId = urlParams.get("reportId");
+	// Submit the form data using fetch
+	fetch("wellDataStored.php", {
+		method: "POST",
+		body: formData,
+	})
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+			return response.text(); // or response.json() depending on your expected response
+		})
+		.then((data) => {
+			console.log("Form submitted successfully:", data);
+			if (isNext) {
+				// Redirect to the next page if 'Save and Next' was clicked
+				const urlParams = new URLSearchParams(window.location.search);
+				const reportId = urlParams.get("reportId");
+				window.location.href = `http://localhost/Faz-Drill/View/depth_days.php?reportId=${reportId}`;
+			}
+		})
+		.catch((error) => {
+			console.error("Error submitting form:", error);
+		});
+}
+// Function to clear form fields
+function clearFormFields() {
+	document.getElementById("eventDesc").value = "";
+	document.getElementById("rigName").value = "";
+	document.getElementById("platform").value = "";
+	document.getElementById("waterDepth").value = "";
+	document.getElementById("objective").value = "";
+	document.getElementById("afeNo").value = "";
+	document.getElementById("startDate").value = "";
+	document.getElementById("spudDate").value = "";
+	document.getElementById("endDate").value = "";
+	document.getElementById("leadDS").value = "";
+	document.getElementById("nightDS").value = "";
+	document.getElementById("pcsbEng").value = "";
+}
+// Function to handle the next button click logic
+function handleNextButtonClick() {
+	const urlParams = new URLSearchParams(window.location.search);
+	const field = urlParams.get("field");
+	const reportId = urlParams.get("reportId");
 
-		// Determine the next page based on the current field
-		let nextPage = "";
+	// Get values of the specific fields
+	const eventDesc = document.getElementById("eventDesc").value;
+	const rigName = document.getElementById("rigName").value;
+	const platform = document.getElementById("platform").value;
+	const waterDepth = document.getElementById("waterDepth").value;
+	const objective = document.getElementById("objective").value;
+	const afeNo = document.getElementById("afeNo").value;
+	const startDate = document.getElementById("startDate").value;
+	const spudDate = document.getElementById("spudDate").value;
+	const endDate = document.getElementById("endDate").value;
+	const leadDS = document.getElementById("leadDS").value;
+	const nightDS = document.getElementById("nightDS").value;
+	const pcsbEng = document.getElementById("pcsbEng").value;
 
-		switch (field) {
-			case "wellInfo":
-				nextPage = "depth_days.php"; // Next step for wellInfo
-				break;
-			case "depthDay":
-				nextPage = "costInfo.php"; // Next step for depthDay
-				break;
-			// Add more cases for other fields
-			case "costInfo":
-				nextPage = "status.php"; // Next step for costInfo
-				break;
-			// Continue as necessary for other fields...
-			default:
-				alert("No next step defined for the current field.");
-				return; // Exit if no next step is defined
+	// Check if any fields are unfilled
+	let allFieldsFilled = true;
+
+	if (
+		!eventDesc ||
+		!rigName ||
+		!platform ||
+		!waterDepth ||
+		!objective ||
+		!afeNo ||
+		!startDate ||
+		!spudDate ||
+		!endDate ||
+		!leadDS ||
+		!nightDS ||
+		!pcsbEng
+	) {
+		allFieldsFilled = false;
+	}
+
+	// Prompt the user if some fields are not filled
+	if (!allFieldsFilled) {
+		const proceedAnyway = confirm(
+			"Some fields are not filled. Proceed to the next step anyway?"
+		);
+		if (!proceedAnyway) {
+			return; // Stop the function if the user cancels
+		} else {
+			// Determine the next page based on the current field
+			let nextPage = "";
+
+			switch (field) {
+				case "wellInfo":
+					nextPage = "depth_days.php"; // Next step for wellInfo
+					break;
+				case "depthDay":
+					nextPage = "costInfo.php"; // Next step for depthDay
+					break;
+				// Add more cases for other fields
+				case "costInfo":
+					nextPage = "status.php"; // Next step for costInfo
+					break;
+				// Continue as necessary for other fields...
+				default:
+					alert("No next step defined for the current field.");
+					return; // Exit if no next step is defined
+			}
+
+			// Redirect to the next page with the reportId
+			if (nextPage) {
+				window.location.href = `http://localhost/Faz-Drill/View/${nextPage}?reportId=${reportId}`;
+			}
 		}
-
-		// Redirect to the next page with the reportId
-		if (nextPage) {
-			window.location.href = `http://localhost/Faz-Drill/View/${nextPage}?reportId=${reportId}`;
-		}
-	};
-});
+	}
+}

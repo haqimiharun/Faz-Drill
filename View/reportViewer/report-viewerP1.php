@@ -276,5 +276,7 @@
 </div>
 <hr class="hr1">
 <script src="../../Controller/report-viewer/report-viewerP1.js"></script>
+<script src="http://localhost/Faz-Drill/Controller/reportInformation/report-header.js" defer></script>
+<script src="http://localhost/Faz-Drill/Controller/reportInformation/well-data-viewer.js" defer></script>
 </body>
 </html>
