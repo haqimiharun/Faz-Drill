@@ -42,24 +42,29 @@ document.addEventListener("DOMContentLoaded", () => {
 				console.error("Error fetching data:", data.error);
 			} else {
 				// Populate fields with fetched data
+				console.log("Fetched data:", data);
+
 				if (wi_eventDesc)
-					wi_eventDesc.textContent = `Event Description: ${data.wi_eventDesc}`;
+					wi_eventDesc.textContent = `Event Description: ${data.event_desc}`;
 				if (wi_waterDepth)
-					wi_waterDepth.textContent = `Water Depth: ${data.wi_waterDepth}`;
-				if (wi_region) wi_region.textContent = `Region: ${data.wi_region}`;
-				if (wi_rigName) wi_rigName.textContent = `Rig Name: ${data.wi_rigName}`;
-				if (wi_Obj_value) wi_Obj_value.value = data.wi_Obj_value;
-				if (platform_value) platform_value.value = data.platform_value;
-				if (wi_AFE_No_value) wi_AFE_No_value.value = data.wi_AFE_No_value;
+					wi_waterDepth.textContent = `Water Depth: ${data.well_waterdepth}`;
+				if (wi_region) wi_region.textContent = `Region: ${data.region_name}`;
+				if (wi_rigName) wi_rigName.textContent = `Rig Name: ${data.rig_name2}`;
+				if (wi_Obj_value) wi_Obj_value.textContent = data.well_obj;
+				if (platform_value) platform_value.textContent = data.well_platform;
+				if (wi_AFE_No_value) wi_AFE_No_value.textContent = data.well_afeno;
 				if (wi_Start_date_value)
-					wi_Start_date_value.value = data.wi_Start_date_value;
+					wi_Start_date_value.textContent = data.well_startdate;
 				if (wi_Spud_date_value)
-					wi_Spud_date_value.value = data.wi_Spud_date_value;
-				if (wi_End_date_value) wi_End_date_value.value = data.wi_End_date_value;
-				if (wi_block) wi_block.textContent = `Block: ${data.wi_block}`;
-				if (wi_leadDS) wi_leadDS.textContent = `Lead DS: ${data.wi_leadDS}`;
-				if (wi_NightDS) wi_NightDS.textContent = `Night DS: ${data.wi_NightDS}`;
-				if (wi_engName) wi_engName.textContent = `Engineer: ${data.wi_engName}`;
+					wi_Spud_date_value.textContent = data.well_spuddate;
+				if (wi_End_date_value)
+					wi_End_date_value.textContent = data.well_enddate;
+				if (wi_block) wi_block.textContent = `Block: ${data.block_name}`;
+				if (wi_leadDS) wi_leadDS.textContent = `Lead DS: ${data.well_leadds}`;
+				if (wi_NightDS)
+					wi_NightDS.textContent = `Night DS: ${data.well_nightds}`;
+				if (wi_engName)
+					wi_engName.textContent = `Engineer: ${data.well_engineer}`;
 			}
 		} catch (error) {
 			console.error("Fetch Error:", error);

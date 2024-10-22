@@ -19,7 +19,7 @@ try {
         tr.report_name AS reportNo, 
         tw.well_name AS well, 
         twb.wellbore_name AS wellbore, 
-        tr.\"createdAt\" AS reportDate
+        tr.\"created_at\" AS reportDate
     FROM tbl_report tr
     JOIN tbl_well tw ON tr.well_id = tw.well_id
     JOIN tbl_wellbore twb ON tr.wellbore_id = twb.wellbore_id

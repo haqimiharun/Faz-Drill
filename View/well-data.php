@@ -2,7 +2,7 @@
 
 <div class="wrapper-wd">
     <div class="container-rh">
-        <form id="wellDataForm" class="well-data-form" action="../../Model/reportViewerDatabase/wellDataStored.php" method="post">
+        <form id="wellDataForm" class="well-data-form" action="../../Model/reportViewerDatabase/wellData/wellDataStored.php" method="post">
             <h2>Well Data Information</h2>
             <div class="form-row-wd">
                 <input type="hidden" id="reportId" name="reportId"> <!-- Keep only one hidden input -->
@@ -58,15 +58,15 @@
                 </div>
                 <div class="form-group-wd">
                     <label for="startDate">Start Date</label>
-                    <input type="date" id="startDate" name="startDate" > <!-- User Input -->
+                    <input type="datetime-local" id="startDate" name="startDate" > <!-- User Input -->
                 </div>
                 <div class="form-group-wd">
                     <label for="spudDate">Spud Date</label>
-                    <input type="date" id="spudDate" name="spudDate" > <!-- User Input -->
+                    <input type="datetime-local" id="spudDate" name="spudDate" > <!-- User Input -->
                 </div>
                 <div class="form-group-wd">
                     <label for="endDate">End Date</label>
-                    <input type="date" id="endDate" name="endDate" > <!-- User Input -->
+                    <input type="datetime-local" id="endDate" name="endDate" > <!-- User Input -->
                 </div>
                 <div class="form-group-wd">
                     <label for="leadDS">Lead DS</label>
@@ -90,3 +90,5 @@
         </form>
     </div>
 </div>
+
+<script src="Controller/reportInformation/well-data.js" defer></script>

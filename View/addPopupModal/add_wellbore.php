@@ -40,7 +40,7 @@
     <hr>
     <div class="form-group">
         <label for="rigConfig">Rig Configuration</label>
-        <select id="rigConfig" name="rigConfig" required>
+        <select id="rigConfig" name="rigConfig" >
             <option value="">Rig Configuration</option>
             <!-- Country options will be populated by AJAX -->
         </select>

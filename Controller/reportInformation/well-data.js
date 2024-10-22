@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 	initializeForm(); // Call the initialization function
-	setupFormSubmission(); // Set up form submission logic
 });
 
 function initializeForm() {
 	const reportIdInput = document.getElementById("reportId");
-	const formData = new FormData(document.getElementById("wellDataForm"));
+
 	// Function to retrieve reportId from the URL
 	function getReportIdFromUrl() {
 		const params = new URLSearchParams(window.location.search);
@@ -14,41 +13,86 @@ function initializeForm() {
 
 	const reportId = getReportIdFromUrl(); // Retrieve reportId from URL
 	if (reportId) {
-		fetchWellData(reportId); // Fetch well data using the retrieved reportId
-		reportIdInput.value = reportId; // Set the value of the hidden input
+		// First check if the reportId exists in tbl_wellinfo
+		checkReportIdInWellInfo(reportId).then((exists) => {
+			if (exists) {
+				// Fetch well data using the retrieved reportId
+				fetchWellData(reportId).then((data) => {
+					if (data) {
+						reportIdInput.value = reportId; // Set the value of the hidden input
+						populateAllFields(data); // Populate the form fields with fetched data
+					} else {
+						console.error("No data found for the provided report ID.");
+					}
+				});
+			} else {
+				console.error("Report ID not found in tbl_wellinfo.");
+				alert("The specified report ID does not exist."); // Optional: Alert the user
+				fetchWellData(reportId).then((data) => {
+					if (data) {
+						reportIdInput.value = reportId; // Set the value of the hidden input
+						populateReadOnlyFields(data); // Populate the form fields with fetched data
+					} else {
+						console.error("No data found for the provided report ID.");
+					}
+				});
+				loadEventDescriptions();
+				loadRigNames();
+				console.log(reportId); // Optionally, you could redirect or take another action here
+			}
+		});
 	} else {
 		console.error("Report ID not found in URL.");
 	}
 
 	// Call the functions to load event descriptions and rig names
-	loadEventDescriptions();
-	loadRigNames();
-	console.log(reportId);
+}
+
+// Function to check if reportId exists in tbl_wellinfo
+function checkReportIdInWellInfo(reportId) {
+	const url = `http://localhost/Faz-Drill/Model/reportViewerDatabase/wellData/checkReportId.php?reportId=${reportId}`;
+	console.log("Checking report ID existence at:", url); // Log the URL for debugging
+
+	return fetch(url)
+		.then((response) => {
+			if (!response.ok) {
+				console.error(`HTTP error! Status: ${response.status}`);
+				return false; // Return false if the response is not okay
+			}
+			return response.json(); // Assume the response is in JSON format
+		})
+		.then((data) => {
+			return data.exists; // Assuming the response contains a property 'exists' that indicates if the reportId is found
+		})
+		.catch((error) => {
+			console.error("Error checking report ID:", error);
+			return false; // Return false if there's an error
+		});
 }
 
 // Function to fetch well data from the server/database
 function fetchWellData(reportId) {
-	const url = `http://localhost/Faz-Drill/Model/reportViewerDatabase/wellDataConn.php?reportId=${reportId}`;
+	const url = `http://localhost/Faz-Drill/Model/reportViewerDatabase/wellData/wellDataConn.php?reportId=${reportId}`;
 	console.log("Fetching data from:", url); // Log the URL for debugging
 
 	return fetch(url)
 		.then((response) => {
-			return response.text().then((text) => {
-				console.log("Raw response text:", text); // Log the raw text
-				if (!response.ok) {
-					throw new Error(`HTTP error! Status: ${response.status}`);
-				}
-				return JSON.parse(text); // Try parsing the response as JSON
-			});
+			if (!response.ok) {
+				console.error(`HTTP error! Status: ${response.status}`);
+				return null; // Return null if the response is not okay
+			}
+			return response.text(); // Retrieve response as text
 		})
-		.then((data) => {
-			populateReadOnlyFields(data); // Populate the form fields with fetched data
+		.then((text) => {
+			console.log("Raw response text:", text); // Log the raw text
+			return JSON.parse(text); // Try parsing the response as JSON
 		})
 		.catch((error) => {
 			console.error(
 				"There has been a problem with your fetch operation:",
 				error
 			);
+			return null; // Return null if there's an error
 		});
 }
 
@@ -59,6 +103,26 @@ function populateReadOnlyFields(data) {
 	document.getElementById("region").value = data.regionName || "N/A";
 	document.getElementById("block").value = data.blockName || "N/A";
 	document.getElementById("field").value = data.fieldName || "N/A"; // Adjust if the field data is available
+}
+
+function populateAllFields(data) {
+	document.getElementById("company").value = data.companyName || "N/A";
+	document.getElementById("country").value = data.countryName || "N/A";
+	document.getElementById("region").value = data.regionName || "N/A";
+	document.getElementById("block").value = data.blockName || "N/A";
+	document.getElementById("field").value = data.fieldName || "N/A";
+	document.getElementById("eventDesc").value = data.fieldName || "N/A";
+	document.getElementById("rigName").value = data.fieldName || "N/A";
+	document.getElementById("platform").value = data.fieldName || "N/A";
+	document.getElementById("waterDepth").value = data.fieldName || "N/A";
+	document.getElementById("objective").value = data.fieldName || "N/A";
+	document.getElementById("afeNo").value = data.fieldName || "N/A";
+	document.getElementById("startDate").value = data.fieldName || "N/A";
+	document.getElementById("spudDate").value = data.fieldName || "N/A";
+	document.getElementById("endDate").value = data.fieldName || "N/A";
+	document.getElementById("leadDS").value = data.fieldName || "N/A";
+	document.getElementById("nightDS").value = data.fieldName || "N/A";
+	document.getElementById("pcsbEng").value = data.fieldName || "N/A"; // Adjust if the field data is available
 }
 
 // Function to fetch event data and populate the dropdown
@@ -160,6 +224,7 @@ function handleSubmit(isNext) {
 			console.error("Error submitting form:", error);
 		});
 }
+
 // Function to clear form fields
 function clearFormFields() {
 	document.getElementById("eventDesc").value = "";
@@ -175,6 +240,7 @@ function clearFormFields() {
 	document.getElementById("nightDS").value = "";
 	document.getElementById("pcsbEng").value = "";
 }
+
 // Function to handle the next button click logic
 function handleNextButtonClick() {
 	const urlParams = new URLSearchParams(window.location.search);
@@ -195,58 +261,21 @@ function handleNextButtonClick() {
 	const nightDS = document.getElementById("nightDS").value;
 	const pcsbEng = document.getElementById("pcsbEng").value;
 
-	// Check if any fields are unfilled
-	let allFieldsFilled = true;
+	// Construct a FormData object
+	const formData = new FormData();
+	formData.append("eventDesc", eventDesc);
+	formData.append("rigName", rigName);
+	formData.append("platform", platform);
+	formData.append("waterDepth", waterDepth);
+	formData.append("objective", objective);
+	formData.append("afeNo", afeNo);
+	formData.append("startDate", startDate);
+	formData.append("spudDate", spudDate);
+	formData.append("endDate", endDate);
+	formData.append("leadDS", leadDS);
+	formData.append("nightDS", nightDS);
+	formData.append("pcsbEng", pcsbEng);
+	formData.append("reportId", reportId); // Always include the report ID
 
-	if (
-		!eventDesc ||
-		!rigName ||
-		!platform ||
-		!waterDepth ||
-		!objective ||
-		!afeNo ||
-		!startDate ||
-		!spudDate ||
-		!endDate ||
-		!leadDS ||
-		!nightDS ||
-		!pcsbEng
-	) {
-		allFieldsFilled = false;
-	}
-
-	// Prompt the user if some fields are not filled
-	if (!allFieldsFilled) {
-		const proceedAnyway = confirm(
-			"Some fields are not filled. Proceed to the next step anyway?"
-		);
-		if (!proceedAnyway) {
-			return; // Stop the function if the user cancels
-		} else {
-			// Determine the next page based on the current field
-			let nextPage = "";
-
-			switch (field) {
-				case "wellInfo":
-					nextPage = "depth_days.php"; // Next step for wellInfo
-					break;
-				case "depthDay":
-					nextPage = "costInfo.php"; // Next step for depthDay
-					break;
-				// Add more cases for other fields
-				case "costInfo":
-					nextPage = "status.php"; // Next step for costInfo
-					break;
-				// Continue as necessary for other fields...
-				default:
-					alert("No next step defined for the current field.");
-					return; // Exit if no next step is defined
-			}
-
-			// Redirect to the next page with the reportId
-			if (nextPage) {
-				window.location.href = `http://localhost/Faz-Drill/View/${nextPage}?reportId=${reportId}`;
-			}
-		}
-	}
+	handleSubmit(true); // Pass true to handle submission and next action
 }

@@ -127,6 +127,7 @@ header p {
 }
 
 .blnk {
+	text-align: center;
 	text-decoration: none;
 	border-width: 0px 0px 1px 1px;
 	border-style: solid;

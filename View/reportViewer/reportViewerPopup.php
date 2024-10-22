@@ -6,6 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Input</title>
     <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/well-data.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/anchorTension.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/bha_com.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/bha-data.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/bit-data.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/bulks.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/depth-days.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/gas-reading.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/lot-fit.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/mud-check.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/mv.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/personnel.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/ph.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/pipe-data.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/safety-cards.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/safety.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/SCE.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/supportCraft.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/surveys.css">
+    <link rel="stylesheet" href="http://localhost/Faz-Drill//css/report_info/weather.css">
+
 </head>
 <body>
     <div class="content">

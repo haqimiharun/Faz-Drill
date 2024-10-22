@@ -2,7 +2,7 @@
 // Database connection settings
 $dbhost = 'localhost';
 $dbname = 'fazdrill';
-$dbuser = 'postgres';;
+$dbuser = 'postgres';
 $dbpass = 'ftsb@123';
 
 try {
@@ -19,7 +19,7 @@ try {
         $reportName = trim($_POST['reportName']);
 
         if (!empty($reportName)) {
-            // Check if the reportalready exists for the selected site
+            // Check if the report already exists for the selected wellbore
             $stmt = $pdo->prepare("SELECT COUNT(*) FROM tbl_report WHERE wellbore_id = :wellboreId AND report_name = :reportName");
             $stmt->bindParam(':wellboreId', $wellboreId);
             $stmt->bindParam(':reportName', $reportName);
@@ -30,16 +30,22 @@ try {
                 echo "Error: Report already exists for this wellbore.";
             } else {
                 // Prepare the insert statement
-                $stmt = $pdo->prepare("INSERT INTO tbl_report (country_id, field_id, site_id, well_id, wellbore_id, report_name) VALUES (:countryId, :fieldId, :siteId, :wellId, :wellboreId, :reportName)");
+               $stmt = $pdo->prepare("INSERT INTO tbl_report (country_id, field_id, site_id, well_id, wellbore_id, report_name, created_at, updated_at)  
+                                        VALUES (:countryId, :fieldId, :siteId, :wellId, :wellboreId, :reportName, NOW(), NOW())");
+
                 $stmt->bindParam(':countryId', $countryId);
                 $stmt->bindParam(':fieldId', $fieldId);
-                $stmt->bindParam(':siteId', $siteId); // Corrected from siteName
+                $stmt->bindParam(':siteId', $siteId);
                 $stmt->bindParam(':wellId', $wellId);
                 $stmt->bindParam(':wellboreId', $wellboreId);
                 $stmt->bindParam(':reportName', $reportName);
-                $stmt->execute();
-
-                echo "Report added successfully!";
+                
+                if ($stmt->execute()) {
+                    echo "Report added successfully!";
+                } else {
+                    $errorInfo = $stmt->errorInfo();
+                    echo "Error inserting report: " . htmlspecialchars($errorInfo[2]);
+                }
             }
         } else {
             echo "Error: Report name cannot be empty.";
@@ -51,4 +57,3 @@ try {
     echo "Error: " . htmlspecialchars($exception->getMessage());
 }
 ?>
-

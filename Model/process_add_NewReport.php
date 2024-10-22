@@ -87,7 +87,8 @@ if (isset($_POST['countryId'], $_POST['fieldId'], $_POST['siteId'], $_POST['well
     }
 
     // Insert the report
-    $stmt = $pdo->prepare("INSERT INTO tbl_report (country_id, field_id, site_id, well_id, wellbore_id, report_name) VALUES (:countryId, :fieldId, :siteId, :wellId, :wellboreId, :reportName)");
+    $stmt = $pdo->prepare("INSERT INTO tbl_report (country_id, field_id, site_id, well_id, wellbore_id, report_name, created_at, updated_at) 
+                        VALUES (:countryId, :fieldId, :siteId, :wellId, :wellboreId, :reportName, NOW(), NOW())");
     $stmt->bindParam(':countryId', $countryId);
     $stmt->bindParam(':fieldId', $fieldId);
     $stmt->bindParam(':siteId', $siteId);
@@ -95,14 +96,15 @@ if (isset($_POST['countryId'], $_POST['fieldId'], $_POST['siteId'], $_POST['well
     $stmt->bindParam(':wellboreId', $wellboreId);
     $stmt->bindParam(':reportName', $reportName);
     if ($stmt->execute()) {
-        $response['status'] = 'success';
-        $response['message'] = "Report added successfully!";
-        error_log("New report added: " . $pdo->lastInsertId() . " - $reportName");
+    $response['status'] = 'success';
+    $response['message'] = "Report added successfully!";
+    error_log("New report added: " . $pdo->lastInsertId() . " - $reportName");
     } else {
-        error_log("Error inserting report: " . json_encode($stmt->errorInfo()));
-        $response['status'] = 'error';
-        $response['message'] = "Error: Could not add report.";
+    error_log("Error inserting report: " . json_encode($stmt->errorInfo()));
+    $response['status'] = 'error';
+    $response['message'] = "Error: Could not add report.";
     }
+
 } else {
     $response['status'] = 'error';
     $response['message'] = "Error: Report name cannot be empty.";

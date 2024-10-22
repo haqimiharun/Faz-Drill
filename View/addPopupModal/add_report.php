@@ -46,7 +46,7 @@
     </div>
     <div class="form-group">
         <label for="unitTempSelect">Select Unit Template</label>
-        <select id="unitTempSelect" name="unitTemplateId" required>
+        <select id="unitTempSelect" name="unitTemplateId" >
             <option value="">Select a Unit Measurement Template</option>
             <!-- Country options will be populated by AJAX -->
         </select>
