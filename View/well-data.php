@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group-wd">
                     <label for="waterDepth">Water Depth</label>
-                    <input type="number" id="waterDepth" name="waterDepth" placeholder="Enter Water Depth" > <!-- User Input -->
+                    <input type="text" id="waterDepth" name="waterDepth" placeholder="Enter Water Depth" > <!-- User Input -->
                 </div>
                 <div class="form-group-wd">
                     <label for="objective">Objective</label>

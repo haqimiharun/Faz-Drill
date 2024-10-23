@@ -33,10 +33,20 @@
 
     <!-- Content of add_country.php -->
     <form id="countryForm" action="" method="POST">
-        <div class="form-group">
-            <label for="countryName">Country Name</label>
-            <input type="text" id="countryName" name="countryName" required>
+         <div class="form-group">
+        <label for="countrySelect">Select Country</label>
+        <select id="countrySelect" name="countryId" required>
+            <option value="">Select a Country</option>
+            <!-- Country options will be populated by AJAX -->
+        </select>
+        <!-- Hidden dropdown for adding a new country -->
+        <div id="newCountryDropdown" style="display: none;">
+            <select id="newCountrySelect" name="newCountryId">
+                <option value="addNewCountry">Select a Country</option>
+                <!-- New country options will be populated by AJAX -->
+            </select>
         </div>
+    </div>
         <div class="form-group">
             <h5 for="countrySetting">COUNTRY INITIAL SETTINGS</h5>
             <label>

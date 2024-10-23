@@ -32,9 +32,19 @@
         </select>
     </div>
     <div class="form-group">
-     <input type="hidden" id="countryIdHidden" name="countryId" />
+        <input type="hidden" id="countryIdHidden" name="countryId" />
         <label for="fieldName">Field Name</label>
         <input type="text" id="fieldName" name="fieldName" required>
+    </div>
+    <div class="grid_2">
+        <div class="form-group">
+            <label for="region">Region Name</label>
+            <input type="text" id="fieldRegionName" name="fieldRegionName" required>
+        </div>
+        <div class="form-group">
+            <label for="block">Block Name</label>
+            <input type="text" id="fieldBlockName" name="fieldBlockName" required>
+        </div>
     </div>
     <div class="form-group">
         <h5 for="countrySetting">COUNTRY INITIAL SETTINGS</h5>

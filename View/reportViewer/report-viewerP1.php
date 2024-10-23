@@ -63,8 +63,8 @@
                 End date
                 </div>
                 <div class="blnk" id="wi_Obj_value">:</div>
-                <div class="blnk" id="wi_AFE_No_value">:</div>
                 <div class="blnk" id="wi_field-platform_value">:</div>
+                <div class="blnk" id="wi_AFE_No_value">:</div>
                 <div class="blnk" id="wi_Start_date_value">:</div>
                 <div class="blnk" id="wi_Spud_date_value">:</div>
                 <div class="blnk" id="wi_End_date_value">:</div>
