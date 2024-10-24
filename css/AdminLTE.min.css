@@ -192,7 +192,7 @@ a:focus {
 	margin-bottom: 0;
 	margin-left: 230px;
 	border: none;
-	min-height: 75px;
+	min-height: 100px;
 	border-radius: 0;
 }
 .layout-top-nav .main-header .navbar {
@@ -241,11 +241,16 @@ a:focus {
 	}
 }
 .main-header .sidebar-toggle {
-	float: left;
-	background-color: transparent;
-	background-image: none;
-	padding: 25px 15px 15px 15px;
-	font-family: fontAwesome;
+	display: flex;
+	float:left;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center; /* Centers items vertically */
+    background-color: transparent;
+    background-image: none;
+    padding: 65px 15px;
+    font-family: fontAwesome;
+	color:#ffffff
+	
 }
 .main-header .sidebar-toggle:before {
 	content: "\f0c9";
@@ -278,9 +283,11 @@ a:focus {
 	-webkit-transition: width 0.3s ease-in-out;
 	-o-transition: width 0.3s ease-in-out;
 	transition: width 0.3s ease-in-out;
-	display: block;
+	display: flex;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center;
 	float: left;
-	height: 75px;
+	height: 150px;
 	font-size: 30px;
 	line-height: 75px;
 	text-align: center;

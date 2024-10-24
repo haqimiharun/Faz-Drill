@@ -1,44 +1,10 @@
 <?php
-
-// if(isset($_POST['form1'])) {
-        
-//     if(empty($_POST['email']) || empty($_POST['password'])) {
-//         $error_message = 'Email and/or Password can not be empty<br>';
-//     } else {
-		
-// 		$email = strip_tags($_POST['email']);
-// 		$password = strip_tags($_POST['password']);
-
-//     	$statement = $pdo->prepare("SELECT * FROM tbl_user WHERE email=? AND status=?");
-//     	$statement->execute(array($email,'Active'));
-//     	$total = $statement->rowCount();    
-//         $result = $statement->fetchAll(PDO::FETCH_ASSOC);    
-//         if($total==0) {
-//             $error_message .= 'Email Address does not match<br>';
-//         } else {       
-//             foreach($result as $row) { 
-//                 $row_password = $row['password'];
-//             }
-        
-//             if( $row_password != md5($password) ) {
-//                 $error_message .= 'Password does not match<br>';
-//             } else {       
-            
-// 				$_SESSION['user'] = $row;
-//                 header("location: index.php");
-//             }
-//         }
-//     }
-
-// }
-
-?>
-<?php
 ob_start();
 session_start();
 include("inc/config.php");
 include("inc/functions.php");
 include("inc/CSRF_Protect.php");
+
 $csrf = new CSRF_Protect();
 $error_message = '';
 
@@ -69,8 +35,8 @@ if (isset($_POST['form1'])) {
         }
     }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,14 +54,60 @@ if (isset($_POST['form1'])) {
     <link rel="stylesheet" href="css/AdminLTE.min.css">
     <link rel="stylesheet" href="css/_all-skins.min.css">
     <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        body {
+            background-color: #080d30 !important;
+            color: #ffffff;
+        }
+        .login-box {
+            width: 360px;
+            margin: 7% auto;
+        }
+        .login-logo b {
+            color: #05aff7;
+            font-size: 46px;
+        }
+        .login-box-body {
+            background-color: #86c237;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .login-box-msg { /* "log in fazdrill to start" */
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            border-color: #ffffff;
+        }
+        .form-control {
+            background-color: #080d30;
+            border: 1px solid #05aff7;
+            color: #ffffff;
+        }
+        .btn-success {
+            background-color: #05aff7;
+            border-color: #86c237;
+        }
+        .btn-success:hover {
+            background-color: #05aff7;
+            border-color: #05aff7;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body class="hold-transition login-page sidebar-mini">
 
 <div class="login-box">
     <div class="login-logo">
-        <b>Faz-Drill</b>
-    </div>
+    <img src="img/faz-drill-logo1.png" alt="Faz Drill Logo" width="200" height="230">
+    <br>
+
+</div>
     <div class="login-box-body">
         <p class="login-box-msg">Log in to start your session</p>
 
@@ -139,3 +151,4 @@ if (isset($_POST['form1'])) {
 
 </body>
 </html>
+

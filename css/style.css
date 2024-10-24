@@ -406,7 +406,7 @@ h4.modal-title {
 .skin-blue .sidebar-menu > li:hover > a,
 .skin-blue .sidebar-menu > li.active > a {
 	color: #000;
-	background: #3c8dbc;
+	background: #080d30;
 	border-left-color: #3c8dbc;
 }
 .pt10 {
@@ -445,7 +445,7 @@ img.existing-photo {
 .skin-blue .main-header .logo:hover,
 .skin-blue .main-header .navbar,
 .skin-blue .main-header .navbar .sidebar-toggle:hover {
-	background-color: #8dc643;
+	background-color: #080d30;
 }
 .skin-blue .sidebar-menu > li:hover > a,
 .skin-blue .sidebar-menu > li.active > a {
