@@ -111,7 +111,7 @@ try {
         100% { transform: rotate(360deg); }
     }
     .selected-cell {
-        background-color: #a0c1ff; /* Slightly darker blue for selected cells */
+        background-color: #86c237; /* Slightly darker green for selected cells */  /*#a0c1ff original color*/
     }
 
     .disabled-link {

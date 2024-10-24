@@ -49,7 +49,8 @@ if(!isset($_SESSION['user'])) {
 <header class="main-header">
 
 			<a href="index.php" class="logo">
-				<span class="logo-lg">FAZ-DRILL</span>
+			<img src="img/faz-drill-logo2.png" alt="Faz-Drill Logo" width="300" height="90" >
+				
 			</a>
 
 			<nav class="navbar navbar-static-top">
