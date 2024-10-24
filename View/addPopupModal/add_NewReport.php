@@ -1,4 +1,13 @@
 <!-- HTML form for adding a new site -->
+<style>
+.grid_2 {
+    margin-top: 10px;
+    margin-bottom: -5px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
+            gap: 10px; /* Adjust the space between columns */
+        }
+</style>
 <form id="reportForm" action="" method="POST">
     <div class="form-group">
         <label for="countrySelect">Select Country</label>
@@ -24,6 +33,22 @@
         <!-- Hidden input for adding a new field -->
         <div id="newFieldDropdown" style="display: none;">
             <input type="text" id="newFieldInput" name="newFieldName">
+        </div>
+        <div class="grid_2">
+            <div class="form-group">
+                <label for="region">Region Name</label>
+                <select id="fieldRegionName" name="fieldRegionName" required>
+                    <option value="">Select a Region</option>
+                <!-- Country options will be populated by AJAX -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="block">Block Name</label>
+                <select id="fieldBlockName" name="fieldBlockName" required>
+                    <option value="">Select a Block</option>
+                <!-- Country options will be populated by AJAX -->
+                </select>
+            </div>
         </div>
     </div>
     <div class="form-group">

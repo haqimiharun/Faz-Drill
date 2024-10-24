@@ -22,6 +22,11 @@
             width: 96%; /* Make the map fill the width */
             border: 1px solid #ccc; /* Optional: Add a border for better visibility */
         }
+        .grid_2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
+            gap: 10px; /* Adjust the space between columns */
+        }
     </style>
 <form id="fieldForm" action="" method="POST">
     <div class="form-group">
@@ -39,11 +44,17 @@
     <div class="grid_2">
         <div class="form-group">
             <label for="region">Region Name</label>
-            <input type="text" id="fieldRegionName" name="fieldRegionName" required>
+            <select id="fieldRegionName" name="fieldRegionName" required>
+                <option value="">Select a Region</option>
+            <!-- Country options will be populated by AJAX -->
+            </select>
         </div>
         <div class="form-group">
             <label for="block">Block Name</label>
-            <input type="text" id="fieldBlockName" name="fieldBlockName" required>
+            <select id="fieldBlockName" name="fieldBlockName" required>
+                <option value="">Select a Block</option>
+            <!-- Country options will be populated by AJAX -->
+            </select>
         </div>
     </div>
     <div class="form-group">

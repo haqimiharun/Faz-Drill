@@ -9,6 +9,8 @@ function setupNewReportFormSubmission() {
 	var wellboreSelect = document.getElementById("wellboreSelect");
 	var newCountryDropdown = document.getElementById("newCountryDropdown");
 	var newCountrySelect = document.getElementById("newCountrySelect");
+	var regionSelect = document.getElementById("fieldRegionName");
+	var blockSelect = document.getElementById("fieldBlockName");
 
 	// Add placeholder options
 	function addPlaceholder(selectElement, placeholderText) {
@@ -116,6 +118,7 @@ function setupNewReportFormSubmission() {
 		}
 
 		// Reset all dependent dropdowns when country changes
+
 		resetDropdown(siteSelect, "Select a Site");
 		resetDropdown(wellSelect, "Select a Well");
 		resetDropdown(wellboreSelect, "Select a Wellbore");
@@ -156,7 +159,38 @@ function setupNewReportFormSubmission() {
 			if (fieldSelect.value !== "") {
 				// Fetch sites for the selected field
 				fetchSites(fieldSelect.value);
+				fetchRegions(countrySelect.value);
 			}
+		}
+	});
+
+	regionSelect.addEventListener("change", function () {
+		document.getElementById("newSiteDropdown").style.display = "none";
+		document.getElementById("newWellDropdown").style.display = "none";
+		document.getElementById("newWellboreDropdown").style.display = "none";
+
+		// Reset the well and wellbore dropdowns
+		resetDropdown(wellSelect, "Select a Well");
+		resetDropdown(wellboreSelect, "Select a Wellbore");
+
+		if (siteSelect.value !== "") {
+			// Fetch wells for the selected site
+			fetchBlocks(regionSelect.value);
+		}
+	});
+
+	blockSelect.addEventListener("change", function () {
+		document.getElementById("newSiteDropdown").style.display = "none";
+		document.getElementById("newWellDropdown").style.display = "none";
+		document.getElementById("newWellboreDropdown").style.display = "none";
+
+		// Reset the well and wellbore dropdowns
+		resetDropdown(wellSelect, "Select a Well");
+		resetDropdown(wellboreSelect, "Select a Wellbore");
+
+		if (siteSelect.value !== "") {
+			// Fetch wells for the selected site
+			fetchSites(fieldSelect.value);
 		}
 	});
 
@@ -225,7 +259,16 @@ function setupNewReportFormSubmission() {
 			document.getElementById("newWellboreDropdown").style.display = "none";
 		}
 	});
+	// Set up event listener for region change
+	regionSelect.addEventListener("change", function () {
+		var selectedRegionId = this.value;
 
+		// Fetch block data based on selected region
+		fetchBlocks(selectedRegionId, blockSelect);
+
+		// Save selected region to sessionStorage
+		sessionStorage.setItem("selectedRegionId", selectedRegionId);
+	});
 	// Helper function to reset dropdowns
 	function resetDropdown(dropdown, placeholderText) {
 		dropdown.innerHTML = "";
@@ -252,6 +295,55 @@ function setupNewReportFormSubmission() {
 					fieldSelect.disabled = false;
 				} else {
 					addPlaceholder(fieldSelect, "No fields available");
+				}
+			})
+			.catch((error) => console.error("Error fetching fields:", error));
+	}
+
+	// Function to fetch and populate regions based on country ID
+	function fetchRegions(countryId) {
+		fetch(`Model/get_regions.php?country_id=${countryId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.regions) {
+					regionSelect.innerHTML = ""; // Clear previous options
+
+					// Add an initial option
+					var initialOption = document.createElement("option");
+					initialOption.value = ""; // No value for the initial option
+					initialOption.text = "Select a Region"; // Text displayed for the initial option
+					initialOption.disabled = true; // Disable this option to prevent selection
+					initialOption.selected = true; // Set this option as selected
+					regionSelect.appendChild(initialOption); // Append it to the select
+
+					// Populate regions
+					data.regions.forEach((region) => {
+						var option = document.createElement("option");
+						option.value = region.lib_region_id;
+						option.text = `${region.lib_region_name} (${region.lib_region_code})`;
+						regionSelect.appendChild(option);
+					});
+				} else {
+					console.error("No region data found.");
+				}
+			})
+			.catch((error) => console.error("Error fetching regions:", error));
+	}
+
+	// Example fetch functions
+	function fetchBlocks(regionId) {
+		fetch(`Model/get_blocks.php?lib_region_id=${regionId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.status === "success" && data.data.length > 0) {
+					data.data.forEach((block) => {
+						var option = document.createElement("option");
+						option.value = block.lib_block_id;
+						option.text = block.lib_block_name;
+						blockSelect.appendChild(option);
+					});
+				} else {
+					addPlaceholder(blockSelect, "No fields available");
 				}
 			})
 			.catch((error) => console.error("Error fetching fields:", error));

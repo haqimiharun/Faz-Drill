@@ -801,14 +801,12 @@ function setupFieldFormSubmission() {
 			}
 		}
 	);
-	// Retrieve data from sessionStorage
+
 	const savedData = sessionStorage.getItem("selectedData");
-
-	// Parse the JSON string back to an object
 	const selectedData = savedData ? JSON.parse(savedData) : null;
-
-	// Extract the country data
 	const countryId = selectedData ? selectedData.country : null;
+	const regionId = selectedData ? selectedData.region : null;
+	const blockId = selectedData ? selectedData.block : null;
 
 	var fieldForm = document.getElementById("fieldForm");
 	if (!fieldForm) {
@@ -841,6 +839,13 @@ function setupFieldFormSubmission() {
 
 					// Disable the country select to prevent changes
 					countrySelect.disabled = true;
+
+					// Fetch regions based on the selected country
+					fetchRegions(
+						regionId,
+						countryId,
+						document.getElementById("fieldRegionName")
+					);
 				} else {
 					console.error("Country name not found for ID:", countryId);
 				}
@@ -861,10 +866,107 @@ function setupFieldFormSubmission() {
 		countryIdHidden.value = this.value;
 	});
 
+	// Region and Block Select Elements
+	var regionSelect = document.getElementById("fieldRegionName");
+	var blockSelect = document.getElementById("fieldBlockName");
+
+	if (!regionSelect || !blockSelect) {
+		console.error("regionSelect or blockSelect not found");
+		return;
+	}
+
+	// Set up event listener for region change
+	regionSelect.addEventListener("change", function () {
+		var selectedRegionId = this.value;
+
+		// Fetch block data based on selected region
+		fetchBlocks(selectedRegionId, blockSelect);
+
+		// Save selected region to sessionStorage
+		sessionStorage.setItem("selectedRegionId", selectedRegionId);
+	});
+
+	// Restore selected region and block
+	if (regionId) {
+		regionSelect.value = regionId; // Set selected region
+		fetchBlocks(regionId, blockSelect, blockId); // Fetch blocks for the region and set blockId
+	}
+
+	// Save selected block to sessionStorage on change
+	blockSelect.addEventListener("change", function () {
+		sessionStorage.setItem("selectedBlockId", this.value);
+	});
+
+	// Form Submission
 	fieldForm.onsubmit = function (event) {
 		event.preventDefault();
+
+		// Ensure both region and block are selected before submission
+		if (!regionSelect.value || !blockSelect.value) {
+			alert("Please select both a region and block.");
+			return;
+		}
+
 		submitForm(fieldForm, "Model/process_add_field.php");
 	};
+
+	// Function to fetch and populate regions based on country ID
+	function fetchRegions(selectedRegionId, countryId, regionSelect) {
+		fetch(`Model/get_regions.php?country_id=${countryId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.regions) {
+					regionSelect.innerHTML = ""; // Clear previous options
+
+					// Add an initial option
+					var initialOption = document.createElement("option");
+					initialOption.value = ""; // No value for the initial option
+					initialOption.text = "Select a Region"; // Text displayed for the initial option
+					initialOption.disabled = true; // Disable this option to prevent selection
+					initialOption.selected = true; // Set this option as selected
+					regionSelect.appendChild(initialOption); // Append it to the select
+
+					// Populate regions
+					data.regions.forEach((region) => {
+						var option = document.createElement("option");
+						option.value = region.lib_region_id;
+						option.text = `${region.lib_region_name} (${region.lib_region_code})`;
+						option.selected = region.lib_region_id == selectedRegionId;
+						regionSelect.appendChild(option);
+					});
+
+					// If a region is selected, fetch its blocks
+					if (selectedRegionId) {
+						fetchBlocks(selectedRegionId, blockSelect); // Fetch blocks for the selected region
+					}
+				} else {
+					console.error("No region data found.");
+				}
+			})
+			.catch((error) => console.error("Error fetching regions:", error));
+	}
+
+	// Function to fetch and populate blocks based on region
+	function fetchBlocks(regionId, blockSelect, selectedBlockId = null) {
+		fetch(`Model/get_blocks.php?lib_region_id=${regionId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data && data.blocks) {
+					blockSelect.innerHTML = ""; // Clear previous options
+					data.blocks.forEach((block) => {
+						const option = document.createElement("option");
+						option.value = block.lib_block_id; // Use lib_block_id from the response
+						option.text = block.lib_block_name; // Use lib_block_name from the response
+						option.selected = block.lib_block_id == selectedBlockId; // Compare with selectedBlockId
+						blockSelect.appendChild(option);
+					});
+					blockSelect.disabled = false; // Enable block select after loading options
+				} else {
+					console.error("No block data found for region:", regionId);
+				}
+			})
+			.catch((error) => console.error("Error fetching blocks:", error));
+	}
 }
 
 // Function to setup Country Form Submission

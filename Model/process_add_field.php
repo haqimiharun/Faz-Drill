@@ -14,10 +14,11 @@ try {
 
     $response = [];
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['countryId'], $_POST['fieldName'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['countryId'], $_POST['fieldName'], $_POST['fieldBlockName'])) {
         $countryId = intval($_POST['countryId']);
         $fieldName = trim($_POST['fieldName']);
-
+        $fieldBlockName = intval($_POST['fieldBlockName']);
+        
         if (!empty($fieldName)) {
             // Check if the field already exists for the selected country
             $stmt = $pdo->prepare("SELECT COUNT(*) FROM tbl_field WHERE country_id = :countryId AND field_name = :fieldName");
@@ -32,9 +33,10 @@ try {
                 $response['message'] = 'Error: Field already exists for this country.';
             } else {
                 // Prepare the insert statement
-                $stmt = $pdo->prepare("INSERT INTO tbl_field (country_id, field_name) VALUES (:countryId, :fieldName)");
+                $stmt = $pdo->prepare("INSERT INTO tbl_field (country_id, field_name, block_id) VALUES (:countryId, :fieldName, :fieldBlockName)");
                 $stmt->bindParam(':countryId', $countryId);
                 $stmt->bindParam(':fieldName', $fieldName);
+                $stmt->bindParam(':fieldBlockName', $fieldBlockName);
                 $stmt->execute();
 
                 // Send success response with the added field data
@@ -43,7 +45,8 @@ try {
                 $response['field'] = [
                     'field_id' => $pdo->lastInsertId(),
                     'field_name' => $fieldName,
-                    'country_id' => $countryId
+                    'country_id' => $countryId,
+                    'block_id' => $fieldBlockName
                 ];
             }
         } else {
